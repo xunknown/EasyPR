@@ -9,6 +9,8 @@ if (CMAKE_SYSTEM_NAME MATCHES "Darwin")
     set(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} "/usr/local/opt/opencv-3.2.0")
 endif ()
 
+set(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} "/opt/opencv/opencv/share/OpenCV"
+)
 # OpenVC3 required
 find_package(OpenCV 3.2.0 REQUIRED)
 
