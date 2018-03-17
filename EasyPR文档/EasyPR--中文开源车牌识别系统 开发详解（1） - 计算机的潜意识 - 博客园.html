@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)http://www.cnblogs.com/subconscious/p/4001896.html -->
+<html lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EasyPR--中文开源车牌识别系统 开发详解（1） - 计算机的潜意识 - 博客园</title>
+<link type="text/css" rel="stylesheet" href="./EasyPR--中文开源车牌识别系统 开发详解（1） - 计算机的潜意识 - 博客园_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="./EasyPR--中文开源车牌识别系统 开发详解（1） - 计算机的潜意识 - 博客园_files/bundle-iMetro_HD.css">
+<link type="text/css" rel="stylesheet" href="./EasyPR--中文开源车牌识别系统 开发详解（1） - 计算机的潜意识 - 博客园_files/198547.css">
+<link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="./EasyPR--中文开源车牌识别系统 开发详解（1） - 计算机的潜意识 - 博客园_files/bundle-iMetro_HD-mobile.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/subconscious/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/subconscious/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/subconscious/wlwmanifest.xml">
+<script async="" src="./EasyPR--中文开源车牌识别系统 开发详解（1） - 计算机的潜意识 - 博客园_files/analytics.js"></script><script src="./EasyPR--中文开源车牌识别系统 开发详解（1） - 计算机的潜意识 - 博客园_files/jquery-2.2.0.min.js"></script>
+<script type="text/javascript">var currentBlogApp = 'subconscious', cb_enable_mathjax=false;var isLogined=false;</script>
+<script src="./EasyPR--中文开源车牌识别系统 开发详解（1） - 计算机的潜意识 - 博客园_files/blog-common.js" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+<!--PageBeginHtml Block Begin-->
+<span id="forkongithub"><a href="https://github.com/liuruoze/EasyPR" target="_blank">Fork me on GitHub</a></span>
+<!--PageBeginHtml Block End-->
+
+<!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+	<a id="lnkBlogLogo" href="http://www.cnblogs.com/subconscious/"><img id="blogLogo" src="./EasyPR--中文开源车牌识别系统 开发详解（1） - 计算机的潜意识 - 博客园_files/logo.gif" alt="返回主页"></a>			
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/subconscious/">计算机的潜意识</a></h1>
+<h2>EasyPR讨论QQ群：一群：366392603, 四群：548362608。 加前请注明EasyPR学习讨论。</h2>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="blog_nav_sitehome" class="menu" href="http://www.cnblogs.com/">博客园</a></li>
+<li><a id="blog_nav_myhome" class="menu" href="http://www.cnblogs.com/subconscious/">首页</a></li>
+<li><a id="blog_nav_newpost" class="menu" rel="nofollow" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+<li><a id="blog_nav_contact" class="menu" rel="nofollow" href="https://msg.cnblogs.com/send/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E6%BD%9C%E6%84%8F%E8%AF%86">联系</a></li>
+<li><a id="blog_nav_rss" class="menu" href="http://www.cnblogs.com/subconscious/rss">订阅</a>
+<!--<a id="blog_nav_rss_image" class="aHeaderXML" href="http://www.cnblogs.com/subconscious/rss"><img src="//www.cnblogs.com/images/xml.gif" alt="订阅" /></a>--></li>
+<li><a id="blog_nav_admin" class="menu" rel="nofollow" href="https://i.cnblogs.com/">管理</a></li>
+</ul>
+		<div class="blogStats">
+			
+			<div id="blog_stats">
+<span id="stats_post_count">随笔 - 15&nbsp; </span>
+<span id="stats_article_count">文章 - 0&nbsp; </span>
+<span id="stats-comment_count">评论 - 505</span>
+</div>
+			
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+<div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class="post">
+		<h1 class="postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="http://www.cnblogs.com/subconscious/p/4001896.html">EasyPR--中文开源车牌识别系统 开发详解（1）</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body" class="blogpost-body"><p class="p0">　　在<a title="EasyPR 简介" href="http://www.cnblogs.com/subconscious/p/3979988.html">上篇文档</a>中作者已经简单的介绍了<span style="font-family: &#39;Times New Roman&#39;;">EasyPR</span><span style="font-family: 宋体;">，现在在本文档中详细的介绍</span><span style="font-family: &#39;Times New Roman&#39;;">EasyPR</span><span style="font-family: 宋体;">的开发过程。</span></p>
+<p class="p0">　　正如淘宝诞生于一个购买来的<span style="font-family: &#39;Times New Roman&#39;;">LAMP</span><span style="font-family: 宋体;">系统，</span><span style="font-family: &#39;Times New Roman&#39;;">EasyPR</span><span style="font-family: 宋体;">也有它诞生的原型，起源于</span><span style="font-family: &#39;Times New Roman&#39;;">CSDN</span><span style="font-family: 宋体;">的taotao1233的一个<a href="http://blog.csdn.net/jinshengtao/article/details/17883075" target="_blank">博客</a>，博主以读书笔记的形式记述了通过阅读“Mastering OpenCV”这本书完成的一个车牌系统的雏形。</span></p>
+<p class="p0">　　这个雏形有几个特点：<span style="font-family: &#39;Times New Roman&#39;;">1.</span><span style="font-family: 宋体;">将车牌系统划分为了两个过程，即车牌检测和字符识别。</span><span style="font-family: &#39;Times New Roman&#39;;">2.</span><span style="font-family: 宋体;">整个系统是针对西班牙的车牌开发的，与中文车牌不同。</span><span style="font-family: &#39;Times New Roman&#39;;">3.</span><span style="font-family: 宋体;">系统的训练模型来自于原书。作者基于这个系统，诞生了开发一个适用于中文的，且适合与协作开发的开源车牌系统的想法，也就是</span><span style="font-family: &#39;Times New Roman&#39;;">EasyPR</span><span style="font-family: 宋体;">。</span></p>
+<p class="p0">&nbsp;　　当然了，现在车牌系统满大街都是，随便上下百度首页都是大量的广告，一些甚至宣称自己实现了<span style="font-family: &#39;Times New Roman&#39;;">99%</span><span style="font-family: 宋体;">的识别率。那么，作者为什么还要开发这个系统呢？这主要是基于时势与机遇的原因。</span></p>
+<p class="p0"><span style="font-family: 宋体;">　　</span>众所皆知，现在是大数据的时代。那么，什么是大数据？可能有些人认为这个只是一个概念或着炒作。但是大数据确是实实在在有着基础理论与科学研究背景的一门技术，其中包含着分布式计算、内存计算、机器学习、计算机视觉、语音识别、自然语言处理等众多计算机界崭新的技术，而且是这些技术综合的产物。事实上，大数据的“大”包含着<span style="font-family: &#39;Times New Roman&#39;;">4</span><span style="font-family: 宋体;">个特征，即</span><span style="font-family: &#39;Times New Roman&#39;;">4V</span><span style="font-family: 宋体;">理念，包括</span><span style="font-family: &#39;Times New Roman&#39;;">Volume</span><span style="font-family: 宋体;">（体量）、</span><span style="font-family: &#39;Times New Roman&#39;;">Varity</span><span style="font-family: 宋体;">（多样性）、</span><span style="font-family: &#39;Times New Roman&#39;;">Velocity</span><span style="font-family: 宋体;">（速度）、</span><span style="font-family: &#39;Times New Roman&#39;;">Value</span><span style="font-family: 宋体;">（价值）。</span></p>
+<p class="p0"><span style="font-family: 宋体;">　　见下图的说明：</span></p>
+<p class="p0"><img style="display: block; margin-left: auto; margin-right: auto;" src="./EasyPR--中文开源车牌识别系统 开发详解（1） - 计算机的潜意识 - 博客园_files/301511083477170.png" alt=""></p>
+<p class="p0" style="text-align: center;"><span style="font-family: 黑体;">图1 大数据技术的4V特征</span></p>
+<p class="p0" style="text-align: center;">&nbsp;</p>
+<p class="p0">　　综上，大数据技术不仅包含数据量的大，也包含处理数据的复杂，和处理数据的速度，以及数据中蕴含的价值。而车牌识别这个系统，虽然传统，古老，却是包含了所有这四个特侦的一个大数据技术的缩影。</p>
+<p class="p0">　　在车牌识别中，你需要处理的数据是图像中海量的像素单元；你处理的数据不再是传统的结构化数据，而是图像这种复杂的数据；如果不能在很短的时间内识别出车牌，那么系统就缺少意义；虽然一副图像中有很多的信息，但可能仅仅只有那一小块的信息（车牌）以及车身的颜色是你关心，而且这些信息都蕴含着巨大的价值。也就是说，车牌识别系统事实上就是现在火热的大数据技术在某个领域的一个聚焦，通过了解车牌识别系统，可以很好的帮助你理解大数据技术的内涵，也能清楚的认识到大数据的价值。</p>
+<p class="p0">　　很神奇吧，也许你觉得车牌识别系统很低端，这不是随便大街上都有的么，而你又认为大数据技术很高端，似乎高大上的感觉。其实两者本质上是一样的。另外对于觉得大数据技术是虚幻的炒作念头的同学，你们也可以了解一下车牌识别系统，就能知道大数据落在实地，事实上已经不知不觉进入我们的生活很长时间了，像一些其他的如抢票系统，语音助手等，都是大数据技术的真真切切的体现。所谓再虚幻的概念落到实处，就成了下里巴人，应该就是这个意思。所以对于炒概念要有所警觉，但是不能因此排除一切，要了解具体的技术内涵，才能更好的利用技术为我们服务。</p>
+<p class="p0">　　除了帮忙我们更好的理解大数据技术，使我们跟的上时代，开发一个车牌系统还有其他原因。</p>
+<p class="p0">　　那就是、现在的车牌系统，仍然还有许多待解决的挑战。这个可能很多同学有疑问，你别骗我，百度上我随便一搜都是<span style="font-family: &#39;Times New Roman&#39;;">99%</span><span style="font-family: 宋体;">，只要多少多少元，就可以</span><span style="font-family: &#39;Times New Roman&#39;;">99%</span><span style="font-family: 宋体;">。但是事实上，车牌识别系统业界一直都没有一个成熟的百分百适用的方案。</span><span style="font-family: 宋体;">一些</span><span style="font-family: &#39;Times New Roman&#39;;">90%</span><span style="font-family: 宋体;">以上的车牌识别系统都是跟高清摄像机做了集成，由摄像头传入的高分辨率图片进入识别系统，可以达到较高的识别率。但是如果图像分辨率一旦下来，或者图里的车牌脏了的话，那么很遗憾，识别率远远不如我们的肉眼。也就是说，距离真正的智能的车牌识别系统，目前已有的系统还有许多挑战。什么时候能够达到人眼的精度以及识别速率，估计那时候才算是完整成熟的。</span></p>
+<p class="p0">　　那么，有同学问，就没有办法进一步优化了么。答案是有的，这个就需要谈到目前火热的深度学习与计算机视觉技术，使用多隐层的深度神经网络也许能够解决这个问题。但是目前<span style="font-family: &#39;Times New Roman&#39;;">EasyPR</span><span style="font-family: 宋体;">并没有采用这种技术，或许以后会采用。但是这个方向是有的。也就是说，通过研究车牌识别系统，也许会让你一领略当今人工智能与计算机视觉技术最尖端的研究方向，即深度学习技术。怎么样，听了是不是很心动？</span><span style="font-family: 宋体;">最后扯一下，前端时间非常火热</span><span style="font-family: &#39;Times New Roman&#39;;">Google</span><span style="font-family: 宋体;">大脑技术和百度深度学习研究院，都是跟深度学习相关的。</span></p>
+<p class="p0">　　下图是一个深度学习（右）与传统技术（左）的对比，可以看出深度学习对于数据的分类能力的优势。</p>
+<p class="p0"><img style="display: block; margin-left: auto; margin-right: auto;" src="./EasyPR--中文开源车牌识别系统 开发详解（1） - 计算机的潜意识 - 博客园_files/301511354875861.png" alt=""></p>
+<p class="p0" style="text-align: center;"><span style="font-family: 黑体;">图2&nbsp;深度学习（右）与PCA技术（左）的对比</span></p>
+<p class="p0" style="text-align: center;">&nbsp;</p>
+<p class="p0">　　总结一下：开发一个车牌识别系统可以让你了解最新的时势<span style="font-family: &#39;Times New Roman&#39;;">---</span><span style="font-family: 宋体;">大数据的内涵，同时，也有机遇让你了解最新的人工智能技术</span><span style="font-family: &#39;Times New Roman&#39;;">---</span><span style="font-family: 宋体;">深度学习。因此，不要轻易的小看这门技术中蕴含的价值。</span></p>
+<p class="p0">　　好，谈价值就说这么多。现在，我简单的介绍一下<span style="font-family: &#39;Times New Roman&#39;;">EasyPR</span><span style="font-family: 宋体;">的具体过程。</span></p>
+<p class="p0">　　在上一篇文档中，我们了解到<span style="font-family: &#39;Times New Roman&#39;;">EasyPR</span><span style="font-family: 宋体;">包括两个部分，但实际上为了更好进行模块化开发，</span><span style="font-family: &#39;Times New Roman&#39;;">EasyPR</span><span style="font-family: 宋体;">被划分成了六个模块，其中每个模块的准确率与速度都影响着整个系统。</span></p>
+<p class="p0">　　具体说来，<span style="font-family: &#39;Times New Roman&#39;;">EasyPR</span><span style="font-family: 宋体;">中</span><span style="font-family: &#39;Times New Roman&#39;;">PlateDetect</span><span style="font-family: 宋体;">与</span><span style="font-family: &#39;Times New Roman&#39;;">CharsRecognize</span><span style="font-family: 宋体;">各包括三个模块。</span></p>
+<p class="p0">　　PlateDetect<span style="font-family: 宋体;">包括的是车牌定位，</span><span style="font-family: &#39;Times New Roman&#39;;">SVM</span><span style="font-family: 宋体;">训练，车牌判断三个过程，见下图。</span></p>
+<p class="p0"><span style="font-family: 宋体;"><img style="float: left;" src="./EasyPR--中文开源车牌识别系统 开发详解（1） - 计算机的潜意识 - 博客园_files/301537515973705.jpg" alt=""></span></p>
+<p class="p0" style="text-align: center;">图3 <span style="font-family: arial, helvetica, sans-serif;">PlateDetect</span>过程详解&nbsp;</p>
+<p class="p0">　　通过<span style="font-family: &#39;Times New Roman&#39;;">PlateDetect</span><span style="font-family: 宋体;">过程我们获得了许多可能是车牌的图块，将这些图块进行手工分类，聚集一定数量后，放入</span><span style="font-family: &#39;Times New Roman&#39;;">SVM</span><span style="font-family: 宋体;">模型中训练，得到</span><span style="font-family: &#39;Times New Roman&#39;;">SVM</span><span style="font-family: 宋体;">的一个判断模型，在实际的</span><span style="font-family: 宋体;">车牌过程中，我们再把所有可能是车牌的图块输入</span><span style="font-family: &#39;Times New Roman&#39;;">SVM</span><span style="font-family: 宋体;">判断模型，通过</span><span style="font-family: &#39;Times New Roman&#39;;">SVM</span><span style="font-family: 宋体;">模型自动的选择出实际上真正是车牌的图块。</span></p>
+<p class="p0">　　PlateDetect<span style="font-family: 宋体;">过程结束后，我们获得一个图片中我们真正关心的部分</span><span style="font-family: &#39;Times New Roman&#39;;">--</span><span style="font-family: 宋体;">车牌。那么下一步该如何处理呢。下一步就是根据这个车牌图片，生成一个车牌号字符串的</span><span style="font-family: 宋体;">过程，也就是</span><span style="font-family: &#39;Times New Roman&#39;;">CharsRecognisze</span><span style="font-family: 宋体;">的过程。</span></p>
+<p class="p0"><span style="font-family: 宋体;">　　CharsRecognise包括的是字符分割，ANN训练，字符识别三个过程，具体见下图。</span></p>
+<p class="p0">&nbsp;<img style="float: left;" src="./EasyPR--中文开源车牌识别系统 开发详解（1） - 计算机的潜意识 - 博客园_files/301538054252830.jpg" alt=""></p>
+<p class="p0" style="text-align: center;"><span style="font-family: 黑体;">&nbsp;图4 <span style="font-family: arial, helvetica, sans-serif;">CharsRecognise</span>过程详解</span></p>
+<p class="p0">　　在<span style="font-family: &#39;Times New Roman&#39;;">CharsRecognise</span><span style="font-family: 宋体;">过程中，一副车牌图块首先会进行灰度化，二值化，然后使用一系列算法获取到车牌的每个字符的分割图块。获得海量的这些字符图块后，进行</span><span style="font-family: 宋体;">手工分类（这个步骤非常耗时间，后面会介绍如何加速这个处理的方法），然后喂入神经网络（ANN）的</span><span style="font-family: &#39;Times New Roman&#39;;">MLP</span><span style="font-family: 宋体;">模型中，进行训练。在实际的车牌识别过程中，将得到</span><span style="font-family: &#39;Times New Roman&#39;;">7</span><span style="font-family: 宋体;">个字符图</span><span style="font-family: 宋体;">块放入训练好的神经网络模型，通过模型来预测每个图块所表示的具体字符，例如图片中就输出了“苏</span><span style="font-family: &#39;Times New Roman&#39;;">EUK722</span><span style="font-family: 宋体;">”，（这个车牌只是示例，切勿以为这个车牌有什么特</span><span style="font-family: 宋体;">定选取目标。车主既不是作者，也不是什么深仇大恨，仅仅为学术说明选择而已）。</span></p>
+<p class="p0">　　至此一个完整的车牌识别过程就结束了，但是在每一步的处理过程中，有许多的优化方法和处理策略。尤其是车牌定位和字符分割这两块，非常重要，它们不仅生成实际数据，还生成训练数据，因此会直接影响到模型的准确性，以及模型判断的最终结果。这两部分会是作者重点介绍的模块，至于<span style="font-family: &#39;Times New Roman&#39;;">SVM</span><span style="font-family: 宋体;">模型与</span><span style="font-family: &#39;Times New Roman&#39;;">ANN</span><span style="font-family: 宋体;">模型，由于使用</span><span style="font-family: 宋体;">的是</span><span style="font-family: &#39;Times New Roman&#39;;">OpenCV</span><span style="font-family: 宋体;">提供的类，因此可以直接看</span><span style="font-family: &#39;Times New Roman&#39;;">openCV</span><span style="font-family: 宋体;">的源码或者机器学习介绍的书，来了解训练与判断过程。</span></p>
+<p class="p0">　　好了，本期就介绍这么多。下面的篇章中作者会重点介绍其中每个模块的开发过程与内容，但是时间不定，可能几个星期发一篇吧。</p>
+<p class="p0">　　最后，祝大家国庆快乐，阖家幸福！</p>
+<p class="p0">&nbsp;</p>
+<p class="p0">&nbsp;</p>
+<p class="p0">&nbsp;</p>
+<p class="p0">&nbsp;</p>
+<p class="p0">&nbsp;</p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory"></div>
+<div id="EntryTag">标签: <a href="http://www.cnblogs.com/subconscious/tag/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/">计算机视觉</a>, <a href="http://www.cnblogs.com/subconscious/tag/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>, <a href="http://www.cnblogs.com/subconscious/tag/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">图像处理</a>, <a href="http://www.cnblogs.com/subconscious/tag/%E8%BD%A6%E7%89%8C%E8%AF%86%E5%88%AB/">车牌识别</a></div>
+<div id="blog_post_info"><div id="green_channel">
+        <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(4001896,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+            <a id="green_channel_follow" onclick="follow(&#39;edd4356d-003f-e411-b908-9dcfd8948a71&#39;);" href="javascript:void(0);">关注我</a>
+    <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
+    <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="./EasyPR--中文开源车牌识别系统 开发详解（1） - 计算机的潜意识 - 博客园_files/icon_weibo_24.png" alt=""></a>
+    <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="./EasyPR--中文开源车牌识别系统 开发详解（1） - 计算机的潜意识 - 博客园_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/subconscious/" target="_blank"><img src="./EasyPR--中文开源车牌识别系统 开发详解（1） - 计算机的潜意识 - 博客园_files/20140918201411.png" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/subconscious/">计算机的潜意识</a><br>
+            <a href="http://home.cnblogs.com/u/subconscious/followees">关注 - 12</a><br>
+            <a href="http://home.cnblogs.com/u/subconscious/followers">粉丝 - 1424</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor">荣誉：<a href="http://www.cnblogs.com/expert/" target="_blank">推荐博客</a></div>
+    <div id="author_profile_follow">
+                <a href="javascript:void(0);" onclick="follow(&#39;edd4356d-003f-e411-b908-9dcfd8948a71&#39;);return false;">+加关注</a>
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit" onclick="votePost(4001896,&#39;Digg&#39;)">
+        <span class="diggnum" id="digg_count">35</span>
+    </div>
+    <div class="buryit" onclick="votePost(4001896,&#39;Bury&#39;)">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+</div>
+<script type="text/javascript">
+    currentDiggType = 0;
+</script></div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/subconscious/p/3979988.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/subconscious/p/3979988.html" title="发布于2014-09-29 22:47">EasyPR--一个开源的中文车牌识别系统</a><br><a href="http://www.cnblogs.com/subconscious/p/4013591.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/subconscious/p/4013591.html" title="发布于2014-10-13 15:39">EasyPR--开发详解（2）车牌定位</a><br></div>
+</div>
+
+
+		</div>
+		<div class="postDesc">posted @ <span id="post-date">2014-09-30 16:02</span> <a href="http://www.cnblogs.com/subconscious/">计算机的潜意识</a> 阅读(<span id="post_view_count">28167</span>) 评论(<span id="post_comment_count">24</span>)  <a href="https://i.cnblogs.com/EditPosts.aspx?postid=4001896" rel="nofollow">编辑</a> <a href="http://www.cnblogs.com/subconscious/p/4001896.html#" onclick="AddToWz(4001896);return false;">收藏</a></div>
+	</div>
+	<script type="text/javascript">var allowComments=true,cb_blogId=198547,cb_entryId=4001896,cb_blogApp=currentBlogApp,cb_blogUserGuid='edd4356d-003f-e411-b908-9dcfd8948a71',cb_entryCreatedDate='2014/9/30 16:02:00';loadViewCount(cb_entryId);var cb_postType=1;</script>
+	
+</div><!--end: topics 文章、评论容器-->
+</div><a name="!comments"></a><div id="blog-comments-placeholder"><div id="comments_pager_top"></div>
+<br>
+<div class="feedback_area_title">评论列表</div>
+<div class="feedbackNoItems"></div>	
+
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4001896.html#3037909" class="layer">#1楼</a><a name="3037909" id="comment_anchor_3037909"></a>  <span class="comment_date">2014-09-30 16:10</span> <a id="a_comment_author_3037909" href="http://www.cnblogs.com/deepleo/" target="_blank">夜の魔王</a> <a href="http://msg.cnblogs.com/send/%E5%A4%9C%E3%81%AE%E9%AD%94%E7%8E%8B" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3037909" class="blog_comment_body">这个系统是楼主自己开发的吗？<br>开源的源代码托管在那里我看看？</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3037909,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3037909,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3037909_avatar" style="display:none;">http://pic.cnblogs.com/face/274849/20130911125125.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4001896.html#3037923" class="layer">#2楼</a><a name="3037923" id="comment_anchor_3037923"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2014-09-30 16:17</span> <a id="a_comment_author_3037923" href="http://www.cnblogs.com/subconscious/" target="_blank">计算机的潜意识</a> <a href="http://msg.cnblogs.com/send/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E6%BD%9C%E6%84%8F%E8%AF%86" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3037923" class="blog_comment_body"><a href="http://www.cnblogs.com/subconscious/p/4001896.html#3037909" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3037909);">@</a>
+夜の魔王<br>在我的上一篇文章中，不过那篇文章没有发布到首页上。<br>git地址为：<a href="https://github.com/liuruoze/EasyPR" target="_blank">https://github.com/liuruoze/EasyPR</a>。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3037923,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3037923,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3037923_avatar" style="display:none;">http://pic.cnblogs.com/face/673793/20140918201411.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4001896.html#3037930" class="layer">#3楼</a><a name="3037930" id="comment_anchor_3037930"></a>  <span class="comment_date">2014-09-30 16:23</span> <a id="a_comment_author_3037930" href="http://www.cnblogs.com/bluedoctor/" target="_blank">深蓝医生</a> <a href="http://msg.cnblogs.com/send/%E6%B7%B1%E8%93%9D%E5%8C%BB%E7%94%9F" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3037930" class="blog_comment_body">高大山!</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3037930,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3037930,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3037930_avatar" style="display:none;">http://pic.cnblogs.com/face/u114517.png?id=23112533</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4001896.html#3038009" class="layer">#4楼</a><a name="3038009" id="comment_anchor_3038009"></a>  <span class="comment_date">2014-09-30 17:38</span> <a id="a_comment_author_3038009" href="http://www.cnblogs.com/leiyu1980/" target="_blank">游荡的灵魂</a> <a href="http://msg.cnblogs.com/send/%E6%B8%B8%E8%8D%A1%E7%9A%84%E7%81%B5%E9%AD%82" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3038009" class="blog_comment_body">深度学习，感觉很高大上啊。楼主代码或者设计里面有深度学习相关内容吗？</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3038009,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3038009,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4001896.html#3038061" class="layer">#5楼</a><a name="3038061" id="comment_anchor_3038061"></a>  <span class="comment_date">2014-09-30 20:13</span> <a id="a_comment_author_3038061" href="http://www.cnblogs.com/ckook/" target="_blank">ckook</a> <a href="http://msg.cnblogs.com/send/ckook" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3038061" class="blog_comment_body">楼主可参考下OpenALPR，不仅开源而且有一套完整的工具链</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3038061,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3038061,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4001896.html#3038071" class="layer">#6楼</a><a name="3038071" id="comment_anchor_3038071"></a>  <span class="comment_date">2014-09-30 20:44</span> <a id="a_comment_author_3038071" href="http://www.cnblogs.com/zhengming/" target="_blank">郑明</a> <a href="http://msg.cnblogs.com/send/%E9%83%91%E6%98%8E" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3038071" class="blog_comment_body">厉害。。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3038071,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3038071,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4001896.html#3038184" class="layer">#7楼</a><a name="3038184" id="comment_anchor_3038184"></a>  <span class="comment_date">2014-10-01 14:10</span> <a id="a_comment_author_3038184" href="http://www.cnblogs.com/sweetwxh/" target="_blank">sweetwxh</a> <a href="http://msg.cnblogs.com/send/sweetwxh" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3038184" class="blog_comment_body">测试了一下，识别率似乎不是很高，在百度上找了很多车牌的大图片，都不能正确识别，LZ可以试试，直接用的test_plate_recognize()，opencv用的2.4.9。图片的素材地址：<a href="http://image.baidu.com/i?tn" target="_blank">http://image.baidu.com/i?tn</a>=baiduimage&amp;ipn=r&amp;ct=201326592&amp;cl=2&amp;lm=-1&amp;st=-1&amp;fm=index&amp;fr=&amp;sf=1&amp;fmq=&amp;pv=&amp;ic=0&amp;nc=1&amp;z=&amp;se=1&amp;showtab=0&amp;fb=0&amp;width=&amp;height=&amp;face=0&amp;istype=2&amp;ie=utf-8&amp;word=%E8%BD%A6%E7%89%8C&amp;oq=%E8%BD%A6%E7%89%8C&amp;rsp=-1#z=9&amp;width=0&amp;height=0&amp;pn=</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3038184,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3038184,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3038184_avatar" style="display:none;">http://pic.cnblogs.com/face/189106/20150415152638.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4001896.html#3039853" class="layer">#8楼</a><a name="3039853" id="comment_anchor_3039853"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2014-10-08 14:13</span> <a id="a_comment_author_3039853" href="http://www.cnblogs.com/subconscious/" target="_blank">计算机的潜意识</a> <a href="http://msg.cnblogs.com/send/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E6%BD%9C%E6%84%8F%E8%AF%86" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3039853" class="blog_comment_body"><a href="http://www.cnblogs.com/subconscious/p/4001896.html#3038061" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3038061);">@</a>
+ckook<br>谢谢，我看了他们的git主页，不过它们应该不能识别中文吧？光看了介绍好像没有这方面的说明。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3039853,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3039853,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3039853_avatar" style="display:none;">http://pic.cnblogs.com/face/673793/20140918201411.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4001896.html#3039872" class="layer">#9楼</a><a name="3039872" id="comment_anchor_3039872"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2014-10-08 14:37</span> <a id="a_comment_author_3039872" href="http://www.cnblogs.com/subconscious/" target="_blank">计算机的潜意识</a> <a href="http://msg.cnblogs.com/send/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E6%BD%9C%E6%84%8F%E8%AF%86" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3039872" class="blog_comment_body"><a href="http://www.cnblogs.com/subconscious/p/4001896.html#3038184" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3038184);">@</a>
+sweetwxh<br>链接图片我看了，果然是我猜想的那样：车牌的尺寸问题，在第一步PlateDetect过程中就没抓取到，后面自然不可能识别。为了提高检测准确率，在PlateDetect的过程中有一个验证尺寸的校验。而这个校验是需要根据你实际应用情况决定的。为了规避这个情况，在类中可以设置校验尺寸的判断条件，例如setVerifyMin()与pr.setVerifyMax()等方法。我在做测试的时候使用的都是交通的抓拍图片，跟这种近距离的拍摄是有差距的。不选择近距离的拍摄是因为我手里有大量的交通的抓拍图片，非常方便做测试。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3039872,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3039872,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3039872_avatar" style="display:none;">http://pic.cnblogs.com/face/673793/20140918201411.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4001896.html#3039883" class="layer">#10楼</a><a name="3039883" id="comment_anchor_3039883"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2014-10-08 14:54</span> <a id="a_comment_author_3039883" href="http://www.cnblogs.com/subconscious/" target="_blank">计算机的潜意识</a> <a href="http://msg.cnblogs.com/send/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E6%BD%9C%E6%84%8F%E8%AF%86" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3039883" class="blog_comment_body"><a href="http://www.cnblogs.com/subconscious/p/4001896.html#3038009" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3038009);">@</a>
+游荡的灵魂<br>目前版本的EasyPR没有，未来也许会有，而且有较大的可能会有。但是要满足几个条件：1.准确性已无法再提升，到达了训练的瓶颈。2.能够看懂openCV的神经网络的代码，并且加以改造。3.看过深度学习的开创性论文，并且可以用C实现。这些条件都满足以后，才可能加入深度学习相关的技术，如果你感兴趣的话，可以考虑contribute的哦。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3039883,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3039883,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3039883_avatar" style="display:none;">http://pic.cnblogs.com/face/673793/20140918201411.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4001896.html#3114575" class="layer">#11楼</a><a name="3114575" id="comment_anchor_3114575"></a>  <span class="comment_date">2015-01-26 09:10</span> <a id="a_comment_author_3114575" href="http://home.cnblogs.com/u/616030/" target="_blank">544892012</a> <a href="http://msg.cnblogs.com/send/544892012" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3114575" class="blog_comment_body">楼主太厉害了，这种无私奉献的精神值得学习。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3114575,&#39;Digg&#39;,this)">支持(1)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3114575,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4001896.html#3115919" class="layer">#12楼</a><a name="3115919" id="comment_anchor_3115919"></a>  <span class="comment_date">2015-01-27 11:59</span> <a id="a_comment_author_3115919" href="http://home.cnblogs.com/u/718265/" target="_blank">冰棱先生</a> <a href="http://msg.cnblogs.com/send/%E5%86%B0%E6%A3%B1%E5%85%88%E7%94%9F" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3115919" class="blog_comment_body"><a href="http://www.cnblogs.com/subconscious/p/4001896.html#3038061" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3038061);">@</a>
+ckook<br>openALPR 只能识别欧美的车牌</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3115919,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3115919,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4001896.html#3226406" class="layer">#13楼</a><a name="3226406" id="comment_anchor_3226406"></a>  <span class="comment_date">2015-07-13 00:23</span> <a id="a_comment_author_3226406" href="http://www.cnblogs.com/wangsijun/" target="_blank">街边哼唱</a> <a href="http://msg.cnblogs.com/send/%E8%A1%97%E8%BE%B9%E5%93%BC%E5%94%B1" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3226406" class="blog_comment_body">楼主，下载了你的EasyPR_Win-master、EasyPR-master，两套代码，但是却总是有错误。运行不起来。我自己按照opencv的教程，配置了opencv248,想运行起来EasyPR_Win-master的代码看看效果，缺总是提示1&gt;d:\图片识别\easypr_win-master\mainfrm.h(13): fatal error C1083: 无法打开包括文件:“opencv2/imgproc/imgproc.hpp”: No such file or directory，生成失败。我才学VC++这些，所以请指点。希望能发一份可以运行起来看到效果的，谢谢。wangsijun1986@vip.qq.com</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3226406,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3226406,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3226406_avatar" style="display:none;">http://pic.cnblogs.com/face/495098/20131031112647.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4001896.html#3257686" class="layer">#14楼</a><a name="3257686" id="comment_anchor_3257686"></a>  <span class="comment_date">2015-08-31 16:42</span> <a id="a_comment_author_3257686" href="http://home.cnblogs.com/u/805362/" target="_blank">clmajicman</a> <a href="http://msg.cnblogs.com/send/clmajicman" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3257686" class="blog_comment_body"><a href="http://www.cnblogs.com/subconscious/p/4001896.html#3226406" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3226406);">@</a>
+街边哼唱<br>你好 你的代码运行起来了吗？</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3257686,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3257686,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4001896.html#3257688" class="layer">#15楼</a><a name="3257688" id="comment_anchor_3257688"></a>  <span class="comment_date">2015-08-31 16:43</span> <a id="a_comment_author_3257688" href="http://home.cnblogs.com/u/805362/" target="_blank">clmajicman</a> <a href="http://msg.cnblogs.com/send/clmajicman" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3257688" class="blog_comment_body"><a href="http://www.cnblogs.com/subconscious/p/4001896.html#3038184" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3038184);">@</a>
+sweetwxh<br>你好  你的代码运行起来了吗  为什么我下载的代码运行总是出错</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3257688,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3257688,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4001896.html#3257762" class="layer">#16楼</a><a name="3257762" id="comment_anchor_3257762"></a>  <span class="comment_date">2015-08-31 17:41</span> <a id="a_comment_author_3257762" href="http://www.cnblogs.com/wangsijun/" target="_blank">街边哼唱</a> <a href="http://msg.cnblogs.com/send/%E8%A1%97%E8%BE%B9%E5%93%BC%E5%94%B1" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3257762" class="blog_comment_body"><a href="http://www.cnblogs.com/subconscious/p/4001896.html#3257686" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3257686);">@</a>
+clmajicman<br>代码是没运行起来。我还买了本OPCV的书，才看了两章。大概有些了解了。希望能有个完整的程序能运行起来。我看你的代码，有很多地方还需要学习，应该才能看懂。谢谢。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3257762,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3257762,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3257762_avatar" style="display:none;">http://pic.cnblogs.com/face/495098/20131031112647.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4001896.html#3294188" class="layer">#17楼</a><a name="3294188" id="comment_anchor_3294188"></a>  <span class="comment_date">2015-10-28 23:29</span> <a id="a_comment_author_3294188" href="http://www.cnblogs.com/heubj/" target="_blank">三月风</a> <a href="http://msg.cnblogs.com/send/%E4%B8%89%E6%9C%88%E9%A3%8E" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3294188" class="blog_comment_body">今天刚看到这篇博文，源代码我也下载了<a href="https://github.com/liuruoze/EasyPR" target="_blank">https://github.com/liuruoze/EasyPR</a><br>但是用VS2010晚上打开了一次<br>后来配置了OpenCV2.4.9之后，却打不开了。请问，大家用的是VS多少呀</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3294188,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3294188,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3294188_avatar" style="display:none;">http://pic.cnblogs.com/face/506007/20130318122955.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4001896.html#3294198" class="layer">#18楼</a><a name="3294198" id="comment_anchor_3294198"></a>  <span class="comment_date">2015-10-28 23:55</span> <a id="a_comment_author_3294198" href="http://www.cnblogs.com/heubj/" target="_blank">三月风</a> <a href="http://msg.cnblogs.com/send/%E4%B8%89%E6%9C%88%E9%A3%8E" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3294198" class="blog_comment_body">提示：无法打开.sln文件，因为是由较高版本创建的，我不知道楼主的程序是VS2010的版本高还是OpenCV的版本高？能具体告诉一下嘛，谢谢！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3294198,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3294198,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3294198_avatar" style="display:none;">http://pic.cnblogs.com/face/506007/20130318122955.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4001896.html#3308584" class="layer">#19楼</a><a name="3308584" id="comment_anchor_3308584"></a>  <span class="comment_date">2015-11-17 18:46</span> <a id="a_comment_author_3308584" href="http://home.cnblogs.com/u/269388/" target="_blank">陆虎</a> <a href="http://msg.cnblogs.com/send/%E9%99%86%E8%99%8E" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3308584" class="blog_comment_body">斑竹是正能量，值得学习。我好好学习研究一下你的成果，让它在实际应用中发扬光大，验证它的价值。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3308584,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3308584,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4001896.html#3313293" class="layer">#20楼</a><a name="3313293" id="comment_anchor_3313293"></a>  <span class="comment_date">2015-11-25 02:56</span> <a id="a_comment_author_3313293" href="http://home.cnblogs.com/u/844298/" target="_blank">svmtracking</a> <a href="http://msg.cnblogs.com/send/svmtracking" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3313293" class="blog_comment_body">多谢分享， 指的学习。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3313293,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3313293,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4001896.html#3318484" class="layer">#21楼</a><a name="3318484" id="comment_anchor_3318484"></a>  <span class="comment_date">2015-12-01 19:15</span> <a id="a_comment_author_3318484" href="http://www.cnblogs.com/leotoneo/" target="_blank">leotoneo</a> <a href="http://msg.cnblogs.com/send/leotoneo" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3318484" class="blog_comment_body">楼主 你好 用的是opencv2.4.9 vs2013 运行时总是出现错误 就中止了：</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3318484,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3318484,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4001896.html#3318485" class="layer">#22楼</a><a name="3318485" id="comment_anchor_3318485"></a>  <span class="comment_date">2015-12-01 19:17</span> <a id="a_comment_author_3318485" href="http://www.cnblogs.com/leotoneo/" target="_blank">leotoneo</a> <a href="http://msg.cnblogs.com/send/leotoneo" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3318485" class="blog_comment_body"><img src="./EasyPR--中文开源车牌识别系统 开发详解（1） - 计算机的潜意识 - 博客园_files/848971-20151201191645577-863547057.jpg" alt="" border="0" "=""><br>楼主 你好 用的是opencv2.4.9 vs2013 运行时总是出现错误 就中止了：</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3318485,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3318485,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4001896.html#3471318" class="layer">#23楼</a><a name="3471318" id="comment_anchor_3471318"></a>  <span class="comment_date">2016-07-17 01:40</span> <a id="a_comment_author_3471318" href="http://home.cnblogs.com/u/993459/" target="_blank">junxianchen</a> <a href="http://msg.cnblogs.com/send/junxianchen" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3471318" class="blog_comment_body">认真的看完楼主文章的每一个子，庆幸之前自己自己学习了图像识别，这个项目很好啊，会一直跟楼主学习下去的。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3471318,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3471318,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4001896.html#3739395" class="layer">#24楼</a><a name="3739395" id="comment_anchor_3739395"></a><span id="comment-maxId" style="display:none;">3739395</span><span id="comment-maxDate" style="display:none;">2017/7/20 8:41:07</span>  <span class="comment_date">2017-07-20 08:41</span> <a id="a_comment_author_3739395" href="http://www.cnblogs.com/anhuixuyin218/" target="_blank">Sunshine&amp;暖阳</a> <a href="http://msg.cnblogs.com/send/Sunshine%26amp%3B%E6%9A%96%E9%98%B3" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3739395" class="blog_comment_body">大神，你好啊！<br>不知道为什么用你的代码运行出现错误啊，一直找不出来，用的VS2015+opencv3.1<br>严重性	代码	说明	项目	文件	行<br>错误	C1001	编译器中发生内部错误。	libeasypr	e:\easypr-master\src\core\core_func.cpp	2136<br>严重性	代码	说明	项目	文件	行<br>错误	LNK1104	无法打开文件“E:\EasyPR-master\_build\libeasypr.lib”	demo	E:\EasyPR-master\vcprojs\LINK	1</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3739395,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3739395,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3739395_avatar" style="display:none;">http://pic.cnblogs.com/face/1123561/20170311162419.png</span>
+			</div>
+		</div>
+	<div id="comments_pager_bottom"></div></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="http://www.cnblogs.com/subconscious/p/4001896.html#" onclick="return RefreshPage();">刷新页面</a><a href="http://www.cnblogs.com/subconscious/p/4001896.html#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login(&#39;commentform&#39;);">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】超50万VC++源码: 大型组态工控、电力仿真CAD与GIS源码库！</a><br><a href="http://click.aliyun.com/m/43774/" target="_blank">【缅怀】传奇谢幕，回顾霍金76载传奇人生</a><br><a href="https://cloud.tencent.com/act/campus?fromSource=gwzcw.860539.860539.860539" target="_blank">【推荐】腾讯云校园拼团福利，1核2G服务器10元/月！</a><br><a href="https://www.yunqi2050.com/#/index" target="_blank">【活动】2050 科技公益大会 - 年青人因科技而团聚</a><br></div>
+<div id="opt_under_post"></div>
+<div id="cnblogs_c1" class="c_ad_block"><a href="https://market.qcloud.com/act/wangjian/?fromSource=gwzcw.860541.860541.860541" target="_blank"><img width="300" height="250" src="./EasyPR--中文开源车牌识别系统 开发详解（1） - 计算机的潜意识 - 博客园_files/24442-20180314220122373-1718033865.jpg" alt="qcloud0314"></a></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="https://news.cnblogs.com/n/592036/" target="_blank">孙宏斌的护城河：辞职后留嫡系掌权 乐视仍是肥肉？</a><br> ·  <a href="https://news.cnblogs.com/n/592035/" target="_blank">火币前CTO张健：区块链大繁荣，尚需5到10年时间</a><br> ·  <a href="https://news.cnblogs.com/n/592034/" target="_blank">Uber自动驾驶汽车再出事故：人员受轻伤</a><br> ·  <a href="https://news.cnblogs.com/n/592025/" target="_blank">谷歌地图在几个城市提供轮椅行进辅助信息</a><br> ·  <a href="https://news.cnblogs.com/n/592033/" target="_blank">吃着越来越贵的外卖 你会想起当年的网约车吗？</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="cnblogs_c2" class="c_ad_block"><a href="http://click.aliyun.com/m/42835/" target="_blank"><img width="468" height="60" src="https://gw.alicdn.com/tfs/TB1mEZFaWmWBuNjy1XaXXXCbXXa-468-60.jpg" alt="阿里云0308" style="display: none !important;"></a></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/575255/" target="_blank">写给自学者的入门指南</a><br> ·  <a href="http://kb.cnblogs.com/page/578690/" target="_blank">和程序员谈恋爱</a><br> ·  <a href="http://kb.cnblogs.com/page/585734/" target="_blank">学会学习</a><br> ·  <a href="http://kb.cnblogs.com/page/588938/" target="_blank">优秀技术人的管理陷阱</a><br> ·  <a href="http://kb.cnblogs.com/page/590141/" target="_blank">作为一个程序员，数学对你到底有多重要</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+    fixPostBody();
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);   
+</script>
+</div>
+
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news">EasyPR讨论QQ群：一群：366392603, 四群：548362608。加前请注明EasyPR学习讨论。<div id="profile_block">昵称：<a href="https://home.cnblogs.com/u/subconscious/">计算机的潜意识</a><br>园龄：<a href="https://home.cnblogs.com/u/subconscious/" title="入园时间：2014-09-18">3年5个月</a><br>荣誉：<a href="https://www.cnblogs.com/expert/">推荐博客</a><br>粉丝：<a href="https://home.cnblogs.com/u/subconscious/followers/">1424</a><br>关注：<a href="https://home.cnblogs.com/u/subconscious/followees/">12</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="follow(&#39;edd4356d-003f-e411-b908-9dcfd8948a71&#39;)">+加关注</a></div><script>getFollowStatus('edd4356d-003f-e411-b908-9dcfd8948a71')</script></div></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+
+			<div id="blog-calendar" style=""><table id="blogCalendar" class="Cal" cellspacing="0" cellpadding="0" title="Calendar">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2018/02/01&#39;);return false;">&lt;</a></td><td align="center">2018年3月</td><td class="CalNextPrev" align="right"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2018/04/01&#39;);return false;">&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" align="center" abbr="日" scope="col">日</th><th class="CalDayHeader" align="center" abbr="一" scope="col">一</th><th class="CalDayHeader" align="center" abbr="二" scope="col">二</th><th class="CalDayHeader" align="center" abbr="三" scope="col">三</th><th class="CalDayHeader" align="center" abbr="四" scope="col">四</th><th class="CalDayHeader" align="center" abbr="五" scope="col">五</th><th class="CalDayHeader" align="center" abbr="六" scope="col">六</th></tr><tr><td class="CalOtherMonthDay" align="center">25</td><td class="CalOtherMonthDay" align="center">26</td><td class="CalOtherMonthDay" align="center">27</td><td class="CalOtherMonthDay" align="center">28</td><td align="center">1</td><td align="center">2</td><td class="CalWeekendDay" align="center">3</td></tr><tr><td class="CalWeekendDay" align="center">4</td><td align="center">5</td><td align="center">6</td><td align="center">7</td><td align="center">8</td><td align="center">9</td><td class="CalWeekendDay" align="center">10</td></tr><tr><td class="CalWeekendDay" align="center">11</td><td align="center">12</td><td align="center">13</td><td align="center">14</td><td align="center">15</td><td align="center">16</td><td class="CalTodayDay" align="center">17</td></tr><tr><td class="CalWeekendDay" align="center">18</td><td align="center">19</td><td align="center">20</td><td align="center">21</td><td align="center">22</td><td align="center">23</td><td class="CalWeekendDay" align="center">24</td></tr><tr><td class="CalWeekendDay" align="center">25</td><td align="center">26</td><td align="center">27</td><td align="center">28</td><td align="center">29</td><td align="center">30</td><td class="CalWeekendDay" align="center">31</td></tr><tr><td class="CalOtherMonthDay" align="center">1</td><td class="CalOtherMonthDay" align="center">2</td><td class="CalOtherMonthDay" align="center">3</td><td class="CalOtherMonthDay" align="center">4</td><td class="CalOtherMonthDay" align="center">5</td><td class="CalOtherMonthDay" align="center">6</td><td class="CalOtherMonthDay" align="center">7</td></tr>
+</tbody></table></div><script type="text/javascript">loadBlogDefaultCalendar();</script>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="sidebar_search" class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="sidebar_search_box">
+
+<div id="widget_my_google" class="div_my_zzk"><input type="text" name="google_q" id="google_q" onkeydown="return google_go_enter(event)" class="input_my_zzk">&nbsp;<input onclick="google_go()" type="button" value="谷歌搜索" class="btn_my_zzk"></div>
+</div>
+</div>
+
+</div><div id="sidebar_categories">
+<div id="sidebar_postarchive" class="catListPostArchive sidebar-block">
+<h3 class="catListTitle">随笔档案</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_0_Link_0" href="http://www.cnblogs.com/subconscious/archive/2017/12.html">2017年12月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_1" href="http://www.cnblogs.com/subconscious/archive/2016/12.html">2016年12月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_2" href="http://www.cnblogs.com/subconscious/archive/2016/07.html">2016年7月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_3" href="http://www.cnblogs.com/subconscious/archive/2016/03.html">2016年3月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_4" href="http://www.cnblogs.com/subconscious/archive/2015/12.html">2015年12月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_5" href="http://www.cnblogs.com/subconscious/archive/2015/07.html">2015年7月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_6" href="http://www.cnblogs.com/subconscious/archive/2015/03.html">2015年3月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_7" href="http://www.cnblogs.com/subconscious/archive/2015/02.html">2015年2月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_8" href="http://www.cnblogs.com/subconscious/archive/2014/12.html">2014年12月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_9" href="http://www.cnblogs.com/subconscious/archive/2014/10.html">2014年10月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_10" href="http://www.cnblogs.com/subconscious/archive/2014/09.html">2014年9月 (2)</a> </li>
+
+</ul>
+
+</div>
+
+</div><div id="sidebar_scorerank" class="sidebar-block">
+<div class="catListBlogRank">
+<h3 class="catListTitle">积分与排名</h3>
+<ul>
+	<li class="liScore">
+		积分 -	49370
+	</li>
+	<li class="liRank">
+		排名 -	7447
+	</li>
+</ul>
+</div>
+
+
+</div><div id="sidebar_recentcomments" class="sidebar-block"><div id="recent_comments_wrap">
+<div class="catListComment">
+<h3 class="catListTitle">最新评论</h3>
+
+	<div id="RecentCommentsBlock"><ul>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/subconscious/p/4107357.html#3925062">1. Re:从机器学习谈起</a></li>
+        <li class="recent_comment_body">不错，支持</li>
+        <li class="recent_comment_author">--小陀螺_coding</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/subconscious/p/8157268.html#3923099">2. Re:2017年总结</a></li>
+        <li class="recent_comment_body">@肥肥小牛非常感谢您的建议！...</li>
+        <li class="recent_comment_author">--计算机的潜意识</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/subconscious/p/8157268.html#3922721">3. Re:2017年总结</a></li>
+        <li class="recent_comment_body">另，本人有两点拙见：1、我有个朋友的亲戚就是做民间借贷的，经过深入交流发现，现在的逼债手段没有想象中那么“暴力”，而是几乎都“合法化”和“规范化”了。所以博主的案例真的是给大家提了个醒，要尽早采用法律......</li>
+        <li class="recent_comment_author">--肥肥小牛</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/subconscious/p/8157268.html#3922695">4. Re:2017年总结</a></li>
+        <li class="recent_comment_body">支持博主，祝好人好报！</li>
+        <li class="recent_comment_author">--肥肥小牛</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/subconscious/p/3979988.html#3921081">5. Re:EasyPR--一个开源的中文车牌识别系统</a></li>
+        <li class="recent_comment_body">博主，你好请问字符分割部分找到特殊字符之后，接下来的找最小外接矩形和分割代码在哪找？</li>
+        <li class="recent_comment_author">--上善若水ssrs</li>
+</ul>
+</div>
+</div>
+</div></div><div id="sidebar_topviewedposts" class="sidebar-block"><div id="topview_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">阅读排行榜</h3>
+	<div id="TopViewPostsBlock"><ul><li><a href="http://www.cnblogs.com/subconscious/p/5058741.html">1. 神经网络浅讲：从神经元到深度学习(107247)</a></li><li><a href="http://www.cnblogs.com/subconscious/p/4107357.html">2. 从机器学习谈起(75649)</a></li><li><a href="http://www.cnblogs.com/subconscious/p/3979988.html">3. EasyPR--一个开源的中文车牌识别系统(70853)</a></li><li><a href="http://www.cnblogs.com/subconscious/p/4001896.html">4. EasyPR--中文开源车牌识别系统 开发详解（1）(28166)</a></li><li><a href="http://www.cnblogs.com/subconscious/p/4013591.html">5. EasyPR--开发详解（2）车牌定位(27895)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topcommentedposts" class="sidebar-block"><div id="topfeedback_posts_wrap">
+<div class="catListFeedback">
+<h3 class="catListTitle">评论排行榜</h3>
+	<div id="TopFeedbackPostsBlock"><ul><li><a href="http://www.cnblogs.com/subconscious/p/4107357.html">1. 从机器学习谈起(147)</a></li><li><a href="http://www.cnblogs.com/subconscious/p/3979988.html">2. EasyPR--一个开源的中文车牌识别系统(61)</a></li><li><a href="http://www.cnblogs.com/subconscious/p/5058741.html">3. 神经网络浅讲：从神经元到深度学习(57)</a></li><li><a href="http://www.cnblogs.com/subconscious/p/4249581.html">4. EasyPR--开发详解（6）SVM开发详解(37)</a></li><li><a href="http://www.cnblogs.com/subconscious/p/4311550.html">5. 小议“数据开放”(28)</a></li></ul></div>
+</div>
+</div></div></div><script type="text/javascript">loadBlogSideColumn();</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright ©2018 计算机的潜意识
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+</body></html>

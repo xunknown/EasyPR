@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)http://www.cnblogs.com/subconscious/p/4351007.html -->
+<html lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园</title>
+<link type="text/css" rel="stylesheet" href="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/bundle-iMetro_HD.css">
+<link type="text/css" rel="stylesheet" href="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/198547.css">
+<link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/bundle-iMetro_HD-mobile.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/subconscious/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/subconscious/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/subconscious/wlwmanifest.xml">
+<script async="" src="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/analytics.js"></script><script type="text/javascript" src="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/encoder.js"></script><script src="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/jquery-2.2.0.min.js"></script>
+<script type="text/javascript">var currentBlogApp = 'subconscious', cb_enable_mathjax=false;var isLogined=false;</script>
+<script src="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/blog-common.js" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+<!--PageBeginHtml Block Begin-->
+<span id="forkongithub"><a href="https://github.com/liuruoze/EasyPR" target="_blank">Fork me on GitHub</a></span>
+<!--PageBeginHtml Block End-->
+
+<!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+	<a id="lnkBlogLogo" href="http://www.cnblogs.com/subconscious/"><img id="blogLogo" src="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/logo.gif" alt="返回主页"></a>			
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/subconscious/">计算机的潜意识</a></h1>
+<h2>EasyPR讨论QQ群：一群：366392603, 四群：548362608。 加前请注明EasyPR学习讨论。</h2>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="blog_nav_sitehome" class="menu" href="http://www.cnblogs.com/">博客园</a></li>
+<li><a id="blog_nav_myhome" class="menu" href="http://www.cnblogs.com/subconscious/">首页</a></li>
+<li><a id="blog_nav_newpost" class="menu" rel="nofollow" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+<li><a id="blog_nav_contact" class="menu" rel="nofollow" href="https://msg.cnblogs.com/send/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E6%BD%9C%E6%84%8F%E8%AF%86">联系</a></li>
+<li><a id="blog_nav_rss" class="menu" href="http://www.cnblogs.com/subconscious/rss">订阅</a>
+<!--<a id="blog_nav_rss_image" class="aHeaderXML" href="http://www.cnblogs.com/subconscious/rss"><img src="//www.cnblogs.com/images/xml.gif" alt="订阅" /></a>--></li>
+<li><a id="blog_nav_admin" class="menu" rel="nofollow" href="https://i.cnblogs.com/">管理</a></li>
+</ul>
+		<div class="blogStats">
+			
+			<div id="blog_stats">
+<span id="stats_post_count">随笔 - 15&nbsp; </span>
+<span id="stats_article_count">文章 - 0&nbsp; </span>
+<span id="stats-comment_count">评论 - 505</span>
+</div>
+			
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+<div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class="post">
+		<h1 class="postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="http://www.cnblogs.com/subconscious/p/4351007.html">EasyPR--开发详解（5）颜色定位与偏斜扭转</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body" class="blogpost-body"><p>&nbsp;</p>
+<p>　　本篇文章介绍EasyPR里新的定位功能：颜色定位与偏斜扭正。希望这篇文档可以帮助开发者与使用者更好的理解EasyPR的设计思想。</p>
+<p>　　让我们先看一下示例图片，这幅图片中的车牌通过颜色的定位法进行定位并从偏斜的视角中扭正为正视角（请看右图的左上角）。</p>
+<p>&nbsp;</p>
+<p style="text-align: left;"><img style="display: block; margin-left: auto; margin-right: auto;" src="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/251620428951350.png" alt="" width="967" height="391"></p>
+<p style="text-align: center;"><span style="font-family: 黑体; font-size: 14px;">图1 新版本的定位效果</span>&nbsp;&nbsp;</p>
+<p style="text-align: center;">&nbsp;</p>
+<p>　　<span style="font-family: 宋体;">下面内容会对这两个特性的实现过程展开具体的介绍。首先介绍颜色定位的原理，然后是偏斜扭正的实现细节。</span></p>
+<p><span style="font-family: 宋体;">　　由于本文较长，为方便读者，以下是本文的目录</span><span style="font-family: 宋体;">：</span></p>
+<p><span style="font-family: 宋体;">　　一.颜色定位</span></p>
+<p><span style="font-family: 宋体;">　　1.1<a href="http://www.cnblogs.com/subconscious/p/4351007.html#firstfirst">起源</a></span></p>
+<p><span style="font-family: 宋体;">　　1.2<a href="http://www.cnblogs.com/subconscious/p/4351007.html#firstsecond">方法</a></span></p>
+<p><span style="font-family: 宋体;">　　1.3<a href="http://www.cnblogs.com/subconscious/p/4351007.html#firsethrid">不足与改善</a></span></p>
+<p><span style="font-family: 宋体;">　　二.偏斜扭正</span></p>
+<p><span style="font-family: 宋体;">　　2.1<a href="http://www.cnblogs.com/subconscious/p/4351007.html#secondfirst">分析</a></span></p>
+<p><span style="font-family: 宋体;">　　2.2<a href="http://www.cnblogs.com/subconscious/p/4351007.html#secondsecond">ROI截取</a></span></p>
+<p><span style="font-family: 宋体;">　　2.3<a href="http://www.cnblogs.com/subconscious/p/4351007.html#secondthird">扩大化旋转</a></span></p>
+<p><span style="font-family: 宋体;">　　2.4<a href="http://www.cnblogs.com/subconscious/p/4351007.html#secondfourth">偏斜判断</a></span></p>
+<p><span style="font-family: 宋体;">　　2.5<a href="http://www.cnblogs.com/subconscious/p/4351007.html#secondfifth">仿射变换</a></span></p>
+<p><span style="font-family: 宋体;">　　2.6<a href="http://www.cnblogs.com/subconscious/p/4351007.html#secondsixth">总结</a></span></p>
+<p><span style="font-family: 宋体;">　　三.总结</span></p>
+<p>&nbsp;</p>
+<p><span style="font-size: 16px;"><strong><a name="first"></a>一<span style="font-family: &#39;Times New Roman&#39;;">.&nbsp;</span><span style="font-family: 宋体;">颜色定位</span></strong></span></p>
+<p><span style="font-size: 15px;"><strong>　<span style="font-family: 黑体; font-size: 15px;"><a name="firstfirst"></a></span></strong></span><span style="font-family: 黑体; font-size: 15px;"><strong>1.起源</strong></span><span style="font-family: 黑体;"><br></span></p>
+<p>　　在前面的介绍里，我们使用了Sobel查找垂直边缘的方法，成功定位了许多车牌。但是，Sobel法最大的问题就在于面对垂直边缘交错的情况下，无法准确地定位车牌。例如下图。为了解决这个问题，可以考虑使用颜色信息进行定位。</p>
+<p>&nbsp;</p>
+<p><img style="display: block; margin-left: auto; margin-right: auto;" src="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/251602389274256.jpg" alt="" width="985" height="292"></p>
+<p style="text-align: center;"><span style="font-family: 黑体;">图2 颜色定位与Sobel定位的比较</span></p>
+<p style="text-align: center;">&nbsp;</p>
+<p>　　如果<span style="line-height: 1.5;">将颜色定位与Sobel定位加以结合的话，可以使车牌的定位准确率从75%上升到94%。</span></p>
+<p>&nbsp;</p>
+<p><span style="line-height: 1.5;">　<span style="font-size: 15px;"><a name="firstsecond"></a></span></span><span style="font-size: 15px;"><strong><span style="font-family: 黑体; font-size: 15px;">2.方法</span><br></strong></span></p>
+<p>　　关于颜色定位首先我们想到的解决方案就是：利用RGB值来判断。</p>
+<p>　　这个想法听起来很自然：如果我们想找出一幅图像中的蓝色部分，那么我们只需要检查RGB分量（RGB分量由Red分量--红色，Green分量--绿色，Blue分量--蓝色共同组成）中的Blue分量就可以了。一般来说，Blue分量是个0到255的值。如果我们设定一个阈值，并且检查每个像素的Blue分量是否大于它，那我们不就可以得知这些像素是不是蓝色的了么？这个想法虽然很好，不过存在一个问题，我们该怎么来选择这个阈值？这是第一个问题。</p>
+<p>　　即便我们用一些方法决定了阈值以后，那么下面的一个问题就会让人抓狂，颜色是组合的，即便蓝色属性在255（这样已经很‘蓝’了吧），只要另外两个分量配合（例如都为255），你最后得到的不是蓝色，而是黑色。</p>
+<p>　　这还只是区分蓝色的问题，黄色更麻烦，它是由红色和绿色组合而成的，这意味着你需要考虑两个变量的配比问题。这些问题让选择RGB颜色作为判断的难度大到难以接受的地步。因此必须另想办法。</p>
+<p>　　为了解决各种颜色相关的问题，人们发明了各种颜色模型。其中有一个模型，非常适合解决颜色判断的问题。这个模型就是HSV模型。</p>
+<p><img style="display: block; margin-left: auto; margin-right: auto;" src="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/251049153803800.jpg" alt=""></p>
+<p style="text-align: center;"><span style="font-family: 黑体;">图3 HSV颜色模型</span></p>
+<p>　　HSV模型是根据颜色的直观特性创建的一种圆锥模型。与RGB颜色模型中的每个分量都代表一种颜色不同的是，HSV模型中每个分量并不代表一种颜色，而分别是：色调（H），饱和度（S），亮度（V）。</p>
+<p>　　H分量是代表颜色特性的分量，用角度度量，取值范围为0～360，从红色开始按逆时针方向计算，红色为0，绿色为120，蓝色为240。S分量代表颜色的饱和信息，取值范围为0.0～1.0，值越大，颜色越饱和。V分量代表明暗信息，取值范围为0.0～1.0，值越大，色彩越明亮。</p>
+<p>　　H分量是HSV模型中唯一跟颜色本质相关的分量。只要固定了H的值，并且保持S和V分量不太小，那么表现的颜色就会基本固定。为了判断蓝色车牌颜色的范围，可以固定了S和V两个值为1以后，调整H的值，然后看颜色的变化范围。通过一段摸索，可以发现当H的取值范围在200到280时，这些颜色都可以被认为是蓝色车牌的颜色范畴。于是我们可以用H分量是否在200与280之间来决定某个像素是否属于蓝色车牌。黄色车牌也是一样的道理，通过观察，可以发现当H值在30到80时，颜色的值可以作为黄色车牌的颜色。</p>
+<p>　　这里的颜色表来自于这个<a href="http://html-color-codes.info/chinese/" target="_blank">网站</a>。</p>
+<p>　　下图显示了蓝色的H分量变化范围。</p>
+<p style="text-align: center;"><span style="font-family: 宋体;"><img src="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/251222310677948.gif" alt="" width="459" height="311"></span></p>
+<p style="text-align: center;">&nbsp;</p>
+<p style="text-align: center;"><span style="font-family: 黑体;">图4 蓝色的H分量区间&nbsp;</span></p>
+<p style="text-align: center;">&nbsp;</p>
+<p style="text-align: left;">　　下图显示了黄色的H分量变化范围。&nbsp;</p>
+<p style="text-align: left;">&nbsp;</p>
+<p style="text-align: center;"><img style="line-height: 1.5; font-family: 宋体;" src="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/251222433802343.gif" alt="" width="456" height="309"></p>
+<p style="text-align: center;">&nbsp;<span style="font-family: 黑体; font-size: 14px;">图5 黄色的H分量区间</span>&nbsp;&nbsp;</p>
+<p style="text-align: center;">&nbsp;</p>
+<p>　　光判断H分量的值是否就足够了？</p>
+<p>　　事实上是不足的。固定了H的值以后，如果移动V和S会带来颜色的饱和度和亮度的变化。当V和S都达到最高值，也就是1时，颜色是最纯正的。降低S，颜色越发趋向于变白。降低V，颜色趋向于变黑，当V为0时，颜色变为黑色。因此，S和V的值也会影响最终颜色的效果。</p>
+<p>　　我们可以设置一个阈值，假设S和V都大于阈值时，颜色才属于H所表达的颜色。</p>
+<p>　　在EasyPR里，这个值是0.35，也就是V属于0.35到1且S属于0.35到1的一个范围，类似于一个矩形。对V和S的阈值判断是有必要的，因为很多车牌周身的车身，都是H分量属于200-280，而V分量或者S分量小于0.35的。通过S和V的判断可以排除车牌周围车身的干扰。</p>
+<p>&nbsp;</p>
+<p style="text-align: center;"><span style="line-height: 1.5;">&nbsp;<img src="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/251116454279898.jpg" alt="" width="461" height="313">&nbsp; &nbsp; &nbsp; &nbsp;</span></p>
+<p style="text-align: center;"><span style="font-family: 黑体; font-size: 14px;">图6 V和S的区间</span>&nbsp;</p>
+<p style="text-align: center;">&nbsp;</p>
+<p>　　明确了使用HSV模型以及用阈值进行判断以后，下面就是一个颜色定位的完整过程。</p>
+<p>　　第一步，将图像的颜色空间从RGB转为HSV，在这里由于光照的影响，对于图像使用直方图均衡进行预处理；</p>
+<p>　　第二步，依次遍历图像的所有像素，当H值落在200-280之间并且S值与V值也落在0.35-1.0之间，标记为白色像素，否则为黑色像素；</p>
+<p>　　第三步，对仅有白黑两个颜色的二值图参照原先车牌定位中的方法，使用闭操作，取轮廓等方法将车牌的外接矩形截取出来做进一步的处理。</p>
+<p>&nbsp;</p>
+<p style="text-align: left;"><img style="display: block; margin-left: auto; margin-right: auto;" src="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/251631380998949.png" alt=""></p>
+<p style="text-align: center;"><span style="font-family: 黑体;">&nbsp;图7 蓝色定位效果</span>&nbsp;</p>
+<p style="text-align: center;">&nbsp;</p>
+<p>　　以上就完成了一个蓝色车牌的定位过程。我们把对图像中蓝色车牌的寻找过程称为一次与蓝色模板的匹配过程。代码中的函数称之为colorMatch。一般说来，一幅图像需要进行一次蓝色模板的匹配，还要进行一次黄色模板的匹配，以此确保蓝色和黄色的车牌都被定位出来。</p>
+<p>　　黄色车牌的定位方法与其类似，仅仅只是H阈值范围的不同。事实上，黄色定位的效果一般好的出奇，可以在非常复杂的环境下将车牌极为准确的定位出来，这可能源于现实世界中黄色非常醒目的原因。</p>
+<p>&nbsp;</p>
+<p style="text-align: center;"><img src="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/251617457555131.jpg" alt="" width="949" height="207"></p>
+<p style="text-align: center;"><span style="font-family: 黑体; line-height: 1.5;">&nbsp;</span><span style="font-family: 黑体; line-height: 1.5;">&nbsp;图8 黄色定位效果</span>&nbsp;</p>
+<p>　　从实际效果来看，颜色定位的效果是很好的。在通用数据测试集里，大约70%的车牌都可以被定位出来（一些颜色定位不了的，我们可以用Sobel定位处理）。</p>
+<p>　　在代码中有些细节需要注意：</p>
+<p>　　一. opencv为了保证HSV三个分量都落在0-255之间（确保一个char能装的下），对H分量除以了2，也就是0-180的范围，S和V分量乘以了255，将0-1的范围扩展到0-255。我们在设置阈值的时候需要参照opencv的标准，因此对参数要进行一个转换。</p>
+<p>　　二. 是v和s取值的问题。对于暗的图来说，取值过大容易漏，而对于亮的图，取值过小则容易跟车身混淆。因此可以考虑最适应的改变阈值。</p>
+<p>　　三. 是模板问题。目前的做法是针对蓝色和黄色的匹配使用了两个模板，而不是统一的模板。统一模板的问题在于担心蓝色和黄色的干扰问题，例如黄色的车与蓝色的牌的干扰，或者蓝色的车和黄色牌的干扰，这里面最典型的例子就是一个带有蓝色车牌的黄色出租车，在很多城市里这已经是“标准配置”。因此需要将蓝色和黄色的匹配分别用不同的模板处理。</p>
+<p>　　了解完这三个细节以后，下面就是代码部分。</p>
+<div class="cnblogs_code" onclick="cnblogs_code_show(&#39;ee908f2e-9e4b-4c3f-8682-199bacecf106&#39;)"><img id="code_img_closed_ee908f2e-9e4b-4c3f-8682-199bacecf106" class="code_img_closed" src="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/ContractedBlock.gif" alt=""><img id="code_img_opened_ee908f2e-9e4b-4c3f-8682-199bacecf106" class="code_img_opened" style="display: none;" onclick="cnblogs_code_hide(&#39;ee908f2e-9e4b-4c3f-8682-199bacecf106&#39;,event)" src="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/ExpandedBlockStart.gif" alt="">
+<div id="cnblogs_code_open_ee908f2e-9e4b-4c3f-8682-199bacecf106" class="cnblogs_code_hide">
+<pre>    <span style="color: #008000;">//</span><span style="color: #008000;">! 根据一幅图像与颜色模板获取对应的二值图
+    </span><span style="color: #008000;">//</span><span style="color: #008000;">! 输入RGB图像, 颜色模板（蓝色、黄色）
+    </span><span style="color: #008000;">//</span><span style="color: #008000;">! 输出灰度图（只有0和255两个值，255代表匹配，0代表不匹配）</span>
+    Mat colorMatch(<span style="color: #0000ff;">const</span> Mat&amp; src, Mat&amp; match, <span style="color: #0000ff;">const</span> Color r, <span style="color: #0000ff;">const</span> <span style="color: #0000ff;">bool</span><span style="color: #000000;"> adaptive_minsv)
+    {
+        </span><span style="color: #008000;">//</span><span style="color: #008000;"> S和V的最小值由adaptive_minsv这个bool值判断
+        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 如果为true，则最小值取决于H值，按比例衰减
+        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 如果为false，则不再自适应，使用固定的最小值minabs_sv
+        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 默认为false</span>
+        <span style="color: #0000ff;">const</span> <span style="color: #0000ff;">float</span> max_sv = <span style="color: #800080;">255</span><span style="color: #000000;">;
+        </span><span style="color: #0000ff;">const</span> <span style="color: #0000ff;">float</span> minref_sv = <span style="color: #800080;">64</span><span style="color: #000000;">;
+
+        </span><span style="color: #0000ff;">const</span> <span style="color: #0000ff;">float</span> minabs_sv = <span style="color: #800080;">95</span><span style="color: #000000;">;
+
+        </span><span style="color: #008000;">//</span><span style="color: #008000;">blue的H范围</span>
+        <span style="color: #0000ff;">const</span> <span style="color: #0000ff;">int</span> min_blue = <span style="color: #800080;">100</span>;  <span style="color: #008000;">//</span><span style="color: #008000;">100</span>
+        <span style="color: #0000ff;">const</span> <span style="color: #0000ff;">int</span> max_blue = <span style="color: #800080;">140</span>;  <span style="color: #008000;">//</span><span style="color: #008000;">140
+
+        </span><span style="color: #008000;">//</span><span style="color: #008000;">yellow的H范围</span>
+        <span style="color: #0000ff;">const</span> <span style="color: #0000ff;">int</span> min_yellow = <span style="color: #800080;">15</span>; <span style="color: #008000;">//</span><span style="color: #008000;">15</span>
+        <span style="color: #0000ff;">const</span> <span style="color: #0000ff;">int</span> max_yellow = <span style="color: #800080;">40</span>; <span style="color: #008000;">//</span><span style="color: #008000;">40</span>
+<span style="color: #000000;">
+        Mat src_hsv;
+        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 转到HSV空间进行处理，颜色搜索主要使用的是H分量进行蓝色与黄色的匹配工作</span>
+<span style="color: #000000;">        cvtColor(src, src_hsv, CV_BGR2HSV);
+
+        vector</span>&lt;Mat&gt;<span style="color: #000000;"> hsvSplit;
+        split(src_hsv, hsvSplit);
+        equalizeHist(hsvSplit[</span><span style="color: #800080;">2</span>], hsvSplit[<span style="color: #800080;">2</span><span style="color: #000000;">]);
+        merge(hsvSplit, src_hsv);
+
+        </span><span style="color: #008000;">//</span><span style="color: #008000;">匹配模板基色,切换以查找想要的基色</span>
+        <span style="color: #0000ff;">int</span> min_h = <span style="color: #800080;">0</span><span style="color: #000000;">;
+        </span><span style="color: #0000ff;">int</span> max_h = <span style="color: #800080;">0</span><span style="color: #000000;">;
+        </span><span style="color: #0000ff;">switch</span><span style="color: #000000;"> (r) {
+        </span><span style="color: #0000ff;">case</span><span style="color: #000000;"> BLUE:
+            min_h </span>=<span style="color: #000000;"> min_blue;
+            max_h </span>=<span style="color: #000000;"> max_blue;
+            </span><span style="color: #0000ff;">break</span><span style="color: #000000;">;
+        </span><span style="color: #0000ff;">case</span><span style="color: #000000;"> YELLOW:
+            min_h </span>=<span style="color: #000000;"> min_yellow;
+            max_h </span>=<span style="color: #000000;"> max_yellow;
+            </span><span style="color: #0000ff;">break</span><span style="color: #000000;">;
+        }
+
+        </span><span style="color: #0000ff;">float</span> diff_h = <span style="color: #0000ff;">float</span>((max_h - min_h) / <span style="color: #800080;">2</span><span style="color: #000000;">);
+        </span><span style="color: #0000ff;">int</span> avg_h = min_h +<span style="color: #000000;"> diff_h;
+
+        </span><span style="color: #0000ff;">int</span> channels =<span style="color: #000000;"> src_hsv.channels();
+        </span><span style="color: #0000ff;">int</span> nRows =<span style="color: #000000;"> src_hsv.rows;
+        </span><span style="color: #008000;">//</span><span style="color: #008000;">图像数据列需要考虑通道数的影响；</span>
+        <span style="color: #0000ff;">int</span> nCols = src_hsv.cols *<span style="color: #000000;"> channels;
+
+        </span><span style="color: #0000ff;">if</span> (src_hsv.isContinuous())<span style="color: #008000;">//</span><span style="color: #008000;">连续存储的数据，按一行处理</span>
+<span style="color: #000000;">        {
+            nCols </span>*=<span style="color: #000000;"> nRows;
+            nRows </span>= <span style="color: #800080;">1</span><span style="color: #000000;">;
+        }
+
+        </span><span style="color: #0000ff;">int</span><span style="color: #000000;"> i, j;
+        uchar</span>*<span style="color: #000000;"> p;
+        </span><span style="color: #0000ff;">float</span> s_all = <span style="color: #800080;">0</span><span style="color: #000000;">;
+        </span><span style="color: #0000ff;">float</span> v_all = <span style="color: #800080;">0</span><span style="color: #000000;">;
+        </span><span style="color: #0000ff;">float</span> count = <span style="color: #800080;">0</span><span style="color: #000000;">;
+        </span><span style="color: #0000ff;">for</span> (i = <span style="color: #800080;">0</span>; i &lt; nRows; ++<span style="color: #000000;">i)
+        {
+            p </span>= src_hsv.ptr&lt;uchar&gt;<span style="color: #000000;">(i);
+            </span><span style="color: #0000ff;">for</span> (j = <span style="color: #800080;">0</span>; j &lt; nCols; j += <span style="color: #800080;">3</span><span style="color: #000000;">)
+            {
+                </span><span style="color: #0000ff;">int</span> H = <span style="color: #0000ff;">int</span>(p[j]); <span style="color: #008000;">//</span><span style="color: #008000;">0-180</span>
+                <span style="color: #0000ff;">int</span> S = <span style="color: #0000ff;">int</span>(p[j + <span style="color: #800080;">1</span>]);  <span style="color: #008000;">//</span><span style="color: #008000;">0-255</span>
+                <span style="color: #0000ff;">int</span> V = <span style="color: #0000ff;">int</span>(p[j + <span style="color: #800080;">2</span>]);  <span style="color: #008000;">//</span><span style="color: #008000;">0-255</span>
+<span style="color: #000000;">
+                s_all </span>+=<span style="color: #000000;"> S;
+                v_all </span>+=<span style="color: #000000;"> V;
+                count</span>++<span style="color: #000000;">;
+
+                </span><span style="color: #0000ff;">bool</span> colorMatched = <span style="color: #0000ff;">false</span><span style="color: #000000;">;
+
+                </span><span style="color: #0000ff;">if</span> (H &gt; min_h &amp;&amp; H &lt;<span style="color: #000000;"> max_h)
+                {
+                    </span><span style="color: #0000ff;">int</span> Hdiff = <span style="color: #800080;">0</span><span style="color: #000000;">;
+                    </span><span style="color: #0000ff;">if</span> (H &gt;<span style="color: #000000;"> avg_h)
+                        Hdiff </span>= H -<span style="color: #000000;"> avg_h;
+                    </span><span style="color: #0000ff;">else</span><span style="color: #000000;">
+                        Hdiff </span>= avg_h -<span style="color: #000000;"> H;
+
+                    </span><span style="color: #0000ff;">float</span> Hdiff_p = <span style="color: #0000ff;">float</span>(Hdiff) /<span style="color: #000000;"> diff_h;
+
+                    </span><span style="color: #008000;">//</span><span style="color: #008000;"> S和V的最小值由adaptive_minsv这个bool值判断
+                    </span><span style="color: #008000;">//</span><span style="color: #008000;"> 如果为true，则最小值取决于H值，按比例衰减
+                    </span><span style="color: #008000;">//</span><span style="color: #008000;"> 如果为false，则不再自适应，使用固定的最小值minabs_sv</span>
+                    <span style="color: #0000ff;">float</span> min_sv = <span style="color: #800080;">0</span><span style="color: #000000;">;
+                    </span><span style="color: #0000ff;">if</span> (<span style="color: #0000ff;">true</span> ==<span style="color: #000000;"> adaptive_minsv)
+                        min_sv </span>= minref_sv - minref_sv / <span style="color: #800080;">2</span> * (<span style="color: #800080;">1</span> - Hdiff_p); <span style="color: #008000;">//</span><span style="color: #008000;"> inref_sv - minref_sv / 2 * (1 - Hdiff_p)</span>
+                    <span style="color: #0000ff;">else</span><span style="color: #000000;">
+                        min_sv </span>= minabs_sv; <span style="color: #008000;">//</span><span style="color: #008000;"> add</span>
+
+                    <span style="color: #0000ff;">if</span> ((S &gt; min_sv &amp;&amp; S &lt; max_sv) &amp;&amp; (V &gt; min_sv &amp;&amp; V &lt;<span style="color: #000000;"> max_sv))
+                        colorMatched </span>= <span style="color: #0000ff;">true</span><span style="color: #000000;">;
+                }
+
+                </span><span style="color: #0000ff;">if</span> (colorMatched == <span style="color: #0000ff;">true</span><span style="color: #000000;">) {
+                    p[j] </span>= <span style="color: #800080;">0</span>; p[j + <span style="color: #800080;">1</span>] = <span style="color: #800080;">0</span>; p[j + <span style="color: #800080;">2</span>] = <span style="color: #800080;">255</span><span style="color: #000000;">;
+                }
+                </span><span style="color: #0000ff;">else</span><span style="color: #000000;"> {
+                    p[j] </span>= <span style="color: #800080;">0</span>; p[j + <span style="color: #800080;">1</span>] = <span style="color: #800080;">0</span>; p[j + <span style="color: #800080;">2</span>] = <span style="color: #800080;">0</span><span style="color: #000000;">;
+                }
+            }
+        }
+
+        </span><span style="color: #008000;">//</span><span style="color: #008000;">cout &lt;&lt; "avg_s:" &lt;&lt; s_all / count &lt;&lt; endl;
+        </span><span style="color: #008000;">//</span><span style="color: #008000;">cout &lt;&lt; "avg_v:" &lt;&lt; v_all / count &lt;&lt; endl;
+
+        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 获取颜色匹配后的二值灰度图</span>
+<span style="color: #000000;">        Mat src_grey;
+        vector</span>&lt;Mat&gt;<span style="color: #000000;"> hsvSplit_done;
+        split(src_hsv, hsvSplit_done);
+        src_grey </span>= hsvSplit_done[<span style="color: #800080;">2</span><span style="color: #000000;">];
+
+        match </span>=<span style="color: #000000;"> src_grey;
+
+        </span><span style="color: #0000ff;">return</span><span style="color: #000000;"> src_grey;
+    }</span></pre>
+</div>
+<span class="cnblogs_code_collapse">View Code</span></div>
+<p><strong><span style="font-size: 15px;"><span style="line-height: 1.5;"><strong>　　</strong></span></span></strong></p>
+<p><span style="font-size: 15px;"><span style="line-height: 1.5;">　<a name="firsethrid"></a><span style="font-size: 15px;"><strong><span style="font-family: 黑体;">3.</span></strong></span></span></span><span style="font-size: 15px;"><strong><span style="font-family: 黑体;"><span style="line-height: 1.5;">不足</span></span></strong></span></p>
+<p><span style="line-height: 1.5;">　　以上说明了颜色定位的设计思想与细节。那么颜色定位是不是就是万能的？答案是否定的。在色彩充足，光照足够的情况下，颜色定位的效果很好，但是在面对光线不足的情况，或者蓝色车身的情况时，颜色定位的效果很糟糕。下图是一辆蓝色车辆，可以看出，车牌与车身内容完全重叠，无法分割。</span></p>
+<p style="text-align: center;">&nbsp;<img src="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/251217255999891.jpg" alt="" width="435" height="812"></p>
+<p style="text-align: center;"><span style="font-family: 黑体; font-size: 14px;">图9 失效的颜色定位</span>&nbsp;</p>
+<p>　　碰到失效的颜色定位情况时需要使用原先的Sobel定位法。</p>
+<p>　　目前的新版本使用了颜色定位与Sobel定位结合的方式。首先进行颜色定位，然后根据条件使用Sobel进行再次定位，增加整个系统的适应能力。</p>
+<p>　　为了加强鲁棒性，Sobel定位法可以用两阶段的查找。也就是在已经被Sobel定位的图块中，再进行一次Sobel定位。这样可以增加准确率，但会降低了速度。一个折衷的方案是让用户决定一个参数m_maxPlates的值，这个值决定了你在一幅图里最多定位多少车牌。系统首先用颜色定位出候选车牌，然后通过SVM模型来判断是否是车牌，最后统计数量。如果这个数量大于你设定的参数，则认为车牌已经定位足够了，不需要后一步处理，也就不会进行两阶段的Sobel查找。相反，如果这个数量不足，则继续进行Sobel定位。</p>
+<p>　　综合定位的代码位于CPlateDectec中的的成员函数plateDetectDeep中，以下是plateDetectDeep的整体流程。</p>
+<p style="text-align: center;"><span style="font-family: 宋体;"><img style="display: block; margin-left: auto; margin-right: auto;" src="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/251512241149914.jpg" alt="" width="691" height="488"></span></p>
+<p style="text-align: center;">&nbsp;<span style="font-family: 黑体;">图10 综合定位全部流程</span>&nbsp;</p>
+<p style="text-align: left;"><span style="line-height: 1.5;">　　有没有颜色定位与Sobel定位都失效的情况？有的。这种情况下可能需要使用第三类定位技术--字符定位技术。这是EasyPR发展的一个方向，这里不展开讨论。</span></p>
+<p>&nbsp;</p>
+<p><strong><span style="font-size: 16px;"><a name="second"></a>二<span style="font-family: &#39;Times New Roman&#39;;">.&nbsp;</span><span style="font-family: 宋体;">偏斜扭转</span></span></strong></p>
+<p><span style="font-family: 宋体;">　　解决了颜色的定位问题以后，下面的问题是：在定位以后，我们如何把偏斜过来的车牌扭正呢？</span></p>
+<p>&nbsp;</p>
+<p style="text-align: center;">&nbsp;<img src="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/251658456613647.jpg" alt="" width="929" height="240"></p>
+<p style="text-align: center;"><span style="font-family: 黑体;">图11 偏斜扭转效果</span>&nbsp;</p>
+<p>　　这个过程叫做偏斜扭转过程。其中一个关键函数就是<span style="font-family: &#39;Times New Roman&#39;;">opencv</span><span style="font-family: 宋体;">的仿射变换函数。但在具体实施时，有很多需要解决的问题。</span></p>
+<p>&nbsp;</p>
+<p>　<a name="secondfirst"></a><span style="font-size: 15px;"><strong><span style="font-family: 黑体;">1.分析</span></strong></span></p>
+<p>　　在任何新的功能开发之前，技术预研都是第一步。</p>
+<p>　　在<span style="line-height: 1.5;">这篇</span><a style="line-height: 1.5;" href="http://blog.csdn.net/xiaowei_cqu/article/details/7616044" target="_blank">文档</a><span style="line-height: 1.5;">介绍了opencv的仿射变换功能。效果见下图。</span></p>
+<p style="text-align: center;"><img src="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/261726434742480.png" alt=""></p>
+<p style="text-align: center;"><span style="font-family: 黑体;">图12 仿射变换效果&nbsp;</span></p>
+<p style="text-align: center;">&nbsp;</p>
+<p>　　仔细看下，貌似这个功能跟我们的需求很相似。我们的偏斜扭转功能，说白了，就是把对图像的观察视角进行了一个转换。</p>
+<p>　　不过这篇文章里的代码基本来自于另一篇<a href="http://docs.opencv.org/doc/tutorials/imgproc/imgtrans/warp_affine/warp_affine.html" target="_blank">官方文档</a>。官方文档里还有一个例子，可以矩形扭转成平行四边形。而<span style="line-height: 1.5;">我们的需求正是将平行四边形的车牌扭正成矩形。这么说来，只要使用例子中对应的反函数，应该就可以实现我们的需求。从这个角度来看，偏斜扭转功可以实现。</span>确定了可行性以后，下一步就是思考如何实现。</p>
+<p>　　在原先的版本中，我们对定位出来的区域会进行一次角度判断，当角度小于某个阈值（默认30度）时就会进行全图旋转。</p>
+<p>　　这种方式有两个问题：</p>
+<p>　　一是我们的策略是对整幅图像旋转。对于opencv来说，每次旋转操作都是一个矩形的乘法过程，对于非常大的图像，这个过程是非常消耗计算资源的；</p>
+<p>　　二是30度的阈值无法处理示例图片。事实上，示例图片的定位区域的角度是-50度左右，已经大于我们的阈值了。为了处理这样的图片，我们需要把我们的阈值增大，例如增加到60度，那么这样的结果是带来候选区域的增多。</p>
+<p>　　两个因素结合，会大幅度增加处理时间。为了不让处理速度下降，必须想办法规避这些影响。</p>
+<p>　　一个方法是不再使用全图旋转，而是区域旋转。其实我们在获取定位区域后，我们并不需要定位区域以外的图像。</p>
+<p>　　倘若我们能划出一块小的区域包围定位区域，然后我们仅对定位区域进行旋转，那么计算量就会大幅度降低。而这点，在opencv里是可以实现的，我们对定位区域RotatedRect用boundingRect()方法获取外接矩形，再使用Mat(Rect ...)方法截取这个区域图块，从而生成一个小的区域图像。于是下面的所有旋转等操作都可以基于这个区域图像进行。</p>
+<p>　　在这些设计决定以后，下面就来思考整个功能的架构。</p>
+<p>　　我们要解决的问题包括三类，第一类是正的车牌，第二类是倾斜的车牌，第三类是偏斜的车牌。前两类是前面说过的，第三类是本次新增的功能需求。第二类倾斜车牌与第三类车牌的区别见下图。</p>
+<p><img style="display: block; margin-left: auto; margin-right: auto;" src="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/251711536304075.jpg" alt=""></p>
+<p style="text-align: center;"><span style="font-family: 黑体;">图13 两类不同的旋转</span>&nbsp;</p>
+<p style="text-align: center;">&nbsp;</p>
+<p>　　通过上图可以看出，正视角的旋转图片的观察角度仍然是正方向的，只是由于路的不平或者摄像机的倾斜等原因，导致矩形有一定倾斜。这类图块的特点就是在RotataedRect内部，车牌部分仍然是个矩形。偏斜视角的图片的观察角度是非正方向的，是从侧面去看车牌。这类图块的特点是在RotataedRect内部，车牌部分不再是个矩形，而是一个平行四边形。这个特性决定了我们需要区别的对待这两类图片。</p>
+<p>　　一个初步的处理思路就是下图。</p>
+<p>&nbsp;</p>
+<p style="text-align: center;"><img src="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/261724081308222.jpg" alt=""></p>
+<p style="text-align: center;"><span style="font-family: 黑体;">图14 分析实现流程</span></p>
+<p><br>　　简单来说，整个处理流程包括下面四步：</p>
+<p>　　1.感兴趣区域的截取<br>　　2.角度判断<br>　　3.偏斜判断<br>　　4.仿射变换&nbsp;</p>
+<p>　　接下来按照这四个步骤依次介绍。</p>
+<p><span style="line-height: 1.5;">　</span></p>
+<p>　<span style="font-family: 黑体;"><a name="secondsecond"></a><span style="font-size: 15px;"><strong>2.ROI截取</strong></span></span></p>
+<p>　　如果要使用区域旋转，首先我们必须从原图中截取出一个包含定位区域的图块。</p>
+<p>　　opencv提供了一个从图像中截取感兴趣区域ROI的方法，也就是Mat(Rect ...)。这个方法会在Rect所在的位置，截取原图中一个图块，然后将其赋值到一个新的Mat图像里。遗憾的是这个方法不支持RotataedRect，同时Rect与RotataedRect也没有继承关系。因此布不能直接调用这个方法。</p>
+<p>　　我们可以使用RotataedRect的boudingRect()方法。这个方法会返回一个RotataedRect的最小外接矩形，而且这个矩形是一个Rect。因此将这个Rect传递给Mat(Rect...)方法就可以截取出原图的ROI图块，并获得对应的ROI图像。</p>
+<p>　　需要注意的是，ROI图块和ROI图像的区别，当我们给定原图以及一个Rect时，原图中被Rect包围的区域称为ROI图块，此时图块里的坐标仍然是原图的坐标。当这个图块里的内容被拷贝到一个新的Mat里时，我们称这个新Mat为ROI图像。ROI图像里仅仅只包含原来图块里的内容，跟原图没有任何关系。所以图块和图像虽然显示的内容一样，但坐标系已经发生了改变。在从ROI图块到ROI图像以后，点的坐标要计算一个偏移量。</p>
+<p>　　下一步的工作中可以仅对这个ROI图像进行处理，包括对其旋转或者变换等操作。</p>
+<p>　　示例图片中的截取出来的ROI图像如下图：</p>
+<p>&nbsp;</p>
+<p><span style="font-family: 宋体;"><img style="display: block; margin-left: auto; margin-right: auto;" src="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/252007004741575.jpg" alt="" width="175" height="185"></span></p>
+<p style="text-align: center;"><span style="font-family: 黑体;">图15 截取后的ROI图像</span></p>
+<p>　　</p>
+<p>　　在截取中可能会发生一个问题。如果直接使用boundingRect()函数的话，在运行过程中会经常发生这样的异常。OpenCV Error: Assertion failed (0 &lt;= roi.x &amp;&amp; 0 &lt;= roi.width &amp;&amp; roi.x + roi.width &lt;= m.cols &amp;&amp; 0 &lt;= roi.y &amp;&amp; 0 &lt;= roi.height &amp;&amp; roi.y + roi.height &lt;= m.rows) incv::Mat::Mat，如下图。</p>
+<p>&nbsp;</p>
+<p><span style="font-family: 宋体;"><img style="display: block; margin-left: auto; margin-right: auto;" src="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/251648132861019.jpg" alt=""></span></p>
+<p style="text-align: center;"><span style="font-family: 黑体;">图16 不安全的外接矩形函数会抛出异常</span></p>
+<p style="text-align: center;">&nbsp;</p>
+<p>　　这个异常产生的原因在于，在opencv2.4.8中（不清楚opencv其他版本是否没有这个问题），boundingRect()函数计算出的Rect的四个点的坐标没有做验证。这意味着你计算一个RotataedRect的最小外接矩形Rect时，它可能会给你一个负坐标，或者是一个超过原图片外界的坐标。于是当你把Rect作为参数传递给Mat(Rect ...)的话，它会提示你所要截取的Rect中的坐标越界了！</p>
+<p>　　解决方案是实现一个安全的计算最小外接矩形Rect的函数，在boundingRect()结果之上，对角点坐标进行一次判断，如果值为负数，就置为0，如果值超过了原始Mat的rows或cols，就置为原始Mat的这些rows或cols。</p>
+<p>　　这个安全函数名为calcSafeRect(...)，下面是这个函数的代码。</p>
+<div class="cnblogs_code" onclick="cnblogs_code_show(&#39;9a6a21d7-c0a1-43fc-813d-b6052dd0d223&#39;)"><img id="code_img_closed_9a6a21d7-c0a1-43fc-813d-b6052dd0d223" class="code_img_closed" src="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/ContractedBlock.gif" alt=""><img id="code_img_opened_9a6a21d7-c0a1-43fc-813d-b6052dd0d223" class="code_img_opened" style="display: none;" onclick="cnblogs_code_hide(&#39;9a6a21d7-c0a1-43fc-813d-b6052dd0d223&#39;,event)" src="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/ExpandedBlockStart.gif" alt="">
+<div id="cnblogs_code_open_9a6a21d7-c0a1-43fc-813d-b6052dd0d223" class="cnblogs_code_hide">
+<pre><span style="color: #008000;">//</span><span style="color: #008000;">! 计算一个安全的Rect
+</span><span style="color: #008000;">//</span><span style="color: #008000;">! 如果不存在，返回false</span>
+<span style="color: #0000ff;">bool</span> CPlateLocate::calcSafeRect(<span style="color: #0000ff;">const</span> RotatedRect&amp; roi_rect, <span style="color: #0000ff;">const</span> Mat&amp; src, Rect_&lt;<span style="color: #0000ff;">float</span>&gt;&amp;<span style="color: #000000;"> safeBoundRect)
+{
+    Rect_</span>&lt;<span style="color: #0000ff;">float</span>&gt; boudRect =<span style="color: #000000;"> roi_rect.boundingRect();
+
+    </span><span style="color: #008000;">//</span><span style="color: #008000;"> boudRect的左上的x和y有可能小于0</span>
+    <span style="color: #0000ff;">float</span> tl_x = boudRect.x &gt; <span style="color: #800080;">0</span> ? boudRect.x : <span style="color: #800080;">0</span><span style="color: #000000;">;
+    </span><span style="color: #0000ff;">float</span> tl_y = boudRect.y &gt; <span style="color: #800080;">0</span> ? boudRect.y : <span style="color: #800080;">0</span><span style="color: #000000;">;
+    </span><span style="color: #008000;">//</span><span style="color: #008000;"> boudRect的右下的x和y有可能大于src的范围</span>
+    <span style="color: #0000ff;">float</span> br_x = boudRect.x + boudRect.width &lt; src.cols ?<span style="color: #000000;">
+        boudRect.x </span>+ boudRect.width - <span style="color: #800080;">1</span> : src.cols - <span style="color: #800080;">1</span><span style="color: #000000;">;
+    </span><span style="color: #0000ff;">float</span> br_y = boudRect.y + boudRect.height &lt; src.rows ?<span style="color: #000000;">
+        boudRect.y </span>+ boudRect.height - <span style="color: #800080;">1</span> : src.rows - <span style="color: #800080;">1</span><span style="color: #000000;">;
+
+    </span><span style="color: #0000ff;">float</span> roi_width = br_x -<span style="color: #000000;"> tl_x;
+    </span><span style="color: #0000ff;">float</span> roi_height = br_y -<span style="color: #000000;"> tl_y;
+
+    </span><span style="color: #0000ff;">if</span> (roi_width &lt;= <span style="color: #800080;">0</span> || roi_height &lt;= <span style="color: #800080;">0</span><span style="color: #000000;">)
+        </span><span style="color: #0000ff;">return</span> <span style="color: #0000ff;">false</span><span style="color: #000000;">;
+
+    </span><span style="color: #008000;">//</span><span style="color: #008000;"> 新建一个mat，确保地址不越界，以防mat定位roi时抛异常</span>
+    safeBoundRect = Rect_&lt;<span style="color: #0000ff;">float</span>&gt;<span style="color: #000000;">(tl_x, tl_y, roi_width, roi_height);
+
+    </span><span style="color: #0000ff;">return</span> <span style="color: #0000ff;">true</span><span style="color: #000000;">;
+}</span></pre>
+</div>
+<span class="cnblogs_code_collapse">View Code</span></div>
+<p>&nbsp;</p>
+<p>　<span style="font-size: 15px;"><a name="secondthird"></a><strong><span style="font-family: 黑体;">3.扩大化旋转</span></strong></span></p>
+<p>　　好，当我通过calcSafeRect(...)获取了一个安全的Rect，然后通过Mat(Rect ...)函数截取了这个感兴趣图像ROI以后。下面的工作就是对这个新的ROI图像进行操作。</p>
+<p>　　首先是判断这个ROI图像是否要旋转。为了降低工作量，我们不对角度在-5度到5度区间的ROI进行旋转（注意这里讲的角度针对的生成ROI的RotataedRect，ROI本身是水平的）。因为这么小的角度对于SVM判断以及字符识别来说，都是没有影响的。</p>
+<p>　　对其他的角度我们需要对ROI进行旋转。当我们对ROI进行旋转以后，接着把转正后的RotataedRect部分从ROI中截取出来。</p>
+<p>　　但很快我们就会碰到一个新问题。让我们看一下下图，为什么我们截取出来的车牌区域最左边的“川”字和右边的“2”字发生了形变？为了搞清这个原因，作者仔细地研究了旋转与截取函数，但很快发现了形变的根源在于旋转后的ROI图像。</p>
+<p>　　仔细看一下旋转后的ROI图像，是否左右两侧不再完整，像是被截去了一部分？</p>
+<p>&nbsp;<img style="display: block; margin-left: auto; margin-right: auto;" src="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/262013530679012.jpg" alt=""></p>
+<p style="text-align: center;"><span style="font-family: 黑体;">图17 旋转后图像被截断</span>&nbsp;</p>
+<p style="text-align: center;">&nbsp;</p>
+<p>　　要想理解这个问题，需要理解opencv的旋转变换函数的特性。作为旋转变换的核心函数，affinTransform会要求你输出一个旋转矩阵给它。这很简单，因为我们只需要给它一个旋转中心点以及角度，它就能计算出我们想要的旋转矩阵。旋转矩阵的获得是通过如下的函数得到的：</p>
+<div class="cnblogs_code">
+<pre>　　Mat rot_mat = getRotationMatrix2D(new_center, angle, <span style="color: #800080;">1</span>);</pre>
+</div>
+<p>　　在获取了旋转矩阵rot_mat，那么接下来就需要调用函数warpAffine来开始旋转操作。这个函数的参数包括一个目标图像、以及目标图像的Size。目标图像容易理解，大部分opencv的函数都会需要这个参数。我们只要新建一个Mat即可。那么目标图像的Size是什么？在一般的观点中，假设我们需要旋转一个图像，我们给opencv一个原始图像，以及我需要在某个旋转点对它旋转一个角度的需求，那么opencv返回一个图像给我即可，这个图像的Size或者说大小应该是opencv返回给我的，为什么要我来告诉它呢？</p>
+<p>　　你可以试着对一个正方形进行旋转，仔细看看，这个正方形的外接矩形的大小会如何变化？当旋转角度还小时，一切都还好，当角度变大时，明显我们看到的外接矩形的大小也在扩增。在这里，外接矩形被称为视框，也就是我需要旋转的正方形所需要的最小区域。随着旋转角度的变大，视框明显增大。</p>
+<p>&nbsp;</p>
+<p style="text-align: center;"><img src="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/261950472395667.jpg" alt="" width="472" height="335"></p>
+<p style="text-align: center;"><span style="font-family: 黑体;">图18 矩形旋转后所需视框增大&nbsp;</span>&nbsp;</p>
+<p style="text-align: center;">&nbsp;</p>
+<p>　　在图像旋转完以后，有三类点会获得不同的处理，一种是有原图像对应点且在视框内的，这些点被正常显示；一类是在视框内但找不到原图像与之对应的点，这些点被置0值（显示为黑色）；最后一类是有原图像与之对应的点，但不在视框内的，这些点被悲惨的抛弃。</p>
+<p>&nbsp;</p>
+<p style="text-align: center;"><img src="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/262019109586262.jpg" alt=""></p>
+<p style="text-align: center;"><span style="font-family: 黑体;">图19 旋转后三类不同点的命运</span>&nbsp;</p>
+<p>　　这就是旋转后不同三类点的命运，也就是新生成的图像中一些点呈现黑色（被置0），一些点被截断（被抛弃）的原因。如果把视框调整大点的话，就可以大幅度减少被截断点的数量。所以，为了保证旋转后的图像不被截断，因此我们需要计算一个合理的目标图像的Size，让我们的感兴趣区域得到完整的显示。</p>
+<p>　　下面的代码使用了一个极为简单的策略，它将原始图像与目标图像都进行了扩大化。首先新建一个尺寸为原始图像1.5倍的新图像，接着把原始图像映射到新图像上，于是我们得到了一个显示区域(视框)扩大化后的原始图像。显示区域扩大以后，那些在原图像中没有值的像素被置了一个初值。</p>
+<p>　　接着调用warpAffine函数，使用新图像的大小作为目标图像的大小。warpAffine函数会将新图像旋转，并用目标图像尺寸的视框去显示它。于是我们得到了一个所有感兴趣区域都被完整显示的旋转后图像。</p>
+<p>　　这样，我们再使用getRectSubPix()函数就可以获得想要的车牌区域了。</p>
+<p style="text-align: center;"><img src="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/262016004586463.jpg" alt=""></p>
+<p style="text-align: center;"><span style="font-family: 黑体;">图20 扩大化旋转后图像不再被截断</span></p>
+<p>　　以下就是旋转函数<span style="font-family: &#39;Times New Roman&#39;;">rotation</span><span style="font-family: 宋体;">的代码。</span></p>
+<div class="cnblogs_code" onclick="cnblogs_code_show(&#39;1d02c105-e904-42d2-ae13-af815541bd37&#39;)"><img id="code_img_closed_1d02c105-e904-42d2-ae13-af815541bd37" class="code_img_closed" src="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/ContractedBlock.gif" alt=""><img id="code_img_opened_1d02c105-e904-42d2-ae13-af815541bd37" class="code_img_opened" style="display: none;" onclick="cnblogs_code_hide(&#39;1d02c105-e904-42d2-ae13-af815541bd37&#39;,event)" src="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/ExpandedBlockStart.gif" alt="">
+<div id="cnblogs_code_open_1d02c105-e904-42d2-ae13-af815541bd37" class="cnblogs_code_hide">
+<pre><span style="color: #008000;">//</span><span style="color: #008000;">! 旋转操作</span>
+<span style="color: #0000ff;">bool</span> CPlateLocate::rotation(Mat&amp; <span style="color: #0000ff;">in</span>, Mat&amp; <span style="color: #0000ff;">out</span>, <span style="color: #0000ff;">const</span> Size rect_size, <span style="color: #0000ff;">const</span> Point2f center, <span style="color: #0000ff;">const</span> <span style="color: #0000ff;">double</span><span style="color: #000000;"> angle)
+{
+    Mat in_large;
+    in_large.create(</span><span style="color: #0000ff;">in</span>.rows*<span style="color: #800080;">1.5</span>, <span style="color: #0000ff;">in</span>.cols*<span style="color: #800080;">1.5</span>, <span style="color: #0000ff;">in</span><span style="color: #000000;">.type());
+
+    </span><span style="color: #0000ff;">int</span> x = in_large.cols / <span style="color: #800080;">2</span> - center.x &gt; <span style="color: #800080;">0</span> ? in_large.cols / <span style="color: #800080;">2</span> - center.x : <span style="color: #800080;">0</span><span style="color: #000000;">;
+    </span><span style="color: #0000ff;">int</span> y = in_large.rows / <span style="color: #800080;">2</span> - center.y &gt; <span style="color: #800080;">0</span> ? in_large.rows / <span style="color: #800080;">2</span> - center.y : <span style="color: #800080;">0</span><span style="color: #000000;">;
+
+    </span><span style="color: #0000ff;">int</span> width = x + <span style="color: #0000ff;">in</span>.cols &lt; in_large.cols ? <span style="color: #0000ff;">in</span>.cols : in_large.cols -<span style="color: #000000;"> x;
+    </span><span style="color: #0000ff;">int</span> height = y + <span style="color: #0000ff;">in</span>.rows &lt; in_large.rows ? <span style="color: #0000ff;">in</span>.rows : in_large.rows -<span style="color: #000000;"> y;
+
+    </span><span style="color: #008000;">/*</span><span style="color: #008000;">assert(width == in.cols);
+    assert(height == in.rows);</span><span style="color: #008000;">*/</span>
+
+    <span style="color: #0000ff;">if</span> (width != <span style="color: #0000ff;">in</span>.cols || height != <span style="color: #0000ff;">in</span><span style="color: #000000;">.rows)
+        </span><span style="color: #0000ff;">return</span> <span style="color: #0000ff;">false</span><span style="color: #000000;">;
+
+    Mat imageRoi </span>=<span style="color: #000000;"> in_large(Rect(x, y, width, height));
+    addWeighted(imageRoi, </span><span style="color: #800080;">0</span>, <span style="color: #0000ff;">in</span>, <span style="color: #800080;">1</span>, <span style="color: #800080;">0</span><span style="color: #000000;">, imageRoi);
+
+    Point2f center_diff(</span><span style="color: #0000ff;">in</span>.cols/<span style="color: #800080;">2</span>, <span style="color: #0000ff;">in</span>.rows/<span style="color: #800080;">2</span><span style="color: #000000;">);
+    Point2f new_center(in_large.cols </span>/ <span style="color: #800080;">2</span>, in_large.rows / <span style="color: #800080;">2</span><span style="color: #000000;">);
+
+    Mat rot_mat </span>= getRotationMatrix2D(new_center, angle, <span style="color: #800080;">1</span><span style="color: #000000;">);
+
+    </span><span style="color: #008000;">/*</span><span style="color: #008000;">imshow("in_copy", in_large);
+    waitKey(0);</span><span style="color: #008000;">*/</span><span style="color: #000000;">
+
+    Mat mat_rotated;
+    warpAffine(in_large, mat_rotated, rot_mat, Size(in_large.cols, in_large.rows), CV_INTER_CUBIC);
+
+    </span><span style="color: #008000;">/*</span><span style="color: #008000;">imshow("mat_rotated", mat_rotated);
+    waitKey(0);</span><span style="color: #008000;">*/</span><span style="color: #000000;">
+
+    Mat img_crop;
+    getRectSubPix(mat_rotated, Size(rect_size.width, rect_size.height), new_center, img_crop);
+
+    </span><span style="color: #0000ff;">out</span> =<span style="color: #000000;"> img_crop;
+
+    </span><span style="color: #008000;">/*</span><span style="color: #008000;">imshow("img_crop", img_crop);
+    waitKey(0);</span><span style="color: #008000;">*/</span>
+
+    <span style="color: #0000ff;">return</span> <span style="color: #0000ff;">true</span><span style="color: #000000;">;
+
+    
+}</span></pre>
+</div>
+<span class="cnblogs_code_collapse">View Code</span></div>
+<p>&nbsp;</p>
+<p>　<a name="secondfourth"></a><span style="font-size: 15px;"><strong><span style="font-family: 黑体;">4.偏斜判断</span></strong></span></p>
+<p>　　当我们对ROI进行旋转以后，下面一步工作就是把RotataedRect部分从ROI中截取出来，这里可以使用getRectSubPix方法，这个函数可以在被旋转后的图像中截取一个正的矩形图块出来，并赋值到一个新的Mat中，称为车牌区域。</p>
+<p>　　下步工作就是分析截取后的车牌区域。车牌区域里的车牌分为正角度和偏斜角度两种。对于正的角度而言，可以看出车牌区域就是车牌，因此直接输出即可。而对于偏斜角度而言，车牌是平行四边形，与矩形的车牌区域不重合。</p>
+<p>　　如何判断一个图像中的图形是否是平行四边形？</p>
+<p>　　一种简单的思路就是对图像二值化，然后根据二值化图像进行判断。图像二值化的方法有很多种，假设我们这里使用一开始在车牌定位功能中使用的大津阈值二值化法的话，效果不会太好。因为大津阈值是自适应阈值，在完整的图像中二值出来的平行四边形可能在小的局部图像中就不再是。最好的办法是使用在前面定位模块生成后的原图的二值图像，我们通过同样的操作就可以在原图中截取一个跟车牌区域对应的二值化图像。</p>
+<p>　　下图就是一个二值化车牌区域获得的过程。</p>
+<p style="text-align: center;"><img src="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/262017013496465.jpg" alt=""></p>
+<p style="text-align: center;"><span style="font-family: 黑体;">图21 二值化的车牌区域</span></p>
+<p style="text-align: center;">&nbsp;</p>
+<p>　　接下来就是对二值化车牌区域进行处理。为了判断二值化图像中白色的部分是平行四边形。一种简单的做法就是从图像中选择一些特定的行。计算在这个行中，第一个全为0的串的长度。从几何意义上来看，这就是平行四边形斜边上某个点距离外接矩形的长度。</p>
+<p>　　假设我们选择的这些行位于二值化图像高度的1/4，2/4，3/4处的话，如果是白色图形是矩形的话，这些串的大小应该是相等或者相差很小的，相反如果是平行四边形的话，那么这些串的大小应该不等，并且呈现一个递增或递减的关系。通过这种不同，我们就可以判断车牌区域里的图形，究竟是矩形还是平行四边形。</p>
+<p>　　偏斜判断的另一个重要作用就是，计算平行四边形倾斜的斜率，这个斜率值用来在下面的仿射变换中发挥<span style="line-height: 1.5;">作用。我们使用一个简单的公式去计算这个斜率，那就是利用上面判断过程中使用的串大小，假设二值化图像高度的1/4，2/4，3/4处对应的串的大小分别为len1，len2，len3，车牌区域的高度为Height。一个计算斜率slope的计算公式就是：(len3-len1)/Height*2。</span></p>
+<p><span style="line-height: 1.5;">　　Slope的直观含义见下图。</span></p>
+<p>&nbsp;</p>
+<p style="text-align: center;">&nbsp;<img src="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/262133062869646.jpg" alt=""></p>
+<p style="text-align: center;"><span style="font-family: 黑体;">&nbsp;图22 slope的几何含义</span></p>
+<p style="text-align: center;">&nbsp;</p>
+<p>　　需要说明的，这个计算结果在平行四边形是右斜时是负值，而在左斜时则是正值。于是可以根据slope的正负判断平行四边形是右斜或者左斜。在实践中，会发生一些公式不能应对的情况，例如像下图这种情况，斜边的部分区域发生了内凹或者外凸现象。这种现象会导致len1,len2或者len3的计算有误，因此slope也会不准。</p>
+<p>&nbsp;</p>
+<p style="text-align: center;"><img src="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/252243267245127.jpg" alt=""></p>
+<p style="text-align: center;"><span style="font-family: 黑体;">图23 内凹现象</span></p>
+<p>　　为了实现一个鲁棒性更好的计算方法，可以用(len2-len1)/Height*4与(len3-len1)/Height*2两者之间更靠近tan(angle)的值作为solpe的值（在这里，angle代表的是原来RotataedRect的角度）。</p>
+<p>　　多采取了一个slope备选的好处是可以避免单点的内凹或者外凸，但这仍然不是最好的解决方案。在最后的讨论中会介绍一个其他的实现思路。</p>
+<p>　　完成偏斜判断与斜率计算的函数是isdeflection，下面是它的代码。</p>
+<div class="cnblogs_code" onclick="cnblogs_code_show(&#39;9df2a77f-f5ba-4d84-93f9-b356a59a14b9&#39;)"><img id="code_img_closed_9df2a77f-f5ba-4d84-93f9-b356a59a14b9" class="code_img_closed" src="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/ContractedBlock.gif" alt=""><img id="code_img_opened_9df2a77f-f5ba-4d84-93f9-b356a59a14b9" class="code_img_opened" style="display: none;" onclick="cnblogs_code_hide(&#39;9df2a77f-f5ba-4d84-93f9-b356a59a14b9&#39;,event)" src="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/ExpandedBlockStart.gif" alt="">
+<div id="cnblogs_code_open_9df2a77f-f5ba-4d84-93f9-b356a59a14b9" class="cnblogs_code_hide">
+<pre><span style="color: #008000;">//</span><span style="color: #008000;">! 是否偏斜
+</span><span style="color: #008000;">//</span><span style="color: #008000;">! 输入二值化图像，输出判断结果</span>
+<span style="color: #0000ff;">bool</span> CPlateLocate::isdeflection(<span style="color: #0000ff;">const</span> Mat&amp; <span style="color: #0000ff;">in</span>, <span style="color: #0000ff;">const</span> <span style="color: #0000ff;">double</span> angle, <span style="color: #0000ff;">double</span>&amp;<span style="color: #000000;"> slope)
+{
+    </span><span style="color: #0000ff;">int</span> nRows = <span style="color: #0000ff;">in</span><span style="color: #000000;">.rows;
+    </span><span style="color: #0000ff;">int</span> nCols = <span style="color: #0000ff;">in</span><span style="color: #000000;">.cols;
+
+    assert(</span><span style="color: #0000ff;">in</span>.channels() == <span style="color: #800080;">1</span><span style="color: #000000;">);
+
+    </span><span style="color: #0000ff;">int</span> comp_index[<span style="color: #800080;">3</span><span style="color: #000000;">];
+    </span><span style="color: #0000ff;">int</span> len[<span style="color: #800080;">3</span><span style="color: #000000;">];
+
+    comp_index[</span><span style="color: #800080;">0</span>] = nRows / <span style="color: #800080;">4</span><span style="color: #000000;">;
+    comp_index[</span><span style="color: #800080;">1</span>] = nRows / <span style="color: #800080;">4</span> * <span style="color: #800080;">2</span><span style="color: #000000;">;
+    comp_index[</span><span style="color: #800080;">2</span>] = nRows / <span style="color: #800080;">4</span> * <span style="color: #800080;">3</span><span style="color: #000000;">;
+
+    </span><span style="color: #0000ff;">const</span> uchar*<span style="color: #000000;"> p;
+    
+    </span><span style="color: #0000ff;">for</span> (<span style="color: #0000ff;">int</span> i = <span style="color: #800080;">0</span>; i &lt; <span style="color: #800080;">3</span>; i++<span style="color: #000000;">)
+    {
+        </span><span style="color: #0000ff;">int</span> index =<span style="color: #000000;"> comp_index[i];
+        p </span>= <span style="color: #0000ff;">in</span>.ptr&lt;uchar&gt;<span style="color: #000000;">(index);
+
+        </span><span style="color: #0000ff;">int</span> j = <span style="color: #800080;">0</span><span style="color: #000000;">;
+        </span><span style="color: #0000ff;">int</span> value = <span style="color: #800080;">0</span><span style="color: #000000;">;
+        </span><span style="color: #0000ff;">while</span> (<span style="color: #800080;">0</span> == value &amp;&amp; j &lt;<span style="color: #000000;"> nCols)
+            value </span>= <span style="color: #0000ff;">int</span>(p[j++<span style="color: #000000;">]);
+
+        len[i] </span>=<span style="color: #000000;"> j;
+    }
+
+    </span><span style="color: #008000;">//</span><span style="color: #008000;">cout &lt;&lt; "len[0]:" &lt;&lt; len[0] &lt;&lt; endl;
+    </span><span style="color: #008000;">//</span><span style="color: #008000;">cout &lt;&lt; "len[1]:" &lt;&lt; len[1] &lt;&lt; endl;
+    </span><span style="color: #008000;">//</span><span style="color: #008000;">cout &lt;&lt; "len[2]:" &lt;&lt; len[2] &lt;&lt; endl;</span>
+    
+    <span style="color: #0000ff;">double</span> maxlen = max(len[<span style="color: #800080;">2</span>], len[<span style="color: #800080;">0</span><span style="color: #000000;">]);
+    </span><span style="color: #0000ff;">double</span> minlen = min(len[<span style="color: #800080;">2</span>], len[<span style="color: #800080;">0</span><span style="color: #000000;">]);
+    </span><span style="color: #0000ff;">double</span> difflen = abs(len[<span style="color: #800080;">2</span>] - len[<span style="color: #800080;">0</span><span style="color: #000000;">]);
+    </span><span style="color: #008000;">//</span><span style="color: #008000;">cout &lt;&lt; "nCols:" &lt;&lt; nCols &lt;&lt; endl;</span>
+
+    <span style="color: #0000ff;">double</span> PI = <span style="color: #800080;">3.14159265</span><span style="color: #000000;">;
+    </span><span style="color: #0000ff;">double</span> g = tan(angle * PI / <span style="color: #800080;">180.0</span><span style="color: #000000;">);
+
+    </span><span style="color: #0000ff;">if</span> (maxlen - len[<span style="color: #800080;">1</span>] &gt; nCols/<span style="color: #800080;">32</span> || len[<span style="color: #800080;">1</span>] - minlen &gt; nCols/<span style="color: #800080;">32</span><span style="color: #000000;"> ) {
+        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 如果斜率为正，则底部在下，反之在上</span>
+        <span style="color: #0000ff;">double</span> slope_can_1 = <span style="color: #0000ff;">double</span>(len[<span style="color: #800080;">2</span>] - len[<span style="color: #800080;">0</span>]) / <span style="color: #0000ff;">double</span>(comp_index[<span style="color: #800080;">1</span><span style="color: #000000;">]);
+        </span><span style="color: #0000ff;">double</span> slope_can_2 = <span style="color: #0000ff;">double</span>(len[<span style="color: #800080;">1</span>] - len[<span style="color: #800080;">0</span>]) / <span style="color: #0000ff;">double</span>(comp_index[<span style="color: #800080;">0</span><span style="color: #000000;">]);
+        </span><span style="color: #0000ff;">double</span> slope_can_3 = <span style="color: #0000ff;">double</span>(len[<span style="color: #800080;">2</span>] - len[<span style="color: #800080;">1</span>]) / <span style="color: #0000ff;">double</span>(comp_index[<span style="color: #800080;">0</span><span style="color: #000000;">]);
+
+        </span><span style="color: #008000;">/*</span><span style="color: #008000;">cout &lt;&lt; "slope_can_1:" &lt;&lt; slope_can_1 &lt;&lt; endl;
+        cout &lt;&lt; "slope_can_2:" &lt;&lt; slope_can_2 &lt;&lt; endl;
+        cout &lt;&lt; "slope_can_3:" &lt;&lt; slope_can_3 &lt;&lt; endl;</span><span style="color: #008000;">*/</span><span style="color: #000000;">
+ 
+        slope </span>= abs(slope_can_1 - g) &lt;= abs(slope_can_2 - g) ?<span style="color: #000000;"> slope_can_1 : slope_can_2;
+
+        </span><span style="color: #008000;">/*</span><span style="color: #008000;">slope = max(  double(len[2] - len[0]) / double(comp_index[1]),
+            double(len[1] - len[0]) / double(comp_index[0]));</span><span style="color: #008000;">*/</span>
+        
+        <span style="color: #008000;">//</span><span style="color: #008000;">cout &lt;&lt; "slope:" &lt;&lt; slope &lt;&lt; endl;</span>
+        <span style="color: #0000ff;">return</span> <span style="color: #0000ff;">true</span><span style="color: #000000;">;
+    }
+    </span><span style="color: #0000ff;">else</span><span style="color: #000000;"> {
+        slope </span>= <span style="color: #800080;">0</span><span style="color: #000000;">;
+    }
+
+    </span><span style="color: #0000ff;">return</span> <span style="color: #0000ff;">false</span><span style="color: #000000;">;
+}</span></pre>
+</div>
+<span class="cnblogs_code_collapse">View Code</span></div>
+<p>&nbsp;</p>
+<p>　<span style="font-size: 14px;"><a name="secondfifth"></a><span style="font-size: 15px;"><strong><span style="font-family: 黑体;">5.仿射变换</span></strong></span></span></p>
+<p>　　俗话说：行百里者半九十。前面已经做了如此多的工作，应该可以实现偏斜扭转功能了吧？但在最后的道路中，仍然有问题等着我们。</p>
+<p>　　我们已经实现了旋转功能，并且在旋转后的区域中截取了车牌区域，然后判断车牌区域中的图形是一个平行四边形。下面要做的工作就是把平行四边形扭正成一个矩形。</p>
+<p style="text-align: center;"><img src="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/252135286926466.jpg" alt=""></p>
+<p style="text-align: center;"><span style="line-height: 1.5; font-family: 黑体;">图24 从平行四边形车牌到矩形车牌</span></p>
+<p>&nbsp;</p>
+<p>　　首先第一个问题就是解决如何从平行四边形变换成一个矩形的问题。opencv提供了一个函数warpAffine，就是仿射变换函数。注意，warpAffine不仅可以让图像旋转（前面介绍过），也可以进行仿射变换，真是一个多才多艺的函数。o</p>
+<p>　　通过仿射变换函数可以把任意的矩形拉伸成其他的平行四边形。opencv的官方文档里给了一个示例，值得注意的是，这个示例演示的是把矩形变换为平行四边形，跟我们想要的恰恰相反。但没关系，我们先看一下它的使用方法。</p>
+<p>&nbsp;</p>
+<p style="text-align: center;"><img src="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/252136054273821.jpg" alt=""></p>
+<p style="text-align: center;"><span style="font-family: 黑体;">图25 opencv官网上对warpAffine使用的示例</span></p>
+<p style="text-align: center;">&nbsp;</p>
+<p>　　warpAffine方法要求输入的参数是原始图像的左上点，右上点，左下点，以及输出图像的左上点，右上点，左下点。注意，必须保证这些点的对应顺序，否则仿射的效果跟你预想的不一样。通过这个方法介绍，我们可以大概看出，opencv需要的是三个点对（共六个点）的坐标，然后建立一个映射关系，通过这个映射关系将原始图像的所有点映射到目标图像上。　</p>
+<p>&nbsp;</p>
+<p style="text-align: center;"><img src="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/252128350678001.jpg" alt="" width="577" height="258"></p>
+<p style="text-align: center;"><span style="font-family: 黑体;">图26 warpAffine需要的三个对应坐标点</span></p>
+<p style="text-align: center;">&nbsp;</p>
+<p>　　再回来看一下我们的需求，我们的目标是把车牌区域中的平行四边形映射为一个矩形。让我们做个假设，如果我们选取了车牌区域中的平行四边形车牌的三个关键点，然后再确定了我们希望将车牌扭正成的矩形的三个关键点的话，我们是否就可以实现从平行四边形车牌到矩形车牌的扭正？</p>
+<p>　　让我们画一幅图像来看看这个变换的作用。有趣的是，把一个平行四边形变换为矩形会对包围平行四边形车牌的区域带来影响。</p>
+<p>　　例如下图中，蓝色的实线代表扭转前的平行四边形车牌，虚线代表扭转后的。黑色的实线代表矩形的车牌区域，虚线代表扭转后的效果。可以看到，当蓝色车牌被扭转为矩形的同时，黑色车牌区域则被扭转为平行四边形。</p>
+<p>　　注意，当车牌区域扭变为平行四边形以后，需要显示它的视框增大了。跟我们在旋转图像时碰到的情形一样。</p>
+<p>&nbsp;</p>
+<p><img style="display: block; margin-left: auto; margin-right: auto;" src="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/271205308027690.png" alt=""></p>
+<p style="text-align: center;"><span style="font-family: 黑体;">&nbsp;图27 平行四边形的扭转带来的变化</span></p>
+<p style="text-align: center;">&nbsp;</p>
+<p>　　让我们先实际尝试一下仿射变换吧。<br> <br>　　根据仿射函数的需要，我们计算平行四边形车牌的三个关键点坐标。其中左上点的值(xdiff,0)中的xdiff就是根据车牌区域的高度height与平行四边形的斜率slope计算得到的：</p>
+<div class="cnblogs_code">
+<pre>xidff = Height * abs(slope)</pre>
+</div>
+<p>　　</p>
+<p>　　为了计算目标矩形的三个关键点坐标，我们首先需要把扭转后的原点坐标调整到平行四边形车牌区域左上角位置。见下图。</p>
+<p>&nbsp;</p>
+<p style="text-align: center;"><img src="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/271205440369700.png" alt=""></p>
+<p style="text-align: center;"><span style="font-family: 黑体;">图28 原图像的坐标计算</span></p>
+<p>　　依次推算关键点的三个坐标。它们应该是</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre>        plTri[<span style="color: #800080;">0</span>] = Point2f(<span style="color: #800080;">0</span> + xiff, <span style="color: #800080;">0</span><span style="color: #000000;">);
+        plTri[</span><span style="color: #800080;">1</span>] = Point2f(width - <span style="color: #800080;">1</span>, <span style="color: #800080;">0</span><span style="color: #000000;">);
+        plTri[</span><span style="color: #800080;">2</span>] = Point2f(<span style="color: #800080;">0</span>, height - <span style="color: #800080;">1</span><span style="color: #000000;">);
+
+        dstTri[</span><span style="color: #800080;">0</span>] = Point2f(xiff, <span style="color: #800080;">0</span><span style="color: #000000;">);
+        dstTri[</span><span style="color: #800080;">1</span>] = Point2f(width - <span style="color: #800080;">1</span>, <span style="color: #800080;">0</span><span style="color: #000000;">);
+        dstTri[</span><span style="color: #800080;">2</span>] = Point2f(xiff, height - <span style="color: #800080;">1</span>);</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>&nbsp;<span style="text-align: center; line-height: 1.5;">&nbsp;</span></p>
+<p>　　根据上图的坐标，我们开始进行一次仿射变换的尝试。</p>
+<p>　　opencv的warpAffine函数不会改变变换后图像的大小。而我们给它传递的目标图像的大小仅会决定视框的大小。不过这次我们不用担心视框的大小，因为根据图27看来，哪怕视框跟原始图像一样大，我们也足够显示扭正后的车牌。</p>
+<p>　　看看仿射的效果。晕，好像效果不对，视框的大小是足够了，但是图像往右偏了一些，导致最右边的字母没有显示全。</p>
+<p>&nbsp;</p>
+<p style="text-align: center;"><img src="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/252238480679363.jpg" alt="" width="265" height="73"></p>
+<p style="text-align: center;"><span style="font-family: 黑体;">图29 被偏移的车牌区域</span></p>
+<p>&nbsp;</p>
+<p>　　这次的问题不再是目标图像的大小问题了，而是视框的偏移问题。仔细观察一下我们的视框，倘若我们想把车牌全部显示的话，视框往右偏移一段距离，是不是就可以解决这个问题呢？为保证新的视框中心能够正好与车牌的中心重合，我们可以选择偏移xidff/2长度。正如下图所显示的一样。</p>
+<p>&nbsp;</p>
+<p style="text-align: center;"><img src="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/271206003645027.png" alt=""></p>
+<p style="text-align: center;"><span style="font-family: 黑体;">&nbsp;图30 考虑偏移的坐标计算</span></p>
+<p>&nbsp;</p>
+<p>　　视框往右偏移的含义就是目标图像Mat的原点往右偏移。如果原点偏移的话，那么仿射后图像的三个关键点的坐标要重新计算，都需要减去xidff/2大小。</p>
+<p>　　重新计算的映射点坐标为下：</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre>        plTri[<span style="color: #800080;">0</span>] = Point2f(<span style="color: #800080;">0</span> + xiff, <span style="color: #800080;">0</span><span style="color: #000000;">);
+        plTri[</span><span style="color: #800080;">1</span>] = Point2f(width - <span style="color: #800080;">1</span>, <span style="color: #800080;">0</span><span style="color: #000000;">);
+        plTri[</span><span style="color: #800080;">2</span>] = Point2f(<span style="color: #800080;">0</span>, height - <span style="color: #800080;">1</span><span style="color: #000000;">);
+
+        dstTri[</span><span style="color: #800080;">0</span>] = Point2f(xiff/<span style="color: #800080;">2</span>, <span style="color: #800080;">0</span><span style="color: #000000;">);
+        dstTri[</span><span style="color: #800080;">1</span>] = Point2f(width - <span style="color: #800080;">1</span> - xiff + xiff/<span style="color: #800080;">2</span>, <span style="color: #800080;">0</span><span style="color: #000000;">);
+        dstTri[</span><span style="color: #800080;">2</span>] = Point2f(xiff/<span style="color: #800080;">2</span>, height - <span style="color: #800080;">1</span>);</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>&nbsp;</p>
+<p>　　再试一次。果然，视框被调整到我们希望的地方了，我们可以看到所有的车牌区域了。这次解决的是warpAffine函数带来的视框偏移问题。</p>
+<p>&nbsp;</p>
+<p style="text-align: center;"><img src="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/252239213339359.jpg" alt="" width="252" height="70"></p>
+<p style="text-align: center;"><span style="font-family: 黑体;">图31 完整的车牌区域</span></p>
+<p style="text-align: center;">&nbsp;</p>
+<p><span style="line-height: 1.5;">　　关于坐标调整的另一个理解就是当中心点保持不变时，平行四边形扭正为矩形时恰好是左上的点往左偏移了xdiff/2的距离，左下的点往右偏移了xdiff/2的距离，形成一种对称的平移。可以使用ps或者inkspace类似的矢量制图软件看看“斜切”的效果，　</span></p>
+<p>　　如此一来，就完成了偏斜扭正的过程。需要注意的是，向左倾斜的车牌的视框偏移方向与向右倾斜的车牌是相反的。我们可以用slope的正负来判断车牌是左斜还是右斜。</p>
+<p>&nbsp;</p>
+<p>　　<a name="secondsixth"></a><strong><span style="font-size: 15px; font-family: 黑体;">6.</span><span style="font-size: 15px;"><strong><span style="font-family: 黑体;">总结</span></strong><span style="font-family: 宋体;"><br></span></span></strong></p>
+<p>　　通过以上过程，我们成功的将一个偏斜的车牌经过旋转变换等方法扭正过来。</p>
+<p>　　让我们回顾一下偏斜扭正过程。我们需要将一个偏斜的车牌扭正，为了达成这个目的我们首先需要对图像进行旋转。因为旋转是个计算量很大的函数，所以我们需要考虑不再用全图旋转，而是区域旋转。在旋转过程中，会发生图像截断问题，所以需要使用扩大化旋转方法。旋转以后，只有偏斜视角的车牌才需要扭正，正视角的车牌不需要，因此还需要一个偏斜判断过程。如此一来，偏斜扭正的过程需要旋转，区域截取，扩大化，偏斜判断等等过程的协助，这就是整个流程中有这么多步需要处理的原因。</p>
+<p>　　下图从另一个视角回顾了偏斜扭正的过程，主要说明了偏斜扭转中的两次“截取”过程。</p>
+<p style="text-align: center;"><img src="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/271158413337429.jpg" alt="" width="960" height="626"></p>
+<p style="text-align: center;"><span style="font-family: 黑体;">图32 偏斜扭正全过程</span></p>
+<p style="text-align: center;">&nbsp;</p>
+<ol>
+<li>首先我们获取RotatedRect，然后对每个RotatedRect获取外界矩形，也就是ROI区域。外接矩形的计算有可能获得不安全的坐标，因此需要使用安全的获取外界矩形的函数。</li>
+<li>获取安全外接矩形以后，在原图中截取这部分区域，并放置到一个新的Mat里，称之为ROI图像。这是本过程中第一次截取，使用Mat(Rect ...)函数。</li>
+<li>接下来对ROI图像根据RotatedRect的角度展开旋转，旋转的过程中使用了放大化旋转法，以此防止车牌区域被截断。</li>
+<li>旋转完以后，我们把已经转正的RotatedRect部分截取出来，称之为车牌区域。这是本过程中第二次截取，与第一次不同，这次截取使用getRectSubPix()方法。</li>
+<li>接下里使用偏斜判断函数来判断车牌区域里的车牌是否是倾斜的。</li>
+<li>如果是，则继续使用仿射变换函数wrapAffine来进行扭正处理，处理过程中要注意三个关键点的坐标。</li>
+<li>最后使用resize函数将车牌区域统一化为EasyPR的车牌大小。</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ol>
+<p>　　整个过程有一个统一的函数--deskew。下面是deskew的代码。</p>
+<div class="cnblogs_code" onclick="cnblogs_code_show(&#39;9283f81a-68c2-418d-b4de-e5ab113cf438&#39;)"><img id="code_img_closed_9283f81a-68c2-418d-b4de-e5ab113cf438" class="code_img_closed" src="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/ContractedBlock.gif" alt=""><img id="code_img_opened_9283f81a-68c2-418d-b4de-e5ab113cf438" class="code_img_opened" style="display: none;" onclick="cnblogs_code_hide(&#39;9283f81a-68c2-418d-b4de-e5ab113cf438&#39;,event)" src="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/ExpandedBlockStart.gif" alt="">
+<div id="cnblogs_code_open_9283f81a-68c2-418d-b4de-e5ab113cf438" class="cnblogs_code_hide">
+<pre><span style="color: #008000;">//</span><span style="color: #008000;">! 抗扭斜处理</span>
+<span style="color: #0000ff;">int</span> CPlateLocate::deskew(<span style="color: #0000ff;">const</span> Mat&amp; src, <span style="color: #0000ff;">const</span> Mat&amp; src_b, vector&lt;RotatedRect&gt;&amp; inRects, vector&lt;CPlate&gt;&amp;<span style="color: #000000;"> outPlates)
+{
+
+    </span><span style="color: #0000ff;">for</span> (<span style="color: #0000ff;">int</span> i = <span style="color: #800080;">0</span>; i &lt; inRects.size(); i++<span style="color: #000000;">)
+    {
+        RotatedRect roi_rect </span>=<span style="color: #000000;"> inRects[i];
+
+        </span><span style="color: #0000ff;">float</span> r = (<span style="color: #0000ff;">float</span>)roi_rect.size.width / (<span style="color: #0000ff;">float</span><span style="color: #000000;">)roi_rect.size.height;
+        </span><span style="color: #0000ff;">float</span> roi_angle =<span style="color: #000000;"> roi_rect.angle;
+
+        Size roi_rect_size </span>=<span style="color: #000000;"> roi_rect.size;
+        </span><span style="color: #0000ff;">if</span> (r &lt; <span style="color: #800080;">1</span><span style="color: #000000;">) {
+            roi_angle </span>= <span style="color: #800080;">90</span> +<span style="color: #000000;"> roi_angle;
+            swap(roi_rect_size.width, roi_rect_size.height);
+        }
+        
+        </span><span style="color: #0000ff;">if</span> (roi_angle - m_angle &lt; <span style="color: #800080;">0</span> &amp;&amp; roi_angle + m_angle &gt; <span style="color: #800080;">0</span><span style="color: #000000;">)
+        {
+            Rect_</span>&lt;<span style="color: #0000ff;">float</span>&gt;<span style="color: #000000;"> safeBoundRect;
+            </span><span style="color: #0000ff;">bool</span> isFormRect =<span style="color: #000000;"> calcSafeRect(roi_rect, src, safeBoundRect);
+            </span><span style="color: #0000ff;">if</span> (!<span style="color: #000000;">isFormRect)
+                </span><span style="color: #0000ff;">continue</span><span style="color: #000000;">;
+
+            Mat bound_mat </span>=<span style="color: #000000;"> src(safeBoundRect);
+            Mat bound_mat_b </span>=<span style="color: #000000;"> src_b(safeBoundRect);
+
+            Point2f roi_ref_center </span>= roi_rect.center -<span style="color: #000000;"> safeBoundRect.tl();
+            
+            Mat deskew_mat;
+            </span><span style="color: #0000ff;">if</span> ((roi_angle - <span style="color: #800080;">5</span> &lt; <span style="color: #800080;">0</span> &amp;&amp; roi_angle + <span style="color: #800080;">5</span> &gt; <span style="color: #800080;">0</span>)  || <span style="color: #800080;">90.0</span> == roi_angle || -<span style="color: #800080;">90.0</span> ==<span style="color: #000000;"> roi_angle) 
+            {
+                deskew_mat </span>=<span style="color: #000000;"> bound_mat;
+            } 
+            </span><span style="color: #0000ff;">else</span><span style="color: #000000;">
+            {
+                </span><span style="color: #008000;">//</span><span style="color: #008000;"> 角度在5到60度之间的，首先需要旋转 rotation</span>
+<span style="color: #000000;">                Mat rotated_mat;
+                Mat rotated_mat_b;
+
+                </span><span style="color: #0000ff;">if</span> (!<span style="color: #000000;">rotation(bound_mat, rotated_mat, roi_rect_size, roi_ref_center, roi_angle))
+                    </span><span style="color: #0000ff;">continue</span><span style="color: #000000;">;    
+
+                </span><span style="color: #0000ff;">if</span> (!<span style="color: #000000;">rotation(bound_mat_b, rotated_mat_b, roi_rect_size, roi_ref_center, roi_angle))
+                    </span><span style="color: #0000ff;">continue</span><span style="color: #000000;">;
+
+                </span><span style="color: #008000;">//</span><span style="color: #008000;"> 如果图片偏斜，还需要视角转换 affine</span>
+                <span style="color: #0000ff;">double</span> roi_slope = <span style="color: #800080;">0</span><span style="color: #000000;">;
+                
+                </span><span style="color: #0000ff;">if</span><span style="color: #000000;"> (isdeflection(rotated_mat_b, roi_angle, roi_slope))
+                {
+                    </span><span style="color: #008000;">//</span><span style="color: #008000;">cout &lt;&lt; "roi_angle:" &lt;&lt; roi_angle &lt;&lt; endl;
+                    </span><span style="color: #008000;">//</span><span style="color: #008000;">cout &lt;&lt; "roi_slope:" &lt;&lt; roi_slope &lt;&lt; endl;</span>
+<span style="color: #000000;">                    affine(rotated_mat, deskew_mat, roi_slope);
+                }
+                </span><span style="color: #0000ff;">else</span><span style="color: #000000;">
+                    deskew_mat </span>=<span style="color: #000000;"> rotated_mat;
+            }
+
+            Mat plate_mat;
+            plate_mat.create(HEIGHT, WIDTH, TYPE);
+
+            </span><span style="color: #0000ff;">if</span> (deskew_mat.cols &gt;= WIDTH || deskew_mat.rows &gt;=<span style="color: #000000;"> HEIGHT)
+                resize(deskew_mat, plate_mat, plate_mat.size(), </span><span style="color: #800080;">0</span>, <span style="color: #800080;">0</span><span style="color: #000000;">, INTER_AREA);
+            </span><span style="color: #0000ff;">else</span><span style="color: #000000;">
+                resize(deskew_mat, plate_mat, plate_mat.size(), </span><span style="color: #800080;">0</span>, <span style="color: #800080;">0</span><span style="color: #000000;">, INTER_CUBIC);
+            
+            </span><span style="color: #008000;">/*</span><span style="color: #008000;">if (1)
+            {
+                imshow("plate_mat", plate_mat);
+                waitKey(0);
+                destroyWindow("plate_mat");
+            }</span><span style="color: #008000;">*/</span><span style="color: #000000;">
+            
+
+            CPlate plate;
+            plate.setPlatePos(roi_rect);
+            plate.setPlateMat(plate_mat);
+            outPlates.push_back(plate);
+
+        }
+    }
+    </span><span style="color: #0000ff;">return</span> <span style="color: #800080;">0</span><span style="color: #000000;">;
+}</span></pre>
+</div>
+<span class="cnblogs_code_collapse">View Code</span></div>
+<p>&nbsp;</p>
+<p>　　最后是改善建议：</p>
+<p>　　角度偏斜判断时可以用白色区域的轮廓来确定平行四边形的四个点，然后用这四个点来计算斜率。这样算出来的斜率的可能鲁棒性更好。</p>
+<p>&nbsp;</p>
+<p><strong><span style="font-size: 16px;"><a name="third"></a>三<span style="font-family: &#39;Times New Roman&#39;;">.&nbsp;</span><span style="font-family: 宋体;">总结</span></span></strong></p>
+<p>　　本篇文档介绍了颜色定位与偏斜扭转等功能。其中颜色定位属于作者一直想做的定位方法，而偏斜扭转则是作者以前认为不可能解决的问题。这些问题现在都基本被攻克了，并在这篇文档中阐述，希望这篇文档可以帮助到读者。</p>
+<p>　　作者希望能在这片文档中不仅传递知识，也传授我在摸索过程中积累的经验。因为光知道怎么做并不能加深对车牌识别的认识，只有经历过失败，了解哪些思想尝试过，碰到了哪些问题，是如何解决的，才能帮助读者更好地认识这个系统的内涵。</p>
+<p>&nbsp;</p>
+<p><span><strong><span>　　最后，作者很感谢能够阅读到这里的读者。如果看完觉得好的话，还请轻轻点一下赞，你们的鼓励就是作者继续行文的动力。</span></strong></span></p>
+<p>&nbsp;</p>
+<p><span><em>　　<span>对EasyPR做下说明：<a title="EasyPR GitHub" href="https://github.com/liuruoze/EasyPR" target="_blank">EasyPR</a>，一个开源的中文车牌识别系统，代码托管在github。其次，<span><span>在前面的博客文章中，包含EasyPR至今的开发<a title="EasyPR--中文开源车牌识别系统 开发详解（1）" href="http://www.cnblogs.com/subconscious/p/4001896.html" target="_blank">文档与介绍</a>。在后续的文章中，作者会介绍EasyPR中字符分割与识别等相关内容，欢迎继续阅读。</span></span></span></em></span></p>
+<p>&nbsp;</p>
+<p><strong>版权说明：</strong></p>
+<p>&nbsp;</p>
+<p><strong>　　本文中的所有文字，图片，代码的版权都是属于作者和博客园共同所有。欢迎转载，但是务必注明作者与出处。任何未经允许的剽窃以及爬虫抓取都属于侵权，作者和博客园保留所有权利。</strong></p>
+<p>&nbsp;</p>
+<p><strong>参考文献：</strong></p>
+<p><strong>　　</strong>1.<a href="http://blog.csdn.net/xiaowei_cqu/article/details/7616044" target="_blank">http://blog.csdn.net/xiaowei_cqu/article/details/7616044</a></p>
+<p>　　2.<a href="http://docs.opencv.org/doc/tutorials/imgproc/imgtrans/warp_affine/warp_affine.html" target="_blank">http://docs.opencv.org/doc/tutorials/imgproc/imgtrans/warp_affine/warp_affine.html</a><a href="http://www.opencv.org.cn/opencvdoc/2.3.2/html/doc/tutorials/imgproc/erosion_dilatation/erosion_dilatation.html" target="_blank"><br></a></p>
+<p>&nbsp;</p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory"></div>
+<div id="EntryTag">标签: <a href="http://www.cnblogs.com/subconscious/tag/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">图像处理</a>, <a href="http://www.cnblogs.com/subconscious/tag/%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB/">图像识别</a></div>
+<div id="blog_post_info"><div id="green_channel">
+        <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(4351007,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+            <a id="green_channel_follow" onclick="follow(&#39;edd4356d-003f-e411-b908-9dcfd8948a71&#39;);" href="javascript:void(0);">关注我</a>
+    <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
+    <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/icon_weibo_24.png" alt=""></a>
+    <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/subconscious/" target="_blank"><img src="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/20140918201411.png" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/subconscious/">计算机的潜意识</a><br>
+            <a href="http://home.cnblogs.com/u/subconscious/followees">关注 - 12</a><br>
+            <a href="http://home.cnblogs.com/u/subconscious/followers">粉丝 - 1424</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor">荣誉：<a href="http://www.cnblogs.com/expert/" target="_blank">推荐博客</a></div>
+    <div id="author_profile_follow">
+                <a href="javascript:void(0);" onclick="follow(&#39;edd4356d-003f-e411-b908-9dcfd8948a71&#39;);return false;">+加关注</a>
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit" onclick="votePost(4351007,&#39;Digg&#39;)">
+        <span class="diggnum" id="digg_count">86</span>
+    </div>
+    <div class="buryit" onclick="votePost(4351007,&#39;Bury&#39;)">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+</div>
+<script type="text/javascript">
+    currentDiggType = 0;
+</script></div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/subconscious/p/4311550.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/subconscious/p/4311550.html" title="发布于2015-03-04 12:25">小议“数据开放”</a><br><a href="http://www.cnblogs.com/subconscious/p/4660952.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/subconscious/p/4660952.html" title="发布于2015-07-28 21:55">EasyPR--开发详解（7）字符分割</a><br></div>
+</div>
+
+
+		</div>
+		<div class="postDesc">posted @ <span id="post-date">2015-03-27 19:51</span> <a href="http://www.cnblogs.com/subconscious/">计算机的潜意识</a> 阅读(<span id="post_view_count">15091</span>) 评论(<span id="post_comment_count">24</span>)  <a href="https://i.cnblogs.com/EditPosts.aspx?postid=4351007" rel="nofollow">编辑</a> <a href="http://www.cnblogs.com/subconscious/p/4351007.html#" onclick="AddToWz(4351007);return false;">收藏</a></div>
+	</div>
+	<script type="text/javascript">var allowComments=true,cb_blogId=198547,cb_entryId=4351007,cb_blogApp=currentBlogApp,cb_blogUserGuid='edd4356d-003f-e411-b908-9dcfd8948a71',cb_entryCreatedDate='2015/3/27 19:51:00';loadViewCount(cb_entryId);var cb_postType=1;</script>
+	
+</div><!--end: topics 文章、评论容器-->
+</div><a name="!comments"></a><div id="blog-comments-placeholder"><div id="comments_pager_top"></div>
+<br>
+<div class="feedback_area_title">评论列表</div>
+<div class="feedbackNoItems"></div>	
+
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4351007.html#3151949" class="layer">#1楼</a><a name="3151949" id="comment_anchor_3151949"></a>  <span class="comment_date">2015-03-30 09:32</span> <a id="a_comment_author_3151949" href="http://www.cnblogs.com/Qspace/" target="_blank">sportscar</a> <a href="http://msg.cnblogs.com/send/sportscar" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3151949" class="blog_comment_body">这个必须赞！！！！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3151949,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3151949,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4351007.html#3152021" class="layer">#2楼</a><a name="3152021" id="comment_anchor_3152021"></a>  <span class="comment_date">2015-03-30 10:13</span> <a id="a_comment_author_3152021" href="http://home.cnblogs.com/u/298140/" target="_blank">时间乞丐</a> <a href="http://msg.cnblogs.com/send/%E6%97%B6%E9%97%B4%E4%B9%9E%E4%B8%90" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3152021" class="blog_comment_body">必须顶一个。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3152021,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3152021,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4351007.html#3152088" class="layer">#3楼</a><a name="3152088" id="comment_anchor_3152088"></a>  <span class="comment_date">2015-03-30 10:55</span> <a id="a_comment_author_3152088" href="http://www.cnblogs.com/crping/" target="_blank">键舞飞扬</a> <a href="http://msg.cnblogs.com/send/%E9%94%AE%E8%88%9E%E9%A3%9E%E6%89%AC" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3152088" class="blog_comment_body">高大上呀</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3152088,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3152088,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4351007.html#3152165" class="layer">#4楼</a><a name="3152165" id="comment_anchor_3152165"></a>  <span class="comment_date">2015-03-30 11:34</span> <a id="a_comment_author_3152165" href="http://www.cnblogs.com/luohelc/" target="_blank">沃尔德</a> <a href="http://msg.cnblogs.com/send/%E6%B2%83%E5%B0%94%E5%BE%B7" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3152165" class="blog_comment_body">要不要这么屌，不明觉厉！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3152165,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3152165,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3152165_avatar" style="display:none;">http://pic.cnblogs.com/face/579860/20170107172604.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4351007.html#3152178" class="layer">#5楼</a><a name="3152178" id="comment_anchor_3152178"></a>  <span class="comment_date">2015-03-30 11:44</span> <a id="a_comment_author_3152178" href="http://www.cnblogs.com/sdlypyzq/" target="_blank">cv_ml_张欣男</a> <a href="http://msg.cnblogs.com/send/cv_ml_%E5%BC%A0%E6%AC%A3%E7%94%B7" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3152178" class="blog_comment_body">虽然远到不了商业应用的水平，但是我觉得作者可以写书了，这是一个非常实际的项目，在一步一步操作中可以把图像和机器学习都学习了。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3152178,&#39;Digg&#39;,this)">支持(3)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3152178,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3152178_avatar" style="display:none;">http://pic.cnblogs.com/face/171212/20151117131358.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4351007.html#3152211" class="layer">#6楼</a><a name="3152211" id="comment_anchor_3152211"></a>  <span class="comment_date">2015-03-30 12:40</span> <a id="a_comment_author_3152211" href="http://www.cnblogs.com/wusee/" target="_blank">无色</a> <a href="http://msg.cnblogs.com/send/%E6%97%A0%E8%89%B2" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3152211" class="blog_comment_body"><a href="http://www.cnblogs.com/subconscious/p/4351007.html#3152178" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3152178);">@</a>
+cv_ml_张欣男<br><fieldset class="comment_quote"><legend><a href="http://www.cnblogs.com/subconscious/p/4351007.html#3152178" title="查看引用原文">引用</a></legend>虽然远到不了商业应用的水平，但是我觉得作者可以写书了，这是一个非常实际的项目，在一步一步操作中可以把图像和机器学习都学习了。</fieldset><br>主要是速度慢，商业用的都是把程序写入芯片，穷举类似上面的模式，用opencv移植性好些。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3152211,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3152211,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4351007.html#3152323" class="layer">#7楼</a><a name="3152323" id="comment_anchor_3152323"></a>  <span class="comment_date">2015-03-30 14:39</span> <a id="a_comment_author_3152323" href="http://www.cnblogs.com/kalluwa/" target="_blank">kalluwa</a> <a href="http://msg.cnblogs.com/send/kalluwa" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3152323" class="blog_comment_body">经过我人眼的仔细比对，图11 偏斜扭转效果 中的右侧图，你是从别的图片中拉出来的。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3152323,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3152323,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4351007.html#3152324" class="layer">#8楼</a><a name="3152324" id="comment_anchor_3152324"></a>  <span class="comment_date">2015-03-30 14:40</span> <a id="a_comment_author_3152324" href="http://www.cnblogs.com/xcong/" target="_blank">xiaocong_soft</a> <a href="http://msg.cnblogs.com/send/xiaocong_soft" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3152324" class="blog_comment_body">真给力</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3152324,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3152324,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3152324_avatar" style="display:none;">http://pic.cnblogs.com/face/494159/20140316214348.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4351007.html#3152941" class="layer">#9楼</a><a name="3152941" id="comment_anchor_3152941"></a>  <span class="comment_date">2015-03-30 23:04</span> <a id="a_comment_author_3152941" href="http://home.cnblogs.com/u/738022/" target="_blank">琢艺轩是啥请百度哈</a> <a href="http://msg.cnblogs.com/send/%E7%90%A2%E8%89%BA%E8%BD%A9%E6%98%AF%E5%95%A5%E8%AF%B7%E7%99%BE%E5%BA%A6%E5%93%88" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3152941" class="blog_comment_body">给力！虽然暂时用不上，但相信总有一天会用到的。<br><br>琢艺轩</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3152941,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3152941,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4351007.html#3156362" class="layer">#10楼</a><a name="3156362" id="comment_anchor_3156362"></a>  <span class="comment_date">2015-04-05 09:18</span> <a id="a_comment_author_3156362" href="http://www.cnblogs.com/yiyan127/" target="_blank">赵御辩</a> <a href="http://msg.cnblogs.com/send/%E8%B5%B5%E5%BE%A1%E8%BE%A9" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3156362" class="blog_comment_body">博主辛苦了</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3156362,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3156362,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3156362_avatar" style="display:none;">http://pic.cnblogs.com/face/527068/20150614083109.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4351007.html#3162924" class="layer">#11楼</a><a name="3162924" id="comment_anchor_3162924"></a>  <span class="comment_date">2015-04-15 10:42</span> <a id="a_comment_author_3162924" href="http://home.cnblogs.com/u/744488/" target="_blank">紫蔚亦人</a> <a href="http://msg.cnblogs.com/send/%E7%B4%AB%E8%94%9A%E4%BA%A6%E4%BA%BA" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3162924" class="blog_comment_body">感谢博主分享，辛苦了，加油！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3162924,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3162924,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4351007.html#3177022" class="layer">#12楼</a><a name="3177022" id="comment_anchor_3177022"></a>  <span class="comment_date">2015-05-06 10:34</span> <a id="a_comment_author_3177022" href="http://home.cnblogs.com/u/753744/" target="_blank">INTme</a> <a href="http://msg.cnblogs.com/send/INTme" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3177022" class="blog_comment_body">感谢分享，字符识别和ANN的介绍什么时候能到位呢？</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3177022,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3177022,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4351007.html#3178228" class="layer">#13楼</a><a name="3178228" id="comment_anchor_3178228"></a>  <span class="comment_date">2015-05-07 17:16</span> <a id="a_comment_author_3178228" href="http://home.cnblogs.com/u/518438/" target="_blank">神采毅毅style</a> <a href="http://msg.cnblogs.com/send/%E7%A5%9E%E9%87%87%E6%AF%85%E6%AF%85style" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3178228" class="blog_comment_body">我的妈呀！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3178228,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3178228,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4351007.html#3191188" class="layer">#14楼</a><a name="3191188" id="comment_anchor_3191188"></a>  <span class="comment_date">2015-05-23 15:54</span> <a id="a_comment_author_3191188" href="http://home.cnblogs.com/u/760969/" target="_blank">caisunny</a> <a href="http://msg.cnblogs.com/send/caisunny" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3191188" class="blog_comment_body">感谢楼主，求字符分割和识别的介绍</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3191188,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3191188,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4351007.html#3199417" class="layer">#15楼</a><a name="3199417" id="comment_anchor_3199417"></a>  <span class="comment_date">2015-06-03 15:45</span> <a id="a_comment_author_3199417" href="http://home.cnblogs.com/u/605519/" target="_blank">hiCrystal</a> <a href="http://msg.cnblogs.com/send/hiCrystal" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3199417" class="blog_comment_body">楼主辛苦了！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3199417,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3199417,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4351007.html#3210609" class="layer">#16楼</a><a name="3210609" id="comment_anchor_3210609"></a>  <span class="comment_date">2015-06-17 23:03</span> <a id="a_comment_author_3210609" href="http://www.cnblogs.com/gqzhao/" target="_blank">gqzhao</a> <a href="http://msg.cnblogs.com/send/gqzhao" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3210609" class="blog_comment_body">楼主加油，未来给个c#方案的例子。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3210609,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3210609,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4351007.html#3218138" class="layer">#17楼</a><a name="3218138" id="comment_anchor_3218138"></a>  <span class="comment_date">2015-06-30 10:37</span> <a id="a_comment_author_3218138" href="http://home.cnblogs.com/u/779270/" target="_blank">小甘甘</a> <a href="http://msg.cnblogs.com/send/%E5%B0%8F%E7%94%98%E7%94%98" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3218138" class="blog_comment_body">博主微屌，期待来个MATLAB版本</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3218138,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3218138,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4351007.html#3364633" class="layer">#18楼</a><a name="3364633" id="comment_anchor_3364633"></a>  <span class="comment_date">2016-02-22 04:47</span> <a id="a_comment_author_3364633" href="http://www.cnblogs.com/zjyx/" target="_blank">zjyx</a> <a href="http://msg.cnblogs.com/send/zjyx" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3364633" class="blog_comment_body">看得好有意思</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3364633,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3364633,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3364633_avatar" style="display:none;">http://pic.cnblogs.com/face/771275/20151102211351.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4351007.html#3482485" class="layer">#19楼</a><a name="3482485" id="comment_anchor_3482485"></a>  <span class="comment_date">2016-08-03 19:59</span> <a id="a_comment_author_3482485" href="http://home.cnblogs.com/u/1001532/" target="_blank">咻咻咻biu</a> <a href="http://msg.cnblogs.com/send/%E5%92%BB%E5%92%BB%E5%92%BBbiu" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3482485" class="blog_comment_body">图20旋转后的图形不是在放大图像的正中央显示是为什么？</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3482485,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3482485,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4351007.html#3603174" class="layer">#20楼</a><a name="3603174" id="comment_anchor_3603174"></a>  <span class="comment_date">2017-01-13 16:19</span> <a id="a_comment_author_3603174" href="http://home.cnblogs.com/u/917664/" target="_blank">天若无影</a> <a href="http://msg.cnblogs.com/send/%E5%A4%A9%E8%8B%A5%E6%97%A0%E5%BD%B1" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3603174" class="blog_comment_body">好好，认真的看了两遍</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3603174,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3603174,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4351007.html#3649634" class="layer">#21楼</a><a name="3649634" id="comment_anchor_3649634"></a>  <span class="comment_date">2017-03-23 16:40</span> <a id="a_comment_author_3649634" href="http://home.cnblogs.com/u/1132734/" target="_blank">FY4</a> <a href="http://msg.cnblogs.com/send/FY4" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3649634" class="blog_comment_body">大大真強!!</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3649634,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3649634,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4351007.html#3726937" class="layer">#22楼</a><a name="3726937" id="comment_anchor_3726937"></a>  <span class="comment_date">2017-07-02 20:39</span> <a id="a_comment_author_3726937" href="http://www.cnblogs.com/sdlypyzq/" target="_blank">cv_ml_张欣男</a> <a href="http://msg.cnblogs.com/send/cv_ml_%E5%BC%A0%E6%AC%A3%E7%94%B7" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3726937" class="blog_comment_body">我有个问题，从什么角度看车牌（矩形），才能看成平行四边形？</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3726937,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3726937,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3726937_avatar" style="display:none;">http://pic.cnblogs.com/face/171212/20151117131358.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4351007.html#3764326" class="layer">#23楼</a><a name="3764326" id="comment_anchor_3764326"></a>  <span class="comment_date">2017-08-23 15:02</span> <a id="a_comment_author_3764326" href="http://www.cnblogs.com/zendu/" target="_blank">zyz913614263</a> <a href="http://msg.cnblogs.com/send/zyz913614263" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3764326" class="blog_comment_body">矫正，感觉可以用透视变换</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3764326,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3764326,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3764326_avatar" style="display:none;">http://pic.cnblogs.com/face/350722/20151228113624.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4351007.html#3798428" class="layer">#24楼</a><a name="3798428" id="comment_anchor_3798428"></a><span id="comment-maxId" style="display:none;">3798428</span><span id="comment-maxDate" style="display:none;">2017/9/27 15:47:29</span>  <span class="comment_date">2017-09-27 15:47</span> <a id="a_comment_author_3798428" href="http://home.cnblogs.com/u/1208283/" target="_blank">小蚂蚁要坚强哦</a> <a href="http://msg.cnblogs.com/send/%E5%B0%8F%E8%9A%82%E8%9A%81%E8%A6%81%E5%9D%9A%E5%BC%BA%E5%93%A6" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3798428" class="blog_comment_body">博主很厉害！我在运行自己的代码时也出现了error: (-215) 0 &lt;= roi.x &amp;&amp; 0 &lt;= roi.width &amp;&amp; roi.x + roi.width &lt;= m.cols &amp;&amp; 0 &lt;= roi.y &amp;&amp; 0 &lt;= roi.height &amp;&amp; roi.y + roi.height &lt;= m.rows in function Mat这个问题，可是不知道具体怎么改了</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3798428,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3798428,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	<div id="comments_pager_bottom"></div></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="http://www.cnblogs.com/subconscious/p/4351007.html#" onclick="return RefreshPage();">刷新页面</a><a href="http://www.cnblogs.com/subconscious/p/4351007.html#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login(&#39;commentform&#39;);">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】超50万VC++源码: 大型组态工控、电力仿真CAD与GIS源码库！</a><br><a href="http://click.aliyun.com/m/43774/" target="_blank">【缅怀】传奇谢幕，回顾霍金76载传奇人生</a><br><a href="https://cloud.tencent.com/act/campus?fromSource=gwzcw.860539.860539.860539" target="_blank">【推荐】腾讯云校园拼团福利，1核2G服务器10元/月！</a><br><a href="https://www.yunqi2050.com/#/index" target="_blank">【活动】2050 科技公益大会 - 年青人因科技而团聚</a><br></div>
+<div id="opt_under_post"></div>
+<div id="cnblogs_c1" class="c_ad_block"><a href="https://market.qcloud.com/act/wangjian/?fromSource=gwzcw.860541.860541.860541" target="_blank"><img width="300" height="250" src="./EasyPR--开发详解（5）颜色定位与偏斜扭转 - 计算机的潜意识 - 博客园_files/24442-20180314220122373-1718033865.jpg" alt="qcloud0314"></a></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="https://news.cnblogs.com/n/592036/" target="_blank">孙宏斌的护城河：辞职后留嫡系掌权 乐视仍是肥肉？</a><br> ·  <a href="https://news.cnblogs.com/n/592035/" target="_blank">火币前CTO张健：区块链大繁荣，尚需5到10年时间</a><br> ·  <a href="https://news.cnblogs.com/n/592034/" target="_blank">Uber自动驾驶汽车再出事故：人员受轻伤</a><br> ·  <a href="https://news.cnblogs.com/n/592025/" target="_blank">谷歌地图在几个城市提供轮椅行进辅助信息</a><br> ·  <a href="https://news.cnblogs.com/n/592033/" target="_blank">吃着越来越贵的外卖 你会想起当年的网约车吗？</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="cnblogs_c2" class="c_ad_block"><a href="http://click.aliyun.com/m/42835/" target="_blank"><img width="468" height="60" src="https://gw.alicdn.com/tfs/TB1mEZFaWmWBuNjy1XaXXXCbXXa-468-60.jpg" alt="阿里云0308" style="display: none !important;"></a></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/575255/" target="_blank">写给自学者的入门指南</a><br> ·  <a href="http://kb.cnblogs.com/page/578690/" target="_blank">和程序员谈恋爱</a><br> ·  <a href="http://kb.cnblogs.com/page/585734/" target="_blank">学会学习</a><br> ·  <a href="http://kb.cnblogs.com/page/588938/" target="_blank">优秀技术人的管理陷阱</a><br> ·  <a href="http://kb.cnblogs.com/page/590141/" target="_blank">作为一个程序员，数学对你到底有多重要</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+    fixPostBody();
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);   
+</script>
+</div>
+
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news">EasyPR讨论QQ群：一群：366392603, 四群：548362608。加前请注明EasyPR学习讨论。<div id="profile_block">昵称：<a href="https://home.cnblogs.com/u/subconscious/">计算机的潜意识</a><br>园龄：<a href="https://home.cnblogs.com/u/subconscious/" title="入园时间：2014-09-18">3年5个月</a><br>荣誉：<a href="https://www.cnblogs.com/expert/">推荐博客</a><br>粉丝：<a href="https://home.cnblogs.com/u/subconscious/followers/">1424</a><br>关注：<a href="https://home.cnblogs.com/u/subconscious/followees/">12</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="follow(&#39;edd4356d-003f-e411-b908-9dcfd8948a71&#39;)">+加关注</a></div><script>getFollowStatus('edd4356d-003f-e411-b908-9dcfd8948a71')</script></div></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+
+			<div id="blog-calendar" style=""><table id="blogCalendar" class="Cal" cellspacing="0" cellpadding="0" title="Calendar">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2018/02/01&#39;);return false;">&lt;</a></td><td align="center">2018年3月</td><td class="CalNextPrev" align="right"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2018/04/01&#39;);return false;">&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" align="center" abbr="日" scope="col">日</th><th class="CalDayHeader" align="center" abbr="一" scope="col">一</th><th class="CalDayHeader" align="center" abbr="二" scope="col">二</th><th class="CalDayHeader" align="center" abbr="三" scope="col">三</th><th class="CalDayHeader" align="center" abbr="四" scope="col">四</th><th class="CalDayHeader" align="center" abbr="五" scope="col">五</th><th class="CalDayHeader" align="center" abbr="六" scope="col">六</th></tr><tr><td class="CalOtherMonthDay" align="center">25</td><td class="CalOtherMonthDay" align="center">26</td><td class="CalOtherMonthDay" align="center">27</td><td class="CalOtherMonthDay" align="center">28</td><td align="center">1</td><td align="center">2</td><td class="CalWeekendDay" align="center">3</td></tr><tr><td class="CalWeekendDay" align="center">4</td><td align="center">5</td><td align="center">6</td><td align="center">7</td><td align="center">8</td><td align="center">9</td><td class="CalWeekendDay" align="center">10</td></tr><tr><td class="CalWeekendDay" align="center">11</td><td align="center">12</td><td align="center">13</td><td align="center">14</td><td align="center">15</td><td align="center">16</td><td class="CalTodayDay" align="center">17</td></tr><tr><td class="CalWeekendDay" align="center">18</td><td align="center">19</td><td align="center">20</td><td align="center">21</td><td align="center">22</td><td align="center">23</td><td class="CalWeekendDay" align="center">24</td></tr><tr><td class="CalWeekendDay" align="center">25</td><td align="center">26</td><td align="center">27</td><td align="center">28</td><td align="center">29</td><td align="center">30</td><td class="CalWeekendDay" align="center">31</td></tr><tr><td class="CalOtherMonthDay" align="center">1</td><td class="CalOtherMonthDay" align="center">2</td><td class="CalOtherMonthDay" align="center">3</td><td class="CalOtherMonthDay" align="center">4</td><td class="CalOtherMonthDay" align="center">5</td><td class="CalOtherMonthDay" align="center">6</td><td class="CalOtherMonthDay" align="center">7</td></tr>
+</tbody></table></div><script type="text/javascript">loadBlogDefaultCalendar();</script>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="sidebar_search" class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="sidebar_search_box">
+
+<div id="widget_my_google" class="div_my_zzk"><input type="text" name="google_q" id="google_q" onkeydown="return google_go_enter(event)" class="input_my_zzk">&nbsp;<input onclick="google_go()" type="button" value="谷歌搜索" class="btn_my_zzk"></div>
+</div>
+</div>
+
+</div><div id="sidebar_categories">
+<div id="sidebar_postarchive" class="catListPostArchive sidebar-block">
+<h3 class="catListTitle">随笔档案</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_0_Link_0" href="http://www.cnblogs.com/subconscious/archive/2017/12.html">2017年12月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_1" href="http://www.cnblogs.com/subconscious/archive/2016/12.html">2016年12月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_2" href="http://www.cnblogs.com/subconscious/archive/2016/07.html">2016年7月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_3" href="http://www.cnblogs.com/subconscious/archive/2016/03.html">2016年3月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_4" href="http://www.cnblogs.com/subconscious/archive/2015/12.html">2015年12月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_5" href="http://www.cnblogs.com/subconscious/archive/2015/07.html">2015年7月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_6" href="http://www.cnblogs.com/subconscious/archive/2015/03.html">2015年3月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_7" href="http://www.cnblogs.com/subconscious/archive/2015/02.html">2015年2月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_8" href="http://www.cnblogs.com/subconscious/archive/2014/12.html">2014年12月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_9" href="http://www.cnblogs.com/subconscious/archive/2014/10.html">2014年10月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_10" href="http://www.cnblogs.com/subconscious/archive/2014/09.html">2014年9月 (2)</a> </li>
+
+</ul>
+
+</div>
+
+</div><div id="sidebar_scorerank" class="sidebar-block">
+<div class="catListBlogRank">
+<h3 class="catListTitle">积分与排名</h3>
+<ul>
+	<li class="liScore">
+		积分 -	49370
+	</li>
+	<li class="liRank">
+		排名 -	7447
+	</li>
+</ul>
+</div>
+
+
+</div><div id="sidebar_recentcomments" class="sidebar-block"><div id="recent_comments_wrap">
+<div class="catListComment">
+<h3 class="catListTitle">最新评论</h3>
+
+	<div id="RecentCommentsBlock"><ul>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/subconscious/p/4107357.html#3925062">1. Re:从机器学习谈起</a></li>
+        <li class="recent_comment_body">不错，支持</li>
+        <li class="recent_comment_author">--小陀螺_coding</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/subconscious/p/8157268.html#3923099">2. Re:2017年总结</a></li>
+        <li class="recent_comment_body">@肥肥小牛非常感谢您的建议！...</li>
+        <li class="recent_comment_author">--计算机的潜意识</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/subconscious/p/8157268.html#3922721">3. Re:2017年总结</a></li>
+        <li class="recent_comment_body">另，本人有两点拙见：1、我有个朋友的亲戚就是做民间借贷的，经过深入交流发现，现在的逼债手段没有想象中那么“暴力”，而是几乎都“合法化”和“规范化”了。所以博主的案例真的是给大家提了个醒，要尽早采用法律......</li>
+        <li class="recent_comment_author">--肥肥小牛</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/subconscious/p/8157268.html#3922695">4. Re:2017年总结</a></li>
+        <li class="recent_comment_body">支持博主，祝好人好报！</li>
+        <li class="recent_comment_author">--肥肥小牛</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/subconscious/p/3979988.html#3921081">5. Re:EasyPR--一个开源的中文车牌识别系统</a></li>
+        <li class="recent_comment_body">博主，你好请问字符分割部分找到特殊字符之后，接下来的找最小外接矩形和分割代码在哪找？</li>
+        <li class="recent_comment_author">--上善若水ssrs</li>
+</ul>
+</div>
+</div>
+</div></div><div id="sidebar_topviewedposts" class="sidebar-block"><div id="topview_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">阅读排行榜</h3>
+	<div id="TopViewPostsBlock"><ul><li><a href="http://www.cnblogs.com/subconscious/p/5058741.html">1. 神经网络浅讲：从神经元到深度学习(107257)</a></li><li><a href="http://www.cnblogs.com/subconscious/p/4107357.html">2. 从机器学习谈起(75650)</a></li><li><a href="http://www.cnblogs.com/subconscious/p/3979988.html">3. EasyPR--一个开源的中文车牌识别系统(70854)</a></li><li><a href="http://www.cnblogs.com/subconscious/p/4001896.html">4. EasyPR--中文开源车牌识别系统 开发详解（1）(28167)</a></li><li><a href="http://www.cnblogs.com/subconscious/p/4013591.html">5. EasyPR--开发详解（2）车牌定位(27895)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topcommentedposts" class="sidebar-block"><div id="topfeedback_posts_wrap">
+<div class="catListFeedback">
+<h3 class="catListTitle">评论排行榜</h3>
+	<div id="TopFeedbackPostsBlock"><ul><li><a href="http://www.cnblogs.com/subconscious/p/4107357.html">1. 从机器学习谈起(147)</a></li><li><a href="http://www.cnblogs.com/subconscious/p/3979988.html">2. EasyPR--一个开源的中文车牌识别系统(61)</a></li><li><a href="http://www.cnblogs.com/subconscious/p/5058741.html">3. 神经网络浅讲：从神经元到深度学习(57)</a></li><li><a href="http://www.cnblogs.com/subconscious/p/4249581.html">4. EasyPR--开发详解（6）SVM开发详解(37)</a></li><li><a href="http://www.cnblogs.com/subconscious/p/4311550.html">5. 小议“数据开放”(28)</a></li></ul></div>
+</div>
+</div></div></div><script type="text/javascript">loadBlogSideColumn();</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright ©2018 计算机的潜意识
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+</body></html>

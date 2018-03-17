@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)http://www.cnblogs.com/subconscious/p/4249581.html -->
+<html lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EasyPR--开发详解（6）SVM开发详解 - 计算机的潜意识 - 博客园</title>
+<link type="text/css" rel="stylesheet" href="./EasyPR--开发详解（6）SVM开发详解 - 计算机的潜意识 - 博客园_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="./EasyPR--开发详解（6）SVM开发详解 - 计算机的潜意识 - 博客园_files/bundle-iMetro_HD.css">
+<link type="text/css" rel="stylesheet" href="./EasyPR--开发详解（6）SVM开发详解 - 计算机的潜意识 - 博客园_files/198547.css">
+<link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="./EasyPR--开发详解（6）SVM开发详解 - 计算机的潜意识 - 博客园_files/bundle-iMetro_HD-mobile.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/subconscious/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/subconscious/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/subconscious/wlwmanifest.xml">
+<script async="" src="./EasyPR--开发详解（6）SVM开发详解 - 计算机的潜意识 - 博客园_files/analytics.js"></script><script type="text/javascript" src="./EasyPR--开发详解（6）SVM开发详解 - 计算机的潜意识 - 博客园_files/encoder.js"></script><script src="./EasyPR--开发详解（6）SVM开发详解 - 计算机的潜意识 - 博客园_files/jquery-2.2.0.min.js"></script>
+<script type="text/javascript">var currentBlogApp = 'subconscious', cb_enable_mathjax=false;var isLogined=false;</script>
+<script src="./EasyPR--开发详解（6）SVM开发详解 - 计算机的潜意识 - 博客园_files/blog-common.js" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+<!--PageBeginHtml Block Begin-->
+<span id="forkongithub"><a href="https://github.com/liuruoze/EasyPR" target="_blank">Fork me on GitHub</a></span>
+<!--PageBeginHtml Block End-->
+
+<!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+	<a id="lnkBlogLogo" href="http://www.cnblogs.com/subconscious/"><img id="blogLogo" src="./EasyPR--开发详解（6）SVM开发详解 - 计算机的潜意识 - 博客园_files/logo.gif" alt="返回主页"></a>			
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/subconscious/">计算机的潜意识</a></h1>
+<h2>EasyPR讨论QQ群：一群：366392603, 四群：548362608。 加前请注明EasyPR学习讨论。</h2>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="blog_nav_sitehome" class="menu" href="http://www.cnblogs.com/">博客园</a></li>
+<li><a id="blog_nav_myhome" class="menu" href="http://www.cnblogs.com/subconscious/">首页</a></li>
+<li><a id="blog_nav_newpost" class="menu" rel="nofollow" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+<li><a id="blog_nav_contact" class="menu" rel="nofollow" href="https://msg.cnblogs.com/send/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E6%BD%9C%E6%84%8F%E8%AF%86">联系</a></li>
+<li><a id="blog_nav_rss" class="menu" href="http://www.cnblogs.com/subconscious/rss">订阅</a>
+<!--<a id="blog_nav_rss_image" class="aHeaderXML" href="http://www.cnblogs.com/subconscious/rss"><img src="//www.cnblogs.com/images/xml.gif" alt="订阅" /></a>--></li>
+<li><a id="blog_nav_admin" class="menu" rel="nofollow" href="https://i.cnblogs.com/">管理</a></li>
+</ul>
+		<div class="blogStats">
+			
+			<div id="blog_stats">
+<span id="stats_post_count">随笔 - 15&nbsp; </span>
+<span id="stats_article_count">文章 - 0&nbsp; </span>
+<span id="stats-comment_count">评论 - 505</span>
+</div>
+			
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+<div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class="post">
+		<h1 class="postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="http://www.cnblogs.com/subconscious/p/4249581.html">EasyPR--开发详解（6）SVM开发详解</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body" class="blogpost-body"><p>　　在前面的几篇文章中，我们介绍了EasyPR中<a href="http://www.cnblogs.com/subconscious/p/4047960.html" target="_blank">车牌定位模块</a>的相关内容。本文开始分析车牌定位模块后续步骤的车牌判断模块。车牌判断模块是EasyPR中的基于机器学习模型的一个模块，这个模型就是作者前文中<a title="从机器学习谈起" href="http://www.cnblogs.com/subconscious/p/4107357.html" target="_blank">从机器学习谈起</a>中提到的SVM（支持向量机）。<br><br>　　我们已经知道，车牌定位模块的输出是一些候选车牌的图片。但如何从这些候选车牌图片中甄选出真正的车牌，就是通过SVM模型判断/预测得到的。</p>
+<p>&nbsp;</p>
+<p style="text-align: center;"><span style="font-size: 18pt;"> <img src="./EasyPR--开发详解（6）SVM开发详解 - 计算机的潜意识 - 博客园_files/282154441444669.jpg" alt="">&nbsp;<span style="font-size: 18pt;"><span style="font-size: 18pt;"><img src="./EasyPR--开发详解（6）SVM开发详解 - 计算机的潜意识 - 博客园_files/282156000668497.jpg" alt=""></span></span> <img src="./EasyPR--开发详解（6）SVM开发详解 - 计算机的潜意识 - 博客园_files/282154576281223.jpg" alt=""> <img src="./EasyPR--开发详解（6）SVM开发详解 - 计算机的潜意识 - 博客园_files/282155316286077.jpg" alt="">　</span></p>
+<p style="text-align: center;"><span style="font-size: 18pt;"><img src="./EasyPR--开发详解（6）SVM开发详解 - 计算机的潜意识 - 博客园_files/282200017691606.jpg" alt="" width="47" height="75">&nbsp; </span></p>
+<p style="text-align: center;"><span style="font-size: 18pt;"><img src="./EasyPR--开发详解（6）SVM开发详解 - 计算机的潜意识 - 博客园_files/282156209099299.jpg" alt=""><br></span></p>
+<p style="text-align: center;"><span style="font-family: 黑体;">图1 从候选车牌中选出真正的车牌</span></p>
+<p>　　</p>
+<p>　　简单来说，EasyPR的车牌判断模块就是将候选车牌的图片一张张地输入到SVM模型中，然后问它，这是车牌么？如果SVM模型回答不是，那么就继续下一张，如果是，则把图片放到一个输出列表里。最后把列表输入到下一步处理。由于EasyPR使用的是列表作为输出，因此它可以输出一副图片中所有的车牌，不像一些车牌识别程序，只能输出一个车牌结果。</p>
+<p>&nbsp;</p>
+<p style="text-align: center;"><img src="./EasyPR--开发详解（6）SVM开发详解 - 计算机的潜意识 - 博客园_files/282202379873764.jpg" alt="" width="623" height="350">&nbsp;</p>
+<p style="text-align: center;">&nbsp;</p>
+<p style="text-align: center;"><img src="./EasyPR--开发详解（6）SVM开发详解 - 计算机的潜意识 - 博客园_files/281142526287195.png" alt="" width="151" height="32"></p>
+<p style="text-align: center;">&nbsp;<span style="font-family: 黑体;">图2 EasyPR输出多个车牌</span></p>
+<p>　　</p>
+<p>　　现在，让我们一步步地，进入这个SVM模型的核心看看，它是如何做到判断一副图片是车牌还是不是车牌的？本文主要分为三个大的部分：</p>
+<ol>
+<li><a href="http://www.cnblogs.com/subconscious/p/4249581.html#first">SVM应用</a>：描述如何利用SVM模型进行车牌图片的判断。</li>
+<li><a href="http://www.cnblogs.com/subconscious/p/4249581.html#second">SVM训练</a>：说明如何通过一系列步骤得到SVM模型。</li>
+<li><a href="http://www.cnblogs.com/subconscious/p/4249581.html#third">SVM调优</a>：讨论如何对SVM模型进行优化，使其效果更加好。</li>
+
+
+
+
+
+
+
+
+
+
+</ol>
+<p>&nbsp;</p>
+<p>　<strong><a name="first"></a>一.SVM应用</strong></p>
+<p>　　人类是如何判断一个张图片所表达的信息呢？简单来说，人类在成长过程中，大脑记忆了无数的图像，并且依次给这些图像打上了标签，例如太阳，天空，房子，车子等等。你们还记得当年上幼儿园时的那些教科书么，上面一个太阳，下面是文字。图像的组成事实上就是许多个像素，由像素组成的这些信息被输入大脑中，然后得出这个是什么东西的回答。我们在SVM模型中一开始输入的原始信息也是图像的所有像素，然后SVM模型通过对这些像素进行分析，输出这个图片是否是车牌的结论。</p>
+<p>&nbsp;</p>
+<p style="text-align: center;"><img src="./EasyPR--开发详解（6）SVM开发详解 - 计算机的潜意识 - 博客园_files/301645119098388.jpg" alt="" width="512" height="294"></p>
+<p style="text-align: center;"><span style="font-family: 黑体;">图3 通过图像来学习<br></span></p>
+<p>&nbsp;</p>
+<p>　　SVM模型处理的是最简单的情况，它只要回答是或者不是这个“二值”问题，比从许多类中检索要简单很多。</p>
+<p>　　我们可以看一下SVM进行判断的代码：</p>
+<div class="cnblogs_code" onclick="cnblogs_code_show(&#39;cd91012e-0c83-4afa-90ab-ba53e98aca4e&#39;)"><img id="code_img_closed_cd91012e-0c83-4afa-90ab-ba53e98aca4e" class="code_img_closed" src="./EasyPR--开发详解（6）SVM开发详解 - 计算机的潜意识 - 博客园_files/ContractedBlock.gif" alt=""><img id="code_img_opened_cd91012e-0c83-4afa-90ab-ba53e98aca4e" class="code_img_opened" style="display: none;" onclick="cnblogs_code_hide(&#39;cd91012e-0c83-4afa-90ab-ba53e98aca4e&#39;,event)" src="./EasyPR--开发详解（6）SVM开发详解 - 计算机的潜意识 - 博客园_files/ExpandedBlockStart.gif" alt="">
+<div id="cnblogs_code_open_cd91012e-0c83-4afa-90ab-ba53e98aca4e" class="cnblogs_code_hide">
+<pre><span style="color: #0000ff;">int</span> CPlateJudge::plateJudge(<span style="color: #0000ff;">const</span> vector&lt;Mat&gt;&amp;<span style="color: #000000;"> inVec,
+                                  vector</span>&lt;Mat&gt;&amp;<span style="color: #000000;"> resultVec)
+{
+    </span><span style="color: #0000ff;">int</span> num =<span style="color: #000000;"> inVec.size();
+    </span><span style="color: #0000ff;">for</span> (<span style="color: #0000ff;">int</span> j = <span style="color: #800080;">0</span>; j &lt; num; j++<span style="color: #000000;">)
+    {
+        Mat inMat </span>=<span style="color: #000000;"> inVec[j];
+        Mat p </span>= histeq(inMat).reshape(<span style="color: #800080;">1</span>, <span style="color: #800080;">1</span><span style="color: #000000;">);
+        p.convertTo(p, CV_32FC1);
+        </span><span style="color: #0000ff;">int</span> response = (<span style="color: #0000ff;">int</span><span style="color: #000000;">)svm.predict(p);
+        </span><span style="color: #0000ff;">if</span> (response == <span style="color: #800080;">1</span><span style="color: #000000;">)
+        {
+            resultVec.push_back(inMat);
+        }
+    }
+    </span><span style="color: #0000ff;">return</span> <span style="color: #800080;">0</span><span style="color: #000000;">;
+}</span></pre>
+</div>
+<span class="cnblogs_code_collapse">View Code</span></div>
+<p>&nbsp;</p>
+<p>　　首先我们读取这幅图片，然后把这幅图片转为OPENCV需要的格式；</p>
+<div class="cnblogs_code">
+<pre>    Mat p = histeq(inMat).reshape(<span style="color: #800080;">1</span>, <span style="color: #800080;">1</span><span style="color: #000000;">);
+    p.convertTo(p, CV_32FC1);</span></pre>
+</div>
+<p>　　接着调用svm的方法predict；</p>
+<div class="cnblogs_code">
+<pre>    <span style="color: #0000ff;">int</span> response = (<span style="color: #0000ff;">int</span>)svm.predict(p);</pre>
+</div>
+<p>　　perdict方法返回的值是1的话，就代表是车牌，否则就不是；</p>
+<div class="cnblogs_code">
+<pre>    <span style="color: #0000ff;">if</span> (response == <span style="color: #800080;">1</span><span style="color: #000000;">)
+    {
+        resultVec.push_back(inMat);
+    }</span></pre>
+</div>
+<p>　　svm是类CvSVM的一个对象。这个类是opencv里内置的一个机器学习类。</p>
+<div class="cnblogs_code">
+<pre>    CvSVM svm;</pre>
+</div>
+<p>　　opencv的CvSVM的实现基于libsvm（具体信息可以看opencv的官方文档的<a title="opencv CvSVM" href="http://docs.opencv.org/modules/ml/doc/support_vector_machines.html" target="_blank">介绍</a> ）。</p>
+<p>　　libsvm是台湾大学林智仁(Lin Chih-Jen)教授写的一个世界知名的svm库(可能算是目前业界使用率最高的一个库)。官方主页地址是<a href="http://www.csie.ntu.edu.tw/~cjlin/libsvm/" target="_blank">这里</a>。</p>
+<p>　　libsvm的实现基于SVM这个算法，90年代初由Vapnik等人提出。国内几篇较好的解释svm原理的博文：cnblog的<a title="机器学习中的算法(2)-支持向量机(SVM)基础" href="http://www.cnblogs.com/LeftNotEasy/archive/2011/05/18/2034566.html" target="_blank">LeftNotEasy</a>(解释的易懂)，pluskid的<a title="FreeMind" href="http://blog.pluskid.org/?page_id=683" target="_blank">博文</a>(专业有配图)。</p>
+<p>　　作为支持向量机的发明者，Vapnik是一位机器学习界极为重要的大牛。<a title="Vapnik join Facebook AI lab" href="http://venturebeat.com/2014/11/25/facebooks-ai-team-hires-vladimir-vapnik-father-of-the-popular-support-vector-machine-algorithm/" target="_blank">最近这位大牛也加入了Facebook</a>。</p>
+<p>&nbsp;</p>
+<p style="text-align: center;"><img style="display: block; margin-left: auto; margin-right: auto;" src="./EasyPR--开发详解（6）SVM开发详解 - 计算机的潜意识 - 博客园_files/301721312225879.jpg" alt=""><span style="font-family: 黑体;">图4 SVM之父Vapnik</span></p>
+<p>　　svm的perdict方法的输入是待预测数据的特征，也称之为features。在这里，我们输入的特征是图像全部的像素。由于svm要求输入的特征应该是一个向量，而Mat是与图像宽高对应的矩阵，因此在输入前我们需要使用reshape(1,1)方法把矩阵拉伸成向量。除了全部像素以外，也可以有其他的特征，具体看第三部分“SVM调优”。<br><br>　　predict方法的输出是float型的值，我们需要把它转变为int型后再进行判断。如果是1代表就是车牌，否则不是。这个"1"的取值是由你在训练时输入的标签决定的。标签，又称之为label，代表某个数据的分类。如果你给SVM模型输入一个车牌，并告诉它，这个图片的标签是5。那么你这边判断时所用的值就应该是5。<br><br>　　以上就是svm模型判断的全过程。事实上，在你使用EasyPR的过程中，这些全部都是透明的。你不需要转变图片格式，也不需要调用svm模型preditct方法，这些全部由EasyPR在内部调用。<br><br>　　那么，我们应该做什么？这里的关键在于CvSVM这个类。我在前面的机器学习论文中介绍过，机器学习过程的步骤就是首先你搜集大量的数据，然后把这些数据输入模型中训练，最后再把生成的模型拿出来使用。<br><br>　　训练和预测两个过程是分开的。也就是说你们在使用EasyPR时用到的CvSVM类是我在先前就训练好的。我是如何把我训练好的模型交给各位使用的呢？CvSVM类有个方法，把训练好的结果以xml文件的形式存储，我就是把这个xml文件随EasyPR发布，并让程序在执行前先加载好这个xml。这个xml的位置就是在文件夹Model下面--svm.xml文件。</p>
+<p>&nbsp;</p>
+<p style="text-align: center;"><img style="display: block; margin-left: auto; margin-right: auto;" src="./EasyPR--开发详解（6）SVM开发详解 - 计算机的潜意识 - 博客园_files/281659001759887.jpg" alt="" width="236" height="71"><span style="font-family: 黑体;">图5 model文件夹下的svm.xml</span></p>
+<p>　　</p>
+<p>　　如果看CPlateJudge的代码，在构造函数中调用了LoadModel()这个方法。</p>
+<div class="cnblogs_code">
+<pre><span style="color: #000000;">CPlateJudge::CPlateJudge()
+{
+    </span><span style="color: #008000;">//</span><span style="color: #008000;">cout &lt;&lt; "CPlateJudge" &lt;&lt; endl;</span>
+    m_path = <span style="color: #800000;">"</span><span style="color: #800000;">model/svm.xml</span><span style="color: #800000;">"</span><span style="color: #000000;">;
+    LoadModel();
+}</span></pre>
+</div>
+<p>　　LoadModel()方法的主要任务就是装载model文件夹下svm.xml这个模型。</p>
+<div class="cnblogs_code">
+<pre><span style="color: #0000ff;">void</span><span style="color: #000000;"> CPlateJudge::LoadModel()
+{
+    svm.clear();
+    svm.load(m_path.c_str(), </span><span style="color: #800000;">"</span><span style="color: #800000;">svm</span><span style="color: #800000;">"</span><span style="color: #000000;">);
+}</span></pre>
+</div>
+<p>　　如果你把这个xml文件换成其他的，那么你就可以改变EasyPR车牌判断的内核，从而实现你自己的车牌判断模块。<br><br>　　后面的部分全部是告诉你如何有效地实现一个自己的模型（也就是svm.xml文件）。如果你对EasyPR的需求仅仅在应用层面，那么到目前的了解就足够了。如果你希望能够改善EasyPR的效果，定制一个自己的车牌判断模块，那么请继续往下看。</p>
+<p>&nbsp;<br>　<strong><a name="second"></a>二.SVM训练</strong><br><br>　　恭喜你！从现在开始起，你将真正踏入机器学习这个神秘并且充满未知的领域。至今为止，机器学习很多方法的背后原理都非常复杂，但众多的实践都证明了其有效性。与许多其他学科不同，机器学习界更为关注的是最终方法的效果，也就是偏重以实践效果作为评判标准。因此非常适合从工程的角度入手，通过自己动手实践一个项目里来学习，然后再转入理论。这个过程已经被证明是<strong>有效</strong>的，本文的作者在开发EasyPR的时候，还没有任何机器学习的理论基础。后来的知识是将通过学习相关课程后获取的。<br><br>　　简而言之，SVM训练部分的目标就是通过一批数据，然后生成一个代表我们模型的xml文件。</p>
+<p>　　EasyPR中所有关于训练的方法都可以在<span style="color: #3366ff;">svm_train.cpp</span>中找到(1.0版位于train/code文件夹下，1.1版位于src/train文件夹下)。</p>
+<p>　　一个训练过程包含5个步骤，见下图：<br><img style="display: block; margin-left: auto; margin-right: auto;" src="./EasyPR--开发详解（6）SVM开发详解 - 计算机的潜意识 - 博客园_files/281958147532772.jpg" alt="" width="625" height="510"></p>
+<p style="text-align: center;"><span style="font-family: 黑体;">图6 一个完整的SVM训练流程</span></p>
+<p>　　</p>
+<p>　　下面具体讲解一下这5个步骤，步骤后面的括号里代表的是这个步骤主要的输入与输出。<br><br>　　<strong>1. preprocss</strong>（原始数据-&gt;学习数据(未标签))</p>
+<p>　　预处理步骤主要处理的是原始数据到学习数据的转换过程。原始数据（raw data)，表示你一开始拿到的数据。这些数据的情况是取决你具体的环境的，可能有各种问题。学习数据（learn data），是可以被输入到模型的数据。</p>
+<p>　　为了能够进入模型训练，必须将原始数据处理为学习数据，同时也可能进行了数据的筛选。比方说你有10000张原始图片，出于性能考虑，你只想用1000张图片训练，那么你的预处理过程就是将这10000张处理为符合训练要求的1000张。你生成的1000张图片中应该包含两类数据：真正的车牌图片和不是车牌的图片。如果你想让你的模型能够区分这两种类型。你就必须给它输入这两类的数据。</p>
+<p>　　通过EasyPR的车牌定位模块PlateLocate可以生成大量的候选车牌图片，里面包括模型需要的车牌和非车牌图片。但这些候选车牌是没有经过分类的，也就是说没有标签。下步工作就是给这些数据贴上标签。<br><br>　　<strong>2. label </strong>（学习数据(未标签)-&gt;学习数据）</p>
+<p>　　训练过程的第二步就是将未贴标签的数据转化为贴过标签的学习数据。我们所要做的工作只是将车牌图片放到一个文件夹里，非车牌图片放到另一个文件夹里。在EasyPR里，这两个文件夹分别叫做HasPlate和NoPlate。如果你打开train/data/plate_detect_svm后，你就会看到这两个压缩包，解压后就是打好标签的数据(1.1版本在同层learn data文件夹下面)。<br><br>　　如果有人问我开发一个机器学习系统最耗时的步骤是哪个，我会毫不犹豫的回答：“贴标签”。诚然，各位看到的压缩包里已经有打好标签的数据了。但各位可能不知道作者花在贴这些标签上的时间。粗略估计，整个EasyPR开发过程中有70%的时间都在贴标签。SVM模型还好，只有两个类，训练数据仅有1000张。到了ANN模型那里，字符的类数有40多个，而且训练数据有4000张左右。那时候的贴标签过程，真是不堪回首的回忆，来回移动文件导致作者手经常性的非常酸。后来我一度想找个实习生帮我做这些工作。但转念一想，这些苦我都不愿承担，何苦还要那些小伙子承担呢。“己所不欲，勿施于人”。算了，既然这是机器学习者的命，那就欣然接受吧。幸好在这段磨砺的时光，我逐渐掌握了一个方法，大幅度减少了我贴标签的时间与精力。不然，我可能还未开始写这个系列的教程，就已经累吐血了。开发EasyPR1.1版本时，新增了一大批数据，因此又有了贴标签的过程。幸好使用这个方法，使得相关时间大幅度减少。这个方法叫做<strong>逐次迭代自动标签法</strong>。在后面会介绍这个方法。</p>
+<p>　　贴标签后的车牌数据如下图：</p>
+<p><img src="./EasyPR--开发详解（6）SVM开发详解 - 计算机的潜意识 - 博客园_files/282233561915633.jpg" alt=""></p>
+<p style="text-align: center;"><span style="font-family: 黑体;">图7 在HasPlate文件夹下的图片</span></p>
+<p>　　贴标签后的非车牌数据下图：</p>
+<p style="text-align: left;"><img src="./EasyPR--开发详解（6）SVM开发详解 - 计算机的潜意识 - 博客园_files/282234217372038.jpg" alt="" width="936" height="404"></p>
+<p style="text-align: center;"><span style="font-family: 黑体;"><span style="font-family: 黑体;">图8 在NoPlate文件夹下的图片</span></span></p>
+<p>　　</p>
+<p>　　拥有了贴好标签的数据以后，下面的步骤是分组，也称之为divide过程。<br><br>　　<strong>3. divide </strong>（学习数据-&gt;分组数据）</p>
+<p>　　分组这个过程是EasyPR1.1版新引入的方法。</p>
+<p>　　在贴完标签以后，我拥有了车牌图片和非车牌图片共几千张。在我直接训练前，不急。先拿出30%的数据，只用剩下的70%数据进行SVM模型的训练，训练好的模型再用这30%数据进行一个效果测试。这30%数据充当的作用就是一个评判数据测试集，称之为test data，另70%数据称之为train data。于是一个完整的learn data被分为了train data和test data。</p>
+<p><img style="display: block; margin-left: auto; margin-right: auto;" src="./EasyPR--开发详解（6）SVM开发详解 - 计算机的潜意识 - 博客园_files/291159292373251.jpg" alt="" width="631" height="285"></p>
+<p style="text-align: center;"><span style="font-family: 黑体;"><span style="font-family: 黑体;">图9 数据分组过程</span></span>　　</p>
+<p>&nbsp;</p>
+<p>　　在EasyPR1.0版是没有test data概念的，所有数据都输入训练，然后直接在原始的数据上进行测试。直接在原始的数据集上测试与单独划分出30%的数据测试效果究竟有多少不同？</p>
+<p>　　<strong>事实上，我们训练出模型的根本目的是为了对未知的，新的数据进行预测与判断。</strong></p>
+<p>　　当使用训练的数据进行测试时，由于模型已经考虑到了训练数据的特征，因此很难将这个测试效果推广到其他未知数据上。如果使用单独的测试集进行验证，由于测试数据集跟模型的生成没有关联，因此可以很好的反映出模型推广到其他场景下的效果。<strong>这个过程就可以简单描述为你不可以拿你给学生的复习提纲卷去考学生，而是应该出一份考察知识点一样，但题目不一样的卷子。前者的方式无法区分出真正学会的人和死记硬背的人，而后者就能有效地反映出哪些人才是真正“学会”的。</strong><br><br>　　在divide的过程中，注意无论在train data和test data中都要保持数据的标签，也就是说车牌数据仍然归到HasPlate文件夹，非车牌数据归到NoPlate文件夹。于是，车牌图片30%归到test data下面的hasplate文件夹，70%归到train data下面的hasplate文件夹，非车牌图片30%归到test data下面的noplate文件夹，70%归到train data下面的noplate文件夹。于是在文件夹train 和 test下面又有两个子文件夹，他们的结构树就是下图：</p>
+<p>&nbsp;</p>
+<p><img style="display: block; margin-left: auto; margin-right: auto;" src="./EasyPR--开发详解（6）SVM开发详解 - 计算机的潜意识 - 博客园_files/282106350194992.png" alt="" width="205" height="153"></p>
+<p style="text-align: center;"><span style="font-family: 黑体;">图10 分组后的文件树</span></p>
+<p><br>　　divide数据结束以后，我们就可以进入真正的机器学习过程。也就是对数据的训练过程。<br><br>　　<strong>4. train </strong>（训练数据-&gt;模型）</p>
+<p>　　模型在代码里的代表就是CvSVM类。在这一步中所要做的就是加载train data，然后用CvSVM类的train方法进行训练。这个步骤只针对的是上步中生成的总数据70%的训练数据。</p>
+<p>　　具体来说，分为以下几个子步骤：<br><br>　　1) 加载待训练的车牌数据。见下面这段代码。</p>
+<div class="cnblogs_code" onclick="cnblogs_code_show(&#39;2408b9c8-5543-4a1a-83e4-d633630c1bd3&#39;)"><img id="code_img_closed_2408b9c8-5543-4a1a-83e4-d633630c1bd3" class="code_img_closed" src="./EasyPR--开发详解（6）SVM开发详解 - 计算机的潜意识 - 博客园_files/ContractedBlock.gif" alt=""><img id="code_img_opened_2408b9c8-5543-4a1a-83e4-d633630c1bd3" class="code_img_opened" style="display: none;" onclick="cnblogs_code_hide(&#39;2408b9c8-5543-4a1a-83e4-d633630c1bd3&#39;,event)" src="./EasyPR--开发详解（6）SVM开发详解 - 计算机的潜意识 - 博客园_files/ExpandedBlockStart.gif" alt="">
+<div id="cnblogs_code_open_2408b9c8-5543-4a1a-83e4-d633630c1bd3" class="cnblogs_code_hide">
+<pre><span style="color: #0000ff;">void</span> getPlate(Mat&amp; trainingImages, vector&lt;<span style="color: #0000ff;">int</span>&gt;&amp;<span style="color: #000000;"> trainingLabels)
+{
+
+    </span><span style="color: #0000ff;">char</span> * filePath = <span style="color: #800000;">"</span><span style="color: #800000;">train/data/plate_detect_svm/HasPlate/HasPlate</span><span style="color: #800000;">"</span><span style="color: #000000;">;
+    vector</span>&lt;<span style="color: #0000ff;">string</span>&gt;<span style="color: #000000;"> files;
+
+    getFiles(filePath, files );
+
+    </span><span style="color: #0000ff;">int</span> size =<span style="color: #000000;"> files.size();
+    </span><span style="color: #0000ff;">if</span> (<span style="color: #800080;">0</span> ==<span style="color: #000000;"> size)
+        cout </span>&lt;&lt; <span style="color: #800000;">"</span><span style="color: #800000;">No File Found in train HasPlate!</span><span style="color: #800000;">"</span> &lt;&lt;<span style="color: #000000;"> endl;
+
+    </span><span style="color: #0000ff;">for</span> (<span style="color: #0000ff;">int</span> i = <span style="color: #800080;">0</span>;i &lt; size;i++<span style="color: #000000;">)
+    {
+        cout </span>&lt;&lt; files[i].c_str() &lt;&lt;<span style="color: #000000;"> endl;
+        Mat img </span>=<span style="color: #000000;"> imread(files[i].c_str());
+
+        img</span>= img.reshape(<span style="color: #800080;">1</span>, <span style="color: #800080;">1</span><span style="color: #000000;">);
+                trainingImages.push_back(img);
+                trainingLabels.push_back(</span><span style="color: #800080;">1</span><span style="color: #000000;">);
+    }
+}        </span></pre>
+</div>
+<span class="cnblogs_code_collapse">View Code</span></div>
+<p>&nbsp;</p>
+<p>　　注意看，车牌图像我存储在的是一个vector&lt;Mat&gt;中，而标签数据我存储在的是一个vector&lt;int&gt;中。我将train/HasPlate中的图像依次取出来，存入vector&lt;Mat&gt;。每存入一个图像，同时也往vector&lt;int&gt;中存入一个int值1，也就是说图像和标签分别存在不同的vector对象里，但是保持一一对应的关系。<br><br>　　2) 加载待训练的非车牌数据，见下面这段代码中的函数。基本内容与加载车牌数据类似，不同之处在于文件夹是train/NoPlate，并且我往vector&lt;int&gt;中存入的是int值0，代表无车牌。</p>
+<div class="cnblogs_code" onclick="cnblogs_code_show(&#39;8fae80e4-3793-4f89-9f03-d2baccd2c1a7&#39;)"><img id="code_img_closed_8fae80e4-3793-4f89-9f03-d2baccd2c1a7" class="code_img_closed" src="./EasyPR--开发详解（6）SVM开发详解 - 计算机的潜意识 - 博客园_files/ContractedBlock.gif" alt=""><img id="code_img_opened_8fae80e4-3793-4f89-9f03-d2baccd2c1a7" class="code_img_opened" style="display: none;" onclick="cnblogs_code_hide(&#39;8fae80e4-3793-4f89-9f03-d2baccd2c1a7&#39;,event)" src="./EasyPR--开发详解（6）SVM开发详解 - 计算机的潜意识 - 博客园_files/ExpandedBlockStart.gif" alt="">
+<div id="cnblogs_code_open_8fae80e4-3793-4f89-9f03-d2baccd2c1a7" class="cnblogs_code_hide">
+<pre><span style="color: #0000ff;">void</span> getNoPlate(Mat&amp; trainingImages, vector&lt;<span style="color: #0000ff;">int</span>&gt;&amp;<span style="color: #000000;"> trainingLabels)
+{
+
+    </span><span style="color: #0000ff;">char</span> * filePath = <span style="color: #800000;">"</span><span style="color: #800000;">train/data/plate_detect_svm/NoPlate/NoPlate</span><span style="color: #800000;">"</span><span style="color: #000000;">;
+    vector</span>&lt;<span style="color: #0000ff;">string</span>&gt;<span style="color: #000000;"> files;
+
+    getFiles(filePath, files );
+    </span><span style="color: #0000ff;">int</span> size =<span style="color: #000000;"> files.size();
+    </span><span style="color: #0000ff;">if</span> (<span style="color: #800080;">0</span> ==<span style="color: #000000;"> size)
+        cout </span>&lt;&lt; <span style="color: #800000;">"</span><span style="color: #800000;">No File Found in train NoPlate!</span><span style="color: #800000;">"</span> &lt;&lt;<span style="color: #000000;"> endl;
+
+    </span><span style="color: #0000ff;">for</span> (<span style="color: #0000ff;">int</span> i = <span style="color: #800080;">0</span>;i &lt; size;i++<span style="color: #000000;">)
+    {
+        cout </span>&lt;&lt; files[i].c_str() &lt;&lt;<span style="color: #000000;"> endl;
+        Mat img </span>=<span style="color: #000000;"> imread(files[i].c_str());
+        
+        img</span>= img.reshape(<span style="color: #800080;">1</span>, <span style="color: #800080;">1</span><span style="color: #000000;">);
+                trainingImages.push_back(img);
+                trainingLabels.push_back(</span><span style="color: #800080;">0</span><span style="color: #000000;">);
+    }
+}</span></pre>
+</div>
+<span class="cnblogs_code_collapse">View Code</span></div>
+<p><br>　　3) 将两者合并。目前拥有了两个vector&lt;Mat&gt;和两个vector&lt;int&gt;。将代表车牌图片和非车牌图片数据的两个vector&lt;Mat&gt;组成一个新的Mat--trainingData，而代表车牌图片与非车牌图片标签的两个vector&lt;int&gt;组成另一个Mat--classes。接着做一些数据类型的调整，以让其符合svm训练函数train的要求。这些做完后，数据的准备工作基本结束，下面就是参数配置的工作。</p>
+<div class="cnblogs_code" onclick="cnblogs_code_show(&#39;7160c017-b197-49ba-bfc7-0b4b02fcb4a0&#39;)"><img id="code_img_closed_7160c017-b197-49ba-bfc7-0b4b02fcb4a0" class="code_img_closed" src="./EasyPR--开发详解（6）SVM开发详解 - 计算机的潜意识 - 博客园_files/ContractedBlock.gif" alt=""><img id="code_img_opened_7160c017-b197-49ba-bfc7-0b4b02fcb4a0" class="code_img_opened" style="display: none;" onclick="cnblogs_code_hide(&#39;7160c017-b197-49ba-bfc7-0b4b02fcb4a0&#39;,event)" src="./EasyPR--开发详解（6）SVM开发详解 - 计算机的潜意识 - 博客园_files/ExpandedBlockStart.gif" alt="">
+<div id="cnblogs_code_open_7160c017-b197-49ba-bfc7-0b4b02fcb4a0" class="cnblogs_code_hide">
+<pre>    Mat classes;<span style="color: #008000;">//</span><span style="color: #008000;">(numPlates+numNoPlates, 1, CV_32FC1);</span>
+    Mat trainingData;<span style="color: #008000;">//</span><span style="color: #008000;">(numPlates+numNoPlates, imageWidth*imageHeight, CV_32FC1 );</span>
+<span style="color: #000000;">
+    Mat trainingImages;
+    vector</span>&lt;<span style="color: #0000ff;">int</span>&gt;<span style="color: #000000;"> trainingLabels;
+
+    getPlate(trainingImages, trainingLabels);
+    getNoPlate(trainingImages, trainingLabels);
+
+    Mat(trainingImages).copyTo(trainingData);
+    trainingData.convertTo(trainingData, CV_32FC1);
+    Mat(trainingLabels).copyTo(classes);</span></pre>
+</div>
+<span class="cnblogs_code_collapse">View Code</span></div>
+<p><br>　　4) 配置SVM模型的训练参数。SVM模型的训练需要一个CvSVMParams的对象，这个类是SVM模型中训练对象的参数的组合，如何给这里的参数赋值，是很有讲究的一个工作。注意，这里是SVM训练的核心内容，也是最能体现一个机器学习专家和新手区别的地方。机器学习最后模型的效果差异有很大因素取决与模型训练时的参数，尤其是SVM，有非常多的参数供你配置(见下面的代码)。参数众多是一个问题，更为显著的是，机器学习模型中参数的一点微调都可能带来最终结果的巨大差异。</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./EasyPR--开发详解（6）SVM开发详解 - 计算机的潜意识 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #000000;">    CvSVMParams SVM_params;
+    SVM_params.svm_type </span>=<span style="color: #000000;"> CvSVM::C_SVC;
+    SVM_params.kernel_type </span>= CvSVM::LINEAR; <span style="color: #008000;">//</span><span style="color: #008000;">CvSVM::LINEAR;</span>
+    SVM_params.degree = <span style="color: #800080;">0</span><span style="color: #000000;">;
+    SVM_params.gamma </span>= <span style="color: #800080;">1</span><span style="color: #000000;">;
+    SVM_params.coef0 </span>= <span style="color: #800080;">0</span><span style="color: #000000;">;
+    SVM_params.C </span>= <span style="color: #800080;">1</span><span style="color: #000000;">;
+    SVM_params.nu </span>= <span style="color: #800080;">0</span><span style="color: #000000;">;
+    SVM_params.p </span>= <span style="color: #800080;">0</span><span style="color: #000000;">;
+    SVM_params.term_crit </span>= cvTermCriteria(CV_TERMCRIT_ITER, <span style="color: #800080;">1000</span>, <span style="color: #800080;">0.01</span>);</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./EasyPR--开发详解（6）SVM开发详解 - 计算机的潜意识 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p><br>　　opencv官网文档对CvSVMParams类的各个参数有一个详细的解释。如果你上过SVM课程的理论部分，你可能对这些参数的意思能搞的明白。但在这里，我们可以不去管参数的含义，因为我们有更好的方法去解决这个问题。</p>
+<p>&nbsp;</p>
+<p><img style="display: block; margin-left: auto; margin-right: auto;" src="./EasyPR--开发详解（6）SVM开发详解 - 计算机的潜意识 - 博客园_files/291215442694362.jpg" alt=""></p>
+<p style="text-align: center;"><span style="font-family: 黑体;">图11 SVM各参数的作用</span></p>
+<p><br>　　这个原因在于：EasyPR1.0使用的是liner核，也称之为线型核，因此degree和gamma还有coef0三个参数没有作用。同时，在这里SVM模型用作的问题是分类问题，那么nu和p两个参数也没有影响。最后唯一能影响的参数只有Cvalue。到了EasyPR1.1版本以后，默认使用的是RBF核，因此需要调整的参数多了一个gamma。</p>
+<p>　　以上参数的选择都可以用自动训练(train_auto)的方法去解决，在下面的SVM调优部分会具体介绍train_auto。</p>
+<p><br>　　5) 开始训练。OK！数据载入完毕，参数配置结束，一切准备就绪，下面就是交给opencv的时间。我们只要将前面的 trainingData，classes，以及CvSVMParams的对象SVM_params交给CvSVM类的train函数就可以。另外，直接使用CvSVM的构造函数，也可以完成训练过程。例如下面这行代码：<br><br></p>
+<div class="cnblogs_code">
+<pre>    CvSVM svm(trainingData, classes, Mat(), Mat(), SVM_params);</pre>
+</div>
+<p><br>　　训练开始后，慢慢等一会。机器学习中数据训练的计算量往往是非常大的，即便现代计算机也要运行很长时间。具体的时间取决于你训练的数据量的大小以及模型的复杂度。在我的2.0GHz的机器上，训练1000条数据的SVM模型的时间大约在1分钟左右。<br><br>　　训练完成以后，我们就可以用CvSVM类的对象<span style="background-color: #ffffff;"><span style="color: #000000;">s</span><span style="color: #000000;">vm</span></span>去进行预测了。如果我们仅仅需要这个模型，现在可以把它存到xml文件里，留待下次使用：</p>
+<p>&nbsp;</p>
+<div class="cnblogs_code">
+<pre>    FileStorage fsTo(<span style="color: #800000;">"</span><span style="color: #800000;">train/svm.xml</span><span style="color: #800000;">"</span><span style="color: #000000;">, cv::FileStorage::WRITE);
+    svm.write(</span>*fsTo, <span style="color: #800000;">"</span><span style="color: #800000;">svm</span><span style="color: #800000;">"</span>);</pre>
+</div>
+<p><br><strong>　　5. test</strong> （测试数据-&gt;评判指标）</p>
+<p>　　记得我们还有30%的测试数据了么？现在是使用它们的时候了。将这些数据以及它们的标签加载如内存，这个过程与加载训练数据的过程是一样的。接着使用我们训练好的SVM模型去判断这些图片。<br><br>　　下面的步骤是对我们的模型做指标评判的过程。首先，测试数据是有标签的数据，这意味着我们知道每张图片是车牌还是不是车牌。另外，用新生成的svm模型对数据进行判断，也会生成一个标签，叫做“预测标签”。“预测标签”与“标签”一般是存在误差的，这也就是模型的误差。这种误差有两种情况：1.这副图片是真的车牌，但是svm模型判断它是“非车牌”；2.这幅图片不是车牌，但svm模型判断它是“车牌”。无疑，这两种情况都属于svm模型判断失误的情况。我们需要设计出来两个指标，来分别评测这两种失误情况发生的概率。这两个指标就是下面要说的“准确率”（precision）和“查全率”（recall）。</p>
+<p>　　准确率是统计在我已经预测为车牌的图片中，真正车牌数据所占的比例。假设我们用ptrue_rtrue表示预测(p)为车牌并且实际(r)为车牌的数量，而用ptrue_rfalse表示实际不为车牌的数量。</p>
+<p>　　准确率的计算公式是：</p>
+<p>&nbsp;</p>
+<p style="text-align: center;"><img src="./EasyPR--开发详解（6）SVM开发详解 - 计算机的潜意识 - 博客园_files/291716249259950.png" alt="" width="345" height="84"></p>
+<p style="text-align: center;"><span style="font-family: 黑体;">图12 precise 准确率<br></span></p>
+<p>　　</p>
+<p>　　查全率是统计真正的车牌图片中，我预测为车牌的图片所占的比例。同上，我们用ptrue_rtrue表示预测与实际都为车牌的数量。用pfalse_rtrue表示实际为车牌，但我预测为非车牌的数量。</p>
+<p>　　查全率的计算公式是：</p>
+<p style="text-align: center;">&nbsp;<img src="./EasyPR--开发详解（6）SVM开发详解 - 计算机的潜意识 - 博客园_files/291716152221787.png" alt="" width="334" height="85"></p>
+<p style="text-align: center;"><span style="font-family: 黑体;">图13 recall 查全率<br></span></p>
+<p>　　</p>
+<p>　　recall的公式与precision公式唯一的区别在于右下角。precision是ptrue_rfalse，代表预测为车牌但实际不是的数量；而recall是pfalse_rtrue，代表预测是非车牌但其实是车牌的数量。</p>
+<p>　　简单来说，precision指标的期望含义就是要“<strong>查的准</strong>”，recall的期望含义就是“<strong>不要漏</strong>”。查全率还有一个翻译叫做“召回率”。但很明显，召回这个词没有反映出查全率所体现出的不要漏的含义。</p>
+<p>　　值得说明的是，precise和recall这两个值自然是越高越好。但是如果一个高，一个低的话效果会如何，如何跟两个都中等的情况进行比较？为了能够数字化这种比较。机器学习界又引入了FScore这个数值。当precise和recall两者中任一者较高，而另一者较低是，FScore都会较低。两者中等的情况下Fscore表现比一高一低要好。当两者都很高时，FScore会很高。</p>
+<p>　　FScore的计算公式如下图：</p>
+<p>&nbsp;</p>
+<p style="text-align: center;"><img src="./EasyPR--开发详解（6）SVM开发详解 - 计算机的潜意识 - 博客园_files/302012325975354.png" alt="" width="283" height="65"></p>
+<p style="text-align: center;"><span style="font-family: 黑体;">图14 Fscore计算公式</span></p>
+<p>&nbsp;</p>
+<p>　　模型测试以及评价指标是EasyPR1.1中新增的功能。在<span style="color: #3366ff;">svm_train.cpp</span>的最下面可以看到这三个指标的计算过程。</p>
+<p>&nbsp;</p>
+<p><strong>　　训练心得</strong> </p>
+<p>　　通过以上5个步骤，我们就完成了模型的准备，训练，测试的全部过程。下面，说一说过程中的几点心得。<br><br>　　1. 完善EasyPR的plateLocate功能</p>
+<p>　　在1.1版本中的EasyPR的车牌定位模块仍然不够完善。如果你的所有的图片符合某种通用的模式，参照前面的车牌定位的<a title="车牌定位教程" href="http://www.cnblogs.com/subconscious/p/4013591.html" target="_blank">几篇教程</a>，以及使用EasyPR新增的Debug模式，你可以将EasyPR的plateLocate模块改造为适合你的情况。于是，你就可以利用EasyPR为你制造大量的学习数据。通过原始数据的输入，然后通过plateLocate进行定位，再使用EasyPR已有的车牌判断模块进行图片的分类，于是你就可以得到一个基本分好类的学习数据。下面所需要做的就是人工核对，确认一下，保证每张图片的标签是正确的，然后再输入模型进行训练。</p>
+<p><br>　　2. 使用“逐次迭代自动标签法”。</p>
+<p>　　上面讨论的贴标签方法是在EasyPR已经提供了一个训练好的模型的情况下。如果一开始手上任何模型都没有，该怎么办？假设目前手里有成千上万个通过定位出来的各种候选车牌，手工一个个贴标签的话，岂不会让人累吐血？在前文中说过，我在一开始贴标签过程中碰到了这个问题，在不断被折磨与痛苦中，我发现了一个好方法，大幅度减轻了这整个工作的痛苦性。</p>
+<p>　　当然，这个方法很简单。我如果说出来你一定也不觉得有什么奇妙的。但是如果在你准备对1000张图片进行手工贴标签时，相信我，使用这个方法会让你最后的时间节省一半。如果你需要雇10个人来贴标签的话，那么用了这个方法，可能你最后一个人都不用雇。</p>
+<p>　　这个方法被我称为“逐次迭代自动标签法”。</p>
+<p>　　方法核心很简单。就是假设你有3000张未分类的图片。你从中选出1%，也就是30张出来，手工给它们每个图片进行分类工作。好的，如今你有了30张贴好标签的数据了，下步你把它直接输入到SVM模型中训练，获得了一个简单粗旷的模型。之后，你从图片集中再取出3%的图片，也就是90张，<strong>然后用刚训练好的模型对这些图片进行预测</strong>，根据预测结果将它们自动分到hasplate和noplate文件夹下面。分完以后，你到这两个文件夹下面，看看哪些是预测错的，把hasplate里预测错的<strong>移动</strong>到noplate里，反之，把noplate里预测错的移动到hasplate里。</p>
+<p>　　接着，你把一开始手工分类好的那30张图片，结合调整分类的90张图片，总共120张图片再输入svm模型中进行训练。于是你获得一个比最开始粗旷模型更精准点的模型。然后，你从3000张图片中再取出6%的图片来，用这个模型再对它们进行预测，分类....</p>
+<p>　　以上反复。你每训练出一个新模型，用它来预测后面更多的数据，然后自动分类。这样做最大的好处就是你只需要移动那些被分类错误的图片。其他的图片已经被正 确的归类了。注意，在整个过程中，你每次只需要对新拿出的数据进行人工确认，因为前面的数据已经分好类了。因此，你最好使用两个文件夹，一个是已经分好类 的数据，另一个是自动分类数据，需要手工确认的。这样两者不容易乱。</p>
+<p>　　每次从未标签的原始数据库中取出的数据不要多，最好不要超过上次数据的两倍。这样可以保证你的模型的准确率稳步上升。如果想一口吃个大胖子，例如用30张图片训练出的模型，去预测1000张数据，那最后结果跟你手工分类没有任何区别了。</p>
+<p>　　整个方法的原理很简单，就是<strong>不断迭代循环细化</strong>的思想。跟软件工程中迭代开发过程有异曲同工之妙。你只要理解了其原理，很容易就可以复用在任何其他机器学习模型的训练中，从而大幅度（或者部分）减轻机器学习过程中贴标签的巨大负担。</p>
+<p><br>　　回到一个核心问题，对于开发者而言，什么样的方法才是自己实现一个svm.xml的最好方法。有以下几种选择。</p>
+<p>　　1.你使用EasyPR提供的svm.xml，这个方式等同于你没有训练，那么EasyPR识别的效率取决于你的环境与EasyPR的匹配度。运气好的话，这个效果也会不错。但如果你的环境下车牌跟EasyPR默认的不一样。那么可能就会有点问题。</p>
+<p>　　2.使用EasyPR提供的训练数据，例如train/data文件下的数据，这样生成的效果等同于第一步的，不过你可以调整参数，试试看模型的表现会不会更好一点。</p>
+<p>　　3.使用自己的数据进行训练。这个方法的适应性最好。首先你得准备你原始的数据，并且写一个处理方法，能够将原始数据转化为学习数据。下面你调用EasyPR的PlateLocate方法进行处理，将候选车牌图片从原图片截取出来。你可以使用逐次迭代自动标签思想，使用EasyPR已有的svm模型对这些候选图片进行预标签。然后再进行肉眼确认和手工调整，以生成标准的贴好标签的数据。后面的步骤就可以按照分组，训练，测试等过程顺次走下去。如果你使用了EasyPR1.1版本，后面的这几个过程已经帮你实现好代码了，你甚至可以直接在命令行选择操作。<br><br>　　以上就是SVM模型训练的部分，通过这个步骤的学习，你知道如何通过已有的数据去训练出一个自己的模型。下面的部分，是对这个训练过程的一个思考，讨论通过何种方法可以改善我最后模型的效果。</p>
+<p>　　</p>
+<p>&nbsp;　<strong><a name="third"></a>三.SVM调优</strong><br><br>　　SVM调优部分，是通过对SVM的原理进行了解，并运用机器学习的一些调优策略进行优化的步骤。</p>
+<p>　　在这个部分里，最好要懂一点机器学习的知识。同时，本部分也会讲的尽量通俗易懂，让人不会有理解上的负担。在EasyPR1.0版本中，SVM模型的代码完全参考了mastering opencv书里的实现思路。从1.1版本开始，EasyPR对车牌判断模块进行了优化，使得模型最后的效果有了较大的改善。<br><br>　　具体说来，本部分主要包括如下几个子部分:1.RBF核；2.参数调优；3.特征提取；4.接口函数；5.自动化。</p>
+<p>　　下面分别对这几个子部分展开介绍。<br><br>　　<strong>1.RBF核</strong><br><br>　　SVM中最关键的技巧是核技巧。“核”其实是一个函数，通过一些转换规则把低维的数据映射为高维的数据。在机器学习里，数据跟向量是等同的意思。例如，一个 [174, 72]表示人的身高与体重的数据就是一个两维的向量。在这里，维度代表的是向量的长度。（务必要区分“维度”这个词在不同语境下的含义，有的时候我们会说向量是一维的，矩阵是二维的，这种说法针对的是数据展开的层次。机器学习里讲的维度代表的是向量的长度，与前者不同）</p>
+<p>　　简单来说，低维空间到高维空间映射带来的好处就是可以利用高维空间的线型切割模拟低维空间的非线性分类效果。也就是说，SVM模型其实只能做线型分类，但是在线型分类前，它可以通过核技巧把数据映射到高维，然后在高维空间进行线型切割。高维空间的线型切割完后在低维空间中最后看到的效果就是划出了一条复杂的分线型分类界限。<strong>从这点来看，SVM并没有完成真正的非线性分类，而是通过其它方式达到了类似目的，可谓“曲径通幽”。</strong></p>
+<p>　　SVM模型总共可以支持多少种核呢。根据官方文档，支持的核类型有以下几种：</p>
+<ol>
+<li>liner核，也就是无核。</li>
+<li>rbf核，使用的是高斯函数作为核函数。</li>
+<li>poly核，使用多项式函数作为核函数。</li>
+<li>sigmoid<span class="Apple-converted-space">核，使用sigmoid函数作为核函数。</span></li>
+
+
+
+
+
+
+
+
+
+</ol>
+<p>　　liner核和rbf核是所有核中应用最广泛的。</p>
+<p>　　liner核，虽然名称带核，但它其实是无核模型，也就是没有使用核函数对数据进行转换。因此，它的分类效果仅仅比逻辑回归好一点。在EasyPR1.0版中，我们的SVM模型应用的是liner核。我们用的是图像的全部像素作为特征。</p>
+<p>　　rbf核，会将输入数据的特征维数进行一个维度转换，具体会转换为多少维？这个等于你输入的训练量。假设你有500张图片，rbf核会把每张图片的数据转 换为500维的。如果你有1000张图片，rbf核会把每幅图片的特征转到1000维。这么说来，随着你输入训练数据量的增长，数据的维数越多。更方便在高维空间下的分类效果，因此最后模型效果表现较好。</p>
+<p>　　既然选择SVM作为模型，而且SVM中核心的关键技巧是核函数，那么理应使用带核的函数模型，充分利用数据高维化的好处，利用高维的线型分类带来低维空间下的非线性分类效果。但是，rbf核的使用是需要条件的。</p>
+<p>　　<strong>当你的数据量很大，但是每个数据量的维度一般时，才适合用rbf核。相反，<strong>当你的数据量不多，但是每个数据量的维数都很大时，适合用线型核。</strong></strong></p>
+<p><strong><strong>　　</strong></strong>在EasyPR1.0版中，我们用的是图像的全部像素作为特征，那么根据车牌图像的136×36的大小来看的话，就是4896维的数据，再加上我们输入的 是彩色图像，也就是说有R，G，B三个通道，那么数量还要乘以3，也就是14688个维度。这是一个非常庞大的数据量，你可以把每幅图片的数据理解为长度 为14688的向量。这个时候，每个数据的维度很大，而数据的总数很少，如果用rbf核的话，相反效果反而不如无核。</p>
+<p>　　在EasyPR1.1版本时，输入训练的数据有3000张图片，每个数据的特征改用直方统计，共有172个维度。这个场景下，如果用rbf核的话，就会将每个数据的维度转化为与数据总数一样的数量，也就是3000的维度，可以充分利用数据高维化后的好处。</p>
+<p>　　因此可以看出，为了让EasyPR新版使用rbf核技巧，我们给训练数据做了增加，扩充了两倍的数据，同时，减小了每个数据的维度。以此满足了rbf核的使用条件。通过使用rbf核来训练，充分发挥了非线性模型分类的优势，因此带来了较好的分类效果。　　</p>
+<p>　　但是，使用rbf核也有一个问题，那就是参数设置的问题。在rbf训练的过程中，参数的选择会显著的影响最后rbf核训练出模型的效果。因此必须对参数进行最优选择。</p>
+<p><br>　　<strong>2.参数调优</strong></p>
+<p>　　传统的参数调优方法是人手完成的。机器学习工程师观察训练出的模型与参数的对应关系，不断调整，寻找最优的参数。由于机器学习工程师大部分时间在调整模型的参数，也有了“<strong>机器学习就是调参</strong>”这个说法。</p>
+<p>　　幸好，opencv的svm方法中提供了一个自动训练的方法。也就是由opencv帮你，不断改变参数，训练模型，测试模型，最后选择模型效果最好的那些参数。整个过程是全自动的，完全不需要你参与，你只需要输入你需要调整参数的参数类型，以及每次参数调整的步长即可。</p>
+<p>　　现在有个问题，如何验证svm参数的效果？你可能会说，使用训练集以外的那30%测试集啊。但事实上，机器学习模型中专门有一个数据集，是用来验证参数效果的。也就是<span class="title">交叉验证集(cross validation set，简称validate data)<span class="Apple-converted-space">&nbsp;</span></span>这个概念。</p>
+<p>　　<span class="title">validate data</span>就是专门从train data中取出一部分数据，用这部分数据来验证参数调整的效果。比方说现在有70%的训练数据，从中取出20%的数据，剩下50%数据用来训练，再用训练出来的模型在20%数据上进行测试。这20%的数据就叫做<span class="title">validate data</span>。真正拿来训练的数据仅仅只是50%的数据。<br><br>　　正如上面把数据划分为test data和train data的理由一样。为了验证参数在新数据上的推广性，我们不能用一个训练数据集，所以我们要把训练数据集再细分为train data和<span class="title">validate data</span>。在train data上训练，然后在<span class="title">validate data</span>上测试参数的效果。所以说，在一个更一般的机器学习场景中，机器学习工程师会把数据分为train data，<span class="title">validate data</span>，以及test data。在train data上训练模型，用<span class="title">validate data</span>测试参数，最后用test data测试模型和参数的整体表现。<br><br>　　说了这么多，那么，大家可能要问，是不是还缺少一个数据集，需要再划分出来一个<span class="title">validate </span>data吧。但是答案是No。opencv的train_auto函数帮你完成了所有工作，你只需要告诉它，你需要划分多少个子分组，以及<span class="title">validate data</span>所占的比例。然后train_auto函数会自动帮你从你输入的train data中划分出一部分的<span class="title">validate data</span>，然后自动测试，选择表现效果最好的参数。</p>
+<p>　　感谢train_auto函数！既帮我们划分了参数验证的数据集，还帮我们一步步调整参数，最后选择效果最好的那个参数，可谓是节省了调优过程中80%的工作。</p>
+<p>　　train_auto函数的调用代码如下：</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./EasyPR--开发详解（6）SVM开发详解 - 计算机的潜意识 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre>    svm.train_auto(trainingData, classes, Mat(), Mat(), SVM_params, <span style="color: #800080;">10</span><span style="color: #000000;">, 
+                CvSVM::get_default_grid(CvSVM::C),
+                CvSVM::get_default_grid(CvSVM::GAMMA), 
+                CvSVM::get_default_grid(CvSVM::P), 
+                CvSVM::get_default_grid(CvSVM::NU), 
+                CvSVM::get_default_grid(CvSVM::COEF),
+                CvSVM::get_default_grid(CvSVM::DEGREE),
+                </span><span style="color: #0000ff;">true</span>);</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./EasyPR--开发详解（6）SVM开发详解 - 计算机的潜意识 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>　　</p>
+<p>　　你唯一需要做的就是泡杯茶，翻翻书，然后慢慢等待这计算机帮你处理好所有事情(时间较长，因为每次调整参数又得重新训练一次)。作者最近的一次训练的耗时为1个半小时)。</p>
+<p>　　训练完毕后，看看模型和参数在test data上的表现把。99%的precise和98%的recall。非常棒，比任何一次手工配的效果都好。<br><br>　　<strong>3.特征提取</strong><br><br>　　在rbf核介绍时提到过，输入数据的特征的维度现在是172，那么这个数字是如何计算出来的？现在的特征用的是直方统计函数，也就是先把图像二值化，然后统计图像中一行元素中1的数目，由于输入图像有36行，因此有36个值，再统计图像中每一列中1的数目，图像有136列，因此有136个值，两者相加正好等于172。新的输入数据的特征提取函数就是下面的代码：</p>
+<p>&nbsp;</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./EasyPR--开发详解（6）SVM开发详解 - 计算机的潜意识 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #008000;">//</span><span style="color: #008000;"> ! EasyPR的getFeatures回调函数
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> ！本函数是获取垂直和水平的直方图图值</span>
+<span style="color: #0000ff;">void</span> getHistogramFeatures(<span style="color: #0000ff;">const</span> Mat&amp; image, Mat&amp;<span style="color: #000000;"> features)
+{
+    Mat grayImage;
+    cvtColor(image, grayImage, CV_RGB2GRAY);
+    Mat img_threshold;
+    threshold(grayImage, img_threshold, </span><span style="color: #800080;">0</span>, <span style="color: #800080;">255</span>, CV_THRESH_OTSU+<span style="color: #000000;">CV_THRESH_BINARY);
+    features </span>=<span style="color: #000000;"> getTheFeatures(img_threshold);
+}</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./EasyPR--开发详解（6）SVM开发详解 - 计算机的潜意识 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p><br><br>　　我们输入数据的特征不再是全部的三原色的像素值了，而是抽取过的一些特征。从原始的图像到抽取后的特征的过程就被称为特征提取的过程。在1.0版中没有特征提取的概念，是直接把图像中全部像素作为特征的。这要感谢群里的“如果有一天”同学，他坚持认为全部像素的输入是最低级的做法，认为用特征提取后的效果会好多。我问大概能到多少准确率，当时的准确率有92%，我以为已经很高了，结果他说能到99%。在半信半疑中我尝试了，果真如他所说，结合了rbf核与新特征训练的模型达到的precise在99%左右，而且recall也有98%，这真是个令人咋舌并且非常惊喜的成绩。</p>
+<p>　　“如果有一天”建议用的是SFIT特征提取或者HOG特征提取，由于时间原因，这两者我没有实现，但是把函数留在了那里。留待以后有时间完成。在这个过程中，我充分体会到了开源的力量，如果不是把软件开源，如果不是有这么多优秀的大家一起讨论，这样的思路与改善是不可能出现的。</p>
+<p><br>　　<strong>4.接口函数</strong></p>
+<p>　　由于有SIFT以及HOG等特征没有实现，而且未来有可能会有更多有效的特征函数出现。因此我把特征函数抽象为借口。使用回调函数的思路实现。所有回调函数的代码都在feature.cpp中，开发者可以实现自己的回调函数，并把它赋值给EasyPR中的某个函数指针，从而实现自定义的特征提取。也许你们会有更多更好的特征的想法与创意。</p>
+<p>　　关于特征其实有更多的思考，原始的SVM模型的输入是图像的全部像素，正如人类在小时候通过图像识别各种事物的过程。后来SVM模型的输入是经过抽取的特 征。正如随着人类接触的事物越来越多，会发现单凭图像越来越难区分一些非常相似的东西，于是学会了总结特征。例如太阳就是圆的，黄色，在天空等，可以凭借 这些特征就进行区分和判断。</p>
+<p>　　<strong>从本质上说，特征是区分事物的关键特性。</strong>这些特性，一定是从某些维度去看待的。例如，苹果和梨子，一个是绿色，一个是黄色，这就是颜色的维度；鱼和鸟，一个在水里，一个在空中，这是位置的区分，也就是空间的维度。<strong>特征，是许多维度中最有区分意义的维度。</strong>传统数据仓库中的OLAP，也称为多维分析，提供了人类从多个维度观察，比较的能力。通过人类的观察比较，从多个维度中挑选出来的维度，就是要分析目标的特征。从这点来看，机器学习与多维分析有了关联。多维分析提供了选择特征的能力。而机器学习可以根据这些特征进行建模。</p>
+<p>　
+　机器学习界也有很多算法，专门是用来从数据中抽取特征信息的。例如传统的PCA(主成分分析)算法以及最近流行的深度学习中的
+AutoEncoder(自动编码机)技术。这些算法的主要功能就是在数据中学习出最能够明显区分数据的特征，从而提升后续的机器学习分类算法的效果。</p>
+<p>　　说一个特征学习的案例。作者买车时，经常会把大众的两款车--迈腾与帕萨特给弄混，因为两者实在太像了。大家可以到网上去搜一下这两车的图片。如果不依赖后排的文字，光靠外形实在难以将两车区分开来(虽然从生产商来说，前者是一汽大众生产的，产地在长春，后者是上海大众生产的，产地在上海。两个不同的公司，南北两个地方，相差了十万八千里)。后来我通过仔细观察，终于发现了一个明显区分两辆车的特征，后来我再也没有认错过。这个特征就是：迈腾的前脸有四条银杠，而帕萨特只有三条，迈腾比帕萨特多一条银杠。可以这么说，就是这么一条银杠，分割了北和南两个地方生产的汽车。</p>
+<p>&nbsp;</p>
+<p style="text-align: center;"><img src="./EasyPR--开发详解（6）SVM开发详解 - 计算机的潜意识 - 博客园_files/301703011126267.jpg" alt=""><br><span style="font-family: 黑体;">图15 一条银杠，分割了“北”和“南”</span><br>　　</p>
+<p>　　在这里区分的过程，我是通过不断学习与研究才发现了这些区分的特征，这充分说明了事物的特征也是可以被学习的。如果让机器学习中的特征选择方法PCA和AutoEncoder来分析的话，按理来说它们也应该找出这条银杠，否则它们就无法做到对这两类最有效的分类与判断。如果没有找到的话，证明我们目前的特征选择算法还有很多的改进空间（与这个案例类似的还有大众的另两款车，高尔夫和Polo。它们两的区分也是用同样的道理。相比迈腾和帕萨特，高尔夫和Polo价格差别的更大，所以区分的特征也更有价值）。</p>
+<p><br><strong>　　5.自动化</strong><br><br>　　最后我想简单谈一下EasyPR1.1新增的自动化训练功能与命令行。大家可能看到第二部分介绍SVM训练时我将过程分成了5个步骤。事实上，这些步骤中的很多过程是可以模块化的。一开始的时候我写一些不相关的代码函数，帮我处理各种需要解决的问题，例如数据的分组，打标签等等。但后来，我把思路理清后，我觉得这几个步骤中很多的代码都可以通用。于是我把一些步骤模块化出来，形成通用的函数，并写了一个命令行界面去调用它们。在你运行EasyPR1.1版后，在你看到的第一个命令行界面选择“3.SVM训练过程”，你就可以看到这些全部的命令。</p>
+<p>&nbsp;</p>
+<p><img style="display: block; margin-left: auto; margin-right: auto;" src="./EasyPR--开发详解（6）SVM开发详解 - 计算机的潜意识 - 博客园_files/292122223315755.jpg" alt=""></p>
+<p style="text-align: center;"><span style="font-family: 黑体;">图16 </span>svm训练命令行</p>
+<p style="text-align: left;"><br>　　这里的命令主要有6个部分。第一个部分是最可能需要修改代码的地方，因为每个人的原始数据(raw data)都是不一样的，因此你需要在data_prepare.cpp中找到这个函数，改写成适应你格式的代码。接下来的第二个部分以后的功能基本都可以复用。例如自动贴标签(注意贴完以后要人工核对一下)。<br><br>　　第三个到第六部分功能类似。如果你的数据还没分组，那么你执行3以后，系统自动帮你分组，然后训练，再测试验证。第四个命令行省略了分组过程。第五个命令行部分省略训练过程。第六个命令行省略了前面所有过程，只做最后模型的测试部分。<br><br></p>
+<p>　　让我们回顾一下SVM调优的五个思路。第一部分是rbf核，也就是模型选择层次，根据你的实际环境选择最合适的模型。第二部分是参数调优，也就是参数优化层次，这部分的参数最好通过一个验证集来确认，也可以使用opencv自带的train_auto函数。第三部分是特征抽取部分，也就是特征甄选们，要能选择出最能反映数据本质区别的特征来。在这方面，pca以及深度学习技术中的autoencoder可能都会有所帮助。第四部分是通用接口部分，为了给优化留下空间，需要抽象出接口，方便后续的改进与对比。第五部分是自动化部分，为了节省时间，将大量可以自动化处理的功能模块化出来，然后提供一些方便的操作界面。前三部分是从机器学习的效果来提高，后两部分是从软件工程的层面去优化。</p>
+<p>　　总结起来，就是<strong>模型，参数，特征，接口，模块</strong>五个层面。通过这五个层面，可以有效的提高机器学习模型训练的效果与速度，从而降低机器学习工程实施的难度与提升相关的效率。当需要对机器学习模型进行调优的时候，我们可以从这五个层面去考虑。</p>
+<p>&nbsp;</p>
+<p><strong>　　后记</strong></p>
+<p>　　讲到这里，本次的SVM开发详解也算是结束了。相信通过这篇文档，以及作者的一些心得，会对你在SVM模型的开发上面带来一些帮助。下面的工作可以考虑把这些相关的方法与思路运用到其他领域，或着改善EasyPR目前已有的模型与算法。如果你找出了比目前更好实现的思路，并且你愿意跟我们分享，那我们是非常欢迎的。<br><br>　　EasyPR1.1的版本发生了较大的变化。我为了让它拥有多人协作，众包开发的能力，想过很多办法。最后决定引入了GDTS(General Data Test Set，通用测试数据集，也就是新的image/general_test下的众多车牌图片)以及GDSL(General Data Share License，通用数据分享协议，image/GDSL.txt)。这些概念与协议的引入非常重要，可能会改变目前车牌识别与机器学习在国内学习研究的格局。在下期的EasyPR开发详解中我会重点介绍1.1版的新加入功能以及这两个概念和背后的思想，欢迎继续阅读。<br><br>　　上一篇还是第四篇，为什么本期SVM开发详解属于EasyPR开发的第六篇？事实上，对于目前的车牌定位模块我们团队觉得还有改进空间，所以第五篇的详解内容是留给改进后的车牌定位模块的。如果有车牌定位模块方面好的建议或者希望加入开源团队，欢迎跟我们团队联系(easypr_dev@163.com )。您也可以为中国的开源事业做出一份贡献。</p>
+<p>&nbsp;</p>
+<p><strong><span style="font-family: Microsoft YaHei;">版权说明：</span></strong></p>
+<p><strong><span style="font-family: Microsoft YaHei;">　　本文中的所有文字，图片，代码的版权都是属于作者和博客园共同所有。欢迎转载，但是务必注明作者与出处。任何未经允许的剽窃以及爬虫抓取都属于侵权，作者和博客园保留所有权利。</span></strong></p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory"></div>
+<div id="EntryTag">标签: <a href="http://www.cnblogs.com/subconscious/tag/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/">计算机视觉</a>, <a href="http://www.cnblogs.com/subconscious/tag/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></div>
+<div id="blog_post_info"><div id="green_channel">
+        <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(4249581,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+            <a id="green_channel_follow" onclick="follow(&#39;edd4356d-003f-e411-b908-9dcfd8948a71&#39;);" href="javascript:void(0);">关注我</a>
+    <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
+    <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="./EasyPR--开发详解（6）SVM开发详解 - 计算机的潜意识 - 博客园_files/icon_weibo_24.png" alt=""></a>
+    <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="./EasyPR--开发详解（6）SVM开发详解 - 计算机的潜意识 - 博客园_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/subconscious/" target="_blank"><img src="./EasyPR--开发详解（6）SVM开发详解 - 计算机的潜意识 - 博客园_files/20140918201411.png" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/subconscious/">计算机的潜意识</a><br>
+            <a href="http://home.cnblogs.com/u/subconscious/followees">关注 - 12</a><br>
+            <a href="http://home.cnblogs.com/u/subconscious/followers">粉丝 - 1424</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor">荣誉：<a href="http://www.cnblogs.com/expert/" target="_blank">推荐博客</a></div>
+    <div id="author_profile_follow">
+                <a href="javascript:void(0);" onclick="follow(&#39;edd4356d-003f-e411-b908-9dcfd8948a71&#39;);return false;">+加关注</a>
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit" onclick="votePost(4249581,&#39;Digg&#39;)">
+        <span class="diggnum" id="digg_count">47</span>
+    </div>
+    <div class="buryit" onclick="votePost(4249581,&#39;Bury&#39;)">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+</div>
+<script type="text/javascript">
+    currentDiggType = 0;
+</script></div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/subconscious/p/4107357.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/subconscious/p/4107357.html" title="发布于2014-12-31 09:31">从机器学习谈起</a><br><a href="http://www.cnblogs.com/subconscious/p/4311550.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/subconscious/p/4311550.html" title="发布于2015-03-04 12:25">小议“数据开放”</a><br></div>
+</div>
+
+
+		</div>
+		<div class="postDesc">posted @ <span id="post-date">2015-02-02 10:31</span> <a href="http://www.cnblogs.com/subconscious/">计算机的潜意识</a> 阅读(<span id="post_view_count">25408</span>) 评论(<span id="post_comment_count">37</span>)  <a href="https://i.cnblogs.com/EditPosts.aspx?postid=4249581" rel="nofollow">编辑</a> <a href="http://www.cnblogs.com/subconscious/p/4249581.html#" onclick="AddToWz(4249581);return false;">收藏</a></div>
+	</div>
+	<script type="text/javascript">var allowComments=true,cb_blogId=198547,cb_entryId=4249581,cb_blogApp=currentBlogApp,cb_blogUserGuid='edd4356d-003f-e411-b908-9dcfd8948a71',cb_entryCreatedDate='2015/2/2 10:31:00';loadViewCount(cb_entryId);var cb_postType=1;</script>
+	
+</div><!--end: topics 文章、评论容器-->
+</div><a name="!comments"></a><div id="blog-comments-placeholder"><div id="comments_pager_top"></div>
+<br>
+<div class="feedback_area_title">评论列表</div>
+<div class="feedbackNoItems"></div>	
+
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4249581.html#3121515" class="layer">#1楼</a><a name="3121515" id="comment_anchor_3121515"></a>  <span class="comment_date">2015-02-02 13:10</span> <a id="a_comment_author_3121515" href="http://home.cnblogs.com/u/715250/" target="_blank">N1ck</a> <a href="http://msg.cnblogs.com/send/N1ck" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3121515" class="blog_comment_body">赞，博主能不能发一篇怎么利用EasyPR.dll进行c#二次开发的博文</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3121515,&#39;Digg&#39;,this)">支持(5)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3121515,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4249581.html#3122269" class="layer">#2楼</a><a name="3122269" id="comment_anchor_3122269"></a>  <span class="comment_date">2015-02-03 11:04</span> <a id="a_comment_author_3122269" href="http://www.cnblogs.com/feilign/" target="_blank">feilign</a> <a href="http://msg.cnblogs.com/send/feilign" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3122269" class="blog_comment_body"><a href="http://www.cnblogs.com/subconscious/p/4249581.html#3121515" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3121515);">@</a>
+N1ck<br>强烈支持</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3122269,&#39;Digg&#39;,this)">支持(1)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3122269,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4249581.html#3122625" class="layer">#3楼</a><a name="3122625" id="comment_anchor_3122625"></a>  <span class="comment_date">2015-02-03 16:14</span> <a id="a_comment_author_3122625" href="http://www.cnblogs.com/yssongest/" target="_blank">Mr.Easy</a> <a href="http://msg.cnblogs.com/send/Mr.Easy" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3122625" class="blog_comment_body">支持，博主要坚持下去</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3122625,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3122625,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4249581.html#3123032" class="layer">#4楼</a><a name="3123032" id="comment_anchor_3123032"></a>  <span class="comment_date">2015-02-04 09:50</span> <a id="a_comment_author_3123032" href="http://www.cnblogs.com/cxs198699/" target="_blank">JasonChen86</a> <a href="http://msg.cnblogs.com/send/JasonChen86" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3123032" class="blog_comment_body">强烈支持！！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3123032,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3123032,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3123032_avatar" style="display:none;">http://pic.cnblogs.com/face/29384/20140620100725.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4249581.html#3123069" class="layer">#5楼</a><a name="3123069" id="comment_anchor_3123069"></a>  <span class="comment_date">2015-02-04 10:11</span> <a id="a_comment_author_3123069" href="http://www.cnblogs.com/Irving/" target="_blank">花儿笑弯了腰</a> <a href="http://msg.cnblogs.com/send/%E8%8A%B1%E5%84%BF%E7%AC%91%E5%BC%AF%E4%BA%86%E8%85%B0" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3123069" class="blog_comment_body">必须支持</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3123069,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3123069,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3123069_avatar" style="display:none;">http://pic.cnblogs.com/face/365537/20140218233545.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4249581.html#3123099" class="layer">#6楼</a><a name="3123099" id="comment_anchor_3123099"></a>  <span class="comment_date">2015-02-04 10:44</span> <a id="a_comment_author_3123099" href="http://www.cnblogs.com/xxyan/" target="_blank">AK47</a> <a href="http://msg.cnblogs.com/send/AK47" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3123099" class="blog_comment_body">高大上啊，</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3123099,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3123099,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4249581.html#3123186" class="layer">#7楼</a><a name="3123186" id="comment_anchor_3123186"></a>  <span class="comment_date">2015-02-04 12:15</span> <a id="a_comment_author_3123186" href="http://www.cnblogs.com/wumian1360/" target="_blank">无眠</a> <a href="http://msg.cnblogs.com/send/%E6%97%A0%E7%9C%A0" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3123186" class="blog_comment_body">高大上啊</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3123186,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3123186,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3123186_avatar" style="display:none;">http://pic.cnblogs.com/face/u118477.jpg?id=18131443</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4249581.html#3123577" class="layer">#8楼</a><a name="3123577" id="comment_anchor_3123577"></a>  <span class="comment_date">2015-02-04 22:27</span> <a id="a_comment_author_3123577" href="http://www.cnblogs.com/bluedoctor/" target="_blank">深蓝医生</a> <a href="http://msg.cnblogs.com/send/%E6%B7%B1%E8%93%9D%E5%8C%BB%E7%94%9F" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3123577" class="blog_comment_body">非常专业啊</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3123577,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3123577,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3123577_avatar" style="display:none;">http://pic.cnblogs.com/face/u114517.png?id=23112533</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4249581.html#3124367" class="layer">#9楼</a><a name="3124367" id="comment_anchor_3124367"></a>  <span class="comment_date">2015-02-05 20:04</span> <a id="a_comment_author_3124367" href="http://home.cnblogs.com/u/616030/" target="_blank">544892012</a> <a href="http://msg.cnblogs.com/send/544892012" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3124367" class="blog_comment_body">一直看下来了。博主加油啊。还没写完。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3124367,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3124367,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4249581.html#3124902" class="layer">#10楼</a><a name="3124902" id="comment_anchor_3124902"></a>  <span class="comment_date">2015-02-06 14:11</span> <a id="a_comment_author_3124902" href="http://www.cnblogs.com/gxh973121/" target="_blank">gxh973121</a> <a href="http://msg.cnblogs.com/send/gxh973121" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3124902" class="blog_comment_body">识别率惨不忍睹，我随便找了以前4张拍的照片，识别出0个，用火眼全部识别</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3124902,&#39;Digg&#39;,this)">支持(1)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3124902,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4249581.html#3125066" class="layer">#11楼</a><a name="3125066" id="comment_anchor_3125066"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2015-02-06 17:00</span> <a id="a_comment_author_3125066" href="http://www.cnblogs.com/subconscious/" target="_blank">计算机的潜意识</a> <a href="http://msg.cnblogs.com/send/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E6%BD%9C%E6%84%8F%E8%AF%86" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3125066" class="blog_comment_body"><a href="http://www.cnblogs.com/subconscious/p/4249581.html#3124902" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3124902);">@</a>
+gxh973121<br>确实很不如火眼的，我们正在不断改善，感谢您提出的宝贵意见!</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3125066,&#39;Digg&#39;,this)">支持(1)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3125066,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3125066_avatar" style="display:none;">http://pic.cnblogs.com/face/673793/20140918201411.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4249581.html#3125149" class="layer">#12楼</a><a name="3125149" id="comment_anchor_3125149"></a>  <span class="comment_date">2015-02-06 19:08</span> <a id="a_comment_author_3125149" href="http://www.cnblogs.com/gxh973121/" target="_blank">gxh973121</a> <a href="http://msg.cnblogs.com/send/gxh973121" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3125149" class="blog_comment_body">支持楼主,只要坚持下去就会一步步完善,期望完善的时候还是开源的</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3125149,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3125149,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4249581.html#3126785" class="layer">#13楼</a><a name="3126785" id="comment_anchor_3126785"></a>  <span class="comment_date">2015-02-10 10:05</span> <a id="a_comment_author_3126785" href="http://home.cnblogs.com/u/722501/" target="_blank">jun2875</a> <a href="http://msg.cnblogs.com/send/jun2875" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3126785" class="blog_comment_body">首先支持楼主与感谢楼主的开源精神，一路看下来，感觉很系统，收获也很大。<br>我想请教楼主一个问题：在第4篇中提到的对于奥迪Q5之类的车，由于有太多的垂直边缘无法定位车牌，请问楼主是怎么解决的，能说一个大致思路吗，谢谢。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3126785,&#39;Digg&#39;,this)">支持(1)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3126785,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4249581.html#3129718" class="layer">#14楼</a><a name="3129718" id="comment_anchor_3129718"></a>  <span class="comment_date">2015-02-14 16:30</span> <a id="a_comment_author_3129718" href="http://home.cnblogs.com/u/723752/" target="_blank">水深四寸</a> <a href="http://msg.cnblogs.com/send/%E6%B0%B4%E6%B7%B1%E5%9B%9B%E5%AF%B8" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3129718" class="blog_comment_body">支持楼主，特意注册个号</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3129718,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3129718,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4249581.html#3140355" class="layer">#15楼</a><a name="3140355" id="comment_anchor_3140355"></a>  <span class="comment_date">2015-03-13 15:44</span> <a id="a_comment_author_3140355" href="http://home.cnblogs.com/u/658446/" target="_blank">张建蕾</a> <a href="http://msg.cnblogs.com/send/%E5%BC%A0%E5%BB%BA%E8%95%BE" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3140355" class="blog_comment_body">感谢楼主，讲的非常清晰。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3140355,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3140355,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4249581.html#3178234" class="layer">#16楼</a><a name="3178234" id="comment_anchor_3178234"></a>  <span class="comment_date">2015-05-07 17:23</span> <a id="a_comment_author_3178234" href="http://www.cnblogs.com/idobest/" target="_blank">stayfools</a> <a href="http://msg.cnblogs.com/send/stayfools" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3178234" class="blog_comment_body">首先，感谢一下lz的开源精神。另外，不理解lz为什么会选择直方图或者整个图像像素点这样没有区分度的特征，特征的重要性还是要大于分类器的。不过，lz文章把问题都谈到了。这里建议一下，如果是用SVM分类，可以用rbf核+梯度角度类特征，如果用深度网络，可以使用卷积神经网络。此外，libsvm包有提供分类概率估计，不知道opencv的svm有没有。最后，分类效果不好还是因为样本不够+特征不强。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3178234,&#39;Digg&#39;,this)">支持(2)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3178234,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3178234_avatar" style="display:none;">http://pic.cnblogs.com/face/698834/20150919235433.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4249581.html#3204362" class="layer">#17楼</a><a name="3204362" id="comment_anchor_3204362"></a>  <span class="comment_date">2015-06-09 10:57</span> <a id="a_comment_author_3204362" href="http://home.cnblogs.com/u/717055/" target="_blank">practice</a> <a href="http://msg.cnblogs.com/send/practice" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3204362" class="blog_comment_body">建议楼主用SVM做识别。另外字符图像二值化后，特征区分度不大。建议使用灰度字符图像，这样可以使用更多的梯度特征。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3204362,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3204362,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4249581.html#3204368" class="layer">#18楼</a><a name="3204368" id="comment_anchor_3204368"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2015-06-09 10:58</span> <a id="a_comment_author_3204368" href="http://www.cnblogs.com/subconscious/" target="_blank">计算机的潜意识</a> <a href="http://msg.cnblogs.com/send/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E6%BD%9C%E6%84%8F%E8%AF%86" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3204368" class="blog_comment_body"><a href="http://www.cnblogs.com/subconscious/p/4249581.html#3204362" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3204362);">@</a>
+practice<br>好建议，多谢</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3204368,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3204368,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3204368_avatar" style="display:none;">http://pic.cnblogs.com/face/673793/20140918201411.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4249581.html#3216097" class="layer">#19楼</a><a name="3216097" id="comment_anchor_3216097"></a>  <span class="comment_date">2015-06-26 17:21</span> <a id="a_comment_author_3216097" href="http://home.cnblogs.com/u/719262/" target="_blank">肥肥小牛</a> <a href="http://msg.cnblogs.com/send/%E8%82%A5%E8%82%A5%E5%B0%8F%E7%89%9B" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3216097" class="blog_comment_body">感谢楼主无私奉献，文中多处每每读到让人顿生感激~</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3216097,&#39;Digg&#39;,this)">支持(1)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3216097,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4249581.html#3237165" class="layer">#20楼</a><a name="3237165" id="comment_anchor_3237165"></a>  <span class="comment_date">2015-07-29 03:32</span> <a id="a_comment_author_3237165" href="http://www.cnblogs.com/beibaoke/" target="_blank">风骚背包客</a> <a href="http://msg.cnblogs.com/send/%E9%A3%8E%E9%AA%9A%E8%83%8C%E5%8C%85%E5%AE%A2" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3237165" class="blog_comment_body">依靠这种单一方法方法定位肯定很惨，可以结合传统那些扫描线之类的方法，效果应该不错</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3237165,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3237165,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3237165_avatar" style="display:none;">http://pic.cnblogs.com/face/u426609.jpg?id=30100140</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4249581.html#3261074" class="layer">#21楼</a><a name="3261074" id="comment_anchor_3261074"></a>  <span class="comment_date">2015-09-06 19:35</span> <a id="a_comment_author_3261074" href="http://www.cnblogs.com/freecisco/" target="_blank">freecisco</a> <a href="http://msg.cnblogs.com/send/freecisco" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3261074" class="blog_comment_body">先大赞一个博主的思想和行动，我以前也做过商业的车牌识别，学习博主的学习态度。<br>// ！本函数是获取垂直和水平的直方图图值<br>void getHistogramFeatures(const Mat&amp; image, Mat&amp; features)<br>这个函数其实是提取图像的水平投影和垂直投影，这样可以更好的进行描述。<br><br>再次大赞博主。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3261074,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3261074,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4249581.html#3272920" class="layer">#22楼</a><a name="3272920" id="comment_anchor_3272920"></a>  <span class="comment_date">2015-09-23 20:19</span> <a id="a_comment_author_3272920" href="http://home.cnblogs.com/u/815394/" target="_blank">joewale</a> <a href="http://msg.cnblogs.com/send/joewale" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3272920" class="blog_comment_body">您好！我在linux上部署您的EasyPR项目，Cmake版本是3.2.3，g++版本是4.8.2，opencv的版本是3.0.0，cmake后，在同一目录下进行make，编译出错，提示文件chars_identify.h中 error:‘CvANN_MLP’ does name a type。相应的文件chars_identify.cpp中的‘ann’没有声明。请问有遇到同样问题的吗，该如何解决？</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3272920,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3272920,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4249581.html#3272985" class="layer">#23楼</a><a name="3272985" id="comment_anchor_3272985"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2015-09-23 22:17</span> <a id="a_comment_author_3272985" href="http://www.cnblogs.com/subconscious/" target="_blank">计算机的潜意识</a> <a href="http://msg.cnblogs.com/send/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E6%BD%9C%E6%84%8F%E8%AF%86" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3272985" class="blog_comment_body"><a href="http://www.cnblogs.com/subconscious/p/4249581.html#3272920" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3272920);">@</a>
+joewale<br>编译问题请在github里提issue，会有人解答的。<br><br>我现在不负责项目的程序，linux部分的编译由@Micooz撰写的，请@他来提问。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3272985,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3272985,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3272985_avatar" style="display:none;">http://pic.cnblogs.com/face/673793/20140918201411.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4249581.html#3273006" class="layer">#24楼</a><a name="3273006" id="comment_anchor_3273006"></a>  <span class="comment_date">2015-09-23 23:00</span> <a id="a_comment_author_3273006" href="http://home.cnblogs.com/u/815394/" target="_blank">joewale</a> <a href="http://msg.cnblogs.com/send/joewale" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3273006" class="blog_comment_body"><a href="http://www.cnblogs.com/subconscious/p/4249581.html#3272985" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3272985);">@</a>
+计算机的潜意识 恩 好的 谢谢！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3273006,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3273006,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4249581.html#3309210" class="layer">#25楼</a><a name="3309210" id="comment_anchor_3309210"></a>  <span class="comment_date">2015-11-18 15:12</span> <a id="a_comment_author_3309210" href="http://www.cnblogs.com/chinhi/" target="_blank">Suzuki.kakeru</a> <a href="http://msg.cnblogs.com/send/Suzuki.kakeru" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3309210" class="blog_comment_body">lz  厉害！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3309210,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3309210,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3309210_avatar" style="display:none;">http://pic.cnblogs.com/face/400991/20140410214544.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4249581.html#3321542" class="layer">#26楼</a><a name="3321542" id="comment_anchor_3321542"></a>  <span class="comment_date">2015-12-06 11:48</span> <a id="a_comment_author_3321542" href="http://www.cnblogs.com/qingergege/" target="_blank">青儿哥哥</a> <a href="http://msg.cnblogs.com/send/%E9%9D%92%E5%84%BF%E5%93%A5%E5%93%A5" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3321542" class="blog_comment_body">楼主太厉害了，向楼主学习。就是应该多一点像楼主一样有奉献精神，开源精神的程序员</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3321542,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3321542,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3321542_avatar" style="display:none;">http://pic.cnblogs.com/face/823435/20171210200753.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4249581.html#3525906" class="layer">#27楼</a><a name="3525906" id="comment_anchor_3525906"></a>  <span class="comment_date">2016-10-08 18:30</span> <a id="a_comment_author_3525906" href="http://home.cnblogs.com/u/1021973/" target="_blank">xiaofeng520</a> <a href="http://msg.cnblogs.com/send/xiaofeng520" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3525906" class="blog_comment_body">lz你好，请教一个问题，我重新训练了一下svm模型，模型保存后predict出错，但是拿训练得到的svm模型直接预测时是正确得，貌似是svm得save和load有问题，这怎么解决呢？谢谢！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3525906,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3525906,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4249581.html#3607489" class="layer">#28楼</a><a name="3607489" id="comment_anchor_3607489"></a>  <span class="comment_date">2017-01-20 11:44</span> <a id="a_comment_author_3607489" href="http://www.cnblogs.com/wyyy/" target="_blank">一树繁花</a> <a href="http://msg.cnblogs.com/send/%E4%B8%80%E6%A0%91%E7%B9%81%E8%8A%B1" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3607489" class="blog_comment_body">怎么会没有C#版本的呢？引入DLL的时间会报错的啊<br>不知道有哪位同学解决了这一个问题</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3607489,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3607489,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3607489_avatar" style="display:none;">http://pic.cnblogs.com/face/u347910.jpg?id=05191148</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4249581.html#3618533" class="layer">#29楼</a><a name="3618533" id="comment_anchor_3618533"></a>  <span class="comment_date">2017-02-14 21:56</span> <a id="a_comment_author_3618533" href="http://home.cnblogs.com/u/1106376/" target="_blank">livezingy</a> <a href="http://msg.cnblogs.com/send/livezingy" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3618533" class="blog_comment_body">尊敬的博主，您好，首先非常感谢您将这么好的代码开源，并且配有精彩的开发详解！<br>我认真学习了EasyPR开发详解和EasyPR代码。在学习过程中，我尝试将EasyPR做了一个MFC的版本。另外基于opencv3.1(2016/10源码编译)和VS2013，我将svm_train.cpp独立出来做了一个SVMExample (github.co#/livezingy#SVMExample)，仍然使用博主的数据集，在该例子中我添加了博主提到的HOG和SIFT特征，同时也添加了SURF特征。针对LBP/HOG/SIFT/SURF做了一些对比测试，但是所有的特征都没有达到博主提到的“precise在99%左右，而且recall也有98%”。不知博主是否有空指点一二？</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3618533,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3618533,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4249581.html#3621253" class="layer">#30楼</a><a name="3621253" id="comment_anchor_3621253"></a>  <span class="comment_date">2017-02-17 21:53</span> <a id="a_comment_author_3621253" href="http://home.cnblogs.com/u/1108424/" target="_blank">anqier200505</a> <a href="http://msg.cnblogs.com/send/anqier200505" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3621253" class="blog_comment_body">我用作者的数据集，分别使用lbf和getHistogramFeatures提取的特征进行训练，精度也是没有达到作者提到的“precise在99%左右，而且recall也有98%”。<br><a href="http://home.cnblogs.com/u/1106376/" target="_blank">@livezingy</a> 请问您使用LBP/HOG/SIFT/SURF的精度最高能达到多少？</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3621253,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3621253,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4249581.html#3621318" class="layer">#31楼</a><a name="3621318" id="comment_anchor_3621318"></a>  <span class="comment_date">2017-02-18 07:43</span> <a id="a_comment_author_3621318" href="http://home.cnblogs.com/u/1106376/" target="_blank">livezingy</a> <a href="http://msg.cnblogs.com/send/livezingy" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3621318" class="blog_comment_body">@anqier200505 您好，综合状况最好的是SIFT, precise:0.848333, recall:0.98835, Fscore:0.913004。livezingy.com#sift-surf-bag-of-words-example这里有一个详细的对比，您可以取围观一下：）</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3621318,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3621318,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4249581.html#3621399" class="layer">#32楼</a><a name="3621399" id="comment_anchor_3621399"></a>  <span class="comment_date">2017-02-18 10:51</span> <a id="a_comment_author_3621399" href="http://home.cnblogs.com/u/1108424/" target="_blank">anqier200505</a> <a href="http://msg.cnblogs.com/send/anqier200505" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3621399" class="blog_comment_body">@livezingy 我用 水平投影和垂直投影 特征，GBDT方法的Fscore：0.93<br>使用lbp特征，svm方法的Fscore：0.945</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3621399,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3621399,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4249581.html#3693201" class="layer">#33楼</a><a name="3693201" id="comment_anchor_3693201"></a>  <span class="comment_date">2017-05-16 10:19</span> <a id="a_comment_author_3693201" href="http://home.cnblogs.com/u/1166588/" target="_blank">Ivan-chen</a> <a href="http://msg.cnblogs.com/send/Ivan-chen" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3693201" class="blog_comment_body">学习了</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3693201,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3693201,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4249581.html#3720454" class="layer">#34楼</a><a name="3720454" id="comment_anchor_3720454"></a>  <span class="comment_date">2017-06-22 11:21</span> <a id="a_comment_author_3720454" href="http://home.cnblogs.com/u/1187256/" target="_blank">qitian003</a> <a href="http://msg.cnblogs.com/send/qitian003" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3720454" class="blog_comment_body">大神，不怕别人笑话，问一个比较low的问题：如何进行svm调试，例如，如何运行tain中的c++代码？？？刚接触这方面知识，打算一步步做下去，希望大神能给指点一下，拜托！！！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3720454,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3720454,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4249581.html#3747399" class="layer">#35楼</a><a name="3747399" id="comment_anchor_3747399"></a>  <span class="comment_date">2017-07-31 15:11</span> <a id="a_comment_author_3747399" href="http://www.cnblogs.com/happyamyhope/" target="_blank">CV_Lover</a> <a href="http://msg.cnblogs.com/send/CV_Lover" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3747399" class="blog_comment_body">感谢lz将SVM的实现讲解得全面、细致、精彩，非常值得学习！<br>另外，有一处不是特别清楚，博客中说“rbf核，会将输入数据的特征维数进行一个维度转换，具体会转换为多少维？这个等于你输入的训练量。”，意思看得明白，但不懂为什么是这样的，能否解释一下使用rbf核将低维映射到高维，为什么高维的特征维数等于训练数目~<br>再次感谢！！！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3747399,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3747399,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3747399_avatar" style="display:none;">http://pic.cnblogs.com/face/907199/20160413153516.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4249581.html#3764657" class="layer">#36楼</a><a name="3764657" id="comment_anchor_3764657"></a>  <span class="comment_date">2017-08-23 19:46</span> <a id="a_comment_author_3764657" href="http://www.cnblogs.com/dahu-daqing/" target="_blank">dahu1</a> <a href="http://msg.cnblogs.com/send/dahu1" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3764657" class="blog_comment_body">楼主,继续更新啊</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3764657,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3764657,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3764657_avatar" style="display:none;">http://pic.cnblogs.com/face/1099781/20170502110106.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4249581.html#3894194" class="layer">#37楼</a><a name="3894194" id="comment_anchor_3894194"></a><span id="comment-maxId" style="display:none;">3894194</span><span id="comment-maxDate" style="display:none;">2018/1/20 20:23:51</span>  <span class="comment_date">2018-01-20 20:23</span> <a id="a_comment_author_3894194" href="http://home.cnblogs.com/u/1320305/" target="_blank">风里雨李</a> <a href="http://msg.cnblogs.com/send/%E9%A3%8E%E9%87%8C%E9%9B%A8%E6%9D%8E" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3894194" class="blog_comment_body">发现楼主讲的比别人单独讲的好多了，至少我通过这篇博文看懂了SVM</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3894194,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3894194,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	<div id="comments_pager_bottom"></div></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="http://www.cnblogs.com/subconscious/p/4249581.html#" onclick="return RefreshPage();">刷新页面</a><a href="http://www.cnblogs.com/subconscious/p/4249581.html#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login(&#39;commentform&#39;);">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】超50万VC++源码: 大型组态工控、电力仿真CAD与GIS源码库！</a><br><a href="http://click.aliyun.com/m/43774/" target="_blank">【缅怀】传奇谢幕，回顾霍金76载传奇人生</a><br><a href="https://cloud.tencent.com/act/campus?fromSource=gwzcw.860539.860539.860539" target="_blank">【推荐】腾讯云校园拼团福利，1核2G服务器10元/月！</a><br><a href="https://www.yunqi2050.com/#/index" target="_blank">【活动】2050 科技公益大会 - 年青人因科技而团聚</a><br></div>
+<div id="opt_under_post"></div>
+<div id="cnblogs_c1" class="c_ad_block"><a href="https://market.qcloud.com/act/wangjian/?fromSource=gwzcw.860541.860541.860541" target="_blank"><img width="300" height="250" src="./EasyPR--开发详解（6）SVM开发详解 - 计算机的潜意识 - 博客园_files/24442-20180314220122373-1718033865.jpg" alt="qcloud0314"></a></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="https://news.cnblogs.com/n/592036/" target="_blank">孙宏斌的护城河：辞职后留嫡系掌权 乐视仍是肥肉？</a><br> ·  <a href="https://news.cnblogs.com/n/592035/" target="_blank">火币前CTO张健：区块链大繁荣，尚需5到10年时间</a><br> ·  <a href="https://news.cnblogs.com/n/592034/" target="_blank">Uber自动驾驶汽车再出事故：人员受轻伤</a><br> ·  <a href="https://news.cnblogs.com/n/592025/" target="_blank">谷歌地图在几个城市提供轮椅行进辅助信息</a><br> ·  <a href="https://news.cnblogs.com/n/592033/" target="_blank">吃着越来越贵的外卖 你会想起当年的网约车吗？</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="cnblogs_c2" class="c_ad_block"><a href="http://click.aliyun.com/m/42835/" target="_blank"><img width="468" height="60" src="https://gw.alicdn.com/tfs/TB1mEZFaWmWBuNjy1XaXXXCbXXa-468-60.jpg" alt="阿里云0308" style="display: none !important;"></a></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/575255/" target="_blank">写给自学者的入门指南</a><br> ·  <a href="http://kb.cnblogs.com/page/578690/" target="_blank">和程序员谈恋爱</a><br> ·  <a href="http://kb.cnblogs.com/page/585734/" target="_blank">学会学习</a><br> ·  <a href="http://kb.cnblogs.com/page/588938/" target="_blank">优秀技术人的管理陷阱</a><br> ·  <a href="http://kb.cnblogs.com/page/590141/" target="_blank">作为一个程序员，数学对你到底有多重要</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+    fixPostBody();
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);   
+</script>
+</div>
+
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news">EasyPR讨论QQ群：一群：366392603, 四群：548362608。加前请注明EasyPR学习讨论。<div id="profile_block">昵称：<a href="https://home.cnblogs.com/u/subconscious/">计算机的潜意识</a><br>园龄：<a href="https://home.cnblogs.com/u/subconscious/" title="入园时间：2014-09-18">3年5个月</a><br>荣誉：<a href="https://www.cnblogs.com/expert/">推荐博客</a><br>粉丝：<a href="https://home.cnblogs.com/u/subconscious/followers/">1424</a><br>关注：<a href="https://home.cnblogs.com/u/subconscious/followees/">12</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="follow(&#39;edd4356d-003f-e411-b908-9dcfd8948a71&#39;)">+加关注</a></div><script>getFollowStatus('edd4356d-003f-e411-b908-9dcfd8948a71')</script></div></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+
+			<div id="blog-calendar" style=""><table id="blogCalendar" class="Cal" cellspacing="0" cellpadding="0" title="Calendar">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2018/02/01&#39;);return false;">&lt;</a></td><td align="center">2018年3月</td><td class="CalNextPrev" align="right"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2018/04/01&#39;);return false;">&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" align="center" abbr="日" scope="col">日</th><th class="CalDayHeader" align="center" abbr="一" scope="col">一</th><th class="CalDayHeader" align="center" abbr="二" scope="col">二</th><th class="CalDayHeader" align="center" abbr="三" scope="col">三</th><th class="CalDayHeader" align="center" abbr="四" scope="col">四</th><th class="CalDayHeader" align="center" abbr="五" scope="col">五</th><th class="CalDayHeader" align="center" abbr="六" scope="col">六</th></tr><tr><td class="CalOtherMonthDay" align="center">25</td><td class="CalOtherMonthDay" align="center">26</td><td class="CalOtherMonthDay" align="center">27</td><td class="CalOtherMonthDay" align="center">28</td><td align="center">1</td><td align="center">2</td><td class="CalWeekendDay" align="center">3</td></tr><tr><td class="CalWeekendDay" align="center">4</td><td align="center">5</td><td align="center">6</td><td align="center">7</td><td align="center">8</td><td align="center">9</td><td class="CalWeekendDay" align="center">10</td></tr><tr><td class="CalWeekendDay" align="center">11</td><td align="center">12</td><td align="center">13</td><td align="center">14</td><td align="center">15</td><td align="center">16</td><td class="CalTodayDay" align="center">17</td></tr><tr><td class="CalWeekendDay" align="center">18</td><td align="center">19</td><td align="center">20</td><td align="center">21</td><td align="center">22</td><td align="center">23</td><td class="CalWeekendDay" align="center">24</td></tr><tr><td class="CalWeekendDay" align="center">25</td><td align="center">26</td><td align="center">27</td><td align="center">28</td><td align="center">29</td><td align="center">30</td><td class="CalWeekendDay" align="center">31</td></tr><tr><td class="CalOtherMonthDay" align="center">1</td><td class="CalOtherMonthDay" align="center">2</td><td class="CalOtherMonthDay" align="center">3</td><td class="CalOtherMonthDay" align="center">4</td><td class="CalOtherMonthDay" align="center">5</td><td class="CalOtherMonthDay" align="center">6</td><td class="CalOtherMonthDay" align="center">7</td></tr>
+</tbody></table></div><script type="text/javascript">loadBlogDefaultCalendar();</script>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="sidebar_search" class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="sidebar_search_box">
+
+<div id="widget_my_google" class="div_my_zzk"><input type="text" name="google_q" id="google_q" onkeydown="return google_go_enter(event)" class="input_my_zzk">&nbsp;<input onclick="google_go()" type="button" value="谷歌搜索" class="btn_my_zzk"></div>
+</div>
+</div>
+
+</div><div id="sidebar_categories">
+<div id="sidebar_postarchive" class="catListPostArchive sidebar-block">
+<h3 class="catListTitle">随笔档案</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_0_Link_0" href="http://www.cnblogs.com/subconscious/archive/2017/12.html">2017年12月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_1" href="http://www.cnblogs.com/subconscious/archive/2016/12.html">2016年12月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_2" href="http://www.cnblogs.com/subconscious/archive/2016/07.html">2016年7月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_3" href="http://www.cnblogs.com/subconscious/archive/2016/03.html">2016年3月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_4" href="http://www.cnblogs.com/subconscious/archive/2015/12.html">2015年12月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_5" href="http://www.cnblogs.com/subconscious/archive/2015/07.html">2015年7月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_6" href="http://www.cnblogs.com/subconscious/archive/2015/03.html">2015年3月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_7" href="http://www.cnblogs.com/subconscious/archive/2015/02.html">2015年2月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_8" href="http://www.cnblogs.com/subconscious/archive/2014/12.html">2014年12月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_9" href="http://www.cnblogs.com/subconscious/archive/2014/10.html">2014年10月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_10" href="http://www.cnblogs.com/subconscious/archive/2014/09.html">2014年9月 (2)</a> </li>
+
+</ul>
+
+</div>
+
+</div><div id="sidebar_scorerank" class="sidebar-block">
+<div class="catListBlogRank">
+<h3 class="catListTitle">积分与排名</h3>
+<ul>
+	<li class="liScore">
+		积分 -	49370
+	</li>
+	<li class="liRank">
+		排名 -	7447
+	</li>
+</ul>
+</div>
+
+
+</div><div id="sidebar_recentcomments" class="sidebar-block"><div id="recent_comments_wrap">
+<div class="catListComment">
+<h3 class="catListTitle">最新评论</h3>
+
+	<div id="RecentCommentsBlock"><ul>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/subconscious/p/4107357.html#3925062">1. Re:从机器学习谈起</a></li>
+        <li class="recent_comment_body">不错，支持</li>
+        <li class="recent_comment_author">--小陀螺_coding</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/subconscious/p/8157268.html#3923099">2. Re:2017年总结</a></li>
+        <li class="recent_comment_body">@肥肥小牛非常感谢您的建议！...</li>
+        <li class="recent_comment_author">--计算机的潜意识</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/subconscious/p/8157268.html#3922721">3. Re:2017年总结</a></li>
+        <li class="recent_comment_body">另，本人有两点拙见：1、我有个朋友的亲戚就是做民间借贷的，经过深入交流发现，现在的逼债手段没有想象中那么“暴力”，而是几乎都“合法化”和“规范化”了。所以博主的案例真的是给大家提了个醒，要尽早采用法律......</li>
+        <li class="recent_comment_author">--肥肥小牛</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/subconscious/p/8157268.html#3922695">4. Re:2017年总结</a></li>
+        <li class="recent_comment_body">支持博主，祝好人好报！</li>
+        <li class="recent_comment_author">--肥肥小牛</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/subconscious/p/3979988.html#3921081">5. Re:EasyPR--一个开源的中文车牌识别系统</a></li>
+        <li class="recent_comment_body">博主，你好请问字符分割部分找到特殊字符之后，接下来的找最小外接矩形和分割代码在哪找？</li>
+        <li class="recent_comment_author">--上善若水ssrs</li>
+</ul>
+</div>
+</div>
+</div></div><div id="sidebar_topviewedposts" class="sidebar-block"><div id="topview_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">阅读排行榜</h3>
+	<div id="TopViewPostsBlock"><ul><li><a href="http://www.cnblogs.com/subconscious/p/5058741.html">1. 神经网络浅讲：从神经元到深度学习(107257)</a></li><li><a href="http://www.cnblogs.com/subconscious/p/4107357.html">2. 从机器学习谈起(75650)</a></li><li><a href="http://www.cnblogs.com/subconscious/p/3979988.html">3. EasyPR--一个开源的中文车牌识别系统(70854)</a></li><li><a href="http://www.cnblogs.com/subconscious/p/4001896.html">4. EasyPR--中文开源车牌识别系统 开发详解（1）(28167)</a></li><li><a href="http://www.cnblogs.com/subconscious/p/4013591.html">5. EasyPR--开发详解（2）车牌定位(27895)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topcommentedposts" class="sidebar-block"><div id="topfeedback_posts_wrap">
+<div class="catListFeedback">
+<h3 class="catListTitle">评论排行榜</h3>
+	<div id="TopFeedbackPostsBlock"><ul><li><a href="http://www.cnblogs.com/subconscious/p/4107357.html">1. 从机器学习谈起(147)</a></li><li><a href="http://www.cnblogs.com/subconscious/p/3979988.html">2. EasyPR--一个开源的中文车牌识别系统(61)</a></li><li><a href="http://www.cnblogs.com/subconscious/p/5058741.html">3. 神经网络浅讲：从神经元到深度学习(57)</a></li><li><a href="http://www.cnblogs.com/subconscious/p/4249581.html">4. EasyPR--开发详解（6）SVM开发详解(37)</a></li><li><a href="http://www.cnblogs.com/subconscious/p/4311550.html">5. 小议“数据开放”(28)</a></li></ul></div>
+</div>
+</div></div></div><script type="text/javascript">loadBlogSideColumn();</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright ©2018 计算机的潜意识
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+</body></html>

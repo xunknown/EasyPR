@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)http://www.cnblogs.com/subconscious/p/4022454.html -->
+<html lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EasyPR--开发详解（3）高斯模糊、灰度化和Sobel算子 - 计算机的潜意识 - 博客园</title>
+<link type="text/css" rel="stylesheet" href="./EasyPR--开发详解（3）高斯模糊、灰度化和Sobel算子 - 计算机的潜意识 - 博客园_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="./EasyPR--开发详解（3）高斯模糊、灰度化和Sobel算子 - 计算机的潜意识 - 博客园_files/bundle-iMetro_HD.css">
+<link type="text/css" rel="stylesheet" href="./EasyPR--开发详解（3）高斯模糊、灰度化和Sobel算子 - 计算机的潜意识 - 博客园_files/198547.css">
+<link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="./EasyPR--开发详解（3）高斯模糊、灰度化和Sobel算子 - 计算机的潜意识 - 博客园_files/bundle-iMetro_HD-mobile.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/subconscious/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/subconscious/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/subconscious/wlwmanifest.xml">
+<script async="" src="./EasyPR--开发详解（3）高斯模糊、灰度化和Sobel算子 - 计算机的潜意识 - 博客园_files/analytics.js"></script><script type="text/javascript" src="./EasyPR--开发详解（3）高斯模糊、灰度化和Sobel算子 - 计算机的潜意识 - 博客园_files/encoder.js"></script><script src="./EasyPR--开发详解（3）高斯模糊、灰度化和Sobel算子 - 计算机的潜意识 - 博客园_files/jquery-2.2.0.min.js"></script>
+<script type="text/javascript">var currentBlogApp = 'subconscious', cb_enable_mathjax=false;var isLogined=false;</script>
+<script src="./EasyPR--开发详解（3）高斯模糊、灰度化和Sobel算子 - 计算机的潜意识 - 博客园_files/blog-common.js" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+<!--PageBeginHtml Block Begin-->
+<span id="forkongithub"><a href="https://github.com/liuruoze/EasyPR" target="_blank">Fork me on GitHub</a></span>
+<!--PageBeginHtml Block End-->
+
+<!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+	<a id="lnkBlogLogo" href="http://www.cnblogs.com/subconscious/"><img id="blogLogo" src="./EasyPR--开发详解（3）高斯模糊、灰度化和Sobel算子 - 计算机的潜意识 - 博客园_files/logo.gif" alt="返回主页"></a>			
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/subconscious/">计算机的潜意识</a></h1>
+<h2>EasyPR讨论QQ群：一群：366392603, 四群：548362608。 加前请注明EasyPR学习讨论。</h2>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="blog_nav_sitehome" class="menu" href="http://www.cnblogs.com/">博客园</a></li>
+<li><a id="blog_nav_myhome" class="menu" href="http://www.cnblogs.com/subconscious/">首页</a></li>
+<li><a id="blog_nav_newpost" class="menu" rel="nofollow" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+<li><a id="blog_nav_contact" class="menu" rel="nofollow" href="https://msg.cnblogs.com/send/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E6%BD%9C%E6%84%8F%E8%AF%86">联系</a></li>
+<li><a id="blog_nav_rss" class="menu" href="http://www.cnblogs.com/subconscious/rss">订阅</a>
+<!--<a id="blog_nav_rss_image" class="aHeaderXML" href="http://www.cnblogs.com/subconscious/rss"><img src="//www.cnblogs.com/images/xml.gif" alt="订阅" /></a>--></li>
+<li><a id="blog_nav_admin" class="menu" rel="nofollow" href="https://i.cnblogs.com/">管理</a></li>
+</ul>
+		<div class="blogStats">
+			
+			<div id="blog_stats">
+<span id="stats_post_count">随笔 - 15&nbsp; </span>
+<span id="stats_article_count">文章 - 0&nbsp; </span>
+<span id="stats-comment_count">评论 - 505</span>
+</div>
+			
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+<div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class="post">
+		<h1 class="postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="http://www.cnblogs.com/subconscious/p/4022454.html">EasyPR--开发详解（3）高斯模糊、灰度化和Sobel算子</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body" class="blogpost-body"><p><strong>　　</strong>在<a href="http://www.cnblogs.com/subconscious/p/4013591.html" target="_blank">上篇文章</a>中我们了解了PlateLocate的过程中的所有步骤。在本篇文章中我们对前3个步骤，分别是高斯模糊、灰度化和Sobel算子进行分析。</p>
+<p><strong>一、高斯模糊</strong></p>
+<p>　<strong>1.<span style="font-family: 黑体;">目标</span></strong></p>
+<p>　　对图像去噪，为边缘检测算法做准备。　　</p>
+<p>　<strong><span style="font-family: 黑体;">2.效果</span></strong></p>
+<p>　　在我们的车牌定位中的第一步就是高斯模糊处理。</p>
+<p>　　<img src="./EasyPR--开发详解（3）高斯模糊、灰度化和Sobel算子 - 计算机的潜意识 - 博客园_files/141541087943689.jpg" alt="" width="945" height="239"></p>
+<p style="text-align: center;"><span style="font-family: 黑体;">图1 高斯模糊效果</span></p>
+<p>　<strong><span style="font-family: 黑体;">3.理论</span></strong>　</p>
+<p>　　详细说明可以看这篇:<a title="高斯模糊的算法" href="http://www.ruanyifeng.com/blog/2012/11/gaussian_blur.html" target="_blank">阮一峰讲高斯模糊</a>。</p>
+<p>　　高斯模糊是非常有名的一种图像处理技术。顾名思义，其一般应用是将图像变得模糊，但同时高斯模糊也应用在图像的预处理阶段。理解高斯模糊前，先看一下平均模糊算法。平均模糊的算法非常简单。见下图，每一个像素的值都取周围所有像素（共8个）的平均值。</p>
+<p style="text-align: center;"><br><img src="./EasyPR--开发详解（3）高斯模糊、灰度化和Sobel算子 - 计算机的潜意识 - 博客园_files/101655261408916.jpg" alt="" width="777" height="214"><br><span style="font-family: 黑体;">图2 平均模糊示意图</span></p>
+<p><br>　　在上图中，左边红色点的像素值本来是2，经过模糊后，就成了1（取周围所有像素的均值）。在平均模糊中，周围像素的权值都是一样的，都是1。如果周围像素的权值不一样，并且与二维的高斯分布的值一样，那么就叫做高斯模糊。</p>
+<p>　　在上面的模糊过程中，每个像素取的是周围一圈的平均值，也称为模糊半径为1。如果取周围三圈，则称之为半径为3。半径增大的话，会更加深模糊的效果。</p>
+<p>　<strong><span style="font-family: 黑体;">4.实践</span></strong></p>
+<p>　　在PlateLocate中是这样调用高斯模糊的。</p>
+<div class="cnblogs_code">
+<pre>    <span style="color: #008000;">//<span style="color: #008000;">高斯模糊。Size中的数字影响车牌定位的效果。
+<span style="color: #000000;">    GaussianBlur( src, src_blur, Size(m_GaussianBlurSize, m_GaussianBlurSize), 
+        <span style="color: #800080;">0, <span style="color: #800080;">0, BORDER_DEFAULT );</span></span></span></span></span></pre>
+</div>
+<p>　　其中Size字段的参数指定了高斯模糊的半径。值是CPlateLocate类的m_<span style="color: #000000;">GaussianBlurSize变量。由于opencv的高斯模糊仅接收奇数的半径，因此变量为偶数值会抛出异常。<br><br>　　这里给出了opencv的高斯模糊的<a title="高斯模糊API" href="http://docs.opencv.org/modules/imgproc/doc/filtering.html?highlight=gaussianblur#void%20GaussianBlur(InputArray%20src,%20OutputArray%20dst,%20Size%20ksize,%20double%20sigmaX,%20double%20sigmaY,%20int%20borderType)" target="_blank">API</a>(英文，2.48以上版本）。<br><br>　　高斯模糊这个过程一定是必要的么。笔者的回答是必要的，倘若我们将这句代码注释并稍作修改，重新运行一下。你会发现plateLocate过程在闭操作时就和原来发生了变化。最后结果如下。</span></p>
+<p style="text-align: center;"><img src="./EasyPR--开发详解（3）高斯模糊、灰度化和Sobel算子 - 计算机的潜意识 - 博客园_files/101717336711719.jpg" alt="" width="919" height="425"></p>
+<p style="text-align: center;"><span style="font-family: 黑体;">图3 不采用高斯模糊后的结果　　</span></p>
+<p style="text-align: left;">　　可以看出，车牌所在的矩形产生了偏斜。最后得到的候选“车牌”图块如下：</p>
+<p style="text-align: left;"><img src="./EasyPR--开发详解（3）高斯模糊、灰度化和Sobel算子 - 计算机的潜意识 - 博客园_files/101750021879966.jpg" alt="">&nbsp;&nbsp;&nbsp;<img src="./EasyPR--开发详解（3）高斯模糊、灰度化和Sobel算子 - 计算机的潜意识 - 博客园_files/101750082491487.jpg" alt="">&nbsp;&nbsp; <img src="./EasyPR--开发详解（3）高斯模糊、灰度化和Sobel算子 - 计算机的潜意识 - 博客园_files/101747255462980.jpg" alt="">&nbsp;&nbsp; <img src="./EasyPR--开发详解（3）高斯模糊、灰度化和Sobel算子 - 计算机的潜意识 - 博客园_files/101747312336983.jpg" alt="">&nbsp;&nbsp; <img src="./EasyPR--开发详解（3）高斯模糊、灰度化和Sobel算子 - 计算机的潜意识 - 博客园_files/101747365465873.jpg" alt="">&nbsp;&nbsp; <img src="./EasyPR--开发详解（3）高斯模糊、灰度化和Sobel算子 - 计算机的潜意识 - 博客园_files/101747411087433.jpg" alt=""> <img src="./EasyPR--开发详解（3）高斯模糊、灰度化和Sobel算子 - 计算机的潜意识 - 博客园_files/101747466719866.jpg" alt=""> &nbsp; <img src="./EasyPR--开发详解（3）高斯模糊、灰度化和Sobel算子 - 计算机的潜意识 - 博客园_files/101747527805400.jpg" alt=""></p>
+<p style="text-align: center;"><span style="font-family: 黑体;">图4 不采用高斯模糊后的“<span style="font-family: 黑体;">车牌”图块</span></span></p>
+<p>　　如果不使用高斯模糊而直接用边缘检测算法，我们得到的候选“车牌”达到了8个！这样不仅会增加车牌判断的处理时间，还增加了判断出错的概率。由于得到的车牌图块中车牌是斜着的，如果我们的字符识别算法需要一个水平的车牌图块，那么几乎肯定我们会无法得到正确的字符识别效果。</p>
+<p>　
+　高斯模糊中的半径也会给结果带来明显的变化。有的图片，高斯模糊半径过高了，车牌就定位不出来。有的图片，高斯模糊半径偏低了，车牌也定位不出来。因
+此、高斯模糊的半径既不宜过高，也不能过低。CPlateLocate类中的值为5的静态常量DEFAULT_GAUSSIANBLUR_SIZE，标示
+着推荐的高斯模糊的半径。这个值是对于近千张图片经过测试后得出的综合定位率最高的一个值。在CPlateLocate类的构造函数
+中，m_GaussianBlurSize被赋予了DEFAULT_GAUSSIANBLUR_SIZE的值，因此，默认的高斯模糊的半径就是5。如果不
+是特殊情况，不需要修改它。</p>
+<p>　　在数次的实验以后，必须承认，保留高斯模糊过程与半径值为5是最佳的实践。为应对特殊需求，在CPlateLocate类中也应该提供了方法修改高斯半径的值，调用代码（假设需要一个为3的高斯模糊半径）如下：</p>
+<div class="cnblogs_code">
+<pre><span style="color: #000000;">    CPlateLocate plate;
+    plate.setGaussianBlurSize(<span style="color: #800080;">3);</span></span></pre>
+</div>
+<p>&nbsp;　　目前EasyPR的处理步骤是先进行高斯模糊，再进行灰度化。从目前的实验结果来看，基于色彩的高斯模糊过程比灰度后的高斯模糊过程更容易检测到边缘点。</p>
+<p>&nbsp;</p>
+<p><strong>二、灰度化处理</strong></p>
+<p>　<strong>1.<span style="font-family: 黑体;">目标</span></strong></p>
+<p>　　为边缘检测算法准备灰度化环境。</p>
+<p>　<strong>2.<span style="font-family: 黑体;">效果</span></strong></p>
+<p><span style="font-family: 黑体;">　　<span style="font-family: 宋体;">灰度化的效果如下。</span></span></p>
+<p><img src="./EasyPR--开发详解（3）高斯模糊、灰度化和Sobel算子 - 计算机的潜意识 - 博客园_files/141632260441006.jpg" alt=""></p>
+<p style="text-align: center;"><span style="font-family: 黑体;">图5 灰度化效果</span></p>
+<p style="text-align: left;"><strong>　3.<span style="font-family: 黑体;">理论</span></strong></p>
+<p>　　在灰度化处理步骤中，争议最大的就是信息的损失。无疑的，原先plateLocate过程面对的图片是彩色图片，而从这一步以后，就会面对的是灰度图片。在前面，已经说过这步骤是利是弊是需要讨论的。</p>
+<p>　 　无疑，对于计算机而言，色彩图像相对于灰度图像难处理多了，很多图像处理算法仅仅只适用于灰度图像，例如后面提到的Sobel算子。在这种情况下，你除 了把图片转成灰度图像再进行处理别无它法，除非重新设计算法。但另一方面，转化成灰度图像后恰恰失去了最丰富的细节。要知道，真实世界是彩色的，人类对于 事物的辨别是基于彩色的框架。甚至可以这样说，因为我们的肉眼能够区别彩色，所以我们对于事物的区分，辨别，记忆的能力就非常的强。<br><br>　　
+车牌定位环节中去掉彩色的利弊也是同理。转换成灰度图像虽然利于使用各种专用的算法，但失去了真实世界中辨别的最重要工具---色彩的区分。举个简单的例
+子，人怎么在一张图片中找到车牌？非常简单，一眼望去，一个合适大小的矩形，蓝色的、或者黄色的、或者其他颜色的在另一个黑色，或者白色的大的跟车形类似
+的矩形中。这个过程非常直观，明显，而且可以排除模糊，色泽，不清楚等很多影响。如果使用灰度图像，就必须借助水平，垂直求导等方法。<br><br>　
+　未来如果PlateLocate过程可以使用颜色来判断，可能会比现在的定位更清楚、准确。但这需要研究与实验过程，在EasyPR的未来版本中可能会
+实现。但无疑，使用色彩判断是一种趋势，因为它不仅符合人眼识别的规律，更趋近于人工智能的本质，而且它更准确，速度更快。</p>
+<p>　<strong>4.<span style="font-family: 黑体;">实践</span></strong>　</p>
+<p>　　在PlateLocate过程中是这样调用灰度化的。</p>
+<div class="cnblogs_code">
+<pre>cvtColor( src_blur, src_gray, CV_RGB2GRAY );</pre>
+</div>
+<p>　　这里给出了opencv的灰度化的<a title="cvtColor API" href="http://docs.opencv.org/modules/imgproc/doc/miscellaneous_transformations.html?highlight=cvtcolor#void%20cvtColor(InputArray%20src,%20OutputArray%20dst,%20int%20code,%20int%20dstCn)" target="_blank">API(</a>英文，2.48以上版本）。</p>
+<p>&nbsp;</p>
+<p><strong>三.Sobel算子</strong></p>
+<p>　<strong>1.<span style="font-family: 黑体;">目标</span></strong></p>
+<p>　　检测图像中的垂直边缘，便于区分车牌。</p>
+<p><strong>　2.<span style="font-family: 黑体;">效果</span></strong></p>
+<p><strong><span style="font-family: 黑体;">　　</span></strong><span style="font-family: 宋体;">下图是Sobel算子的效果。</span></p>
+<p style="text-align: center;"><img src="./EasyPR--开发详解（3）高斯模糊、灰度化和Sobel算子 - 计算机的潜意识 - 博客园_files/141635376854721.jpg" alt=""><br><span style="font-family: 黑体;">图6 Sobel效果</span>　</p>
+<p>　<strong>3.<span style="font-family: 黑体;">理论</span></strong>　　</p>
+<p>　　如果要说哪个步骤是plateLocate中的核心与灵魂，毫无疑问是Sobel算子。没有Sobel算子，也就没有垂直边缘的检测，也就无法得到车牌
+的可能位置，也就没有后面的一系列的车牌判断、字符识别过程。通过Sobel算子，可以很方便的得到车牌的一个相对准确的位置，为我们的后续处理打好坚实
+的基础。在上面的plateLocate的执行过程中可以看到，正是通过Sobel算子，将车牌中的字符与车的背景明显区分开来，为后面的二值化与闭操作
+打下了基础。那么Sobel算子是如何运作的呢？</p>
+<p>　　Soble算子原理是对图像求一阶的水平与垂直方向导数，根据导数值的大小来判断是否是边缘。请详见CSDN小魏的<a title="小魏的Soble教程" href="http://blog.csdn.net/xiaowei_cqu/article/details/7829481" target="_blank">博客</a>（小心她博客里把Gx和Gy弄反了）。</p>
+<p>　　为了计算方便，Soble算子并没有真正去求导，而是使用了周边值的加权和的方法，学术上称作“卷积”。权值称为“卷积模板”。例如下图左边就是Sobel的Gx卷积模板（计算垂直边缘），中间是原图像，右边是经过卷积模板后的新图像。</p>
+<p><img src="./EasyPR--开发详解（3）高斯模糊、灰度化和Sobel算子 - 计算机的潜意识 - 博客园_files/121923400408002.jpg" alt="" width="940" height="325"></p>
+<p style="text-align: center;">　　<span style="font-family: 黑体;">图7 <span style="font-family: 黑体;">Sobel算子Gx示意图</span></span></p>
+<p>　　在这里演示了通过卷积模板，原始图像红色的像素点原本是5的值，经过卷积计算（- 1 * 3 - 2 * 3 - 1 * 4 + 1 * 5 + 2 * 7 + 1 * 6 = 12）后红色像素的值变成了12。</p>
+<p><strong>　4.<span style="font-family: 黑体;">实践</span></strong></p>
+<p>　　在代码中调用Soble算子需要较多的步骤。</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./EasyPR--开发详解（3）高斯模糊、灰度化和Sobel算子 - 计算机的潜意识 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre>    <span style="color: #808080;">///<span style="color: #008000;"> Generate grad_x and grad_y
+<span style="color: #000000;">    Mat grad_x, grad_y;
+    Mat abs_grad_x, abs_grad_y;
+
+    <span style="color: #808080;">///<span style="color: #008000;"> Gradient X
+    <span style="color: #008000;">//<span style="color: #008000;">Scharr( src_gray, grad_x, ddepth, 1, 0, scale, delta, BORDER_DEFAULT );
+    Sobel( src_gray, grad_x, ddepth, <span style="color: #800080;">1, <span style="color: #800080;">0, <span style="color: #800080;">3<span style="color: #000000;">, scale, delta, BORDER_DEFAULT );
+    convertScaleAbs( grad_x, abs_grad_x );
+
+    <span style="color: #808080;">///<span style="color: #008000;"> Gradient Y
+    <span style="color: #008000;">//<span style="color: #008000;">Scharr( src_gray, grad_y, ddepth, 0, 1, scale, delta, BORDER_DEFAULT );
+    Sobel( src_gray, grad_y, ddepth, <span style="color: #800080;">0, <span style="color: #800080;">1, <span style="color: #800080;">3<span style="color: #000000;">, scale, delta, BORDER_DEFAULT );
+    convertScaleAbs( grad_y, abs_grad_y );
+
+    <span style="color: #808080;">///<span style="color: #008000;"> Total Gradient (approximate)
+    addWeighted( abs_grad_x, SOBEL_X_WEIGHT, abs_grad_y, SOBEL_Y_WEIGHT, <span style="color: #800080;">0, grad );</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./EasyPR--开发详解（3）高斯模糊、灰度化和Sobel算子 - 计算机的潜意识 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>　　这里给出了opencv的Sobel的<a title="Sobel API" href="http://docs.opencv.org/modules/imgproc/doc/filtering.html?highlight=sobel#void%20Sobel(InputArray%20src,%20OutputArray%20dst,%20int%20ddepth,%20int%20dx,%20int%20dy,%20int%20ksize,%20double%20scale,%20double%20delta,%20int%20borderType)" target="_blank">API</a>(英文，2.48以上版本）</p>
+<p>　　在调用参数中有两个常量SOBEL_X_WEIGHT与SOBEL_Y_WEIGHT代表水平方向和垂直方向的权值，默认前者是1，后者是0，代表仅仅做水平方向求导，而不做垂直方向求导。这样做的意义是，如果我们做了垂直方向求导，会检测出很多水平边缘。水平边缘多也许有利于生成更精确的轮廓，但是由于有些车子前端太多的水平边缘了，例如车头排气孔，标志等等，很多的水平边缘会误导我们的连接结果，导致我们得不到一个恰好的车牌位置。例如，我们对于测试的图做如下实验，将SOBEL_X_WEIGHT与SOBEL_Y_WEIGHT都设置为0.5（代表两者的权值相等），那么最后得到的闭操作后的结果图为</p>
+<p>　　由于Sobel算子如此重要，可以将车牌与其他区域明显区分出来，那么问题就来了，有没有与Sobel功能类似的算子可以达到一致的效果，或者有没有比Sobel效果更好的算子？</p>
+<p>　　Sobel算子求图像的一阶导数，Laplace算子则是求图像的二阶导数，在通常情况下，也能检测出边缘，不过Laplace算子的检测不分水平和垂直。下图是Laplace算子与Sobel算子的一个对比。</p>
+<p><img src="./EasyPR--开发详解（3）高斯模糊、灰度化和Sobel算子 - 计算机的潜意识 - 博客园_files/141543390293287.jpg" alt=""></p>
+<p style="text-align: center;"><span style="font-family: 黑体;">图8 <span style="font-family: 黑体;"><span style="font-family: 黑体;">Sobel与Laplace示意图</span></span></span><br>　　</p>
+<p>　　可以看出，通过Laplace算子的图像包含了水平边缘和垂直边缘，根据我们刚才的描述。水平边缘对于车牌的检测一般无利反而有害。经过对近百幅图像的测试，Sobel算子的效果优于Laplace算子，因此不适宜采用Laplace算子替代Sobel算子。</p>
+<p>　　除了Sobel算子，还有一个算子，Shcarr算子。但这个算子其实只是Sobel算子的一个变种，由于Sobel算子在3*3的卷积模板上计算往往不太精确，因此有一个特殊的Sobel算子，其权值按照下图来表达，称之为Scharr算子。下图是Sobel算子与Scharr算子的一个对比。</p>
+<p><br><img src="./EasyPR--开发详解（3）高斯模糊、灰度化和Sobel算子 - 计算机的潜意识 - 博客园_files/141620017012339.jpg" alt=""></p>
+<p style="text-align: center;">　　<span style="font-family: 黑体;">图9 <span style="font-family: 黑体;">Sobel与Scharr示意图</span></span></p>
+<p><br>　　一般来说，Scharr算子能够比Sobel算子检测边缘的效果更好，从上图也可以看出。但是，这个“更好”是一把双刃剑。我们的目的并不是画出图像的边缘，而是确定车牌的一个区域，越精细的边缘越会干扰后面的闭运算。因此，针对大量的图片的测试，Sobel算子一般都优于Scharr算子。<br><br>　　关于Sobel算子更详细的解释和Scharr算子与Sobel算子的同异，可以参看官网的介绍：<a href="http://docs.opencv.org/doc/tutorials/imgproc/imgtrans/sobel_derivatives/sobel_derivatives.html" target="_blank">Sobel与Scharr</a>。<br><br>　　综上所述，在求图像边缘的过程中，Sobel算子是一个最佳的契合车牌定位需求的算子，Laplace算子与Scharr算子的效果都不如它。<br><br>　　有一点要说明的：Sobel算子仅能对灰度图像有效果，不能将色彩图像作为输入。因此在进行Soble算子前必须进行前面的灰度化工作。</p>
+<p>&nbsp;　　</p>
+<p><strong><span style="font-family: Microsoft YaHei;">版权说明：</span></strong></p>
+<p><strong><span style="font-family: Microsoft YaHei;">　　本文中的所有文字，图片，代码的版权都是属于作者和博客园共同所有。欢迎转载，但是务必注明作者与出处。任何未经允许的剽窃以及爬虫抓取都属于侵权，作者和博客园保留所有权利。</span></strong></p>
+<p>&nbsp;</p>
+<p><strong><span style="font-family: Microsoft YaHei;">参考文献：</span></strong></p>
+<p>　　1.<a href="http://www.ruanyifeng.com/blog/2012/11/gaussian_blur.html" target="_blank">http://www.ruanyifeng.com/blog/2012/11/gaussian_blur.html</a></p>
+<p>　　2.<a href="http://blog.csdn.net/xiaowei_cqu/article/details/7829481" target="_blank">http://blog.csdn.net/xiaowei_cqu/article/details/7829481</a></p>
+<p>　　3.<a href="http://docs.opencv.org/doc/tutorials/imgproc/imgtrans/sobel_derivatives/sobel_derivatives.html" target="_blank">http://docs.opencv.org/doc/tutorials/imgproc/imgtrans/sobel_derivatives/sobel_derivatives.html</a></p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory"></div>
+<div id="EntryTag">标签: <a href="http://www.cnblogs.com/subconscious/tag/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/">计算机视觉</a>, <a href="http://www.cnblogs.com/subconscious/tag/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">图像处理</a></div>
+<div id="blog_post_info"><div id="green_channel">
+        <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(4022454,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+            <a id="green_channel_follow" onclick="follow(&#39;edd4356d-003f-e411-b908-9dcfd8948a71&#39;);" href="javascript:void(0);">关注我</a>
+    <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
+    <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="./EasyPR--开发详解（3）高斯模糊、灰度化和Sobel算子 - 计算机的潜意识 - 博客园_files/icon_weibo_24.png" alt=""></a>
+    <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="./EasyPR--开发详解（3）高斯模糊、灰度化和Sobel算子 - 计算机的潜意识 - 博客园_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/subconscious/" target="_blank"><img src="./EasyPR--开发详解（3）高斯模糊、灰度化和Sobel算子 - 计算机的潜意识 - 博客园_files/20140918201411.png" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/subconscious/">计算机的潜意识</a><br>
+            <a href="http://home.cnblogs.com/u/subconscious/followees">关注 - 12</a><br>
+            <a href="http://home.cnblogs.com/u/subconscious/followers">粉丝 - 1424</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor">荣誉：<a href="http://www.cnblogs.com/expert/" target="_blank">推荐博客</a></div>
+    <div id="author_profile_follow">
+                <a href="javascript:void(0);" onclick="follow(&#39;edd4356d-003f-e411-b908-9dcfd8948a71&#39;);return false;">+加关注</a>
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit" onclick="votePost(4022454,&#39;Digg&#39;)">
+        <span class="diggnum" id="digg_count">8</span>
+    </div>
+    <div class="buryit" onclick="votePost(4022454,&#39;Bury&#39;)">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+</div>
+<script type="text/javascript">
+    currentDiggType = 0;
+</script></div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/subconscious/p/4013591.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/subconscious/p/4013591.html" title="发布于2014-10-13 15:39">EasyPR--开发详解（2）车牌定位</a><br><a href="http://www.cnblogs.com/subconscious/p/4047960.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/subconscious/p/4047960.html" title="发布于2014-10-24 19:19">EasyPR--开发详解（4）形态学操作、尺寸验证、旋转等操作</a><br></div>
+</div>
+
+
+		</div>
+		<div class="postDesc">posted @ <span id="post-date">2014-10-14 16:50</span> <a href="http://www.cnblogs.com/subconscious/">计算机的潜意识</a> 阅读(<span id="post_view_count">17521</span>) 评论(<span id="post_comment_count">14</span>)  <a href="https://i.cnblogs.com/EditPosts.aspx?postid=4022454" rel="nofollow">编辑</a> <a href="http://www.cnblogs.com/subconscious/p/4022454.html#" onclick="AddToWz(4022454);return false;">收藏</a></div>
+	</div>
+	<script type="text/javascript">var allowComments=true,cb_blogId=198547,cb_entryId=4022454,cb_blogApp=currentBlogApp,cb_blogUserGuid='edd4356d-003f-e411-b908-9dcfd8948a71',cb_entryCreatedDate='2014/10/14 16:50:00';loadViewCount(cb_entryId);var cb_postType=1;</script>
+	
+</div><!--end: topics 文章、评论容器-->
+</div><a name="!comments"></a><div id="blog-comments-placeholder"><div id="comments_pager_top"></div>
+<br>
+<div class="feedback_area_title">评论列表</div>
+<div class="feedbackNoItems"></div>	
+
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4022454.html#3043839" class="layer">#1楼</a><a name="3043839" id="comment_anchor_3043839"></a>  <span class="comment_date">2014-10-14 17:42</span> <a id="a_comment_author_3043839" href="http://www.cnblogs.com/ronny/" target="_blank">☆Ronny丶</a> <a href="http://msg.cnblogs.com/send/%E2%98%86Ronny%E4%B8%B6" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3043839" class="blog_comment_body">给个赞，定位算法总体思路不错，但离实际产品中的算法还有欠缺，针对于定位，博主还可以考虑以下两个方面的内容：<br>1）车头纹理很复杂，导致排气扇的纹理与字符纹理形态学后连成一体。<br>2）图像中存在局部高光或车牌区域处理阴影时，车牌字符的纹理无法检出，或纹理太少，定位到的是不完整的车牌区域。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3043839,&#39;Digg&#39;,this)">支持(7)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3043839,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3043839_avatar" style="display:none;">http://pic.cnblogs.com/face/378920/20140307144548.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4022454.html#3043875" class="layer">#2楼</a><a name="3043875" id="comment_anchor_3043875"></a>  <span class="comment_date">2014-10-14 18:13</span> <a id="a_comment_author_3043875" href="http://www.cnblogs.com/waimai/" target="_blank">外卖</a> <a href="http://msg.cnblogs.com/send/%E5%A4%96%E5%8D%96" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3043875" class="blog_comment_body">mark一下，期待后续</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3043875,&#39;Digg&#39;,this)">支持(1)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3043875,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4022454.html#3217956" class="layer">#3楼</a><a name="3217956" id="comment_anchor_3217956"></a>  <span class="comment_date">2015-06-29 23:08</span> <a id="a_comment_author_3217956" href="http://home.cnblogs.com/u/779270/" target="_blank">小甘甘</a> <a href="http://msg.cnblogs.com/send/%E5%B0%8F%E7%94%98%E7%94%98" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3217956" class="blog_comment_body">楼主，看了你的车牌识别系列文章，收获颇丰，我有一些数据集，如何分享出来，求帮助</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3217956,&#39;Digg&#39;,this)">支持(1)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3217956,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4022454.html#3219547" class="layer">#4楼</a><a name="3219547" id="comment_anchor_3219547"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2015-07-01 22:01</span> <a id="a_comment_author_3219547" href="http://www.cnblogs.com/subconscious/" target="_blank">计算机的潜意识</a> <a href="http://msg.cnblogs.com/send/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E6%BD%9C%E6%84%8F%E8%AF%86" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3219547" class="blog_comment_body"><a href="http://www.cnblogs.com/subconscious/p/4022454.html#3217956" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3217956);">@</a>
+小甘甘<br>hi，我们非常感谢有数据集的提供者。你可以把图片上传到百度网盘中，然后给我一个私密链接。<br><br>我们会妥善处理这些数据。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3219547,&#39;Digg&#39;,this)">支持(2)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3219547,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3219547_avatar" style="display:none;">http://pic.cnblogs.com/face/673793/20140918201411.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4022454.html#3283636" class="layer">#5楼</a><a name="3283636" id="comment_anchor_3283636"></a>  <span class="comment_date">2015-10-13 12:16</span> <a id="a_comment_author_3283636" href="http://www.cnblogs.com/joyou/" target="_blank">hebei</a> <a href="http://msg.cnblogs.com/send/hebei" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3283636" class="blog_comment_body"><img src="./EasyPR--开发详解（3）高斯模糊、灰度化和Sobel算子 - 计算机的潜意识 - 博客园_files/44570-20151013121524616-574958434.jpg" alt="" border="0" "=""><br><img src="./EasyPR--开发详解（3）高斯模糊、灰度化和Sobel算子 - 计算机的潜意识 - 博客园_files/44570-20151013121530726-666910605.jpg" alt="" border="0" "=""><br><img src="./EasyPR--开发详解（3）高斯模糊、灰度化和Sobel算子 - 计算机的潜意识 - 博客园_files/44570-20151013121537991-1565067397.jpg" alt="" border="0" "=""><br><img src="./EasyPR--开发详解（3）高斯模糊、灰度化和Sobel算子 - 计算机的潜意识 - 博客园_files/44570-20151013121543726-1609297712.jpg" alt="" border="0" "=""><br>这几个车牌能定位到吗</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3283636,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3283636,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4022454.html#3291150" class="layer">#6楼</a><a name="3291150" id="comment_anchor_3291150"></a>  <span class="comment_date">2015-10-24 09:30</span> <a id="a_comment_author_3291150" href="http://home.cnblogs.com/u/815394/" target="_blank">joewale</a> <a href="http://msg.cnblogs.com/send/joewale" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3291150" class="blog_comment_body"><a href="http://www.cnblogs.com/subconscious/p/4022454.html#3219547" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3219547);">@</a>
+计算机的潜意识<br>@小甘甘 提供的数据集是否上传到百度网盘了？能给我一个私密链接吗？</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3291150,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3291150,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4022454.html#3295420" class="layer">#7楼</a><a name="3295420" id="comment_anchor_3295420"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2015-10-30 15:18</span> <a id="a_comment_author_3295420" href="http://www.cnblogs.com/subconscious/" target="_blank">计算机的潜意识</a> <a href="http://msg.cnblogs.com/send/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E6%BD%9C%E6%84%8F%E8%AF%86" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3295420" class="blog_comment_body"><a href="http://www.cnblogs.com/subconscious/p/4022454.html#3291150" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3291150);">@</a>
+joewale<br>目前我还没收到这些私密链接。<br>EasyPR项目中附带了204张测试的图片，可以直接使用。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3295420,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3295420,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3295420_avatar" style="display:none;">http://pic.cnblogs.com/face/673793/20140918201411.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4022454.html#3338918" class="layer">#8楼</a><a name="3338918" id="comment_anchor_3338918"></a>  <span class="comment_date">2015-12-31 15:06</span> <a id="a_comment_author_3338918" href="http://home.cnblogs.com/u/741326/" target="_blank">songerping</a> <a href="http://msg.cnblogs.com/send/songerping" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3338918" class="blog_comment_body">我数学基础很差，（- 1 * 3 - 2 * 3 - 1 * 4 + 1 * 5 + 2 * 7 + 1 * 6 = 12），有的说是（- 1 * 3 - 2 * 3 - 1 * 4 + 1 * 2 + 2 * 7 + 1 * 6 ）</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3338918,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3338918,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4022454.html#3338937" class="layer">#9楼</a><a name="3338937" id="comment_anchor_3338937"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2015-12-31 15:16</span> <a id="a_comment_author_3338937" href="http://www.cnblogs.com/subconscious/" target="_blank">计算机的潜意识</a> <a href="http://msg.cnblogs.com/send/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E6%BD%9C%E6%84%8F%E8%AF%86" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3338937" class="blog_comment_body"><a href="http://www.cnblogs.com/subconscious/p/4022454.html#3338918" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3338918);">@</a>
+songerping<br>是后者，原图与文有错。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3338937,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3338937,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3338937_avatar" style="display:none;">http://pic.cnblogs.com/face/673793/20140918201411.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4022454.html#3649378" class="layer">#10楼</a><a name="3649378" id="comment_anchor_3649378"></a>  <span class="comment_date">2017-03-23 12:07</span> <a id="a_comment_author_3649378" href="http://home.cnblogs.com/u/317556/" target="_blank">yunfeiyang0514</a> <a href="http://msg.cnblogs.com/send/yunfeiyang0514" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3649378" class="blog_comment_body">博主 你有没有测试过使用SURF或SIFT呢</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3649378,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3649378,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4022454.html#3690149" class="layer">#11楼</a><a name="3690149" id="comment_anchor_3690149"></a>  <span class="comment_date">2017-05-11 17:05</span> <a id="a_comment_author_3690149" href="http://home.cnblogs.com/u/819600/" target="_blank">codevv</a> <a href="http://msg.cnblogs.com/send/codevv" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3690149" class="blog_comment_body"><a href="http://www.cnblogs.com/subconscious/p/4022454.html#3338918" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3338918);">@</a>
+songerping<br>我算了也和博主的不一样，卷积核要顺时针旋转180度的</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3690149,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3690149,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4022454.html#3704969" class="layer">#12楼</a><a name="3704969" id="comment_anchor_3704969"></a>  <span class="comment_date">2017-06-01 16:22</span> <a id="a_comment_author_3704969" href="http://home.cnblogs.com/u/1174081/" target="_blank">luohaibaorobert</a> <a href="http://msg.cnblogs.com/send/luohaibaorobert" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3704969" class="blog_comment_body"><a href="http://www.cnblogs.com/subconscious/p/4022454.html#3217956" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3217956);">@</a>
+小甘甘<br>亲，可以分享一下给我么？谢谢你！邮箱786322447@qq.com</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3704969,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3704969,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4022454.html#3729030" class="layer">#13楼</a><a name="3729030" id="comment_anchor_3729030"></a>  <span class="comment_date">2017-07-05 15:42</span> <a id="a_comment_author_3729030" href="http://home.cnblogs.com/u/1194366/" target="_blank">czlongpeng</a> <a href="http://msg.cnblogs.com/send/czlongpeng" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3729030" class="blog_comment_body">楼主，github上的java版本下载下来可以用么，不知道自己没配置好还是什么问题，想要请教下您，如果没有问题，我自己再调试调试，谢谢了</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3729030,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3729030,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4022454.html#3844682" class="layer">#14楼</a><a name="3844682" id="comment_anchor_3844682"></a><span id="comment-maxId" style="display:none;">3844682</span><span id="comment-maxDate" style="display:none;">2017/11/19 17:16:06</span>  <span class="comment_date">2017-11-19 17:16</span> <a id="a_comment_author_3844682" href="http://home.cnblogs.com/u/1282759/" target="_blank">citytower</a> <a href="http://msg.cnblogs.com/send/citytower" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3844682" class="blog_comment_body"><a href="http://www.cnblogs.com/subconscious/p/4022454.html#3338918" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3338918);">@</a>
+songerping<br>应该是先翻转再卷积吧？<br>1*3+0*4-1*2+2*3+0*5-2*7+1*4+0*6-1*6=-9</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3844682,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3844682,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	<div id="comments_pager_bottom"></div></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="http://www.cnblogs.com/subconscious/p/4022454.html#" onclick="return RefreshPage();">刷新页面</a><a href="http://www.cnblogs.com/subconscious/p/4022454.html#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login(&#39;commentform&#39;);">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】超50万VC++源码: 大型组态工控、电力仿真CAD与GIS源码库！</a><br><a href="http://click.aliyun.com/m/43774/" target="_blank">【缅怀】传奇谢幕，回顾霍金76载传奇人生</a><br><a href="https://cloud.tencent.com/act/campus?fromSource=gwzcw.860539.860539.860539" target="_blank">【推荐】腾讯云校园拼团福利，1核2G服务器10元/月！</a><br><a href="https://www.yunqi2050.com/#/index" target="_blank">【活动】2050 科技公益大会 - 年青人因科技而团聚</a><br></div>
+<div id="opt_under_post"></div>
+<div id="cnblogs_c1" class="c_ad_block"><a href="https://market.qcloud.com/act/wangjian/?fromSource=gwzcw.860541.860541.860541" target="_blank"><img width="300" height="250" src="./EasyPR--开发详解（3）高斯模糊、灰度化和Sobel算子 - 计算机的潜意识 - 博客园_files/24442-20180314220122373-1718033865.jpg" alt="qcloud0314"></a></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="https://news.cnblogs.com/n/592036/" target="_blank">孙宏斌的护城河：辞职后留嫡系掌权 乐视仍是肥肉？</a><br> ·  <a href="https://news.cnblogs.com/n/592035/" target="_blank">火币前CTO张健：区块链大繁荣，尚需5到10年时间</a><br> ·  <a href="https://news.cnblogs.com/n/592034/" target="_blank">Uber自动驾驶汽车再出事故：人员受轻伤</a><br> ·  <a href="https://news.cnblogs.com/n/592025/" target="_blank">谷歌地图在几个城市提供轮椅行进辅助信息</a><br> ·  <a href="https://news.cnblogs.com/n/592033/" target="_blank">吃着越来越贵的外卖 你会想起当年的网约车吗？</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="cnblogs_c2" class="c_ad_block"><a href="http://click.aliyun.com/m/42835/" target="_blank"><img width="468" height="60" src="https://gw.alicdn.com/tfs/TB1mEZFaWmWBuNjy1XaXXXCbXXa-468-60.jpg" alt="阿里云0308" style="display: none !important;"></a></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/575255/" target="_blank">写给自学者的入门指南</a><br> ·  <a href="http://kb.cnblogs.com/page/578690/" target="_blank">和程序员谈恋爱</a><br> ·  <a href="http://kb.cnblogs.com/page/585734/" target="_blank">学会学习</a><br> ·  <a href="http://kb.cnblogs.com/page/588938/" target="_blank">优秀技术人的管理陷阱</a><br> ·  <a href="http://kb.cnblogs.com/page/590141/" target="_blank">作为一个程序员，数学对你到底有多重要</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+    fixPostBody();
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);   
+</script>
+</div>
+
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news">EasyPR讨论QQ群：一群：366392603, 四群：548362608。加前请注明EasyPR学习讨论。<div id="profile_block">昵称：<a href="https://home.cnblogs.com/u/subconscious/">计算机的潜意识</a><br>园龄：<a href="https://home.cnblogs.com/u/subconscious/" title="入园时间：2014-09-18">3年5个月</a><br>荣誉：<a href="https://www.cnblogs.com/expert/">推荐博客</a><br>粉丝：<a href="https://home.cnblogs.com/u/subconscious/followers/">1424</a><br>关注：<a href="https://home.cnblogs.com/u/subconscious/followees/">12</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="follow(&#39;edd4356d-003f-e411-b908-9dcfd8948a71&#39;)">+加关注</a></div><script>getFollowStatus('edd4356d-003f-e411-b908-9dcfd8948a71')</script></div></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+
+			<div id="blog-calendar" style=""><table id="blogCalendar" class="Cal" cellspacing="0" cellpadding="0" title="Calendar">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2018/02/01&#39;);return false;">&lt;</a></td><td align="center">2018年3月</td><td class="CalNextPrev" align="right"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2018/04/01&#39;);return false;">&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" align="center" abbr="日" scope="col">日</th><th class="CalDayHeader" align="center" abbr="一" scope="col">一</th><th class="CalDayHeader" align="center" abbr="二" scope="col">二</th><th class="CalDayHeader" align="center" abbr="三" scope="col">三</th><th class="CalDayHeader" align="center" abbr="四" scope="col">四</th><th class="CalDayHeader" align="center" abbr="五" scope="col">五</th><th class="CalDayHeader" align="center" abbr="六" scope="col">六</th></tr><tr><td class="CalOtherMonthDay" align="center">25</td><td class="CalOtherMonthDay" align="center">26</td><td class="CalOtherMonthDay" align="center">27</td><td class="CalOtherMonthDay" align="center">28</td><td align="center">1</td><td align="center">2</td><td class="CalWeekendDay" align="center">3</td></tr><tr><td class="CalWeekendDay" align="center">4</td><td align="center">5</td><td align="center">6</td><td align="center">7</td><td align="center">8</td><td align="center">9</td><td class="CalWeekendDay" align="center">10</td></tr><tr><td class="CalWeekendDay" align="center">11</td><td align="center">12</td><td align="center">13</td><td align="center">14</td><td align="center">15</td><td align="center">16</td><td class="CalTodayDay" align="center">17</td></tr><tr><td class="CalWeekendDay" align="center">18</td><td align="center">19</td><td align="center">20</td><td align="center">21</td><td align="center">22</td><td align="center">23</td><td class="CalWeekendDay" align="center">24</td></tr><tr><td class="CalWeekendDay" align="center">25</td><td align="center">26</td><td align="center">27</td><td align="center">28</td><td align="center">29</td><td align="center">30</td><td class="CalWeekendDay" align="center">31</td></tr><tr><td class="CalOtherMonthDay" align="center">1</td><td class="CalOtherMonthDay" align="center">2</td><td class="CalOtherMonthDay" align="center">3</td><td class="CalOtherMonthDay" align="center">4</td><td class="CalOtherMonthDay" align="center">5</td><td class="CalOtherMonthDay" align="center">6</td><td class="CalOtherMonthDay" align="center">7</td></tr>
+</tbody></table></div><script type="text/javascript">loadBlogDefaultCalendar();</script>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="sidebar_search" class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="sidebar_search_box">
+
+<div id="widget_my_google" class="div_my_zzk"><input type="text" name="google_q" id="google_q" onkeydown="return google_go_enter(event)" class="input_my_zzk">&nbsp;<input onclick="google_go()" type="button" value="谷歌搜索" class="btn_my_zzk"></div>
+</div>
+</div>
+
+</div><div id="sidebar_categories">
+<div id="sidebar_postarchive" class="catListPostArchive sidebar-block">
+<h3 class="catListTitle">随笔档案</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_0_Link_0" href="http://www.cnblogs.com/subconscious/archive/2017/12.html">2017年12月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_1" href="http://www.cnblogs.com/subconscious/archive/2016/12.html">2016年12月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_2" href="http://www.cnblogs.com/subconscious/archive/2016/07.html">2016年7月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_3" href="http://www.cnblogs.com/subconscious/archive/2016/03.html">2016年3月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_4" href="http://www.cnblogs.com/subconscious/archive/2015/12.html">2015年12月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_5" href="http://www.cnblogs.com/subconscious/archive/2015/07.html">2015年7月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_6" href="http://www.cnblogs.com/subconscious/archive/2015/03.html">2015年3月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_7" href="http://www.cnblogs.com/subconscious/archive/2015/02.html">2015年2月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_8" href="http://www.cnblogs.com/subconscious/archive/2014/12.html">2014年12月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_9" href="http://www.cnblogs.com/subconscious/archive/2014/10.html">2014年10月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_10" href="http://www.cnblogs.com/subconscious/archive/2014/09.html">2014年9月 (2)</a> </li>
+
+</ul>
+
+</div>
+
+</div><div id="sidebar_scorerank" class="sidebar-block">
+<div class="catListBlogRank">
+<h3 class="catListTitle">积分与排名</h3>
+<ul>
+	<li class="liScore">
+		积分 -	49370
+	</li>
+	<li class="liRank">
+		排名 -	7447
+	</li>
+</ul>
+</div>
+
+
+</div><div id="sidebar_recentcomments" class="sidebar-block"><div id="recent_comments_wrap">
+<div class="catListComment">
+<h3 class="catListTitle">最新评论</h3>
+
+	<div id="RecentCommentsBlock"><ul>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/subconscious/p/4107357.html#3925062">1. Re:从机器学习谈起</a></li>
+        <li class="recent_comment_body">不错，支持</li>
+        <li class="recent_comment_author">--小陀螺_coding</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/subconscious/p/8157268.html#3923099">2. Re:2017年总结</a></li>
+        <li class="recent_comment_body">@肥肥小牛非常感谢您的建议！...</li>
+        <li class="recent_comment_author">--计算机的潜意识</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/subconscious/p/8157268.html#3922721">3. Re:2017年总结</a></li>
+        <li class="recent_comment_body">另，本人有两点拙见：1、我有个朋友的亲戚就是做民间借贷的，经过深入交流发现，现在的逼债手段没有想象中那么“暴力”，而是几乎都“合法化”和“规范化”了。所以博主的案例真的是给大家提了个醒，要尽早采用法律......</li>
+        <li class="recent_comment_author">--肥肥小牛</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/subconscious/p/8157268.html#3922695">4. Re:2017年总结</a></li>
+        <li class="recent_comment_body">支持博主，祝好人好报！</li>
+        <li class="recent_comment_author">--肥肥小牛</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/subconscious/p/3979988.html#3921081">5. Re:EasyPR--一个开源的中文车牌识别系统</a></li>
+        <li class="recent_comment_body">博主，你好请问字符分割部分找到特殊字符之后，接下来的找最小外接矩形和分割代码在哪找？</li>
+        <li class="recent_comment_author">--上善若水ssrs</li>
+</ul>
+</div>
+</div>
+</div></div><div id="sidebar_topviewedposts" class="sidebar-block"><div id="topview_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">阅读排行榜</h3>
+	<div id="TopViewPostsBlock"><ul><li><a href="http://www.cnblogs.com/subconscious/p/5058741.html">1. 神经网络浅讲：从神经元到深度学习(107257)</a></li><li><a href="http://www.cnblogs.com/subconscious/p/4107357.html">2. 从机器学习谈起(75650)</a></li><li><a href="http://www.cnblogs.com/subconscious/p/3979988.html">3. EasyPR--一个开源的中文车牌识别系统(70854)</a></li><li><a href="http://www.cnblogs.com/subconscious/p/4001896.html">4. EasyPR--中文开源车牌识别系统 开发详解（1）(28167)</a></li><li><a href="http://www.cnblogs.com/subconscious/p/4013591.html">5. EasyPR--开发详解（2）车牌定位(27895)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topcommentedposts" class="sidebar-block"><div id="topfeedback_posts_wrap">
+<div class="catListFeedback">
+<h3 class="catListTitle">评论排行榜</h3>
+	<div id="TopFeedbackPostsBlock"><ul><li><a href="http://www.cnblogs.com/subconscious/p/4107357.html">1. 从机器学习谈起(147)</a></li><li><a href="http://www.cnblogs.com/subconscious/p/3979988.html">2. EasyPR--一个开源的中文车牌识别系统(61)</a></li><li><a href="http://www.cnblogs.com/subconscious/p/5058741.html">3. 神经网络浅讲：从神经元到深度学习(57)</a></li><li><a href="http://www.cnblogs.com/subconscious/p/4249581.html">4. EasyPR--开发详解（6）SVM开发详解(37)</a></li><li><a href="http://www.cnblogs.com/subconscious/p/4311550.html">5. 小议“数据开放”(28)</a></li></ul></div>
+</div>
+</div></div></div><script type="text/javascript">loadBlogSideColumn();</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright ©2018 计算机的潜意识
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+</body></html>

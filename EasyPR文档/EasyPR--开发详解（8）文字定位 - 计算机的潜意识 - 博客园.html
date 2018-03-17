@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)http://www.cnblogs.com/subconscious/p/5637735.html -->
+<html lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EasyPR--开发详解（8）文字定位 - 计算机的潜意识 - 博客园</title>
+<link type="text/css" rel="stylesheet" href="./EasyPR--开发详解（8）文字定位 - 计算机的潜意识 - 博客园_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="./EasyPR--开发详解（8）文字定位 - 计算机的潜意识 - 博客园_files/bundle-iMetro_HD.css">
+<link type="text/css" rel="stylesheet" href="./EasyPR--开发详解（8）文字定位 - 计算机的潜意识 - 博客园_files/198547.css">
+<link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="./EasyPR--开发详解（8）文字定位 - 计算机的潜意识 - 博客园_files/bundle-iMetro_HD-mobile.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/subconscious/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/subconscious/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/subconscious/wlwmanifest.xml">
+<script async="" src="./EasyPR--开发详解（8）文字定位 - 计算机的潜意识 - 博客园_files/analytics.js"></script><script type="text/javascript" src="./EasyPR--开发详解（8）文字定位 - 计算机的潜意识 - 博客园_files/encoder.js"></script><script src="./EasyPR--开发详解（8）文字定位 - 计算机的潜意识 - 博客园_files/jquery-2.2.0.min.js"></script>
+<script type="text/javascript">var currentBlogApp = 'subconscious', cb_enable_mathjax=false;var isLogined=false;</script>
+<script src="./EasyPR--开发详解（8）文字定位 - 计算机的潜意识 - 博客园_files/blog-common.js" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+<!--PageBeginHtml Block Begin-->
+<span id="forkongithub"><a href="https://github.com/liuruoze/EasyPR" target="_blank">Fork me on GitHub</a></span>
+<!--PageBeginHtml Block End-->
+
+<!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+	<a id="lnkBlogLogo" href="http://www.cnblogs.com/subconscious/"><img id="blogLogo" src="./EasyPR--开发详解（8）文字定位 - 计算机的潜意识 - 博客园_files/logo.gif" alt="返回主页"></a>			
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/subconscious/">计算机的潜意识</a></h1>
+<h2>EasyPR讨论QQ群：一群：366392603, 四群：548362608。 加前请注明EasyPR学习讨论。</h2>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="blog_nav_sitehome" class="menu" href="http://www.cnblogs.com/">博客园</a></li>
+<li><a id="blog_nav_myhome" class="menu" href="http://www.cnblogs.com/subconscious/">首页</a></li>
+<li><a id="blog_nav_newpost" class="menu" rel="nofollow" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+<li><a id="blog_nav_contact" class="menu" rel="nofollow" href="https://msg.cnblogs.com/send/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E6%BD%9C%E6%84%8F%E8%AF%86">联系</a></li>
+<li><a id="blog_nav_rss" class="menu" href="http://www.cnblogs.com/subconscious/rss">订阅</a>
+<!--<a id="blog_nav_rss_image" class="aHeaderXML" href="http://www.cnblogs.com/subconscious/rss"><img src="//www.cnblogs.com/images/xml.gif" alt="订阅" /></a>--></li>
+<li><a id="blog_nav_admin" class="menu" rel="nofollow" href="https://i.cnblogs.com/">管理</a></li>
+</ul>
+		<div class="blogStats">
+			
+			<div id="blog_stats">
+<span id="stats_post_count">随笔 - 15&nbsp; </span>
+<span id="stats_article_count">文章 - 0&nbsp; </span>
+<span id="stats-comment_count">评论 - 505</span>
+</div>
+			
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+<div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class="post">
+		<h1 class="postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="http://www.cnblogs.com/subconscious/p/5637735.html">EasyPR--开发详解（8）文字定位</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body" class="blogpost-body"><p>&nbsp;</p>
+<p><span style="line-height: 1.5;">　　今天我们来介绍车牌定位中</span><span style="line-height: 1.5;">的一种新方法--文字定位方法（MSER），包括其主要设计思想与实现。接着我们会介绍一下EasyPR v1.5-beta版本中带来的几项改动。</span></p>
+<p>&nbsp;</p>
+<p class="p"><strong>一. 文字定位法</strong></p>
+<p>　　在EasyPR前面几个版本中，最为人所诟病的就是定位效果不佳，尤其是在面对生活场景（例如手机拍摄）时。由于EasyPR最早的数据来源于卡口，因此对卡口数据进行了优化，而并没有对生活场景中图片有较好处理的策略。后来一个版本（v1.3）增加了颜色定位方法，改善了这种现象，但是对分辨率较大的图片处理仍然不好。再加上颜色定位在面对低光照，低对比度的图像时处理效果大幅度下降，颜色本身也是一个不稳定的特征。因此EasyPR的车牌定位的整体鲁棒性仍然不足。</p>
+<p>　　针对这种现象，EasyPR v1.5增加了一种新的定位方法，文字定位方法，大幅度改善了这些问题。下面几幅图可以说明文字定位法的效果。</p>
+<p style="text-align: center;">&nbsp;<img src="./EasyPR--开发详解（8）文字定位 - 计算机的潜意识 - 博客园_files/673793-20160703120149515-1279254094.jpg" alt="" width="503" height="401">&nbsp;&nbsp;<img src="./EasyPR--开发详解（8）文字定位 - 计算机的潜意识 - 博客园_files/673793-20160703120200671-1762389651.jpg" alt="" width="540" height="403"></p>
+<p style="text-align: center;"><span style="font-family: 黑体;">&nbsp;图1 夜间的车牌图像（左）&nbsp;， 图2&nbsp;对比度非常低的图像（右）</span></p>
+<p><span style="font-family: 黑体;">&nbsp;</span></p>
+<p style="text-align: center;"><img src="./EasyPR--开发详解（8）文字定位 - 计算机的潜意识 - 博客园_files/673793-20160703120218859-503689373.jpg" alt="" width="505" height="424">&nbsp;&nbsp;<img src="./EasyPR--开发详解（8）文字定位 - 计算机的潜意识 - 博客园_files/673793-20160703120233859-762196995.jpg" alt="" width="536" height="402"></p>
+<p style="text-align: center;"><span style="font-family: 黑体;">&nbsp;图3 近距离的图像（左） ，&nbsp;图4&nbsp;高分辨率的图像（右）</span></p>
+<p><br>　　图1是夜间的车牌图像，图2是对比度非常低的图像，图3是非常近距离拍摄的图像，图4则是高分辨率（3200宽）的图像。</p>
+<p>　　文字定位方法是采用了低级过滤器提取文字，然后再将其组合的一种定位方法。原先是利用在场景中定位文字，在这里利用其定位车牌。与在扫描文档中的文字不同，自然场景中的文字具有低对比度，背景各异，光亮干扰较多等情况，因此需要一个极为鲁棒的方法去提取出来。目前业界用的较多的是MSER（最大稳定极值区域）方法。EasyPR使用的是MSER的一个改良方法，专门针对文字进行了优化。在文字定位出来以后，一般需要用一个分类器将其中大部分的定位错误的文字去掉，例如ANN模型。为了获得最终的车牌，这些文字需要组合起来。由于实际情况的复杂，简单的使用普通的聚类效果往往不好，因此EasyPR使用了一种鲁棒性较强的种子生长方法（seed growing）去组合。</p>
+<p>　　我在这里简单介绍一下具体的实现。关于方法的细节可以看代码，有很多的注释（代码可能较长）。关于方法的思想可以看附录的两篇论文。</p>
+<div class="cnblogs_code" onclick="cnblogs_code_show(&#39;bb520511-08b8-4434-ad9e-79e3b2d3935f&#39;)"><img id="code_img_closed_bb520511-08b8-4434-ad9e-79e3b2d3935f" class="code_img_closed" src="./EasyPR--开发详解（8）文字定位 - 计算机的潜意识 - 博客园_files/ContractedBlock.gif" alt=""><img id="code_img_opened_bb520511-08b8-4434-ad9e-79e3b2d3935f" class="code_img_opened" style="display: none;" onclick="cnblogs_code_hide(&#39;bb520511-08b8-4434-ad9e-79e3b2d3935f&#39;,event)" src="./EasyPR--开发详解（8）文字定位 - 计算机的潜意识 - 博客园_files/ExpandedBlockStart.gif" alt="">
+<div id="cnblogs_code_open_bb520511-08b8-4434-ad9e-79e3b2d3935f" class="cnblogs_code_hide">
+<pre><span style="color: #008080;">  1</span> <span style="color: #008000;">//</span><span style="color: #008000;">! use verify size to first generate char candidates</span>
+<span style="color: #008080;">  2</span> <span style="color: #0000ff;">void</span> mserCharMatch(<span style="color: #0000ff;">const</span> Mat &amp;src, std::vector&lt;Mat&gt; &amp;match, std::vector&lt;CPlate&gt;&amp; out_plateVec_blue, std::vector&lt;CPlate&gt;&amp;<span style="color: #000000;"> out_plateVec_yellow,
+</span><span style="color: #008080;">  3</span>   <span style="color: #0000ff;">bool</span> usePlateMser, std::vector&lt;RotatedRect&gt;&amp; out_plateRRect_blue, std::vector&lt;RotatedRect&gt;&amp; out_plateRRect_yellow, <span style="color: #0000ff;">int</span><span style="color: #000000;"> img_index,
+</span><span style="color: #008080;">  4</span>   <span style="color: #0000ff;">bool</span><span style="color: #000000;"> showDebug) {
+</span><span style="color: #008080;">  5</span>   Mat image =<span style="color: #000000;"> src;
+</span><span style="color: #008080;">  6</span> 
+<span style="color: #008080;">  7</span>   std::vector&lt;std::vector&lt;std::vector&lt;Point&gt;&gt;&gt;<span style="color: #000000;"> all_contours;
+</span><span style="color: #008080;">  8</span>   std::vector&lt;std::vector&lt;Rect&gt;&gt;<span style="color: #000000;"> all_boxes;
+</span><span style="color: #008080;">  9</span>   all_contours.resize(<span style="color: #800080;">2</span><span style="color: #000000;">);
+</span><span style="color: #008080;"> 10</span>   all_contours.at(<span style="color: #800080;">0</span>).reserve(<span style="color: #800080;">1024</span><span style="color: #000000;">);
+</span><span style="color: #008080;"> 11</span>   all_contours.at(<span style="color: #800080;">1</span>).reserve(<span style="color: #800080;">1024</span><span style="color: #000000;">);
+</span><span style="color: #008080;"> 12</span>   all_boxes.resize(<span style="color: #800080;">2</span><span style="color: #000000;">);
+</span><span style="color: #008080;"> 13</span>   all_boxes.at(<span style="color: #800080;">0</span>).reserve(<span style="color: #800080;">1024</span><span style="color: #000000;">);
+</span><span style="color: #008080;"> 14</span>   all_boxes.at(<span style="color: #800080;">1</span>).reserve(<span style="color: #800080;">1024</span><span style="color: #000000;">);
+</span><span style="color: #008080;"> 15</span> 
+<span style="color: #008080;"> 16</span>   match.resize(<span style="color: #800080;">2</span><span style="color: #000000;">);
+</span><span style="color: #008080;"> 17</span> 
+<span style="color: #008080;"> 18</span>   std::vector&lt;Color&gt;<span style="color: #000000;"> flags;
+</span><span style="color: #008080;"> 19</span> <span style="color: #000000;">  flags.push_back(BLUE);
+</span><span style="color: #008080;"> 20</span> <span style="color: #000000;">  flags.push_back(YELLOW);
+</span><span style="color: #008080;"> 21</span> 
+<span style="color: #008080;"> 22</span>   <span style="color: #0000ff;">const</span> <span style="color: #0000ff;">int</span> imageArea = image.rows *<span style="color: #000000;"> image.cols;
+</span><span style="color: #008080;"> 23</span>   <span style="color: #0000ff;">const</span> <span style="color: #0000ff;">int</span> delta = <span style="color: #800080;">1</span><span style="color: #000000;">;
+</span><span style="color: #008080;"> 24</span>   <span style="color: #008000;">//</span><span style="color: #008000;">const int delta = CParams::instance()-&gt;getParam2i();;</span>
+<span style="color: #008080;"> 25</span>   <span style="color: #0000ff;">const</span> <span style="color: #0000ff;">int</span> minArea = <span style="color: #800080;">30</span><span style="color: #000000;">;
+</span><span style="color: #008080;"> 26</span>   <span style="color: #0000ff;">const</span> <span style="color: #0000ff;">double</span> maxAreaRatio = <span style="color: #800080;">0.05</span><span style="color: #000000;">;
+</span><span style="color: #008080;"> 27</span> 
+<span style="color: #008080;"> 28</span>   Ptr&lt;MSER2&gt;<span style="color: #000000;"> mser;
+</span><span style="color: #008080;"> 29</span>   mser = MSER2::create(delta, minArea, <span style="color: #0000ff;">int</span>(maxAreaRatio *<span style="color: #000000;"> imageArea));
+</span><span style="color: #008080;"> 30</span>   mser-&gt;detectRegions(image, all_contours.at(<span style="color: #800080;">0</span>), all_boxes.at(<span style="color: #800080;">0</span>), all_contours.at(<span style="color: #800080;">1</span>), all_boxes.at(<span style="color: #800080;">1</span><span style="color: #000000;">));
+</span><span style="color: #008080;"> 31</span> 
+<span style="color: #008080;"> 32</span>   <span style="color: #008000;">//</span><span style="color: #008000;"> mser detect 
+</span><span style="color: #008080;"> 33</span>   <span style="color: #008000;">//</span><span style="color: #008000;"> color_index = 0 : mser-, detect white characters, which is in blue plate.
+</span><span style="color: #008080;"> 34</span>   <span style="color: #008000;">//</span><span style="color: #008000;"> color_index = 1 : mser+, detect dark characters, which is in yellow plate.</span>
+<span style="color: #008080;"> 35</span> 
+<span style="color: #008080;"> 36</span> <span style="color: #0000ff;">#pragma</span> omp parallel for
+<span style="color: #008080;"> 37</span>   <span style="color: #0000ff;">for</span> (<span style="color: #0000ff;">int</span> color_index = <span style="color: #800080;">0</span>; color_index &lt; <span style="color: #800080;">2</span>; color_index++<span style="color: #000000;">) {
+</span><span style="color: #008080;"> 38</span>     Color the_color =<span style="color: #000000;"> flags.at(color_index);
+</span><span style="color: #008080;"> 39</span> 
+<span style="color: #008080;"> 40</span>     std::vector&lt;CCharacter&gt;<span style="color: #000000;"> charVec;
+</span><span style="color: #008080;"> 41</span>     charVec.reserve(<span style="color: #800080;">128</span><span style="color: #000000;">);
+</span><span style="color: #008080;"> 42</span> 
+<span style="color: #008080;"> 43</span>     match.at(color_index) =<span style="color: #000000;"> Mat::zeros(image.rows, image.cols, image.type());
+</span><span style="color: #008080;"> 44</span> 
+<span style="color: #008080;"> 45</span>     Mat result =<span style="color: #000000;"> image.clone();
+</span><span style="color: #008080;"> 46</span> <span style="color: #000000;">    cvtColor(result, result, COLOR_GRAY2BGR);
+</span><span style="color: #008080;"> 47</span> 
+<span style="color: #008080;"> 48</span>     size_t size =<span style="color: #000000;"> all_contours.at(color_index).size();
+</span><span style="color: #008080;"> 49</span> 
+<span style="color: #008080;"> 50</span>     <span style="color: #0000ff;">int</span> char_index = <span style="color: #800080;">0</span><span style="color: #000000;">;
+</span><span style="color: #008080;"> 51</span>     <span style="color: #0000ff;">int</span> char_size = <span style="color: #800080;">20</span><span style="color: #000000;">;
+</span><span style="color: #008080;"> 52</span> 
+<span style="color: #008080;"> 53</span>     <span style="color: #008000;">//</span><span style="color: #008000;"> Chinese plate has max 7 characters.</span>
+<span style="color: #008080;"> 54</span>     <span style="color: #0000ff;">const</span> <span style="color: #0000ff;">int</span> char_max_count = <span style="color: #800080;">7</span><span style="color: #000000;">;
+</span><span style="color: #008080;"> 55</span> 
+<span style="color: #008080;"> 56</span>     <span style="color: #008000;">//</span><span style="color: #008000;"> verify char size and output to rects;</span>
+<span style="color: #008080;"> 57</span>     <span style="color: #0000ff;">for</span> (size_t index = <span style="color: #800080;">0</span>; index &lt; size; index++<span style="color: #000000;">) {
+</span><span style="color: #008080;"> 58</span>       Rect rect =<span style="color: #000000;"> all_boxes.at(color_index)[index];
+</span><span style="color: #008080;"> 59</span>       std::vector&lt;Point&gt;&amp; contour =<span style="color: #000000;"> all_contours.at(color_index)[index];
+</span><span style="color: #008080;"> 60</span> 
+<span style="color: #008080;"> 61</span>       <span style="color: #008000;">//</span><span style="color: #008000;"> sometimes a plate could be a mser rect, so we could
+</span><span style="color: #008080;"> 62</span>       <span style="color: #008000;">//</span><span style="color: #008000;"> also use mser algorithm to find plate</span>
+<span style="color: #008080;"> 63</span>       <span style="color: #0000ff;">if</span><span style="color: #000000;"> (usePlateMser) {
+</span><span style="color: #008080;"> 64</span>         RotatedRect rrect =<span style="color: #000000;"> minAreaRect(Mat(contour));
+</span><span style="color: #008080;"> 65</span>         <span style="color: #0000ff;">if</span><span style="color: #000000;"> (verifyRotatedPlateSizes(rrect)) {
+</span><span style="color: #008080;"> 66</span>           <span style="color: #008000;">//</span><span style="color: #008000;">rotatedRectangle(result, rrect, Scalar(255, 0, 0), 2);</span>
+<span style="color: #008080;"> 67</span>           <span style="color: #0000ff;">if</span> (the_color ==<span style="color: #000000;"> BLUE) out_plateRRect_blue.push_back(rrect);
+</span><span style="color: #008080;"> 68</span>           <span style="color: #0000ff;">if</span> (the_color ==<span style="color: #000000;"> YELLOW) out_plateRRect_yellow.push_back(rrect);
+</span><span style="color: #008080;"> 69</span> <span style="color: #000000;">        }
+</span><span style="color: #008080;"> 70</span> <span style="color: #000000;">      }
+</span><span style="color: #008080;"> 71</span> 
+<span style="color: #008080;"> 72</span>       <span style="color: #008000;">//</span><span style="color: #008000;"> find character</span>
+<span style="color: #008080;"> 73</span>       <span style="color: #0000ff;">if</span><span style="color: #000000;"> (verifyCharSizes(rect)) {
+</span><span style="color: #008080;"> 74</span>         Mat mserMat =<span style="color: #000000;"> adaptive_image_from_points(contour, rect, Size(char_size, char_size));
+</span><span style="color: #008080;"> 75</span>         Mat charInput =<span style="color: #000000;"> preprocessChar(mserMat, char_size);
+</span><span style="color: #008080;"> 76</span>         Rect charRect =<span style="color: #000000;"> rect;
+</span><span style="color: #008080;"> 77</span> 
+<span style="color: #008080;"> 78</span>         Point center(charRect.tl().x + charRect.width / <span style="color: #800080;">2</span>, charRect.tl().y + charRect.height / <span style="color: #800080;">2</span><span style="color: #000000;">);
+</span><span style="color: #008080;"> 79</span> <span style="color: #000000;">        Mat tmpMat;
+</span><span style="color: #008080;"> 80</span>         <span style="color: #0000ff;">double</span> ostu_level = cv::threshold(image(charRect), tmpMat, <span style="color: #800080;">0</span>, <span style="color: #800080;">255</span>, CV_THRESH_BINARY |<span style="color: #000000;"> CV_THRESH_OTSU);
+</span><span style="color: #008080;"> 81</span> 
+<span style="color: #008080;"> 82</span>         <span style="color: #008000;">//</span><span style="color: #008000;">cv::circle(result, center, 3, Scalar(0, 0, 255), 2);
+</span><span style="color: #008080;"> 83</span> 
+<span style="color: #008080;"> 84</span>         <span style="color: #008000;">//</span><span style="color: #008000;"> use judegMDOratio2 function to
+</span><span style="color: #008080;"> 85</span>         <span style="color: #008000;">//</span><span style="color: #008000;"> remove the small lines in character like "zh-cuan"</span>
+<span style="color: #008080;"> 86</span>         <span style="color: #0000ff;">if</span><span style="color: #000000;"> (judegMDOratio2(image, rect, contour, result)) {
+</span><span style="color: #008080;"> 87</span> <span style="color: #000000;">          CCharacter charCandidate;
+</span><span style="color: #008080;"> 88</span> <span style="color: #000000;">          charCandidate.setCharacterPos(charRect);
+</span><span style="color: #008080;"> 89</span> <span style="color: #000000;">          charCandidate.setCharacterMat(charInput);
+</span><span style="color: #008080;"> 90</span> <span style="color: #000000;">          charCandidate.setOstuLevel(ostu_level);
+</span><span style="color: #008080;"> 91</span> <span style="color: #000000;">          charCandidate.setCenterPoint(center);
+</span><span style="color: #008080;"> 92</span>           charCandidate.setIsChinese(<span style="color: #0000ff;">false</span><span style="color: #000000;">);
+</span><span style="color: #008080;"> 93</span> <span style="color: #000000;">          charVec.push_back(charCandidate);
+</span><span style="color: #008080;"> 94</span> <span style="color: #000000;">        }
+</span><span style="color: #008080;"> 95</span> <span style="color: #000000;">      }
+</span><span style="color: #008080;"> 96</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;"> 97</span> 
+<span style="color: #008080;"> 98</span>     <span style="color: #008000;">//</span><span style="color: #008000;"> improtant, use matrix multiplication to acclerate the 
+</span><span style="color: #008080;"> 99</span>     <span style="color: #008000;">//</span><span style="color: #008000;"> classification of many samples. use the character 
+</span><span style="color: #008080;">100</span>     <span style="color: #008000;">//</span><span style="color: #008000;"> score, we can use non-maximum superssion (nms) to 
+</span><span style="color: #008080;">101</span>     <span style="color: #008000;">//</span><span style="color: #008000;"> reduce the characters which are not likely to be true
+</span><span style="color: #008080;">102</span>     <span style="color: #008000;">//</span><span style="color: #008000;"> charaters, and use the score to select the strong seed
+</span><span style="color: #008080;">103</span>     <span style="color: #008000;">//</span><span style="color: #008000;"> of which the score is larger than 0.9</span>
+<span style="color: #008080;">104</span>     CharsIdentify::instance()-&gt;<span style="color: #000000;">classify(charVec);
+</span><span style="color: #008080;">105</span> 
+<span style="color: #008080;">106</span>     <span style="color: #008000;">//</span><span style="color: #008000;"> use nms to remove the character are not likely to be true.</span>
+<span style="color: #008080;">107</span>     <span style="color: #0000ff;">double</span> overlapThresh = <span style="color: #800080;">0.6</span><span style="color: #000000;">;
+</span><span style="color: #008080;">108</span>     <span style="color: #008000;">//</span><span style="color: #008000;">double overlapThresh = CParams::instance()-&gt;getParam1f();</span>
+<span style="color: #008080;">109</span> <span style="color: #000000;">    NMStoCharacter(charVec, overlapThresh);
+</span><span style="color: #008080;">110</span> <span style="color: #000000;">    charVec.shrink_to_fit();
+</span><span style="color: #008080;">111</span> 
+<span style="color: #008080;">112</span>     std::vector&lt;CCharacter&gt;<span style="color: #000000;"> strongSeedVec;
+</span><span style="color: #008080;">113</span>     strongSeedVec.reserve(<span style="color: #800080;">64</span><span style="color: #000000;">);
+</span><span style="color: #008080;">114</span>     std::vector&lt;CCharacter&gt;<span style="color: #000000;"> weakSeedVec;
+</span><span style="color: #008080;">115</span>     weakSeedVec.reserve(<span style="color: #800080;">64</span><span style="color: #000000;">);
+</span><span style="color: #008080;">116</span>     std::vector&lt;CCharacter&gt;<span style="color: #000000;"> littleSeedVec;
+</span><span style="color: #008080;">117</span>     littleSeedVec.reserve(<span style="color: #800080;">64</span><span style="color: #000000;">);
+</span><span style="color: #008080;">118</span> 
+<span style="color: #008080;">119</span>     <span style="color: #008000;">//</span><span style="color: #008000;">size_t charCan_size = charVec.size();</span>
+<span style="color: #008080;">120</span>     <span style="color: #0000ff;">for</span><span style="color: #000000;"> (auto charCandidate : charVec) {
+</span><span style="color: #008080;">121</span>       <span style="color: #008000;">//</span><span style="color: #008000;">CCharacter&amp; charCandidate = charVec[char_index];</span>
+<span style="color: #008080;">122</span>       Rect rect =<span style="color: #000000;"> charCandidate.getCharacterPos();
+</span><span style="color: #008080;">123</span>       <span style="color: #0000ff;">double</span> score =<span style="color: #000000;"> charCandidate.getCharacterScore();
+</span><span style="color: #008080;">124</span>       <span style="color: #0000ff;">if</span><span style="color: #000000;"> (charCandidate.getIsStrong()) {
+</span><span style="color: #008080;">125</span> <span style="color: #000000;">        strongSeedVec.push_back(charCandidate);
+</span><span style="color: #008080;">126</span> <span style="color: #000000;">      }
+</span><span style="color: #008080;">127</span>       <span style="color: #0000ff;">else</span> <span style="color: #0000ff;">if</span><span style="color: #000000;"> (charCandidate.getIsWeak()) {
+</span><span style="color: #008080;">128</span> <span style="color: #000000;">        weakSeedVec.push_back(charCandidate);
+</span><span style="color: #008080;">129</span>         <span style="color: #008000;">//</span><span style="color: #008000;">cv::rectangle(result, rect, Scalar(255, 0, 255));</span>
+<span style="color: #008080;">130</span> <span style="color: #000000;">      }
+</span><span style="color: #008080;">131</span>       <span style="color: #0000ff;">else</span> <span style="color: #0000ff;">if</span><span style="color: #000000;"> (charCandidate.getIsLittle()) {
+</span><span style="color: #008080;">132</span> <span style="color: #000000;">        littleSeedVec.push_back(charCandidate);
+</span><span style="color: #008080;">133</span>         <span style="color: #008000;">//</span><span style="color: #008000;">cv::rectangle(result, rect, Scalar(255, 0, 255));</span>
+<span style="color: #008080;">134</span> <span style="color: #000000;">      }
+</span><span style="color: #008080;">135</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">136</span> 
+<span style="color: #008080;">137</span>     std::vector&lt;CCharacter&gt; searchCandidate =<span style="color: #000000;"> charVec;
+</span><span style="color: #008080;">138</span> 
+<span style="color: #008080;">139</span>     <span style="color: #008000;">//</span><span style="color: #008000;"> nms to srong seed, only leave the strongest one</span>
+<span style="color: #008080;">140</span>     overlapThresh = <span style="color: #800080;">0.3</span><span style="color: #000000;">;
+</span><span style="color: #008080;">141</span> <span style="color: #000000;">    NMStoCharacter(strongSeedVec, overlapThresh);
+</span><span style="color: #008080;">142</span> 
+<span style="color: #008080;">143</span>     <span style="color: #008000;">//</span><span style="color: #008000;"> merge chars to group</span>
+<span style="color: #008080;">144</span>     std::vector&lt;std::vector&lt;CCharacter&gt;&gt;<span style="color: #000000;"> charGroupVec;
+</span><span style="color: #008080;">145</span>     charGroupVec.reserve(<span style="color: #800080;">64</span><span style="color: #000000;">);
+</span><span style="color: #008080;">146</span> <span style="color: #000000;">    mergeCharToGroup(strongSeedVec, charGroupVec);
+</span><span style="color: #008080;">147</span> 
+<span style="color: #008080;">148</span>     <span style="color: #008000;">//</span><span style="color: #008000;"> genenrate the line of the group
+</span><span style="color: #008080;">149</span>     <span style="color: #008000;">//</span><span style="color: #008000;"> based on the assumptions , the mser rects which are 
+</span><span style="color: #008080;">150</span>     <span style="color: #008000;">//</span><span style="color: #008000;"> given high socre by character classifier could be no doubtly
+</span><span style="color: #008080;">151</span>     <span style="color: #008000;">//</span><span style="color: #008000;"> be the characters in one plate, and we can use these characeters
+</span><span style="color: #008080;">152</span>     <span style="color: #008000;">//</span><span style="color: #008000;"> to fit a line which is the middle line of the plate.</span>
+<span style="color: #008080;">153</span>     std::vector&lt;CPlate&gt;<span style="color: #000000;"> plateVec;
+</span><span style="color: #008080;">154</span>     plateVec.reserve(<span style="color: #800080;">16</span><span style="color: #000000;">);
+</span><span style="color: #008080;">155</span>     <span style="color: #0000ff;">for</span><span style="color: #000000;"> (auto charGroup : charGroupVec) {
+</span><span style="color: #008080;">156</span>       Rect plateResult = charGroup[<span style="color: #800080;">0</span><span style="color: #000000;">].getCharacterPos();
+</span><span style="color: #008080;">157</span>       std::vector&lt;Point&gt;<span style="color: #000000;"> points;
+</span><span style="color: #008080;">158</span>       points.reserve(<span style="color: #800080;">32</span><span style="color: #000000;">);
+</span><span style="color: #008080;">159</span> 
+<span style="color: #008080;">160</span> <span style="color: #000000;">      Vec4f line;
+</span><span style="color: #008080;">161</span>       <span style="color: #0000ff;">int</span> maxarea = <span style="color: #800080;">0</span><span style="color: #000000;">;
+</span><span style="color: #008080;">162</span> <span style="color: #000000;">      Rect maxrect;
+</span><span style="color: #008080;">163</span>       <span style="color: #0000ff;">double</span> ostu_level_sum = <span style="color: #800080;">0</span><span style="color: #000000;">;
+</span><span style="color: #008080;">164</span> 
+<span style="color: #008080;">165</span>       <span style="color: #0000ff;">int</span> leftx =<span style="color: #000000;"> image.cols;
+</span><span style="color: #008080;">166</span>       Point leftPoint(leftx, <span style="color: #800080;">0</span><span style="color: #000000;">);
+</span><span style="color: #008080;">167</span>       <span style="color: #0000ff;">int</span> rightx = <span style="color: #800080;">0</span><span style="color: #000000;">;
+</span><span style="color: #008080;">168</span>       Point rightPoint(rightx, <span style="color: #800080;">0</span><span style="color: #000000;">);
+</span><span style="color: #008080;">169</span> 
+<span style="color: #008080;">170</span>       std::vector&lt;CCharacter&gt;<span style="color: #000000;"> mserCharVec;
+</span><span style="color: #008080;">171</span>       mserCharVec.reserve(<span style="color: #800080;">32</span><span style="color: #000000;">);
+</span><span style="color: #008080;">172</span> 
+<span style="color: #008080;">173</span>       <span style="color: #008000;">//</span><span style="color: #008000;"> remove outlier CharGroup</span>
+<span style="color: #008080;">174</span>       std::vector&lt;CCharacter&gt;<span style="color: #000000;"> roCharGroup;
+</span><span style="color: #008080;">175</span>       roCharGroup.reserve(<span style="color: #800080;">32</span><span style="color: #000000;">);
+</span><span style="color: #008080;">176</span> 
+<span style="color: #008080;">177</span>       removeRightOutliers(charGroup, roCharGroup, <span style="color: #800080;">0.2</span>, <span style="color: #800080;">0.5</span><span style="color: #000000;">, result);
+</span><span style="color: #008080;">178</span>       <span style="color: #008000;">//</span><span style="color: #008000;">roCharGroup = charGroup;</span>
+<span style="color: #008080;">179</span> 
+<span style="color: #008080;">180</span>       <span style="color: #0000ff;">for</span><span style="color: #000000;"> (auto character : roCharGroup) {
+</span><span style="color: #008080;">181</span>         Rect charRect =<span style="color: #000000;"> character.getCharacterPos();
+</span><span style="color: #008080;">182</span>         cv::rectangle(result, charRect, Scalar(<span style="color: #800080;">0</span>, <span style="color: #800080;">255</span>, <span style="color: #800080;">0</span>), <span style="color: #800080;">1</span><span style="color: #000000;">);
+</span><span style="color: #008080;">183</span>         plateResult |=<span style="color: #000000;"> charRect;
+</span><span style="color: #008080;">184</span> 
+<span style="color: #008080;">185</span>         Point center(charRect.tl().x + charRect.width / <span style="color: #800080;">2</span>, charRect.tl().y + charRect.height / <span style="color: #800080;">2</span><span style="color: #000000;">);
+</span><span style="color: #008080;">186</span> <span style="color: #000000;">        points.push_back(center);
+</span><span style="color: #008080;">187</span> <span style="color: #000000;">        mserCharVec.push_back(character);
+</span><span style="color: #008080;">188</span>         <span style="color: #008000;">//</span><span style="color: #008000;">cv::circle(result, center, 3, Scalar(0, 255, 0), 2);</span>
+<span style="color: #008080;">189</span> 
+<span style="color: #008080;">190</span>         ostu_level_sum +=<span style="color: #000000;"> character.getOstuLevel();
+</span><span style="color: #008080;">191</span> 
+<span style="color: #008080;">192</span>         <span style="color: #0000ff;">if</span> (charRect.area() &gt;<span style="color: #000000;"> maxarea) {
+</span><span style="color: #008080;">193</span>           maxrect =<span style="color: #000000;"> charRect;
+</span><span style="color: #008080;">194</span>           maxarea =<span style="color: #000000;"> charRect.area();
+</span><span style="color: #008080;">195</span> <span style="color: #000000;">        }
+</span><span style="color: #008080;">196</span>         <span style="color: #0000ff;">if</span> (center.x &lt;<span style="color: #000000;"> leftPoint.x) {
+</span><span style="color: #008080;">197</span>           leftPoint =<span style="color: #000000;"> center;
+</span><span style="color: #008080;">198</span> <span style="color: #000000;">        }
+</span><span style="color: #008080;">199</span>         <span style="color: #0000ff;">if</span> (center.x &gt;<span style="color: #000000;"> rightPoint.x) {
+</span><span style="color: #008080;">200</span>           rightPoint =<span style="color: #000000;"> center;
+</span><span style="color: #008080;">201</span> <span style="color: #000000;">        }
+</span><span style="color: #008080;">202</span> <span style="color: #000000;">      }
+</span><span style="color: #008080;">203</span> 
+<span style="color: #008080;">204</span>       <span style="color: #0000ff;">double</span> ostu_level_avg = ostu_level_sum / (<span style="color: #0000ff;">double</span><span style="color: #000000;">)roCharGroup.size();
+</span><span style="color: #008080;">205</span>       <span style="color: #0000ff;">if</span> (<span style="color: #800080;">1</span> &amp;&amp;<span style="color: #000000;"> showDebug) {
+</span><span style="color: #008080;">206</span>         std::cout &lt;&lt; <span style="color: #800000;">"</span><span style="color: #800000;">ostu_level_avg:</span><span style="color: #800000;">"</span> &lt;&lt; ostu_level_avg &lt;&lt;<span style="color: #000000;"> std::endl;
+</span><span style="color: #008080;">207</span> <span style="color: #000000;">      }
+</span><span style="color: #008080;">208</span>       <span style="color: #0000ff;">float</span> ratio_maxrect = (<span style="color: #0000ff;">float</span>)maxrect.width / (<span style="color: #0000ff;">float</span><span style="color: #000000;">)maxrect.height;
+</span><span style="color: #008080;">209</span> 
+<span style="color: #008080;">210</span>       <span style="color: #0000ff;">if</span> (points.size() &gt;= <span style="color: #800080;">2</span> &amp;&amp; ratio_maxrect &gt;= <span style="color: #800080;">0.3</span><span style="color: #000000;">) {
+</span><span style="color: #008080;">211</span>         fitLine(Mat(points), line, CV_DIST_L2, <span style="color: #800080;">0</span>, <span style="color: #800080;">0.01</span>, <span style="color: #800080;">0.01</span><span style="color: #000000;">);
+</span><span style="color: #008080;">212</span> 
+<span style="color: #008080;">213</span>         <span style="color: #0000ff;">float</span> k = line[<span style="color: #800080;">1</span>] / line[<span style="color: #800080;">0</span><span style="color: #000000;">];
+</span><span style="color: #008080;">214</span>         <span style="color: #008000;">//</span><span style="color: #008000;">float angle = atan(k) * 180 / (float)CV_PI;
+</span><span style="color: #008080;">215</span>         <span style="color: #008000;">//</span><span style="color: #008000;">std::cout &lt;&lt; "k:" &lt;&lt; k &lt;&lt; std::endl;
+</span><span style="color: #008080;">216</span>         <span style="color: #008000;">//</span><span style="color: #008000;">std::cout &lt;&lt; "angle:" &lt;&lt; angle &lt;&lt; std::endl;
+</span><span style="color: #008080;">217</span>         <span style="color: #008000;">//</span><span style="color: #008000;">std::cout &lt;&lt; "cos:" &lt;&lt; 0.3 * cos(k) &lt;&lt; std::endl;
+</span><span style="color: #008080;">218</span>         <span style="color: #008000;">//</span><span style="color: #008000;">std::cout &lt;&lt; "ratio_maxrect:" &lt;&lt; ratio_maxrect &lt;&lt; std::endl;</span>
+<span style="color: #008080;">219</span> 
+<span style="color: #008080;">220</span> <span style="color: #000000;">        std::sort(mserCharVec.begin(), mserCharVec.end(),
+</span><span style="color: #008080;">221</span>           [](<span style="color: #0000ff;">const</span> CCharacter&amp; r1, <span style="color: #0000ff;">const</span> CCharacter&amp;<span style="color: #000000;"> r2) {
+</span><span style="color: #008080;">222</span>           <span style="color: #0000ff;">return</span> r1.getCharacterPos().tl().x &lt;<span style="color: #000000;"> r2.getCharacterPos().tl().x;
+</span><span style="color: #008080;">223</span> <span style="color: #000000;">        });
+</span><span style="color: #008080;">224</span> 
+<span style="color: #008080;">225</span>         CCharacter midChar = mserCharVec.at(<span style="color: #0000ff;">int</span>(mserCharVec.size() / <span style="color: #800080;">2</span><span style="color: #000000;">.f));
+</span><span style="color: #008080;">226</span>         Rect midRect =<span style="color: #000000;"> midChar.getCharacterPos();
+</span><span style="color: #008080;">227</span>         Point midCenter(midRect.tl().x + midRect.width / <span style="color: #800080;">2</span>, midRect.tl().y + midRect.height / <span style="color: #800080;">2</span><span style="color: #000000;">);
+</span><span style="color: #008080;">228</span> 
+<span style="color: #008080;">229</span>         <span style="color: #0000ff;">int</span> mindist = <span style="color: #800080;">7</span> *<span style="color: #000000;"> maxrect.width;
+</span><span style="color: #008080;">230</span>         std::vector&lt;Vec2i&gt;<span style="color: #000000;"> distVecVec;
+</span><span style="color: #008080;">231</span>         distVecVec.reserve(<span style="color: #800080;">32</span><span style="color: #000000;">);
+</span><span style="color: #008080;">232</span> 
+<span style="color: #008080;">233</span> <span style="color: #000000;">        Vec2i mindistVec;
+</span><span style="color: #008080;">234</span> <span style="color: #000000;">        Vec2i avgdistVec;
+</span><span style="color: #008080;">235</span> 
+<span style="color: #008080;">236</span>         <span style="color: #008000;">//</span><span style="color: #008000;"> computer the dist which is the distacne between 
+</span><span style="color: #008080;">237</span>         <span style="color: #008000;">//</span><span style="color: #008000;"> two near characters in the plate, use dist we can
+</span><span style="color: #008080;">238</span>         <span style="color: #008000;">//</span><span style="color: #008000;"> judege how to computer the max search range, and choose the
+</span><span style="color: #008080;">239</span>         <span style="color: #008000;">//</span><span style="color: #008000;"> best location of the sliding window in the next steps.</span>
+<span style="color: #008080;">240</span>         <span style="color: #0000ff;">for</span> (size_t mser_i = <span style="color: #800080;">0</span>; mser_i + <span style="color: #800080;">1</span> &lt; mserCharVec.size(); mser_i++<span style="color: #000000;">) {
+</span><span style="color: #008080;">241</span>           Rect charRect =<span style="color: #000000;"> mserCharVec.at(mser_i).getCharacterPos();
+</span><span style="color: #008080;">242</span>           Point center(charRect.tl().x + charRect.width / <span style="color: #800080;">2</span>, charRect.tl().y + charRect.height / <span style="color: #800080;">2</span><span style="color: #000000;">);
+</span><span style="color: #008080;">243</span> 
+<span style="color: #008080;">244</span>           Rect charRectCompare = mserCharVec.at(mser_i + <span style="color: #800080;">1</span><span style="color: #000000;">).getCharacterPos();
+</span><span style="color: #008080;">245</span>           Point centerCompare(charRectCompare.tl().x + charRectCompare.width / <span style="color: #800080;">2</span><span style="color: #000000;">,
+</span><span style="color: #008080;">246</span>             charRectCompare.tl().y + charRectCompare.height / <span style="color: #800080;">2</span><span style="color: #000000;">);
+</span><span style="color: #008080;">247</span> 
+<span style="color: #008080;">248</span>           <span style="color: #0000ff;">int</span> dist = charRectCompare.x -<span style="color: #000000;"> charRect.x;
+</span><span style="color: #008080;">249</span>           Vec2i distVec(charRectCompare.x - charRect.x, charRectCompare.y -<span style="color: #000000;"> charRect.y);
+</span><span style="color: #008080;">250</span> <span style="color: #000000;">          distVecVec.push_back(distVec);
+</span><span style="color: #008080;">251</span> 
+<span style="color: #008080;">252</span>           <span style="color: #008000;">//</span><span style="color: #008000;">if (dist &lt; mindist) {
+</span><span style="color: #008080;">253</span>           <span style="color: #008000;">//</span><span style="color: #008000;">  mindist = dist;
+</span><span style="color: #008080;">254</span>           <span style="color: #008000;">//</span><span style="color: #008000;">  mindistVec = distVec;
+</span><span style="color: #008080;">255</span>           <span style="color: #008000;">//</span><span style="color: #008000;">}</span>
+<span style="color: #008080;">256</span> <span style="color: #000000;">        }
+</span><span style="color: #008080;">257</span> 
+<span style="color: #008080;">258</span> <span style="color: #000000;">        std::sort(distVecVec.begin(), distVecVec.end(),
+</span><span style="color: #008080;">259</span>           [](<span style="color: #0000ff;">const</span> Vec2i&amp; r1, <span style="color: #0000ff;">const</span> Vec2i&amp;<span style="color: #000000;"> r2) {
+</span><span style="color: #008080;">260</span>           <span style="color: #0000ff;">return</span> r1[<span style="color: #800080;">0</span>] &lt; r2[<span style="color: #800080;">0</span><span style="color: #000000;">];
+</span><span style="color: #008080;">261</span> <span style="color: #000000;">        });
+</span><span style="color: #008080;">262</span> 
+<span style="color: #008080;">263</span>         avgdistVec = distVecVec.at(<span style="color: #0000ff;">int</span>((distVecVec.size() - <span style="color: #800080;">1</span>) / <span style="color: #800080;">2</span><span style="color: #000000;">.f));
+</span><span style="color: #008080;">264</span> 
+<span style="color: #008080;">265</span>         <span style="color: #008000;">//</span><span style="color: #008000;">float step = 10.f * (float)maxrect.width;
+</span><span style="color: #008080;">266</span>         <span style="color: #008000;">//</span><span style="color: #008000;">float step = (float)mindistVec[0];</span>
+<span style="color: #008080;">267</span>         <span style="color: #0000ff;">float</span> step = (<span style="color: #0000ff;">float</span>)avgdistVec[<span style="color: #800080;">0</span><span style="color: #000000;">];
+</span><span style="color: #008080;">268</span> 
+<span style="color: #008080;">269</span>         <span style="color: #008000;">//</span><span style="color: #008000;">cv::line(result, Point2f(line[2] - step, line[3] - k*step), Point2f(line[2] + step, k*step + line[3]), Scalar(255, 255, 255));</span>
+<span style="color: #008080;">270</span>         cv::line(result, Point2f(midCenter.x - step, midCenter.y - k*step), Point2f(midCenter.x + step, k*step + midCenter.y), Scalar(<span style="color: #800080;">255</span>, <span style="color: #800080;">255</span>, <span style="color: #800080;">255</span><span style="color: #000000;">));
+</span><span style="color: #008080;">271</span>         <span style="color: #008000;">//</span><span style="color: #008000;">cv::circle(result, leftPoint, 3, Scalar(0, 0, 255), 2);</span>
+<span style="color: #008080;">272</span> 
+<span style="color: #008080;">273</span> <span style="color: #000000;">        CPlate plate;
+</span><span style="color: #008080;">274</span> <span style="color: #000000;">        plate.setPlateLeftPoint(leftPoint);
+</span><span style="color: #008080;">275</span> <span style="color: #000000;">        plate.setPlateRightPoint(rightPoint);
+</span><span style="color: #008080;">276</span> 
+<span style="color: #008080;">277</span> <span style="color: #000000;">        plate.setPlateLine(line);
+</span><span style="color: #008080;">278</span> <span style="color: #000000;">        plate.setPlatDistVec(avgdistVec);
+</span><span style="color: #008080;">279</span> <span style="color: #000000;">        plate.setOstuLevel(ostu_level_avg);
+</span><span style="color: #008080;">280</span> 
+<span style="color: #008080;">281</span> <span style="color: #000000;">        plate.setPlateMergeCharRect(plateResult);
+</span><span style="color: #008080;">282</span> <span style="color: #000000;">        plate.setPlateMaxCharRect(maxrect);
+</span><span style="color: #008080;">283</span> <span style="color: #000000;">        plate.setMserCharacter(mserCharVec);
+</span><span style="color: #008080;">284</span> <span style="color: #000000;">        plateVec.push_back(plate);
+</span><span style="color: #008080;">285</span> <span style="color: #000000;">      }
+</span><span style="color: #008080;">286</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">287</span> 
+<span style="color: #008080;">288</span>     <span style="color: #008000;">//</span><span style="color: #008000;"> use strong seed to construct the first shape of the plate,
+</span><span style="color: #008080;">289</span>     <span style="color: #008000;">//</span><span style="color: #008000;"> then we need to find characters which are the weak seed.
+</span><span style="color: #008080;">290</span>     <span style="color: #008000;">//</span><span style="color: #008000;"> because we use strong seed to build the middle lines of the plate,
+</span><span style="color: #008080;">291</span>     <span style="color: #008000;">//</span><span style="color: #008000;"> we can simply use this to consider weak seeds only lie in the 
+</span><span style="color: #008080;">292</span>     <span style="color: #008000;">//</span><span style="color: #008000;"> near place of the middle line</span>
+<span style="color: #008080;">293</span>     <span style="color: #0000ff;">for</span><span style="color: #000000;"> (auto plate : plateVec) {
+</span><span style="color: #008080;">294</span>       Vec4f line =<span style="color: #000000;"> plate.getPlateLine();
+</span><span style="color: #008080;">295</span>       Point leftPoint =<span style="color: #000000;"> plate.getPlateLeftPoint();
+</span><span style="color: #008080;">296</span>       Point rightPoint =<span style="color: #000000;"> plate.getPlateRightPoint();
+</span><span style="color: #008080;">297</span> 
+<span style="color: #008080;">298</span>       Rect plateResult =<span style="color: #000000;"> plate.getPlateMergeCharRect();
+</span><span style="color: #008080;">299</span>       Rect maxrect =<span style="color: #000000;"> plate.getPlateMaxCharRect();
+</span><span style="color: #008080;">300</span>       Vec2i dist =<span style="color: #000000;"> plate.getPlateDistVec();
+</span><span style="color: #008080;">301</span>       <span style="color: #0000ff;">double</span> ostu_level =<span style="color: #000000;"> plate.getOstuLevel();
+</span><span style="color: #008080;">302</span> 
+<span style="color: #008080;">303</span>       std::vector&lt;CCharacter&gt; mserCharacter =<span style="color: #000000;"> plate.getCopyOfMserCharacters();
+</span><span style="color: #008080;">304</span>       mserCharacter.reserve(<span style="color: #800080;">16</span><span style="color: #000000;">);
+</span><span style="color: #008080;">305</span> 
+<span style="color: #008080;">306</span>       <span style="color: #0000ff;">float</span> k = line[<span style="color: #800080;">1</span>] / line[<span style="color: #800080;">0</span><span style="color: #000000;">];
+</span><span style="color: #008080;">307</span>       <span style="color: #0000ff;">float</span> x_1 = line[<span style="color: #800080;">2</span><span style="color: #000000;">];
+</span><span style="color: #008080;">308</span>       <span style="color: #0000ff;">float</span> y_1 = line[<span style="color: #800080;">3</span><span style="color: #000000;">];
+</span><span style="color: #008080;">309</span> 
+<span style="color: #008080;">310</span>       std::vector&lt;CCharacter&gt;<span style="color: #000000;"> searchWeakSeedVec;
+</span><span style="color: #008080;">311</span>       searchWeakSeedVec.reserve(<span style="color: #800080;">16</span><span style="color: #000000;">);
+</span><span style="color: #008080;">312</span> 
+<span style="color: #008080;">313</span>       std::vector&lt;CCharacter&gt;<span style="color: #000000;"> searchRightWeakSeed;
+</span><span style="color: #008080;">314</span>       searchRightWeakSeed.reserve(<span style="color: #800080;">8</span><span style="color: #000000;">);
+</span><span style="color: #008080;">315</span>       std::vector&lt;CCharacter&gt;<span style="color: #000000;"> searchLeftWeakSeed;
+</span><span style="color: #008080;">316</span>       searchLeftWeakSeed.reserve(<span style="color: #800080;">8</span><span style="color: #000000;">);
+</span><span style="color: #008080;">317</span> 
+<span style="color: #008080;">318</span>       std::vector&lt;CCharacter&gt;<span style="color: #000000;"> slideRightWindow;
+</span><span style="color: #008080;">319</span>       slideRightWindow.reserve(<span style="color: #800080;">8</span><span style="color: #000000;">);
+</span><span style="color: #008080;">320</span>       std::vector&lt;CCharacter&gt;<span style="color: #000000;"> slideLeftWindow;
+</span><span style="color: #008080;">321</span>       slideLeftWindow.reserve(<span style="color: #800080;">8</span><span style="color: #000000;">);
+</span><span style="color: #008080;">322</span> 
+<span style="color: #008080;">323</span>       <span style="color: #008000;">//</span><span style="color: #008000;"> draw weak seed and little seed from line;
+</span><span style="color: #008080;">324</span>       <span style="color: #008000;">//</span><span style="color: #008000;"> search for mser rect</span>
+<span style="color: #008080;">325</span>       <span style="color: #0000ff;">if</span> (<span style="color: #800080;">1</span> &amp;&amp;<span style="color: #000000;"> showDebug) {
+</span><span style="color: #008080;">326</span>         std::cout &lt;&lt; <span style="color: #800000;">"</span><span style="color: #800000;">search for mser rect:</span><span style="color: #800000;">"</span> &lt;&lt;<span style="color: #000000;"> std::endl;
+</span><span style="color: #008080;">327</span> <span style="color: #000000;">      }
+</span><span style="color: #008080;">328</span> 
+<span style="color: #008080;">329</span>       <span style="color: #0000ff;">if</span> (<span style="color: #800080;">0</span> &amp;&amp;<span style="color: #000000;"> showDebug) {
+</span><span style="color: #008080;">330</span>         std::stringstream ss(std::stringstream::<span style="color: #0000ff;">in</span> | std::stringstream::<span style="color: #0000ff;">out</span><span style="color: #000000;">);
+</span><span style="color: #008080;">331</span>         ss &lt;&lt; <span style="color: #800000;">"</span><span style="color: #800000;">resources/image/tmp/</span><span style="color: #800000;">"</span> &lt;&lt; img_index &lt;&lt; <span style="color: #800000;">"</span><span style="color: #800000;">_1_</span><span style="color: #800000;">"</span> &lt;&lt; <span style="color: #800000;">"</span><span style="color: #800000;">searcgMserRect.jpg</span><span style="color: #800000;">"</span><span style="color: #000000;">;
+</span><span style="color: #008080;">332</span> <span style="color: #000000;">        imwrite(ss.str(), result);
+</span><span style="color: #008080;">333</span> <span style="color: #000000;">      }
+</span><span style="color: #008080;">334</span>       <span style="color: #0000ff;">if</span> (<span style="color: #800080;">1</span> &amp;&amp;<span style="color: #000000;"> showDebug) {
+</span><span style="color: #008080;">335</span>         std::cout &lt;&lt; <span style="color: #800000;">"</span><span style="color: #800000;">mserCharacter:</span><span style="color: #800000;">"</span> &lt;&lt; mserCharacter.size() &lt;&lt;<span style="color: #000000;"> std::endl;
+</span><span style="color: #008080;">336</span> <span style="color: #000000;">      }
+</span><span style="color: #008080;">337</span> 
+<span style="color: #008080;">338</span>       <span style="color: #008000;">//</span><span style="color: #008000;"> if the count of strong seed is larger than max count, we dont need 
+</span><span style="color: #008080;">339</span>       <span style="color: #008000;">//</span><span style="color: #008000;"> all the next steps, if not, we first need to search the weak seed in 
+</span><span style="color: #008080;">340</span>       <span style="color: #008000;">//</span><span style="color: #008000;"> the same line as the strong seed. The judge condition contains the distance 
+</span><span style="color: #008080;">341</span>       <span style="color: #008000;">//</span><span style="color: #008000;"> between strong seed and weak seed , and the rect simily of each other to improve
+</span><span style="color: #008080;">342</span>       <span style="color: #008000;">//</span><span style="color: #008000;"> the roubustnedd of the seed growing algorithm.</span>
+<span style="color: #008080;">343</span>       <span style="color: #0000ff;">if</span> (mserCharacter.size() &lt;<span style="color: #000000;"> char_max_count) {
+</span><span style="color: #008080;">344</span>         <span style="color: #0000ff;">double</span> thresh1 = <span style="color: #800080;">0.15</span><span style="color: #000000;">;
+</span><span style="color: #008080;">345</span>         <span style="color: #0000ff;">double</span> thresh2 = <span style="color: #800080;">2.0</span><span style="color: #000000;">;
+</span><span style="color: #008080;">346</span> <span style="color: #000000;">        searchWeakSeed(searchCandidate, searchRightWeakSeed, thresh1, thresh2, line, rightPoint,
+</span><span style="color: #008080;">347</span> <span style="color: #000000;">          maxrect, plateResult, result, CharSearchDirection::RIGHT);
+</span><span style="color: #008080;">348</span>         <span style="color: #0000ff;">if</span> (<span style="color: #800080;">1</span> &amp;&amp;<span style="color: #000000;"> showDebug) {
+</span><span style="color: #008080;">349</span>           std::cout &lt;&lt; <span style="color: #800000;">"</span><span style="color: #800000;">searchRightWeakSeed:</span><span style="color: #800000;">"</span> &lt;&lt; searchRightWeakSeed.size() &lt;&lt;<span style="color: #000000;"> std::endl;
+</span><span style="color: #008080;">350</span> <span style="color: #000000;">        }
+</span><span style="color: #008080;">351</span>         <span style="color: #0000ff;">for</span><span style="color: #000000;"> (auto seed : searchRightWeakSeed) {
+</span><span style="color: #008080;">352</span>           cv::rectangle(result, seed.getCharacterPos(), Scalar(<span style="color: #800080;">255</span>, <span style="color: #800080;">0</span>, <span style="color: #800080;">0</span>), <span style="color: #800080;">1</span><span style="color: #000000;">);
+</span><span style="color: #008080;">353</span> <span style="color: #000000;">          mserCharacter.push_back(seed);
+</span><span style="color: #008080;">354</span> <span style="color: #000000;">        }
+</span><span style="color: #008080;">355</span> 
+<span style="color: #008080;">356</span> <span style="color: #000000;">        searchWeakSeed(searchCandidate, searchLeftWeakSeed, thresh1, thresh2, line, leftPoint,
+</span><span style="color: #008080;">357</span> <span style="color: #000000;">          maxrect, plateResult, result, CharSearchDirection::LEFT);
+</span><span style="color: #008080;">358</span>         <span style="color: #0000ff;">if</span> (<span style="color: #800080;">1</span> &amp;&amp;<span style="color: #000000;"> showDebug) {
+</span><span style="color: #008080;">359</span>           std::cout &lt;&lt; <span style="color: #800000;">"</span><span style="color: #800000;">searchLeftWeakSeed:</span><span style="color: #800000;">"</span> &lt;&lt; searchLeftWeakSeed.size() &lt;&lt;<span style="color: #000000;"> std::endl;
+</span><span style="color: #008080;">360</span> <span style="color: #000000;">        }
+</span><span style="color: #008080;">361</span>         <span style="color: #0000ff;">for</span><span style="color: #000000;"> (auto seed : searchLeftWeakSeed) {
+</span><span style="color: #008080;">362</span>           cv::rectangle(result, seed.getCharacterPos(), Scalar(<span style="color: #800080;">255</span>, <span style="color: #800080;">0</span>, <span style="color: #800080;">0</span>), <span style="color: #800080;">1</span><span style="color: #000000;">);
+</span><span style="color: #008080;">363</span> <span style="color: #000000;">          mserCharacter.push_back(seed);
+</span><span style="color: #008080;">364</span> <span style="color: #000000;">        }
+</span><span style="color: #008080;">365</span> <span style="color: #000000;">      }
+</span><span style="color: #008080;">366</span> 
+<span style="color: #008080;">367</span>       <span style="color: #008000;">//</span><span style="color: #008000;"> sometimes the weak seed is in the middle of the strong seed.
+</span><span style="color: #008080;">368</span>       <span style="color: #008000;">//</span><span style="color: #008000;"> and sometimes two strong seed are actually the two parts of one character.
+</span><span style="color: #008080;">369</span>       <span style="color: #008000;">//</span><span style="color: #008000;"> because we only consider the weak seed in the left and right direction of strong seed.
+</span><span style="color: #008080;">370</span>       <span style="color: #008000;">//</span><span style="color: #008000;"> now we examine all the strong seed and weak seed. not only to find the seed in the middle,
+</span><span style="color: #008080;">371</span>       <span style="color: #008000;">//</span><span style="color: #008000;"> but also to combine two seed which are parts of one character to one seed.
+</span><span style="color: #008080;">372</span>       <span style="color: #008000;">//</span><span style="color: #008000;"> only by this process, we could use the seed count as the condition to judge if or not to use slide window.</span>
+<span style="color: #008080;">373</span>       <span style="color: #0000ff;">float</span> min_thresh = <span style="color: #800080;">0.3f</span><span style="color: #000000;">;
+</span><span style="color: #008080;">374</span>       <span style="color: #0000ff;">float</span> max_thresh = <span style="color: #800080;">2.5f</span><span style="color: #000000;">;
+</span><span style="color: #008080;">375</span> <span style="color: #000000;">      reFoundAndCombineRect(mserCharacter, min_thresh, max_thresh, dist, maxrect, result);
+</span><span style="color: #008080;">376</span> 
+<span style="color: #008080;">377</span>       <span style="color: #008000;">//</span><span style="color: #008000;"> if the characters count is less than max count
+</span><span style="color: #008080;">378</span>       <span style="color: #008000;">//</span><span style="color: #008000;"> this means the mser rect in the lines are not enough.
+</span><span style="color: #008080;">379</span>       <span style="color: #008000;">//</span><span style="color: #008000;"> sometimes there are still some characters could not be captured by mser algorithm,
+</span><span style="color: #008080;">380</span>       <span style="color: #008000;">//</span><span style="color: #008000;"> such as blur, low light ,and some chinese characters like zh-cuan.
+</span><span style="color: #008080;">381</span>       <span style="color: #008000;">//</span><span style="color: #008000;"> to handle this ,we use a simple slide window method to find them.</span>
+<span style="color: #008080;">382</span>       <span style="color: #0000ff;">if</span> (mserCharacter.size() &lt;<span style="color: #000000;"> char_max_count) {
+</span><span style="color: #008080;">383</span>         <span style="color: #0000ff;">if</span> (<span style="color: #800080;">1</span> &amp;&amp;<span style="color: #000000;"> showDebug) {
+</span><span style="color: #008080;">384</span>           std::cout &lt;&lt; <span style="color: #800000;">"</span><span style="color: #800000;">search chinese:</span><span style="color: #800000;">"</span> &lt;&lt;<span style="color: #000000;"> std::endl;
+</span><span style="color: #008080;">385</span>           std::cout &lt;&lt; <span style="color: #800000;">"</span><span style="color: #800000;">judege the left is chinese:</span><span style="color: #800000;">"</span> &lt;&lt;<span style="color: #000000;"> std::endl;
+</span><span style="color: #008080;">386</span> <span style="color: #000000;">        }
+</span><span style="color: #008080;">387</span> 
+<span style="color: #008080;">388</span>         <span style="color: #008000;">//</span><span style="color: #008000;"> if the left most character is chinese, this means
+</span><span style="color: #008080;">389</span>         <span style="color: #008000;">//</span><span style="color: #008000;"> that must be the first character in chinese plate,
+</span><span style="color: #008080;">390</span>         <span style="color: #008000;">//</span><span style="color: #008000;"> and we need not to do a slide window to left. So,
+</span><span style="color: #008080;">391</span>         <span style="color: #008000;">//</span><span style="color: #008000;"> the first thing is to judge the left charcater is 
+</span><span style="color: #008080;">392</span>         <span style="color: #008000;">//</span><span style="color: #008000;"> or not the chinese.</span>
+<span style="color: #008080;">393</span>         <span style="color: #0000ff;">bool</span> leftIsChinese = <span style="color: #0000ff;">false</span><span style="color: #000000;">;
+</span><span style="color: #008080;">394</span>         <span style="color: #0000ff;">if</span> (<span style="color: #800080;">1</span><span style="color: #000000;">) {
+</span><span style="color: #008080;">395</span> <span style="color: #000000;">          std::sort(mserCharacter.begin(), mserCharacter.end(),
+</span><span style="color: #008080;">396</span>             [](<span style="color: #0000ff;">const</span> CCharacter&amp; r1, <span style="color: #0000ff;">const</span> CCharacter&amp;<span style="color: #000000;"> r2) {
+</span><span style="color: #008080;">397</span>             <span style="color: #0000ff;">return</span> r1.getCharacterPos().tl().x &lt;<span style="color: #000000;"> r2.getCharacterPos().tl().x;
+</span><span style="color: #008080;">398</span> <span style="color: #000000;">          });
+</span><span style="color: #008080;">399</span> 
+<span style="color: #008080;">400</span>           CCharacter leftChar = mserCharacter[<span style="color: #800080;">0</span><span style="color: #000000;">];
+</span><span style="color: #008080;">401</span> 
+<span style="color: #008080;">402</span>           <span style="color: #008000;">//</span><span style="color: #008000;">Rect theRect = adaptive_charrect_from_rect(leftChar.getCharacterPos(), image.cols, image.rows);</span>
+<span style="color: #008080;">403</span>           Rect theRect =<span style="color: #000000;"> leftChar.getCharacterPos();
+</span><span style="color: #008080;">404</span>           <span style="color: #008000;">//</span><span style="color: #008000;">cv::rectangle(result, theRect, Scalar(255, 0, 0), 1);</span>
+<span style="color: #008080;">405</span> 
+<span style="color: #008080;">406</span>           Mat region =<span style="color: #000000;"> image(theRect);
+</span><span style="color: #008080;">407</span> <span style="color: #000000;">          Mat binary_region;
+</span><span style="color: #008080;">408</span> 
+<span style="color: #008080;">409</span>           ostu_level = cv::threshold(region, binary_region, <span style="color: #800080;">0</span>, <span style="color: #800080;">255</span>, CV_THRESH_BINARY |<span style="color: #000000;"> CV_THRESH_OTSU);
+</span><span style="color: #008080;">410</span>           <span style="color: #0000ff;">if</span> (<span style="color: #800080;">1</span> &amp;&amp;<span style="color: #000000;"> showDebug) {
+</span><span style="color: #008080;">411</span>             std::cout &lt;&lt; <span style="color: #800000;">"</span><span style="color: #800000;">left : ostu_level:</span><span style="color: #800000;">"</span> &lt;&lt; ostu_level &lt;&lt;<span style="color: #000000;"> std::endl;
+</span><span style="color: #008080;">412</span> <span style="color: #000000;">          }
+</span><span style="color: #008080;">413</span>           <span style="color: #008000;">//</span><span style="color: #008000;">plate.setOstuLevel(ostu_level);</span>
+<span style="color: #008080;">414</span> 
+<span style="color: #008080;">415</span>           Mat charInput =<span style="color: #000000;"> preprocessChar(binary_region, char_size);
+</span><span style="color: #008080;">416</span>           <span style="color: #0000ff;">if</span> (<span style="color: #800080;">0</span> <span style="color: #008000;">/*</span><span style="color: #008000;">&amp;&amp; showDebug</span><span style="color: #008000;">*/</span><span style="color: #000000;">) {
+</span><span style="color: #008080;">417</span>             imshow(<span style="color: #800000;">"</span><span style="color: #800000;">charInput</span><span style="color: #800000;">"</span><span style="color: #000000;">, charInput);
+</span><span style="color: #008080;">418</span>             waitKey(<span style="color: #800080;">0</span><span style="color: #000000;">);
+</span><span style="color: #008080;">419</span>             destroyWindow(<span style="color: #800000;">"</span><span style="color: #800000;">charInput</span><span style="color: #800000;">"</span><span style="color: #000000;">);
+</span><span style="color: #008080;">420</span> <span style="color: #000000;">          }
+</span><span style="color: #008080;">421</span> 
+<span style="color: #008080;">422</span>           std::<span style="color: #0000ff;">string</span> label = <span style="color: #800000;">""</span><span style="color: #000000;">;
+</span><span style="color: #008080;">423</span>           <span style="color: #0000ff;">float</span> maxVal = -<span style="color: #800080;">2</span><span style="color: #000000;">.f;
+</span><span style="color: #008080;">424</span>           leftIsChinese = CharsIdentify::instance()-&gt;isCharacter(charInput, label, maxVal, <span style="color: #0000ff;">true</span><span style="color: #000000;">);
+</span><span style="color: #008080;">425</span>           <span style="color: #008000;">//</span><span style="color: #008000;">auto character = CharsIdentify::instance()-&gt;identifyChinese(charInput, maxVal, leftIsChinese);
+</span><span style="color: #008080;">426</span>           <span style="color: #008000;">//</span><span style="color: #008000;">label = character.second;</span>
+<span style="color: #008080;">427</span>           <span style="color: #0000ff;">if</span> (<span style="color: #800080;">0</span> <span style="color: #008000;">/*</span><span style="color: #008000;"> &amp;&amp; showDebug</span><span style="color: #008000;">*/</span><span style="color: #000000;">) {
+</span><span style="color: #008080;">428</span>             std::cout &lt;&lt; <span style="color: #800000;">"</span><span style="color: #800000;">isChinese:</span><span style="color: #800000;">"</span> &lt;&lt; leftIsChinese &lt;&lt;<span style="color: #000000;"> std::endl;
+</span><span style="color: #008080;">429</span>             std::cout &lt;&lt; <span style="color: #800000;">"</span><span style="color: #800000;">chinese:</span><span style="color: #800000;">"</span> &lt;&lt;<span style="color: #000000;"> label;
+</span><span style="color: #008080;">430</span>             std::cout &lt;&lt; <span style="color: #800000;">"</span><span style="color: #800000;">__score:</span><span style="color: #800000;">"</span> &lt;&lt; maxVal &lt;&lt;<span style="color: #000000;"> std::endl;
+</span><span style="color: #008080;">431</span> <span style="color: #000000;">          }
+</span><span style="color: #008080;">432</span> <span style="color: #000000;">        }
+</span><span style="color: #008080;">433</span> 
+<span style="color: #008080;">434</span>         <span style="color: #008000;">//</span><span style="color: #008000;"> if the left most character is not a chinese,
+</span><span style="color: #008080;">435</span>         <span style="color: #008000;">//</span><span style="color: #008000;"> this means we meed to slide a window to find the missed mser rect.
+</span><span style="color: #008080;">436</span>         <span style="color: #008000;">//</span><span style="color: #008000;"> search for sliding window</span>
+<span style="color: #008080;">437</span>         <span style="color: #0000ff;">float</span> ratioWindow  = <span style="color: #800080;">0.4f</span><span style="color: #000000;">;
+</span><span style="color: #008080;">438</span>         <span style="color: #008000;">//</span><span style="color: #008000;">float ratioWindow = CParams::instance()-&gt;getParam3f();</span>
+<span style="color: #008080;">439</span>         <span style="color: #0000ff;">float</span> threshIsCharacter = <span style="color: #800080;">0.8f</span><span style="color: #000000;">;
+</span><span style="color: #008080;">440</span>         <span style="color: #008000;">//</span><span style="color: #008000;">float threshIsCharacter = CParams::instance()-&gt;getParam3f();</span>
+<span style="color: #008080;">441</span>         <span style="color: #0000ff;">if</span> (!<span style="color: #000000;">leftIsChinese) {
+</span><span style="color: #008080;">442</span> <span style="color: #000000;">          slideWindowSearch(image, slideLeftWindow, line, leftPoint, dist, ostu_level, ratioWindow, threshIsCharacter,
+</span><span style="color: #008080;">443</span>             maxrect, plateResult, CharSearchDirection::LEFT, <span style="color: #0000ff;">true</span><span style="color: #000000;">, result);
+</span><span style="color: #008080;">444</span>           <span style="color: #0000ff;">if</span> (<span style="color: #800080;">1</span> &amp;&amp;<span style="color: #000000;"> showDebug) {
+</span><span style="color: #008080;">445</span>             std::cout &lt;&lt; <span style="color: #800000;">"</span><span style="color: #800000;">slideLeftWindow:</span><span style="color: #800000;">"</span> &lt;&lt; slideLeftWindow.size() &lt;&lt;<span style="color: #000000;"> std::endl;
+</span><span style="color: #008080;">446</span> <span style="color: #000000;">          }
+</span><span style="color: #008080;">447</span>           <span style="color: #0000ff;">for</span><span style="color: #000000;"> (auto window : slideLeftWindow) {
+</span><span style="color: #008080;">448</span>             cv::rectangle(result, window.getCharacterPos(), Scalar(<span style="color: #800080;">0</span>, <span style="color: #800080;">0</span>, <span style="color: #800080;">255</span>), <span style="color: #800080;">1</span><span style="color: #000000;">);
+</span><span style="color: #008080;">449</span> <span style="color: #000000;">            mserCharacter.push_back(window);
+</span><span style="color: #008080;">450</span> <span style="color: #000000;">          }
+</span><span style="color: #008080;">451</span> <span style="color: #000000;">        }
+</span><span style="color: #008080;">452</span> <span style="color: #000000;">      }
+</span><span style="color: #008080;">453</span> 
+<span style="color: #008080;">454</span>       <span style="color: #008000;">//</span><span style="color: #008000;"> if we still have less than max count characters,
+</span><span style="color: #008080;">455</span>       <span style="color: #008000;">//</span><span style="color: #008000;"> we need to slide a window to right to search for the missed mser rect.</span>
+<span style="color: #008080;">456</span>       <span style="color: #0000ff;">if</span> (mserCharacter.size() &lt;<span style="color: #000000;"> char_max_count) {
+</span><span style="color: #008080;">457</span>         <span style="color: #008000;">//</span><span style="color: #008000;"> change ostu_level</span>
+<span style="color: #008080;">458</span>         <span style="color: #0000ff;">float</span> ratioWindow  = <span style="color: #800080;">0.4f</span><span style="color: #000000;">;
+</span><span style="color: #008080;">459</span>         <span style="color: #008000;">//</span><span style="color: #008000;">float ratioWindow = CParams::instance()-&gt;getParam3f();</span>
+<span style="color: #008080;">460</span>         <span style="color: #0000ff;">float</span> threshIsCharacter = <span style="color: #800080;">0.8f</span><span style="color: #000000;">;
+</span><span style="color: #008080;">461</span>         <span style="color: #008000;">//</span><span style="color: #008000;">float threshIsCharacter = CParams::instance()-&gt;getParam3f();</span>
+<span style="color: #008080;">462</span> <span style="color: #000000;">        slideWindowSearch(image, slideRightWindow, line, rightPoint, dist, plate.getOstuLevel(), ratioWindow, threshIsCharacter,
+</span><span style="color: #008080;">463</span>           maxrect, plateResult, CharSearchDirection::RIGHT, <span style="color: #0000ff;">false</span><span style="color: #000000;">, result);
+</span><span style="color: #008080;">464</span>         <span style="color: #0000ff;">if</span> (<span style="color: #800080;">1</span> &amp;&amp;<span style="color: #000000;"> showDebug) {
+</span><span style="color: #008080;">465</span>           std::cout &lt;&lt; <span style="color: #800000;">"</span><span style="color: #800000;">slideRightWindow:</span><span style="color: #800000;">"</span> &lt;&lt; slideRightWindow.size() &lt;&lt;<span style="color: #000000;"> std::endl;
+</span><span style="color: #008080;">466</span> <span style="color: #000000;">        }
+</span><span style="color: #008080;">467</span>         <span style="color: #0000ff;">for</span><span style="color: #000000;"> (auto window : slideRightWindow) {
+</span><span style="color: #008080;">468</span>           cv::rectangle(result, window.getCharacterPos(), Scalar(<span style="color: #800080;">0</span>, <span style="color: #800080;">0</span>, <span style="color: #800080;">255</span>), <span style="color: #800080;">1</span><span style="color: #000000;">);
+</span><span style="color: #008080;">469</span> <span style="color: #000000;">          mserCharacter.push_back(window);
+</span><span style="color: #008080;">470</span> <span style="color: #000000;">        }
+</span><span style="color: #008080;">471</span> <span style="color: #000000;">      }
+</span><span style="color: #008080;">472</span> 
+<span style="color: #008080;">473</span>       <span style="color: #008000;">//</span><span style="color: #008000;"> computer the plate angle</span>
+<span style="color: #008080;">474</span>       <span style="color: #0000ff;">float</span> angle = atan(k) * <span style="color: #800080;">180</span> / (<span style="color: #0000ff;">float</span><span style="color: #000000;">)CV_PI;
+</span><span style="color: #008080;">475</span>       <span style="color: #0000ff;">if</span> (<span style="color: #800080;">1</span> &amp;&amp;<span style="color: #000000;"> showDebug) {
+</span><span style="color: #008080;">476</span>         std::cout &lt;&lt; <span style="color: #800000;">"</span><span style="color: #800000;">k:</span><span style="color: #800000;">"</span> &lt;&lt; k &lt;&lt;<span style="color: #000000;"> std::endl;
+</span><span style="color: #008080;">477</span>         std::cout &lt;&lt; <span style="color: #800000;">"</span><span style="color: #800000;">angle:</span><span style="color: #800000;">"</span> &lt;&lt; angle &lt;&lt;<span style="color: #000000;"> std::endl;
+</span><span style="color: #008080;">478</span> <span style="color: #000000;">      }
+</span><span style="color: #008080;">479</span> 
+<span style="color: #008080;">480</span>       <span style="color: #008000;">//</span><span style="color: #008000;"> the plateResult rect need to be enlarge to contains all the plate,
+</span><span style="color: #008080;">481</span>       <span style="color: #008000;">//</span><span style="color: #008000;"> not only the character area.</span>
+<span style="color: #008080;">482</span>       <span style="color: #0000ff;">float</span> widthEnlargeRatio = <span style="color: #800080;">1.15f</span><span style="color: #000000;">;
+</span><span style="color: #008080;">483</span>       <span style="color: #0000ff;">float</span> heightEnlargeRatio = <span style="color: #800080;">1.25f</span><span style="color: #000000;">;
+</span><span style="color: #008080;">484</span>       RotatedRect platePos(Point2f((<span style="color: #0000ff;">float</span>)plateResult.x + plateResult.width / <span style="color: #800080;">2</span>.f, (<span style="color: #0000ff;">float</span>)plateResult.y + plateResult.height / <span style="color: #800080;">2</span><span style="color: #000000;">.f),
+</span><span style="color: #008080;">485</span>         Size2f(plateResult.width * widthEnlargeRatio, maxrect.height *<span style="color: #000000;"> heightEnlargeRatio), angle);
+</span><span style="color: #008080;">486</span> 
+<span style="color: #008080;">487</span>       <span style="color: #008000;">//</span><span style="color: #008000;"> justify the size is likely to be a plate size.</span>
+<span style="color: #008080;">488</span>       <span style="color: #0000ff;">if</span><span style="color: #000000;"> (verifyRotatedPlateSizes(platePos)) {
+</span><span style="color: #008080;">489</span>         rotatedRectangle(result, platePos, Scalar(<span style="color: #800080;">0</span>, <span style="color: #800080;">0</span>, <span style="color: #800080;">255</span>), <span style="color: #800080;">1</span><span style="color: #000000;">);
+</span><span style="color: #008080;">490</span> 
+<span style="color: #008080;">491</span> <span style="color: #000000;">        plate.setPlatePos(platePos);
+</span><span style="color: #008080;">492</span> <span style="color: #000000;">        plate.setPlateColor(the_color);
+</span><span style="color: #008080;">493</span> <span style="color: #000000;">        plate.setPlateLocateType(CMSER);
+</span><span style="color: #008080;">494</span> 
+<span style="color: #008080;">495</span>         <span style="color: #0000ff;">if</span> (the_color ==<span style="color: #000000;"> BLUE) out_plateVec_blue.push_back(plate);
+</span><span style="color: #008080;">496</span>         <span style="color: #0000ff;">if</span> (the_color ==<span style="color: #000000;"> YELLOW) out_plateVec_yellow.push_back(plate);
+</span><span style="color: #008080;">497</span> <span style="color: #000000;">      }
+</span><span style="color: #008080;">498</span> 
+<span style="color: #008080;">499</span>       <span style="color: #008000;">//</span><span style="color: #008000;"> use deskew to rotate the image, so we need the binary image.</span>
+<span style="color: #008080;">500</span>       <span style="color: #0000ff;">if</span> (<span style="color: #800080;">1</span><span style="color: #000000;">) {
+</span><span style="color: #008080;">501</span>         <span style="color: #0000ff;">for</span><span style="color: #000000;"> (auto mserChar : mserCharacter) {
+</span><span style="color: #008080;">502</span>           Rect rect =<span style="color: #000000;"> mserChar.getCharacterPos();
+</span><span style="color: #008080;">503</span>           match.at(color_index)(rect) = <span style="color: #800080;">255</span><span style="color: #000000;">;
+</span><span style="color: #008080;">504</span> <span style="color: #000000;">        }
+</span><span style="color: #008080;">505</span>         cv::line(match.at(color_index), rightPoint, leftPoint, Scalar(<span style="color: #800080;">255</span><span style="color: #000000;">));
+</span><span style="color: #008080;">506</span> <span style="color: #000000;">      }
+</span><span style="color: #008080;">507</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">508</span> 
+<span style="color: #008080;">509</span>     <span style="color: #0000ff;">if</span> (<span style="color: #800080;">0</span> <span style="color: #008000;">/*</span><span style="color: #008000;">&amp;&amp; showDebug</span><span style="color: #008000;">*/</span><span style="color: #000000;">) {
+</span><span style="color: #008080;">510</span>       imshow(<span style="color: #800000;">"</span><span style="color: #800000;">result</span><span style="color: #800000;">"</span><span style="color: #000000;">, result);
+</span><span style="color: #008080;">511</span>       waitKey(<span style="color: #800080;">0</span><span style="color: #000000;">);
+</span><span style="color: #008080;">512</span>       destroyWindow(<span style="color: #800000;">"</span><span style="color: #800000;">result</span><span style="color: #800000;">"</span><span style="color: #000000;">);
+</span><span style="color: #008080;">513</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">514</span> 
+<span style="color: #008080;">515</span>     <span style="color: #0000ff;">if</span> (<span style="color: #800080;">0</span><span style="color: #000000;">) {
+</span><span style="color: #008080;">516</span>       imshow(<span style="color: #800000;">"</span><span style="color: #800000;">match</span><span style="color: #800000;">"</span><span style="color: #000000;">, match.at(color_index));
+</span><span style="color: #008080;">517</span>       waitKey(<span style="color: #800080;">0</span><span style="color: #000000;">);
+</span><span style="color: #008080;">518</span>       destroyWindow(<span style="color: #800000;">"</span><span style="color: #800000;">match</span><span style="color: #800000;">"</span><span style="color: #000000;">);
+</span><span style="color: #008080;">519</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">520</span> 
+<span style="color: #008080;">521</span>     <span style="color: #0000ff;">if</span> (<span style="color: #800080;">0</span><span style="color: #000000;">) {
+</span><span style="color: #008080;">522</span>       std::stringstream ss(std::stringstream::<span style="color: #0000ff;">in</span> | std::stringstream::<span style="color: #0000ff;">out</span><span style="color: #000000;">);
+</span><span style="color: #008080;">523</span>       ss &lt;&lt; <span style="color: #800000;">"</span><span style="color: #800000;">resources/image/tmp/plateDetect/plate_</span><span style="color: #800000;">"</span> &lt;&lt; img_index &lt;&lt; <span style="color: #800000;">"</span><span style="color: #800000;">_</span><span style="color: #800000;">"</span> &lt;&lt; the_color &lt;&lt; <span style="color: #800000;">"</span><span style="color: #800000;">.jpg</span><span style="color: #800000;">"</span><span style="color: #000000;">;
+</span><span style="color: #008080;">524</span> <span style="color: #000000;">      imwrite(ss.str(), result);
+</span><span style="color: #008080;">525</span> <span style="color: #000000;">    }
+</span><span style="color: #008080;">526</span> <span style="color: #000000;">  }
+</span><span style="color: #008080;">527</span> 
+<span style="color: #008080;">528</span> 
+<span style="color: #008080;">529</span> }</pre>
+</div>
+<span class="cnblogs_code_collapse">View Code</span></div>
+<p>　　</p>
+<p>　　首先通过MSER提取区域，提取出的区域进行一个尺寸判断，滤除明显不符合车牌文字尺寸的。接下来使用一个文字分类器，将分类结果概率大于0.9的设为强种子（下图的绿色方框）。靠近的强种子进行聚合，划出一条线穿过它们的中心（图中白色的线）。一般来说，这条线就是车牌的中间轴线，斜率什么都相同。之后，就在这条线的附近寻找那些概率低于0.9的弱种子（蓝色方框）。由于车牌的特征，这些蓝色方框应该跟绿色方框距离不太远，同时尺寸也不会相差太大。蓝色方框实在绿色方框的左右查找的，有时候，几个绿色方框中间可能存在着一个方库，这可以通过每个方框之间的距离差推出来，这就是橙色的方框。全部找完以后。绿色方框加上蓝色与橙色方框的总数代表着目前在车牌区域中发现的文字数。有时这个数会低于7（中文车牌的文字数），这是因为有些区域即便通过MSER也提取不到（例如非常不稳定或光照变化大的），另外很多中文也无法通过MSER提取到（中文大多是不连通的，MSER提取的区域基本都是连通的）。所以下面需要再增加一个滑动窗口（红色方框）来寻找这些缺失的文字或者中文，如果分类器概率大于某个阈值，就可以将其加入到最终的结果中。最后，把所有文字的位置用一个方框框起来，就是车牌的区域。</p>
+<p>　　想要通过中间图片进行调试程序的话，首先依次根据函数调用关系plateMserLocate-&gt;mserSearch-&gt;mserCharMatch在core_func.cpp找到位置。在函数的最后，把图片输出的判断符改为1。然后在resources/image下面依次新建tmp与plateDetect目录（跟代码中的一致），接下来再运行时在新目录里就可以看到这些调试图片。（EasyPR里还有很多其他类似的输出代码，只要按照代码的写法创建文件夹就可以看到输出结果了）。</p>
+<p style="text-align: center;"><img src="./EasyPR--开发详解（8）文字定位 - 计算机的潜意识 - 博客园_files/673793-20160705114756686-1108839327.jpg" alt="" width="530" height="424">&nbsp;&nbsp;</p>
+<p style="text-align: center;"><span style="font-family: 黑体;">&nbsp;图5 文字定位的中间结果（调试图像）&nbsp;</span></p>
+<p>&nbsp;</p>
+<p><strong>二. 更加合理准确的评价指标</strong></p>
+<p>　　原先的EasyPR的评价标准中有很多不合理的地方。例如一张图片中找到了一个疑似的区域，就认为是定位成功了。或者如果一张图片中定位到了几个车牌，就用差距率最小的那个作为定位结果。这些地方不合理的地方在于，有可能找到的疑似区域根本不是车牌区域。另外一个包含几个车牌的图片仅仅用最大的一个作为结果，明显不合理。</p>
+<p>　　因此新评价指标需要考虑定位区域和车牌区域的位置差异，只有当两者接近时才能认为是定位成功。另外，一张图片如果有几个车牌，对应的就有几个定位区域，每个区域与车牌做比对，综合起来才能作为定位效果。因此需要加入一个GroundTruth，标记各个车牌的位置信息。新版本中，我们标记了251张图片，其中共250个车牌的位置信息。为了衡量定位区域与车牌区域的位置差的比例，又引入了ICDAR2003的评价协议，来最终计算出定位的recall，precise与fscore值。</p>
+<p>　　车牌定位评价中做了大改动。字符识别模块则做了小改动。首先是去除了“平均字符差距”这个意义较小的指标。转而用零字符差距，一字符差距，中文字符正确替代，这三者都是比率。零字符差距（0-error）指的是识别结果与车牌没有任何差异，跟原先的评价协议中的“完全正确率”指代一样。一字符差距（1-error）指的是错别仅仅只有1个字符或以下的，包括零字符差距。注意，中文一般是两个字符。中文字符正确（Chinese-precise）指代中文字符识别正确的比率。这三个指标，都是越大越好，100%最高。</p>
+<p>　　为了实际看出这些指标的效果，拿通用测试集里增加的50张复杂图片做对此测试，文字定位方法在这些数据上的表现的差异与原先的SOBEL，COLOR定位方法的区别可以看下面的结果。</p>
+<p>　　SOBEL+COLOR:<br>　　总图片数:50,  Plates count:52,  定位率:51.9231%<br>　　Recall:46.1696%, Precise:26.3273%, Fscore:33.533%.<br>　　0-error:12.5%,  1-error:12.5%,  Chinese-precise:37.5%</p>
+<p>　　CMSER:<br>　　总图片数:50,  Plates count:52,  定位率:78.8462%<br>　　Recall:70.6192%, Precise:70.1825%, Fscore:70.4002%.<br>　　0-error:59.4595%,  1-error:70.2703%,  Chinese-precise:70.2703%</p>
+<p>　　可以看出定位率提升了接近27个百分点，定位Fscore与中文识别正确率则提升了接近1倍。</p>
+<p>&nbsp;</p>
+<p><strong>三. 非极大值抑制</strong></p>
+<p>　　新版本中另一个较大的改动就是大量的使用了非极大值抑制(Non-maximum suppression)。使用非极大值抑制有几个好处：1.当有几个定位区域重叠时，可以根据它们的置信度（也是SVM车牌判断模型得出的值）来取出其中最大概率准确的一个，移除其他几个。这样，不同定位方法，例如Sobel与Color定位的同一个区域，只有一个可以保留。因此，EasyPR新版本中，最终定位出的一个车牌区域，不再会有几个框了。2.结合滑动窗口，可以用其来准确定位文字的位置，例如在车牌定位模块中找到概率最大的文字位置，或者在文字识别模块中，更准确的找到中文文字的位置。</p>
+<p>　　非极大值抑制的使用使得EasyPR的定位方法与后面的识别模块解耦了。以前，每增加定位方法，可能会对最终输出产生影响。现在，无论多少定位方法定位出的车牌都会通过非极大值抑制取出最大概率的一个，对后面的方法没有一点影响。</p>
+<p>　　另外，如今setMaxPlates（）这个函数可以确实的作用了。以前可以设置，但没效果。现在，设置这个值为n以后，当在一副图像中检测到大于n个车牌区域（注意，这个是经过非极大值抑制后的）时，EasyPR只会输出n个可能性最高的车牌区域。</p>
+<p><br><strong>四.&nbsp;字符分割与识别部分的强化</strong></p>
+<p>　　新版本中字符分割与识别部分都添加了新算法。例如使用了spatial-ostu替代普通的ostu算法，增加了图像分割在面对光照不均匀的图像上的二值化效果。</p>
+<p style="text-align: center;">&nbsp;<img src="./EasyPR--开发详解（8）文字定位 - 计算机的潜意识 - 博客园_files/673793-20160703120315202-1172112203.jpg" alt="" width="242" height="63">&nbsp;&nbsp;<img src="./EasyPR--开发详解（8）文字定位 - 计算机的潜意识 - 博客园_files/673793-20160703120322906-1969744626.jpg" alt="" width="210" height="65">&nbsp; &nbsp;<img src="./EasyPR--开发详解（8）文字定位 - 计算机的潜意识 - 博客园_files/673793-20160703120332437-69526130.jpg" alt="" width="231" height="64"></p>
+<p style="text-align: center;">&nbsp;<span style="font-family: 黑体;">图6 车牌图像（左），普通大津阈值结果（中），空间大津阈值结果（右）</span></p>
+<p>&nbsp;</p>
+<p>　　同时，识别部分针对中文增加了一种adaptive threshold方法。这种方法在二值化“川”字时有比ostu更好的效果。通过将两者一并使用，并选择其中字符识别概率最大的一个，显著提升了中文字符的识别准确率。在识别中文时，增加了一个小型的滑动窗口，以此来弥补通过省份字符直接查找中文字符时的定位不精等现象。</p>
+<p><br><br><strong>五.&nbsp;新的特征与SVM模型，新的中文识别ANN模型</strong></p>
+<p>　　为了强化车牌判断的鲁棒性，新版本中更改了SVM模型的特征，使用LBP特征的模型在面对低对比度与光照的车牌图像中也有很好的判断效果。为了强化中文识别的准确率，现在单独为31类中文文字训练了一个ANN模型ann_chinese，使用这个模型在分类中文是的效果，相对原先的通用模型可以提升近10个百分点。</p>
+<p><br><strong>六. 其他</strong></p>
+<p>　　几天前EasyPR发布了1.5-alpha版本。今天发布的beta版本相对于alpha版本，增加了Grid Search功能, 对文字定位方法的参数又进行了部分调优，同时去除了一些中文注释以提高window下的兼容性，除此之外，在速度方面，此版本首次使用了多线程编程技术（OpenMP）来提高算法整体的效率等，使得最终的速度有了2倍左右的提升。</p>
+<p>　　下面说一点新版本的不足：目前来看，文字定位方法的鲁棒性确实很高，不过遗憾的速度跟颜色定位方法相比，还是慢了接近一倍（与Sobel定位效率相当）。后面的改善中，考虑对其进行优化。另外，字符分割的效果实际上还是可以有更多的优化算法选择的，未来的版本可以考虑对其做一个较大的尝试与改进。</p>
+<p>&nbsp;</p>
+<p><em>　　对EasyPR做下说明：<a title="EasyPR GitHub" href="https://github.com/liuruoze/EasyPR" target="_blank">EasyPR</a>，一个开源的中文车牌识别系统，代码托管在github和gitosc。其次，在前面的博客文章中，包含EasyPR至今的开发<a title="EasyPR--中文开源车牌识别系统 开发详解（1）" href="http://www.cnblogs.com/subconscious/p/4001896.html" target="_blank">文档与介绍</a>。</em></p>
+<p>&nbsp;</p>
+<p><strong>版权说明：</strong></p>
+<p>&nbsp;</p>
+<p><strong>　　本文中的所有文字，图片，代码的版权都是属于作者和博客园共同所有。欢迎转载，但是务必注明作者与出处。任何未经允许的剽窃以及爬虫抓取都属于侵权，作者和博客园保留所有权利。</strong></p>
+<p>&nbsp;</p>
+<p><strong>参考文献：</strong></p>
+<p><strong>　　</strong>1.Character-MSER : Scene Text Detection with Robust Character Candidate Extraction Method, ICDAR2015</p>
+<p>　　2.Seed-growing : A robust hierarchical detection method for scene text based on convolutional neural networks, ICME2015</p>
+<p>&nbsp;</p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory"></div>
+<div id="EntryTag">标签: <a href="http://www.cnblogs.com/subconscious/tag/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">图像处理</a>, <a href="http://www.cnblogs.com/subconscious/tag/%E8%BD%A6%E7%89%8C%E8%AF%86%E5%88%AB/">车牌识别</a></div>
+<div id="blog_post_info"><div id="green_channel">
+        <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(5637735,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+            <a id="green_channel_follow" onclick="follow(&#39;edd4356d-003f-e411-b908-9dcfd8948a71&#39;);" href="javascript:void(0);">关注我</a>
+    <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
+    <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="./EasyPR--开发详解（8）文字定位 - 计算机的潜意识 - 博客园_files/icon_weibo_24.png" alt=""></a>
+    <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="./EasyPR--开发详解（8）文字定位 - 计算机的潜意识 - 博客园_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/subconscious/" target="_blank"><img src="./EasyPR--开发详解（8）文字定位 - 计算机的潜意识 - 博客园_files/20140918201411.png" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/subconscious/">计算机的潜意识</a><br>
+            <a href="http://home.cnblogs.com/u/subconscious/followees">关注 - 12</a><br>
+            <a href="http://home.cnblogs.com/u/subconscious/followers">粉丝 - 1424</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor">荣誉：<a href="http://www.cnblogs.com/expert/" target="_blank">推荐博客</a></div>
+    <div id="author_profile_follow">
+                <a href="javascript:void(0);" onclick="follow(&#39;edd4356d-003f-e411-b908-9dcfd8948a71&#39;);return false;">+加关注</a>
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit" onclick="votePost(5637735,&#39;Digg&#39;)">
+        <span class="diggnum" id="digg_count">19</span>
+    </div>
+    <div class="buryit" onclick="votePost(5637735,&#39;Bury&#39;)">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+</div>
+<script type="text/javascript">
+    currentDiggType = 0;
+</script></div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/subconscious/p/5267311.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/subconscious/p/5267311.html" title="发布于2016-03-11 22:59">观“人机大战”有感</a><br><a href="http://www.cnblogs.com/subconscious/p/6240151.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/subconscious/p/6240151.html" title="发布于2016-12-31 21:55">普通程序员如何转向AI方向</a><br></div>
+</div>
+
+
+		</div>
+		<div class="postDesc">posted @ <span id="post-date">2016-07-05 17:41</span> <a href="http://www.cnblogs.com/subconscious/">计算机的潜意识</a> 阅读(<span id="post_view_count">11049</span>) 评论(<span id="post_comment_count">13</span>)  <a href="https://i.cnblogs.com/EditPosts.aspx?postid=5637735" rel="nofollow">编辑</a> <a href="http://www.cnblogs.com/subconscious/p/5637735.html#" onclick="AddToWz(5637735);return false;">收藏</a></div>
+	</div>
+	<script type="text/javascript">var allowComments=true,cb_blogId=198547,cb_entryId=5637735,cb_blogApp=currentBlogApp,cb_blogUserGuid='edd4356d-003f-e411-b908-9dcfd8948a71',cb_entryCreatedDate='2016/7/5 17:41:00';loadViewCount(cb_entryId);var cb_postType=1;</script>
+	
+</div><!--end: topics 文章、评论容器-->
+</div><a name="!comments"></a><div id="blog-comments-placeholder"><div id="comments_pager_top"></div>
+<br>
+<div class="feedback_area_title">评论列表</div>
+<div class="feedbackNoItems"></div>	
+
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/5637735.html#3464516" class="layer">#1楼</a><a name="3464516" id="comment_anchor_3464516"></a>  <span class="comment_date">2016-07-06 08:12</span> <a id="a_comment_author_3464516" href="http://www.cnblogs.com/ACE8793/" target="_blank">Ace8793</a> <a href="http://msg.cnblogs.com/send/Ace8793" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3464516" class="blog_comment_body">真吊，哥们有在做人脸识别吗？</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3464516,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3464516,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3464516_avatar" style="display:none;">http://pic.cnblogs.com/face/377458/20161107194642.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/5637735.html#3484243" class="layer">#2楼</a><a name="3484243" id="comment_anchor_3484243"></a>  <span class="comment_date">2016-08-06 16:45</span> <a id="a_comment_author_3484243" href="http://home.cnblogs.com/u/993459/" target="_blank">junxianchen</a> <a href="http://msg.cnblogs.com/send/junxianchen" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3484243" class="blog_comment_body">正好在看这一部分，没怎么看懂，楼主更新的及时啊！哈哈哈</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3484243,&#39;Digg&#39;,this)">支持(1)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3484243,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/5637735.html#3491432" class="layer">#3楼</a><a name="3491432" id="comment_anchor_3491432"></a>  <span class="comment_date">2016-08-18 11:02</span> <a id="a_comment_author_3491432" href="http://home.cnblogs.com/u/852924/" target="_blank">daiyinger</a> <a href="http://msg.cnblogs.com/send/daiyinger" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3491432" class="blog_comment_body">谢谢楼主一如既往的坚持</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3491432,&#39;Digg&#39;,this)">支持(1)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3491432,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/5637735.html#3501392" class="layer">#4楼</a><a name="3501392" id="comment_anchor_3501392"></a>  <span class="comment_date">2016-09-01 17:04</span> <a id="a_comment_author_3501392" href="http://home.cnblogs.com/u/1019244/" target="_blank">蓝羽bobo</a> <a href="http://msg.cnblogs.com/send/%E8%93%9D%E7%BE%BDbobo" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3501392" class="blog_comment_body">一直关注EasyPR，没有评论是因为没注册，我想还有很多人都在默默的关注着，你的开源的精神让我很钦佩，今天突然再次看到你又开始更新，很激动，必须要来评论下，我从你的文章里学了很多东西，不止车牌识别还有机器学习和神经网络，希望博主继续更新。粉丝+1</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3501392,&#39;Digg&#39;,this)">支持(6)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3501392,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/5637735.html#3501463" class="layer">#5楼</a><a name="3501463" id="comment_anchor_3501463"></a>  <span class="comment_date">2016-09-01 17:56</span> <a id="a_comment_author_3501463" href="http://www.cnblogs.com/husthzy/" target="_blank">平楚荒烟</a> <a href="http://msg.cnblogs.com/send/%E5%B9%B3%E6%A5%9A%E8%8D%92%E7%83%9F" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3501463" class="blog_comment_body">开源+持续改善更新+详细讲解，楼主真是让人敬佩！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3501463,&#39;Digg&#39;,this)">支持(1)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3501463,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/5637735.html#3572629" class="layer">#6楼</a><a name="3572629" id="comment_anchor_3572629"></a>  <span class="comment_date">2016-12-05 15:22</span> <a id="a_comment_author_3572629" href="http://home.cnblogs.com/u/1038841/" target="_blank">小灰灰的视觉世界</a> <a href="http://msg.cnblogs.com/send/%E5%B0%8F%E7%81%B0%E7%81%B0%E7%9A%84%E8%A7%86%E8%A7%89%E4%B8%96%E7%95%8C" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3572629" class="blog_comment_body">博主你好，我想问问你那个GroundTruth.xml 文件是怎么生成的？？</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3572629,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3572629,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/5637735.html#3573336" class="layer">#7楼</a><a name="3573336" id="comment_anchor_3573336"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2016-12-06 10:40</span> <a id="a_comment_author_3573336" href="http://www.cnblogs.com/subconscious/" target="_blank">计算机的潜意识</a> <a href="http://msg.cnblogs.com/send/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E6%BD%9C%E6%84%8F%E8%AF%86" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3573336" class="blog_comment_body"><a href="http://www.cnblogs.com/subconscious/p/5637735.html#3572629" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3572629);">@</a>
+小灰灰的视觉世界<br>这个没有什么太好的办法，基本是手动生成的。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3573336,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3573336,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3573336_avatar" style="display:none;">http://pic.cnblogs.com/face/673793/20140918201411.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/5637735.html#3607487" class="layer">#8楼</a><a name="3607487" id="comment_anchor_3607487"></a>  <span class="comment_date">2017-01-20 11:43</span> <a id="a_comment_author_3607487" href="http://www.cnblogs.com/wyyy/" target="_blank">一树繁花</a> <a href="http://msg.cnblogs.com/send/%E4%B8%80%E6%A0%91%E7%B9%81%E8%8A%B1" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3607487" class="blog_comment_body">怎么会没有C#版本的呢？引入DLL的时间会报错的啊<br>不知道有哪位同学解决了这一个问题</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3607487,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3607487,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3607487_avatar" style="display:none;">http://pic.cnblogs.com/face/u347910.jpg?id=05191148</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/5637735.html#3665949" class="layer">#9楼</a><a name="3665949" id="comment_anchor_3665949"></a>  <span class="comment_date">2017-04-12 10:31</span> <a id="a_comment_author_3665949" href="http://home.cnblogs.com/u/1144991/" target="_blank">绝涟5</a> <a href="http://msg.cnblogs.com/send/%E7%BB%9D%E6%B6%9F5" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3665949" class="blog_comment_body">大神，您的ann什么时候更新呀？？期待学习</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3665949,&#39;Digg&#39;,this)">支持(2)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3665949,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/5637735.html#3706595" class="layer">#10楼</a><a name="3706595" id="comment_anchor_3706595"></a>  <span class="comment_date">2017-06-04 11:25</span> <a id="a_comment_author_3706595" href="http://home.cnblogs.com/u/1174081/" target="_blank">luohaibaorobert</a> <a href="http://msg.cnblogs.com/send/luohaibaorobert" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3706595" class="blog_comment_body">老师什么时候更新ann的内容，好期待！！！加油！！！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3706595,&#39;Digg&#39;,this)">支持(1)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3706595,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/5637735.html#3754981" class="layer">#11楼</a><a name="3754981" id="comment_anchor_3754981"></a>  <span class="comment_date">2017-08-10 17:40</span> <a id="a_comment_author_3754981" href="http://www.cnblogs.com/my-c-world/" target="_blank">小木L</a> <a href="http://msg.cnblogs.com/send/%E5%B0%8F%E6%9C%A8L" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3754981" class="blog_comment_body">请问神经网络部分大概什么时候能更新呢？</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3754981,&#39;Digg&#39;,this)">支持(2)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3754981,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3754981_avatar" style="display:none;">http://pic.cnblogs.com/face/802686/20170622091935.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/5637735.html#3783532" class="layer">#12楼</a><a name="3783532" id="comment_anchor_3783532"></a>  <span class="comment_date">2017-09-13 20:37</span> <a id="a_comment_author_3783532" href="http://home.cnblogs.com/u/1041082/" target="_blank">ArmedYang</a> <a href="http://msg.cnblogs.com/send/ArmedYang" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3783532" class="blog_comment_body">默默地来催更</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3783532,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3783532,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/5637735.html#3853532" class="layer">#13楼</a><a name="3853532" id="comment_anchor_3853532"></a><span id="comment-maxId" style="display:none;">3853532</span><span id="comment-maxDate" style="display:none;">2017/11/29 16:35:21</span>  <span class="comment_date">2017-11-29 16:35</span> <a id="a_comment_author_3853532" href="http://home.cnblogs.com/u/466046/" target="_blank">wyd1520</a> <a href="http://msg.cnblogs.com/send/wyd1520" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3853532" class="blog_comment_body">默默地来催更，在等博主CNN框架.....</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3853532,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3853532,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	<div id="comments_pager_bottom"></div></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="http://www.cnblogs.com/subconscious/p/5637735.html#" onclick="return RefreshPage();">刷新页面</a><a href="http://www.cnblogs.com/subconscious/p/5637735.html#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login(&#39;commentform&#39;);">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】超50万VC++源码: 大型组态工控、电力仿真CAD与GIS源码库！</a><br><a href="http://click.aliyun.com/m/43774/" target="_blank">【缅怀】传奇谢幕，回顾霍金76载传奇人生</a><br><a href="https://cloud.tencent.com/act/campus?fromSource=gwzcw.860539.860539.860539" target="_blank">【推荐】腾讯云校园拼团福利，1核2G服务器10元/月！</a><br><a href="https://www.yunqi2050.com/#/index" target="_blank">【活动】2050 科技公益大会 - 年青人因科技而团聚</a><br></div>
+<div id="opt_under_post"></div>
+<div id="cnblogs_c1" class="c_ad_block"><a href="https://market.qcloud.com/act/wangjian/?fromSource=gwzcw.860541.860541.860541" target="_blank"><img width="300" height="250" src="./EasyPR--开发详解（8）文字定位 - 计算机的潜意识 - 博客园_files/24442-20180314220122373-1718033865.jpg" alt="qcloud0314"></a></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="https://news.cnblogs.com/n/592036/" target="_blank">孙宏斌的护城河：辞职后留嫡系掌权 乐视仍是肥肉？</a><br> ·  <a href="https://news.cnblogs.com/n/592035/" target="_blank">火币前CTO张健：区块链大繁荣，尚需5到10年时间</a><br> ·  <a href="https://news.cnblogs.com/n/592034/" target="_blank">Uber自动驾驶汽车再出事故：人员受轻伤</a><br> ·  <a href="https://news.cnblogs.com/n/592025/" target="_blank">谷歌地图在几个城市提供轮椅行进辅助信息</a><br> ·  <a href="https://news.cnblogs.com/n/592033/" target="_blank">吃着越来越贵的外卖 你会想起当年的网约车吗？</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="cnblogs_c2" class="c_ad_block"><a href="http://click.aliyun.com/m/42835/" target="_blank"><img width="468" height="60" src="https://gw.alicdn.com/tfs/TB1mEZFaWmWBuNjy1XaXXXCbXXa-468-60.jpg" alt="阿里云0308" style="display: none !important;"></a></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/575255/" target="_blank">写给自学者的入门指南</a><br> ·  <a href="http://kb.cnblogs.com/page/578690/" target="_blank">和程序员谈恋爱</a><br> ·  <a href="http://kb.cnblogs.com/page/585734/" target="_blank">学会学习</a><br> ·  <a href="http://kb.cnblogs.com/page/588938/" target="_blank">优秀技术人的管理陷阱</a><br> ·  <a href="http://kb.cnblogs.com/page/590141/" target="_blank">作为一个程序员，数学对你到底有多重要</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+    fixPostBody();
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);   
+</script>
+</div>
+
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news">EasyPR讨论QQ群：一群：366392603, 四群：548362608。加前请注明EasyPR学习讨论。<div id="profile_block">昵称：<a href="https://home.cnblogs.com/u/subconscious/">计算机的潜意识</a><br>园龄：<a href="https://home.cnblogs.com/u/subconscious/" title="入园时间：2014-09-18">3年5个月</a><br>荣誉：<a href="https://www.cnblogs.com/expert/">推荐博客</a><br>粉丝：<a href="https://home.cnblogs.com/u/subconscious/followers/">1424</a><br>关注：<a href="https://home.cnblogs.com/u/subconscious/followees/">12</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="follow(&#39;edd4356d-003f-e411-b908-9dcfd8948a71&#39;)">+加关注</a></div><script>getFollowStatus('edd4356d-003f-e411-b908-9dcfd8948a71')</script></div></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+
+			<div id="blog-calendar" style=""><table id="blogCalendar" class="Cal" cellspacing="0" cellpadding="0" title="Calendar">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2018/02/01&#39;);return false;">&lt;</a></td><td align="center">2018年3月</td><td class="CalNextPrev" align="right"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2018/04/01&#39;);return false;">&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" align="center" abbr="日" scope="col">日</th><th class="CalDayHeader" align="center" abbr="一" scope="col">一</th><th class="CalDayHeader" align="center" abbr="二" scope="col">二</th><th class="CalDayHeader" align="center" abbr="三" scope="col">三</th><th class="CalDayHeader" align="center" abbr="四" scope="col">四</th><th class="CalDayHeader" align="center" abbr="五" scope="col">五</th><th class="CalDayHeader" align="center" abbr="六" scope="col">六</th></tr><tr><td class="CalOtherMonthDay" align="center">25</td><td class="CalOtherMonthDay" align="center">26</td><td class="CalOtherMonthDay" align="center">27</td><td class="CalOtherMonthDay" align="center">28</td><td align="center">1</td><td align="center">2</td><td class="CalWeekendDay" align="center">3</td></tr><tr><td class="CalWeekendDay" align="center">4</td><td align="center">5</td><td align="center">6</td><td align="center">7</td><td align="center">8</td><td align="center">9</td><td class="CalWeekendDay" align="center">10</td></tr><tr><td class="CalWeekendDay" align="center">11</td><td align="center">12</td><td align="center">13</td><td align="center">14</td><td align="center">15</td><td align="center">16</td><td class="CalTodayDay" align="center">17</td></tr><tr><td class="CalWeekendDay" align="center">18</td><td align="center">19</td><td align="center">20</td><td align="center">21</td><td align="center">22</td><td align="center">23</td><td class="CalWeekendDay" align="center">24</td></tr><tr><td class="CalWeekendDay" align="center">25</td><td align="center">26</td><td align="center">27</td><td align="center">28</td><td align="center">29</td><td align="center">30</td><td class="CalWeekendDay" align="center">31</td></tr><tr><td class="CalOtherMonthDay" align="center">1</td><td class="CalOtherMonthDay" align="center">2</td><td class="CalOtherMonthDay" align="center">3</td><td class="CalOtherMonthDay" align="center">4</td><td class="CalOtherMonthDay" align="center">5</td><td class="CalOtherMonthDay" align="center">6</td><td class="CalOtherMonthDay" align="center">7</td></tr>
+</tbody></table></div><script type="text/javascript">loadBlogDefaultCalendar();</script>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="sidebar_search" class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="sidebar_search_box">
+
+<div id="widget_my_google" class="div_my_zzk"><input type="text" name="google_q" id="google_q" onkeydown="return google_go_enter(event)" class="input_my_zzk">&nbsp;<input onclick="google_go()" type="button" value="谷歌搜索" class="btn_my_zzk"></div>
+</div>
+</div>
+
+</div><div id="sidebar_categories">
+<div id="sidebar_postarchive" class="catListPostArchive sidebar-block">
+<h3 class="catListTitle">随笔档案</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_0_Link_0" href="http://www.cnblogs.com/subconscious/archive/2017/12.html">2017年12月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_1" href="http://www.cnblogs.com/subconscious/archive/2016/12.html">2016年12月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_2" href="http://www.cnblogs.com/subconscious/archive/2016/07.html">2016年7月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_3" href="http://www.cnblogs.com/subconscious/archive/2016/03.html">2016年3月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_4" href="http://www.cnblogs.com/subconscious/archive/2015/12.html">2015年12月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_5" href="http://www.cnblogs.com/subconscious/archive/2015/07.html">2015年7月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_6" href="http://www.cnblogs.com/subconscious/archive/2015/03.html">2015年3月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_7" href="http://www.cnblogs.com/subconscious/archive/2015/02.html">2015年2月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_8" href="http://www.cnblogs.com/subconscious/archive/2014/12.html">2014年12月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_9" href="http://www.cnblogs.com/subconscious/archive/2014/10.html">2014年10月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_10" href="http://www.cnblogs.com/subconscious/archive/2014/09.html">2014年9月 (2)</a> </li>
+
+</ul>
+
+</div>
+
+</div><div id="sidebar_scorerank" class="sidebar-block">
+<div class="catListBlogRank">
+<h3 class="catListTitle">积分与排名</h3>
+<ul>
+	<li class="liScore">
+		积分 -	49370
+	</li>
+	<li class="liRank">
+		排名 -	7447
+	</li>
+</ul>
+</div>
+
+
+</div><div id="sidebar_recentcomments" class="sidebar-block"><div id="recent_comments_wrap">
+<div class="catListComment">
+<h3 class="catListTitle">最新评论</h3>
+
+	<div id="RecentCommentsBlock"><ul>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/subconscious/p/4107357.html#3925062">1. Re:从机器学习谈起</a></li>
+        <li class="recent_comment_body">不错，支持</li>
+        <li class="recent_comment_author">--小陀螺_coding</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/subconscious/p/8157268.html#3923099">2. Re:2017年总结</a></li>
+        <li class="recent_comment_body">@肥肥小牛非常感谢您的建议！...</li>
+        <li class="recent_comment_author">--计算机的潜意识</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/subconscious/p/8157268.html#3922721">3. Re:2017年总结</a></li>
+        <li class="recent_comment_body">另，本人有两点拙见：1、我有个朋友的亲戚就是做民间借贷的，经过深入交流发现，现在的逼债手段没有想象中那么“暴力”，而是几乎都“合法化”和“规范化”了。所以博主的案例真的是给大家提了个醒，要尽早采用法律......</li>
+        <li class="recent_comment_author">--肥肥小牛</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/subconscious/p/8157268.html#3922695">4. Re:2017年总结</a></li>
+        <li class="recent_comment_body">支持博主，祝好人好报！</li>
+        <li class="recent_comment_author">--肥肥小牛</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/subconscious/p/3979988.html#3921081">5. Re:EasyPR--一个开源的中文车牌识别系统</a></li>
+        <li class="recent_comment_body">博主，你好请问字符分割部分找到特殊字符之后，接下来的找最小外接矩形和分割代码在哪找？</li>
+        <li class="recent_comment_author">--上善若水ssrs</li>
+</ul>
+</div>
+</div>
+</div></div><div id="sidebar_topviewedposts" class="sidebar-block"><div id="topview_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">阅读排行榜</h3>
+	<div id="TopViewPostsBlock"><ul><li><a href="http://www.cnblogs.com/subconscious/p/5058741.html">1. 神经网络浅讲：从神经元到深度学习(107257)</a></li><li><a href="http://www.cnblogs.com/subconscious/p/4107357.html">2. 从机器学习谈起(75650)</a></li><li><a href="http://www.cnblogs.com/subconscious/p/3979988.html">3. EasyPR--一个开源的中文车牌识别系统(70854)</a></li><li><a href="http://www.cnblogs.com/subconscious/p/4001896.html">4. EasyPR--中文开源车牌识别系统 开发详解（1）(28167)</a></li><li><a href="http://www.cnblogs.com/subconscious/p/4013591.html">5. EasyPR--开发详解（2）车牌定位(27895)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topcommentedposts" class="sidebar-block"><div id="topfeedback_posts_wrap">
+<div class="catListFeedback">
+<h3 class="catListTitle">评论排行榜</h3>
+	<div id="TopFeedbackPostsBlock"><ul><li><a href="http://www.cnblogs.com/subconscious/p/4107357.html">1. 从机器学习谈起(147)</a></li><li><a href="http://www.cnblogs.com/subconscious/p/3979988.html">2. EasyPR--一个开源的中文车牌识别系统(61)</a></li><li><a href="http://www.cnblogs.com/subconscious/p/5058741.html">3. 神经网络浅讲：从神经元到深度学习(57)</a></li><li><a href="http://www.cnblogs.com/subconscious/p/4249581.html">4. EasyPR--开发详解（6）SVM开发详解(37)</a></li><li><a href="http://www.cnblogs.com/subconscious/p/4311550.html">5. 小议“数据开放”(28)</a></li></ul></div>
+</div>
+</div></div></div><script type="text/javascript">loadBlogSideColumn();</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright ©2018 计算机的潜意识
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+</body></html>

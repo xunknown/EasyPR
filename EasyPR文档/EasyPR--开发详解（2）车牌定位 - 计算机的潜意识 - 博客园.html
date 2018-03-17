@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)http://www.cnblogs.com/subconscious/p/4013591.html -->
+<html lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EasyPR--开发详解（2）车牌定位 - 计算机的潜意识 - 博客园</title>
+<link type="text/css" rel="stylesheet" href="./EasyPR--开发详解（2）车牌定位 - 计算机的潜意识 - 博客园_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="./EasyPR--开发详解（2）车牌定位 - 计算机的潜意识 - 博客园_files/bundle-iMetro_HD.css">
+<link type="text/css" rel="stylesheet" href="./EasyPR--开发详解（2）车牌定位 - 计算机的潜意识 - 博客园_files/198547.css">
+<link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="./EasyPR--开发详解（2）车牌定位 - 计算机的潜意识 - 博客园_files/bundle-iMetro_HD-mobile.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/subconscious/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/subconscious/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/subconscious/wlwmanifest.xml">
+<script async="" src="./EasyPR--开发详解（2）车牌定位 - 计算机的潜意识 - 博客园_files/analytics.js"></script><script type="text/javascript" src="./EasyPR--开发详解（2）车牌定位 - 计算机的潜意识 - 博客园_files/encoder.js"></script><script src="./EasyPR--开发详解（2）车牌定位 - 计算机的潜意识 - 博客园_files/jquery-2.2.0.min.js"></script>
+<script type="text/javascript">var currentBlogApp = 'subconscious', cb_enable_mathjax=false;var isLogined=false;</script>
+<script src="./EasyPR--开发详解（2）车牌定位 - 计算机的潜意识 - 博客园_files/blog-common.js" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+<!--PageBeginHtml Block Begin-->
+<span id="forkongithub"><a href="https://github.com/liuruoze/EasyPR" target="_blank">Fork me on GitHub</a></span>
+<!--PageBeginHtml Block End-->
+
+<!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+	<a id="lnkBlogLogo" href="http://www.cnblogs.com/subconscious/"><img id="blogLogo" src="./EasyPR--开发详解（2）车牌定位 - 计算机的潜意识 - 博客园_files/logo.gif" alt="返回主页"></a>			
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/subconscious/">计算机的潜意识</a></h1>
+<h2>EasyPR讨论QQ群：一群：366392603, 四群：548362608。 加前请注明EasyPR学习讨论。</h2>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="blog_nav_sitehome" class="menu" href="http://www.cnblogs.com/">博客园</a></li>
+<li><a id="blog_nav_myhome" class="menu" href="http://www.cnblogs.com/subconscious/">首页</a></li>
+<li><a id="blog_nav_newpost" class="menu" rel="nofollow" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+<li><a id="blog_nav_contact" class="menu" rel="nofollow" href="https://msg.cnblogs.com/send/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E6%BD%9C%E6%84%8F%E8%AF%86">联系</a></li>
+<li><a id="blog_nav_rss" class="menu" href="http://www.cnblogs.com/subconscious/rss">订阅</a>
+<!--<a id="blog_nav_rss_image" class="aHeaderXML" href="http://www.cnblogs.com/subconscious/rss"><img src="//www.cnblogs.com/images/xml.gif" alt="订阅" /></a>--></li>
+<li><a id="blog_nav_admin" class="menu" rel="nofollow" href="https://i.cnblogs.com/">管理</a></li>
+</ul>
+		<div class="blogStats">
+			
+			<div id="blog_stats">
+<span id="stats_post_count">随笔 - 15&nbsp; </span>
+<span id="stats_article_count">文章 - 0&nbsp; </span>
+<span id="stats-comment_count">评论 - 505</span>
+</div>
+			
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+<div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class="post">
+		<h1 class="postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="http://www.cnblogs.com/subconscious/p/4013591.html">EasyPR--开发详解（2）车牌定位</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body" class="blogpost-body"><p><span style="font-size: 14px;">　　这篇文章是一个系列中的第三篇。前两篇的地址贴下：<a title="EasyPR--一个开源的中文车牌识别系统" href="http://www.cnblogs.com/subconscious/p/3979988.html" target="_blank"><span style="font-size: 14px;"><span class="titlelink">介绍</span></span></a></span><span style="font-size: 14px;">、<a title="EasyPR--中文开源车牌识别系统 开发详解（1）" href="http://www.cnblogs.com/subconscious/p/4001896.html" target="_blank"><span class="titlelink">详解1</span></a><span class="titlelink">。我撰写这系列文章的目的是：1、普及车牌识别中相关的技术与知识点；2、帮助开发者了解EasyPR的实现细节；3、增进沟通。</span></span></p>
+<p><span style="font-size: 14px;"><span class="titlelink">　　EasyPR的项目地址在这：<a title="EasyPR GitHub" href="https://github.com/liuruoze/EasyPR" target="_blank">GitHub</a>。<span style="font-size: 14px;">要想运行EasyPR的程序，首先必须配置好openCV，具体可以参照这篇<a title="opencv配置" href="http://my.phirobot.com/blog/2014-02-opencv_configuration_in_vs.html" target="_blank">文章</a>。</span></span></span></p>
+<p><span style="font-size: 14px;">　　在前两篇文章中，我们已经初步了解了EasyPR的大概内容，在本篇内容中我们开始深入EasyRP的程序细节。了解EasyPR是如何一步一步实现一个车牌的识别过程的。根据EasyPR的结构，我们把它分为六个部分，前三个部分统称为“Plate Detect”过程。主要目的是在一副图片中发现仅包含车牌的图块，以此提高整体识别的准确率与速度。这个过程非常重要，如果这步失败了，后面的字符识别过程就别想了。而“Plate Detect”过程中的三个部分又分别称之为“Plate Locate” ，“SVM train”,“Plate judge”，其中最重要的部分是第一步“Plate Locate”过程。本篇文章中就是主要介绍“Plate Locate”过程，并且回答以下三个问题：</span></p>
+<p><span style="font-size: 14px;">　　1.此<span style="font-size: 14px;">过程</span>的作用是什么，为什么重要？</span></p>
+<p><span style="font-size: 14px;">　　2.此<span style="font-size: 14px;"><span style="font-size: 14px;">过程</span></span>是如何实现车牌定位这个功能的？</span></p>
+<p><span style="font-size: 14px;">　　3.此<span style="font-size: 14px;"><span style="font-size: 14px;">过程中的细节是什么，如何进行调优？</span></span></span></p>
+<p>&nbsp;</p>
+<p>&nbsp;<span style="font-size: 14px;"><span style="font-family: Microsoft YaHei; font-size: 16px;"><strong>1.<span style="font-size: 14px;"><span style="font-size: 14px;">“Plate Locate”</span></span>的作用与重要性</strong></span><br></span></p>
+<p>&nbsp;<span style="font-size: 14px;">　　在说明“Plate Locate”的作用与重要性之前，请看下面这两幅图片。</span></p>
+<p>&nbsp;&nbsp;<img src="./EasyPR--开发详解（2）车牌定位 - 计算机的潜意识 - 博客园_files/091748591556892.jpg" alt="" width="475" height="217">&nbsp; &nbsp;<img src="./EasyPR--开发详解（2）车牌定位 - 计算机的潜意识 - 博客园_files/111628052962583.jpg" alt="" width="375" height="281">&nbsp; </p>
+<p style="text-align: center;"><span style="font-family: 黑体;">图1 两幅包含车牌的不同形式图片</span></p>
+<p>　　左边的图片是作者训练的图片（作者大部分的训练与测试都是基于此类交通抓拍图片），右边的图片则是在百度图片中“车牌”获得（这个图片也可以称之为生活照片）。右边图片的问题是一个网友评论时问的。他说EasyPR在处理百度图片时的识别率不高。确实如此，由于工业与生活应用目的不同，拍摄的车牌的大小，角度，色泽，清晰度不一样。而对图像处理技术而言，一些算法对于图像的形式以及结构都有一定的要求或者假设。因此在一个场景下适应的算法并不适用其他场景。目前EasyPR所有的功能都是基于交通抓拍场景的图片制作的，因此也就导致了其无法处理生活场景中这些车牌照片。</p>
+<p>　　那么是否可以用一致的“Plate Locate”过程中去处理它？答案是也许可以，但是很难，而且最后即便处理成功，效率也许也不尽如人意。我的推荐是：对于不同的场景要做不同的适配。尽管“Plate Locate”过程无法处理生活照片的定位，但是在后面的字符识别过程中两者是通用的。可以对EasyPR的“Plate Locate”做改造，同时仍然使用整体架构，这样或许可以处理。</p>
+<p>　　有一点事实值得了解到是，在生产环境中，你所面对的图片形式是固定的，例如左边的图片。你可以根据特定的图片形式来调优你的车牌程序，使你的程序对这类图片足够健壮，效率也够高。在上线以后，也有很好的效果。但当图片形式调整时，就必须要调整你的算法了。在“Plate Locate”过程中，有一些参数可以调整。如果通过调整这些参数就可以使程序良好工作，那最好不过。当这些参数也不能够满足需求时，就需要完全修改EasyPR的实现代码，因此需要开发者了解EasyPR是如何实现plateLocate这一过程的。</p>
+<p><span style="font-size: 14px;">　　在EasyPR中，“Plate Locate”过程被封装成了一个“CPlateLocate”类，通过“plate_locate.h”声明，在“plate_locate.cpp”中实现。</span></p>
+<p><span style="font-size: 14px;">　　CPlateLocate包含三个方法以及数个变量。方法提供了车牌定位的主要功能，变量则提供了可定制的参数，有些参数对于车牌定位的效果有非常明显的影响，例如高斯模糊半径、Sobel算子的水平与垂直方向权值、闭操作的矩形宽度。<span style="font-size: 14px;">CPlateLocate</span>类的声明如下：</span></p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./EasyPR--开发详解（2）车牌定位 - 计算机的潜意识 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #0000ff;">class</span><span style="color: #000000;"> CPlateLocate 
+{
+</span><span style="color: #0000ff;">public</span><span style="color: #000000;">:
+    CPlateLocate();
+
+    </span><span style="color: #008000;">//</span><span style="color: #008000;">! 车牌定位</span>
+    <span style="color: #0000ff;">int</span> plateLocate(Mat, vector&lt;Mat&gt;&amp;<span style="color: #000000;"> );
+
+    </span><span style="color: #008000;">//</span><span style="color: #008000;">! 车牌的尺寸验证</span>
+    <span style="color: #0000ff;">bool</span><span style="color: #000000;"> verifySizes(RotatedRect mr);
+
+    </span><span style="color: #008000;">//</span><span style="color: #008000;">! 结果车牌显示</span>
+<span style="color: #000000;">    Mat showResultMat(Mat src, Size rect_size, Point2f center);
+
+    </span><span style="color: #008000;">//</span><span style="color: #008000;">! 设置与读取变量
+    </span><span style="color: #008000;">//</span><span style="color: #008000;">...</span>
+
+<span style="color: #0000ff;">protected</span><span style="color: #000000;">:
+    </span><span style="color: #008000;">//</span><span style="color: #008000;">! 高斯模糊所用变量</span>
+    <span style="color: #0000ff;">int</span><span style="color: #000000;"> m_GaussianBlurSize;
+
+    </span><span style="color: #008000;">//</span><span style="color: #008000;">! 连接操作所用变量</span>
+    <span style="color: #0000ff;">int</span><span style="color: #000000;"> m_MorphSizeWidth;
+    </span><span style="color: #0000ff;">int</span><span style="color: #000000;"> m_MorphSizeHeight;
+
+    </span><span style="color: #008000;">//</span><span style="color: #008000;">! verifySize所用变量</span>
+    <span style="color: #0000ff;">float</span><span style="color: #000000;"> m_error;
+    </span><span style="color: #0000ff;">float</span><span style="color: #000000;"> m_aspect;
+    </span><span style="color: #0000ff;">int</span><span style="color: #000000;"> m_verifyMin;
+    </span><span style="color: #0000ff;">int</span><span style="color: #000000;"> m_verifyMax;
+
+    </span><span style="color: #008000;">//</span><span style="color: #008000;">! 角度判断所用变量</span>
+    <span style="color: #0000ff;">int</span><span style="color: #000000;"> m_angle;
+
+    </span><span style="color: #008000;">//</span><span style="color: #008000;">! 是否开启调试模式，0关闭，非0开启</span>
+    <span style="color: #0000ff;">int</span><span style="color: #000000;"> m_debug;
+};</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./EasyPR--开发详解（2）车牌定位 - 计算机的潜意识 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p><span style="font-size: 14px;">　　注意，所有EasyPR中的类都声明在命名空间easypr内，这里没有列出。CPlateLocate中最核心的方法是plateLocate方法。它的声明如下：</span></p>
+<div class="cnblogs_code">
+<pre>    <span style="color: #008000;">//</span><span style="color: #008000;">! 车牌定位</span>
+    <span style="color: #0000ff;">int</span> plateLocate(Mat, vector&lt;Mat&gt;&amp; );</pre>
+</div>
+<p><span style="font-size: 14px;">　　方法有两个参数，第一个参数代表输入的源图像，第二个参数是输出数组，代表所有检索到的车牌图块。返回值为int型，0代表成功，其他代表失败。plateLocate内部是如何实现的，让我们再深入下看看。</span></p>
+<p>&nbsp;</p>
+<p><span style="font-size: 14px;"><span style="font-size: 14px;"><span style="font-size: 14px;"><span style="font-family: Microsoft YaHei; font-size: 16px;"><strong>2.<span style="font-size: 14px;"><span style="font-family: Microsoft YaHei; font-size: 16px;"><strong><span style="font-size: 14px;"><span style="font-size: 14px;">“Plate Locate”</span></span></strong></span></span>的实现过程</strong></span></span></span></span></p>
+<p>　　plateLocate过程基本参考了taotao1233的<a title="车牌识别一" href="http://blog.csdn.net/jinshengtao/article/details/17883075" target="_blank">博客</a>的处理流程，但略有不同。</p>
+<p>　　plateLocate的总体识别思路是：如果我们的车牌没有大的旋转或变形，那么其中必然包括很多垂直边缘（这些垂直边缘往往缘由车牌中的字符），如果能够找到一个包含很多垂直边缘的矩形块，那么有很大的可能性它就是车牌。</p>
+<p>　　依照这个思路我们可以设计一个车牌定位的流程。设计好后，再根据实际效果进行调优。下面的流程是经过多次调整与尝试后得出的，包含了数月来作者针对测试图片集的一个最佳过程（这个流程并不一定适用所有情况）。plateLocate的实现代码在这里不贴了，Git上有所有<a title="EasyPR GitHub" href="https://github.com/liuruoze/EasyPR" target="_blank">源码</a>。plateLocate主要处理流程图如下:</p>
+<p><img src="./EasyPR--开发详解（2）车牌定位 - 计算机的潜意识 - 博客园_files/131536305296824.jpg" alt="" width="771" height="486"></p>
+<p style="text-align: center;"><span style="font-family: 黑体;">图2 plateLocate流程图</span></p>
+<p>　　下面会一步一步参照上面的流程图，给出每个步骤的中间临时图片。这些图片可以在1.01版的<span style="font-size: 14px;">CPlateLocate中设置如下代码开启调试模式。</span></p>
+<div class="cnblogs_code">
+<pre><span style="color: #000000;">    CPlateLocate plate;
+    plate.setDebug(</span><span style="color: #800080;">1</span>);</pre>
+</div>
+<p>&nbsp;<span style="font-size: 14px;">　　临时图片会生成在tmp文件夹下。对多个车牌图片处理的结果仅会保留最后一个车牌图片的临时图片。</span></p>
+<p>　　1、原始图片。</p>
+<p><img src="./EasyPR--开发详解（2）车牌定位 - 计算机的潜意识 - 博客园_files/091707456879565.jpg" alt="" width="811" height="375"></p>
+<p>&nbsp;</p>
+<p>　　2、经过高斯模糊后的图片。经过这步处理，可以看出图像变的模糊了。这步的作用是为接下来的Sobel算子去除干扰的噪声。</p>
+<p><img src="./EasyPR--开发详解（2）车牌定位 - 计算机的潜意识 - 博客园_files/091708038746422.jpg" alt="" width="815" height="376"></p>
+<p>&nbsp;</p>
+<p>　　3、将图像进行灰度化。这个步骤是一个分水岭，意味着后面的所有操作都不能基于色彩信息了。此步骤是利是弊，后面再做分析。</p>
+<p><img src="./EasyPR--开发详解（2）车牌定位 - 计算机的潜意识 - 博客园_files/091726232659225.jpg" alt="" width="816" height="377"></p>
+<p><br>　　4、对图像进行Sobel运算，得到的是图像的一阶水平方向导数。这步过后，车牌被明显的区分出来。</p>
+<p><img src="./EasyPR--开发详解（2）车牌定位 - 计算机的潜意识 - 博客园_files/091726376083207.jpg" alt="" width="816" height="377"></p>
+<p><br>　　5、对图像进行二值化。将灰度图像（每个像素点有256个取值可能）转化为二值图像（每个像素点仅有1和0两个取值可能）。</p>
+<p><img src="./EasyPR--开发详解（2）车牌定位 - 计算机的潜意识 - 博客园_files/091728268744989.jpg" alt="" width="816" height="376"></p>
+<p><br>　　6、使用闭操作。对图像进行闭操作以后，可以看到车牌区域被连接成一个矩形装的区域。</p>
+<p><img src="./EasyPR--开发详解（2）车牌定位 - 计算机的潜意识 - 博客园_files/091728357337794.jpg" alt="" width="818" height="377"></p>
+<p>&nbsp;</p>
+<p>　　7、求轮廓。求出图中所有的轮廓。这个算法会把全图的轮廓都计算出来，因此要进行筛选。</p>
+<p><img src="./EasyPR--开发详解（2）车牌定位 - 计算机的潜意识 - 博客园_files/091746285774722.jpg" alt="" width="822" height="380"></p>
+<p><br>　　8、筛选。对轮廓求最小外接矩形，然后验证，不满足条件的淘汰。经过这步，仅仅只有六个黄色边框的矩形通过了筛选。</p>
+<p><img src="./EasyPR--开发详解（2）车牌定位 - 计算机的潜意识 - 博客园_files/091746553906613.jpg" alt="" width="822" height="380"></p>
+<p><br>　　8、角度判断与旋转。把倾斜角度大于阈值（如正负30度）的矩形舍弃。左边第一、二、四个矩形被舍弃了。余下的矩形进行微小的旋转，使其水平。</p>
+<p><img src="./EasyPR--开发详解（2）车牌定位 - 计算机的潜意识 - 博客园_files/091747352967471.jpg" alt="">&nbsp;&nbsp;<img src="./EasyPR--开发详解（2）车牌定位 - 计算机的潜意识 - 博客园_files/091747428274006.jpg" alt="">&nbsp;&nbsp;<img src="./EasyPR--开发详解（2）车牌定位 - 计算机的潜意识 - 博客园_files/091747473905566.jpg" alt=""></p>
+<p><br>　　10、统一尺寸。上步得到的图块尺寸是不一样的。为了进入机器学习模型，需要统一尺寸。统一尺寸的标准宽度是136，长度是36。这个标准是对千个测试车牌平均后得出的通用值。下图为最终的三个候选”车牌“图块。</p>
+<p><img src="./EasyPR--开发详解（2）车牌定位 - 计算机的潜意识 - 博客园_files/091747599376732.jpg" alt="">&nbsp;&nbsp;<img src="./EasyPR--开发详解（2）车牌定位 - 计算机的潜意识 - 博客园_files/091748049053052.jpg" alt="">&nbsp;&nbsp;<img src="./EasyPR--开发详解（2）车牌定位 - 计算机的潜意识 - 博客园_files/091748106245298.jpg" alt=""></p>
+<p>&nbsp;</p>
+<p>　　这些“车牌”有两个作用：一、积累下来作为支持向量机（SVM）模型的训练集，以此训练出一个车牌判断模型；二、在实际的车牌检测过程中，将这些候选“车牌”交由训练好的车牌判断模型进行判断。如果车牌判断模型认为这是车牌的话就进入下一步即字符识别过程，如果不是，则舍弃。</p>
+<p>&nbsp;</p>
+<p><span style="font-size: 14px;"><span style="font-size: 14px;"><span style="font-family: Microsoft YaHei; font-size: 16px;"><strong>3.<span style="font-size: 14px;"><span style="font-family: Microsoft YaHei; font-size: 16px;"><strong><span style="font-size: 14px;"><span style="font-size: 14px;">“Plate Locate”</span></span></strong></span></span>的深入讨论与调优策略</strong></span></span></span></p>
+<p>　　好了，说了这么多，读者想必对整个“Plate Locate”过程已经有了一个完整的认识。那么让我们一步步审核一下处理流程中的每一个步骤。回答下面三个问题:这个步骤的作用是什么？省略这步或者替换这步可不可以？这个步骤中是否有参数可以调优的？通过这几个问题可以帮助我们更好的理解车牌定位功能，并且便于自己做修改、定制。</p>
+<p>　　由于篇幅关系，下面的深入讨论放在下期。</p>
+<p>&nbsp;</p>
+<p><strong><span style="font-family: Microsoft YaHei;">版权说明：</span></strong></p>
+<p><strong><span style="font-family: Microsoft YaHei;">　　本文中的所有文字，图片，代码的版权都是属于作者和博客园共同所有。欢迎转载，但是务必注明作者与引用来源。任何未经允许的剽窃以及爬虫抓取都属于侵权，作者和博客园保留所有权利。</span></strong></p>
+<p>&nbsp;</p>
+<p><strong><span style="font-family: Microsoft YaHei;">参考文献：</span></strong></p>
+<p>　　1.<a href="http://my.phirobot.com/blog/2014-02-opencv_configuration_in_vs.html" target="_blank">http://my.phirobot.com/blog/2014-02-opencv_configuration_in_vs.html</a></p>
+<p>　　2.<a href="http://blog.csdn.net/jinshengtao/article/details/17883075" target="_blank">http://blog.csdn.net/jinshengtao/article/details/17883075</a></p>
+<p>　　3.<a href="http://www.ruanyifeng.com/blog/2012/11/gaussian_blur.html" target="_blank">http://www.ruanyifeng.com/blog/2012/11/gaussian_blur.html</a></p>
+<p>　　4.<a href="http://blog.csdn.net/xiaowei_cqu/article/details/7829481" target="_blank">http://blog.csdn.net/xiaowei_cqu/article/details/7829481</a></p>
+<p>&nbsp;</p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory"></div>
+<div id="EntryTag">标签: <a href="http://www.cnblogs.com/subconscious/tag/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/">计算机视觉</a>, <a href="http://www.cnblogs.com/subconscious/tag/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">图像处理</a></div>
+<div id="blog_post_info"><div id="green_channel">
+        <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(4013591,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+            <a id="green_channel_follow" onclick="follow(&#39;edd4356d-003f-e411-b908-9dcfd8948a71&#39;);" href="javascript:void(0);">关注我</a>
+    <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
+    <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="./EasyPR--开发详解（2）车牌定位 - 计算机的潜意识 - 博客园_files/icon_weibo_24.png" alt=""></a>
+    <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="./EasyPR--开发详解（2）车牌定位 - 计算机的潜意识 - 博客园_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/subconscious/" target="_blank"><img src="./EasyPR--开发详解（2）车牌定位 - 计算机的潜意识 - 博客园_files/20140918201411.png" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/subconscious/">计算机的潜意识</a><br>
+            <a href="http://home.cnblogs.com/u/subconscious/followees">关注 - 12</a><br>
+            <a href="http://home.cnblogs.com/u/subconscious/followers">粉丝 - 1424</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor">荣誉：<a href="http://www.cnblogs.com/expert/" target="_blank">推荐博客</a></div>
+    <div id="author_profile_follow">
+                <a href="javascript:void(0);" onclick="follow(&#39;edd4356d-003f-e411-b908-9dcfd8948a71&#39;);return false;">+加关注</a>
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit" onclick="votePost(4013591,&#39;Digg&#39;)">
+        <span class="diggnum" id="digg_count">15</span>
+    </div>
+    <div class="buryit" onclick="votePost(4013591,&#39;Bury&#39;)">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+</div>
+<script type="text/javascript">
+    currentDiggType = 0;
+</script></div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/subconscious/p/4001896.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/subconscious/p/4001896.html" title="发布于2014-09-30 16:02">EasyPR--中文开源车牌识别系统 开发详解（1）</a><br><a href="http://www.cnblogs.com/subconscious/p/4022454.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/subconscious/p/4022454.html" title="发布于2014-10-14 16:50">EasyPR--开发详解（3）高斯模糊、灰度化和Sobel算子</a><br></div>
+</div>
+
+
+		</div>
+		<div class="postDesc">posted @ <span id="post-date">2014-10-13 15:39</span> <a href="http://www.cnblogs.com/subconscious/">计算机的潜意识</a> 阅读(<span id="post_view_count">27895</span>) 评论(<span id="post_comment_count">6</span>)  <a href="https://i.cnblogs.com/EditPosts.aspx?postid=4013591" rel="nofollow">编辑</a> <a href="http://www.cnblogs.com/subconscious/p/4013591.html#" onclick="AddToWz(4013591);return false;">收藏</a></div>
+	</div>
+	<script type="text/javascript">var allowComments=true,cb_blogId=198547,cb_entryId=4013591,cb_blogApp=currentBlogApp,cb_blogUserGuid='edd4356d-003f-e411-b908-9dcfd8948a71',cb_entryCreatedDate='2014/10/13 15:39:00';loadViewCount(cb_entryId);var cb_postType=1;</script>
+	
+</div><!--end: topics 文章、评论容器-->
+</div><a name="!comments"></a><div id="blog-comments-placeholder"><div id="comments_pager_top"></div>
+<br>
+<div class="feedback_area_title">评论列表</div>
+<div class="feedbackNoItems"></div>	
+
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4013591.html#3042901" class="layer">#1楼</a><a name="3042901" id="comment_anchor_3042901"></a>  <span class="comment_date">2014-10-13 15:57</span> <a id="a_comment_author_3042901" href="http://www.cnblogs.com/Soar1991/" target="_blank">Soar、毅</a> <a href="http://msg.cnblogs.com/send/Soar%E3%80%81%E6%AF%85" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3042901" class="blog_comment_body">膜拜大神。原来图像识别也是挺好玩儿的。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3042901,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3042901,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3042901_avatar" style="display:none;">http://pic.cnblogs.com/face/361720/20131102014607.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4013591.html#3044246" class="layer">#2楼</a><a name="3044246" id="comment_anchor_3044246"></a>  <span class="comment_date">2014-10-15 12:09</span> <a id="a_comment_author_3044246" href="http://www.cnblogs.com/leiyu1980/" target="_blank">游荡的灵魂</a> <a href="http://msg.cnblogs.com/send/%E6%B8%B8%E8%8D%A1%E7%9A%84%E7%81%B5%E9%AD%82" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3044246" class="blog_comment_body">拍照识别，在车牌字幕提取方面，应该首先要处理拍照颜色吧。比如蓝牌的是一行车牌，黄色的拍照 车牌是2行，应该首先要分辨车牌内部。还有军车这些，他们的排序方式都不一样。。。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3044246,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3044246,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4013591.html#3044439" class="layer">#3楼</a><a name="3044439" id="comment_anchor_3044439"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2014-10-15 17:25</span> <a id="a_comment_author_3044439" href="http://www.cnblogs.com/subconscious/" target="_blank">计算机的潜意识</a> <a href="http://msg.cnblogs.com/send/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E6%BD%9C%E6%84%8F%E8%AF%86" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3044439" class="blog_comment_body"><a href="http://www.cnblogs.com/subconscious/p/4013591.html#3044246" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3044246);">@</a>
+游荡的灵魂<br>是的。这里的所有测试图片都用的是正面的车牌，所以没有黄色两行的那种牌照。军车是白纸黑字的牌照。要想让车牌识别系统能处理所有情况，确实比较复杂。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3044439,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3044439,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3044439_avatar" style="display:none;">http://pic.cnblogs.com/face/673793/20140918201411.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4013591.html#3248528" class="layer">#4楼</a><a name="3248528" id="comment_anchor_3248528"></a>  <span class="comment_date">2015-08-16 12:23</span> <a id="a_comment_author_3248528" href="http://home.cnblogs.com/u/752340/" target="_blank">yehu</a> <a href="http://msg.cnblogs.com/send/yehu" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3248528" class="blog_comment_body">非常的详尽了，赞！<br>我个人认为location是整个识别过程最困难的一部分，因为面临的情况复杂多变。<br>另外我想在这个步骤中，如果先进行灰度化，再进行高斯模糊会有什么影响呢，毕竟彩色图像要对3个通道进行处理啊。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3248528,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3248528,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4013591.html#3471325" class="layer">#5楼</a><a name="3471325" id="comment_anchor_3471325"></a>  <span class="comment_date">2016-07-17 03:01</span> <a id="a_comment_author_3471325" href="http://home.cnblogs.com/u/993459/" target="_blank">junxianchen</a> <a href="http://msg.cnblogs.com/send/junxianchen" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3471325" class="blog_comment_body">楼主，提个小建议，我建议您把项目里面用到的opencv版本集成到一个目录里面，然后配置里面包含目录用相对目录，这样下载下来就可以直接编译运行了，不需要去配置opencv.</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3471325,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3471325,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/subconscious/p/4013591.html#3690137" class="layer">#6楼</a><a name="3690137" id="comment_anchor_3690137"></a><span id="comment-maxId" style="display:none;">3690137</span><span id="comment-maxDate" style="display:none;">2017/5/11 16:56:59</span>  <span class="comment_date">2017-05-11 16:56</span> <a id="a_comment_author_3690137" href="http://home.cnblogs.com/u/819600/" target="_blank">codevv</a> <a href="http://msg.cnblogs.com/send/codevv" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3690137" class="blog_comment_body">（- 1 * 3 - 2 * 3 - 1 * 4 + 1 * 5 + 2 * 7 + 1 * 6 = 12）后红色像素的值变成了12。这一部分计算错了吧，我有MATLAB计算一下，中间值应该是-9啊，卷积核计算的时间不是应该顺时针旋转180°嘛</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3690137,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3690137,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	<div id="comments_pager_bottom"></div></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="http://www.cnblogs.com/subconscious/p/4013591.html#" onclick="return RefreshPage();">刷新页面</a><a href="http://www.cnblogs.com/subconscious/p/4013591.html#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login(&#39;commentform&#39;);">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】超50万VC++源码: 大型组态工控、电力仿真CAD与GIS源码库！</a><br><a href="http://click.aliyun.com/m/43774/" target="_blank">【缅怀】传奇谢幕，回顾霍金76载传奇人生</a><br><a href="https://cloud.tencent.com/act/campus?fromSource=gwzcw.860539.860539.860539" target="_blank">【推荐】腾讯云校园拼团福利，1核2G服务器10元/月！</a><br><a href="https://www.yunqi2050.com/#/index" target="_blank">【活动】2050 科技公益大会 - 年青人因科技而团聚</a><br></div>
+<div id="opt_under_post"></div>
+<div id="cnblogs_c1" class="c_ad_block"><a href="https://market.qcloud.com/act/wangjian/?fromSource=gwzcw.860541.860541.860541" target="_blank"><img width="300" height="250" src="./EasyPR--开发详解（2）车牌定位 - 计算机的潜意识 - 博客园_files/24442-20180314220122373-1718033865.jpg" alt="qcloud0314"></a></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="https://news.cnblogs.com/n/592036/" target="_blank">孙宏斌的护城河：辞职后留嫡系掌权 乐视仍是肥肉？</a><br> ·  <a href="https://news.cnblogs.com/n/592035/" target="_blank">火币前CTO张健：区块链大繁荣，尚需5到10年时间</a><br> ·  <a href="https://news.cnblogs.com/n/592034/" target="_blank">Uber自动驾驶汽车再出事故：人员受轻伤</a><br> ·  <a href="https://news.cnblogs.com/n/592025/" target="_blank">谷歌地图在几个城市提供轮椅行进辅助信息</a><br> ·  <a href="https://news.cnblogs.com/n/592033/" target="_blank">吃着越来越贵的外卖 你会想起当年的网约车吗？</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="cnblogs_c2" class="c_ad_block"><a href="http://click.aliyun.com/m/42835/" target="_blank"><img width="468" height="60" src="https://gw.alicdn.com/tfs/TB1mEZFaWmWBuNjy1XaXXXCbXXa-468-60.jpg" alt="阿里云0308" style="display: none !important;"></a></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/575255/" target="_blank">写给自学者的入门指南</a><br> ·  <a href="http://kb.cnblogs.com/page/578690/" target="_blank">和程序员谈恋爱</a><br> ·  <a href="http://kb.cnblogs.com/page/585734/" target="_blank">学会学习</a><br> ·  <a href="http://kb.cnblogs.com/page/588938/" target="_blank">优秀技术人的管理陷阱</a><br> ·  <a href="http://kb.cnblogs.com/page/590141/" target="_blank">作为一个程序员，数学对你到底有多重要</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+    fixPostBody();
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);   
+</script>
+</div>
+
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news">EasyPR讨论QQ群：一群：366392603, 四群：548362608。加前请注明EasyPR学习讨论。<div id="profile_block">昵称：<a href="https://home.cnblogs.com/u/subconscious/">计算机的潜意识</a><br>园龄：<a href="https://home.cnblogs.com/u/subconscious/" title="入园时间：2014-09-18">3年5个月</a><br>荣誉：<a href="https://www.cnblogs.com/expert/">推荐博客</a><br>粉丝：<a href="https://home.cnblogs.com/u/subconscious/followers/">1424</a><br>关注：<a href="https://home.cnblogs.com/u/subconscious/followees/">12</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="follow(&#39;edd4356d-003f-e411-b908-9dcfd8948a71&#39;)">+加关注</a></div><script>getFollowStatus('edd4356d-003f-e411-b908-9dcfd8948a71')</script></div></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+
+			<div id="blog-calendar" style=""><table id="blogCalendar" class="Cal" cellspacing="0" cellpadding="0" title="Calendar">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2018/02/01&#39;);return false;">&lt;</a></td><td align="center">2018年3月</td><td class="CalNextPrev" align="right"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2018/04/01&#39;);return false;">&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" align="center" abbr="日" scope="col">日</th><th class="CalDayHeader" align="center" abbr="一" scope="col">一</th><th class="CalDayHeader" align="center" abbr="二" scope="col">二</th><th class="CalDayHeader" align="center" abbr="三" scope="col">三</th><th class="CalDayHeader" align="center" abbr="四" scope="col">四</th><th class="CalDayHeader" align="center" abbr="五" scope="col">五</th><th class="CalDayHeader" align="center" abbr="六" scope="col">六</th></tr><tr><td class="CalOtherMonthDay" align="center">25</td><td class="CalOtherMonthDay" align="center">26</td><td class="CalOtherMonthDay" align="center">27</td><td class="CalOtherMonthDay" align="center">28</td><td align="center">1</td><td align="center">2</td><td class="CalWeekendDay" align="center">3</td></tr><tr><td class="CalWeekendDay" align="center">4</td><td align="center">5</td><td align="center">6</td><td align="center">7</td><td align="center">8</td><td align="center">9</td><td class="CalWeekendDay" align="center">10</td></tr><tr><td class="CalWeekendDay" align="center">11</td><td align="center">12</td><td align="center">13</td><td align="center">14</td><td align="center">15</td><td align="center">16</td><td class="CalTodayDay" align="center">17</td></tr><tr><td class="CalWeekendDay" align="center">18</td><td align="center">19</td><td align="center">20</td><td align="center">21</td><td align="center">22</td><td align="center">23</td><td class="CalWeekendDay" align="center">24</td></tr><tr><td class="CalWeekendDay" align="center">25</td><td align="center">26</td><td align="center">27</td><td align="center">28</td><td align="center">29</td><td align="center">30</td><td class="CalWeekendDay" align="center">31</td></tr><tr><td class="CalOtherMonthDay" align="center">1</td><td class="CalOtherMonthDay" align="center">2</td><td class="CalOtherMonthDay" align="center">3</td><td class="CalOtherMonthDay" align="center">4</td><td class="CalOtherMonthDay" align="center">5</td><td class="CalOtherMonthDay" align="center">6</td><td class="CalOtherMonthDay" align="center">7</td></tr>
+</tbody></table></div><script type="text/javascript">loadBlogDefaultCalendar();</script>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="sidebar_search" class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="sidebar_search_box">
+
+<div id="widget_my_google" class="div_my_zzk"><input type="text" name="google_q" id="google_q" onkeydown="return google_go_enter(event)" class="input_my_zzk">&nbsp;<input onclick="google_go()" type="button" value="谷歌搜索" class="btn_my_zzk"></div>
+</div>
+</div>
+
+</div><div id="sidebar_categories">
+<div id="sidebar_postarchive" class="catListPostArchive sidebar-block">
+<h3 class="catListTitle">随笔档案</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_0_Link_0" href="http://www.cnblogs.com/subconscious/archive/2017/12.html">2017年12月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_1" href="http://www.cnblogs.com/subconscious/archive/2016/12.html">2016年12月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_2" href="http://www.cnblogs.com/subconscious/archive/2016/07.html">2016年7月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_3" href="http://www.cnblogs.com/subconscious/archive/2016/03.html">2016年3月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_4" href="http://www.cnblogs.com/subconscious/archive/2015/12.html">2015年12月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_5" href="http://www.cnblogs.com/subconscious/archive/2015/07.html">2015年7月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_6" href="http://www.cnblogs.com/subconscious/archive/2015/03.html">2015年3月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_7" href="http://www.cnblogs.com/subconscious/archive/2015/02.html">2015年2月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_8" href="http://www.cnblogs.com/subconscious/archive/2014/12.html">2014年12月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_9" href="http://www.cnblogs.com/subconscious/archive/2014/10.html">2014年10月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_10" href="http://www.cnblogs.com/subconscious/archive/2014/09.html">2014年9月 (2)</a> </li>
+
+</ul>
+
+</div>
+
+</div><div id="sidebar_scorerank" class="sidebar-block">
+<div class="catListBlogRank">
+<h3 class="catListTitle">积分与排名</h3>
+<ul>
+	<li class="liScore">
+		积分 -	49370
+	</li>
+	<li class="liRank">
+		排名 -	7447
+	</li>
+</ul>
+</div>
+
+
+</div><div id="sidebar_recentcomments" class="sidebar-block"><div id="recent_comments_wrap">
+<div class="catListComment">
+<h3 class="catListTitle">最新评论</h3>
+
+	<div id="RecentCommentsBlock"><ul>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/subconscious/p/4107357.html#3925062">1. Re:从机器学习谈起</a></li>
+        <li class="recent_comment_body">不错，支持</li>
+        <li class="recent_comment_author">--小陀螺_coding</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/subconscious/p/8157268.html#3923099">2. Re:2017年总结</a></li>
+        <li class="recent_comment_body">@肥肥小牛非常感谢您的建议！...</li>
+        <li class="recent_comment_author">--计算机的潜意识</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/subconscious/p/8157268.html#3922721">3. Re:2017年总结</a></li>
+        <li class="recent_comment_body">另，本人有两点拙见：1、我有个朋友的亲戚就是做民间借贷的，经过深入交流发现，现在的逼债手段没有想象中那么“暴力”，而是几乎都“合法化”和“规范化”了。所以博主的案例真的是给大家提了个醒，要尽早采用法律......</li>
+        <li class="recent_comment_author">--肥肥小牛</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/subconscious/p/8157268.html#3922695">4. Re:2017年总结</a></li>
+        <li class="recent_comment_body">支持博主，祝好人好报！</li>
+        <li class="recent_comment_author">--肥肥小牛</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/subconscious/p/3979988.html#3921081">5. Re:EasyPR--一个开源的中文车牌识别系统</a></li>
+        <li class="recent_comment_body">博主，你好请问字符分割部分找到特殊字符之后，接下来的找最小外接矩形和分割代码在哪找？</li>
+        <li class="recent_comment_author">--上善若水ssrs</li>
+</ul>
+</div>
+</div>
+</div></div><div id="sidebar_topviewedposts" class="sidebar-block"><div id="topview_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">阅读排行榜</h3>
+	<div id="TopViewPostsBlock"><ul><li><a href="http://www.cnblogs.com/subconscious/p/5058741.html">1. 神经网络浅讲：从神经元到深度学习(107257)</a></li><li><a href="http://www.cnblogs.com/subconscious/p/4107357.html">2. 从机器学习谈起(75650)</a></li><li><a href="http://www.cnblogs.com/subconscious/p/3979988.html">3. EasyPR--一个开源的中文车牌识别系统(70854)</a></li><li><a href="http://www.cnblogs.com/subconscious/p/4001896.html">4. EasyPR--中文开源车牌识别系统 开发详解（1）(28167)</a></li><li><a href="http://www.cnblogs.com/subconscious/p/4013591.html">5. EasyPR--开发详解（2）车牌定位(27895)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topcommentedposts" class="sidebar-block"><div id="topfeedback_posts_wrap">
+<div class="catListFeedback">
+<h3 class="catListTitle">评论排行榜</h3>
+	<div id="TopFeedbackPostsBlock"><ul><li><a href="http://www.cnblogs.com/subconscious/p/4107357.html">1. 从机器学习谈起(147)</a></li><li><a href="http://www.cnblogs.com/subconscious/p/3979988.html">2. EasyPR--一个开源的中文车牌识别系统(61)</a></li><li><a href="http://www.cnblogs.com/subconscious/p/5058741.html">3. 神经网络浅讲：从神经元到深度学习(57)</a></li><li><a href="http://www.cnblogs.com/subconscious/p/4249581.html">4. EasyPR--开发详解（6）SVM开发详解(37)</a></li><li><a href="http://www.cnblogs.com/subconscious/p/4311550.html">5. 小议“数据开放”(28)</a></li></ul></div>
+</div>
+</div></div></div><script type="text/javascript">loadBlogSideColumn();</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright ©2018 计算机的潜意识
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+</body></html>
